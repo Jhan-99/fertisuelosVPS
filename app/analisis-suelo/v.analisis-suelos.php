@@ -1,5 +1,24 @@
 <?php
 include('fetch-head.php');
+session_start();
+include("../../db/dbconnect.php"); 
+            
+             if(!isset($_SESSION["user_name"]))  
+             {   
+              $_SESSION["user_name"] = 'Invitado';
+              $query_user = "SELECT * FROM user_details WHERE user_name = '".$_SESSION["user_name"]."'";  
+              $result_user = mysqli_query($conexion, $query_user);
+             }else{
+                  $query_user = "SELECT * FROM user_details WHERE user_name = '".$_SESSION["user_name"]."'";  
+                  $result_user = mysqli_query($conexion, $query_user);  
+             }
+            $estado = "";
+            
+               if($_SESSION["user_name"] == 'Invitado') {
+                   $estado = "Iniciar";    
+               }else{
+                    $estado = "Salir";    
+               }
 include('../fetchs.php');
 ?>
 <!DOCTYPE html>
@@ -39,139 +58,7 @@ include('../fetchs.php');
     <!-- End Page Loading -->
     <!-- //////////////////////////////////////////////////////////////////////////// -->
     <!-- START HEADER -->
-    <header id="header" class="page-topbar">
-      <!-- start header nav-->
-      <div class="navbar-fixed">
-        <nav class="navbar-color light-green">
-          <div class="nav-wrapper">
-            <ul class="left">
-              <li>
-                <h1 class="logo-wrapper">
-                  <a href="../../index.php" class="brand-logo darken-1">
-                    <img src="../../images/logo/materialize-logo.png" alt="materialize logo">
-                    <span class="logo-text hide-on-med-and-down">Fertisuelos</span>
-                  </a>
-                </h1>
-              </li>
-            </ul>
-            <div class="header-search-wrapper hide-on-med-and-down">
-              <i class="material-icons">search</i>
-              <input type="text" name="Search" class="header-search-input z-depth-2" placeholder="Explora Fertisuelos" />
-            </div>
-            <ul class="right hide-on-med-and-down">
-              <li>
-                <a href="javascript:void(0);" class="waves-effect waves-block waves-light translation-button" data-activates="translation-dropdown">
-                  <span class="flag-icon flag-icon-gb"></span>
-                </a>
-              </li>
-              <li>
-                <a href="javascript:void(0);" class="waves-effect waves-block waves-light toggle-fullscreen">
-                  <i class="material-icons">settings_overscan</i>
-                </a>
-              </li>
-              <li>
-                <a href="javascript:void(0);" class="waves-effect waves-block waves-light notification-button" data-activates="notifications-dropdown">
-                  <i class="material-icons">notifications_none
-                    <small class="notification-badge pink accent-2">5</small>
-                  </i>
-                </a>
-              </li>
-              <li>
-                <a href="javascript:void(0);" class="waves-effect waves-block waves-light profile-button" data-activates="profile-dropdown">
-                  <span class="avatar-status avatar-online">
-                    <img src="../../images/avatar/avatar-7.png" alt="avatar">
-                    <i></i>
-                  </span>
-                </a>
-              </li>
-              <li>
-                <a href="#" data-activates="chat-out" class="waves-effect waves-block waves-light chat-collapse">
-                  <i class="material-icons">format_indent_increase</i>
-                </a>
-              </li>
-            </ul>
-            <!-- translation-button -->
-            <ul id="translation-dropdown" class="dropdown-content">
-              <li>
-                <a href="#!" class="grey-text text-darken-1">
-                  <i class="flag-icon flag-icon-gb"></i> English</a>
-              </li>
-              <li>
-                <a href="#!" class="grey-text text-darken-1">
-                  <i class="flag-icon flag-icon-fr"></i> French</a>
-              </li>
-              <li>
-                <a href="#!" class="grey-text text-darken-1">
-                  <i class="flag-icon flag-icon-cn"></i> Chinese</a>
-              </li>
-              <li>
-                <a href="#!" class="grey-text text-darken-1">
-                  <i class="flag-icon flag-icon-de"></i> German</a>
-              </li>
-            </ul>
-            <!-- notifications-dropdown -->
-            <ul id="notifications-dropdown" class="dropdown-content">
-              <li>
-                <h6>NOTIFICATIONS
-                  <span class="new badge">5</span>
-                </h6>
-              </li>
-              <li class="divider"></li>
-              <li>
-                <a href="#!" class="grey-text text-darken-2">
-                  <span class="material-icons icon-bg-circle cyan small">add_shopping_cart</span> A new order has been placed!</a>
-                <time class="media-meta" datetime="2015-06-12T20:50:48+08:00">2 hours ago</time>
-              </li>
-              <li>
-                <a href="#!" class="grey-text text-darken-2">
-                  <span class="material-icons icon-bg-circle red small">stars</span> Completed the task</a>
-                <time class="media-meta" datetime="2015-06-12T20:50:48+08:00">3 days ago</time>
-              </li>
-              <li>
-                <a href="#!" class="grey-text text-darken-2">
-                  <span class="material-icons icon-bg-circle teal small">settings</span> Settings updated</a>
-                <time class="media-meta" datetime="2015-06-12T20:50:48+08:00">4 days ago</time>
-              </li>
-              <li>
-                <a href="#!" class="grey-text text-darken-2">
-                  <span class="material-icons icon-bg-circle deep-orange small">today</span> Director meeting started</a>
-                <time class="media-meta" datetime="2015-06-12T20:50:48+08:00">6 days ago</time>
-              </li>
-              <li>
-                <a href="#!" class="grey-text text-darken-2">
-                  <span class="material-icons icon-bg-circle amber small">trending_up</span> Generate monthly report</a>
-                <time class="media-meta" datetime="2015-06-12T20:50:48+08:00">1 week ago</time>
-              </li>
-            </ul>
-            <!-- profile-dropdown -->
-            <ul id="profile-dropdown" class="dropdown-content">
-              <li>
-                <a href="#" class="grey-text text-darken-1">
-                  <i class="material-icons">face</i> Profile</a>
-              </li>
-              <li>
-                <a href="#" class="grey-text text-darken-1">
-                  <i class="material-icons">settings</i> Settings</a>
-              </li>
-              <li>
-                <a href="#" class="grey-text text-darken-1">
-                  <i class="material-icons">live_help</i> Help</a>
-              </li>
-              <li class="divider"></li>
-              <li>
-                <a href="#" class="grey-text text-darken-1">
-                  <i class="material-icons">lock_outline</i> Lock</a>
-              </li>
-              <li>
-                <a href="#" class="grey-text text-darken-1">
-                  <i class="material-icons">keyboard_tab</i> Logout</a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </div>
-      <!-- end header nav-->
-    </header>
+    <?php include("../top-bar-sub.php");?>
     <!-- END HEADER -->
     <!-- //////////////////////////////////////////////////////////////////////////// -->
     <!-- START MAIN -->
@@ -214,11 +101,12 @@ include('../fetchs.php');
                 <!--INICIO ELEMENTOS PARA LA CREACIÓN DE ANÁLISIS DE SUELO-->
                     <!--Código carga el análisis de suelo-->
          <input type="hidden" id="codcab" value="<?php  echo (mt_rand()); ?>">
-          <ul class="tabs tabs-fixed-width tab-demo z-depth-1">
-            <li class="tab col s3 m3 l3 active"><a href="#info_inicial">Infomación inicial</a></li>
-            <li id="vars_s" class="tab col s3 m3 l3 disabled"><a  href="#vars_sign">Variables significativas</a></li>
-            <li id="el" class="tab col s3 m3 l3 disabled"><a  href="#elementos">Elementos</a></li>
-            <li id="grafic" class="tab col s3 m3 l3 disabled"><a  href="#grafico_analisis">Grafico</a></li>
+          <ul class="tabs tabs-fixed-width tab-demo z-depth-1" style="overflow-x: hidden;">
+            <li class="tab col s3 m3 l3 active"><a class="active" href="#info_inicial">Infomación inicial</a></li>
+            <li id="vars_s" class="tab col s3 m3 l3 "><a  href="#vars_sign">Variables significativas</a></li>
+            <li id="el" class="tab col s3 m3 l2 "><a  href="#elementos">Elementos</a></li>
+            <li id="grafic" class="tab col s3 m3 l2 disabled"><a  href="#grafico_analisis">Grafico</a></li>
+            <li id="" class="tab col s3 m3 l2 "><a href="#pmq">PMQ</a></li>
             </ul>
             <div id="info_inicial" class="col s12"><!--Recoleción de infomación de la cabecera{-->
                 <div class="container" style="width:96%"><!--CONTAINER DE LA CABECERA [INICIO]-->
@@ -258,6 +146,7 @@ include('../fetchs.php');
             <div class="browser-default col s12 m2 l2">
                 <label for="Fecha_recepcion">Zona</label>
                 <select class="" name="No_zona" id="No_zona">
+                    <option value="na">No aplica</option>
                     <option value="1">Bloque 1</option>
                     <option value="2">Bloque 2</option>
                     <option value="3">Bloque 3</option>
@@ -330,7 +219,7 @@ include('../fetchs.php');
                     <option t_suelo="1.0" value="Arenoso">Arenoso</option> 
                     <option t_suelo="2.0" value="Arenoso franco">Arenoso franco</option> 
                     <option t_suelo="2.0" value="Franco arenoso">Franco arenoso</option> 
-                    <option t_suelo="2.0" value="Franco">Franco</option> 
+                    <option t_suelo="2.0" value="Franco" selected>Franco</option> 
                     <option t_suelo="2.0" value="Franco limoso">Franco limoso</option> 
                     <option t_suelo="2.0" value="Franco arcilloso arenoso">Franco arcilloso arenoso</option> 
                     <option t_suelo="2.0" value="Franco arcilloso">Franco arcilloso</option> 
@@ -350,19 +239,19 @@ include('../fetchs.php');
 				<span class="teal chip white-text" id="inter_ph"></span>
 				</div>
 				<div class="col s12 m6 l2">
-				<label>C.E &#40;ds.m -1&#41;</label>
+				<label>C.E &#40;ds.m <sup>-1</sup>&#41;</label>
 				<input type="text" id="ce" name="ce">
 			    <span class="orange chip white-text" id="inter_ce"></span>
 				</div>
 				<!-- -->
 				<div class="col s12 m6 l2">
-				<label>C.I.C.E  &#40;cmol kg -1&#41;</label>
+				<label>C.I.C.E  &#40;cmol kg <sup>-1</sup>&#41;</label>
 				<input type="text" id="cice" name="cice">
 				<span class="purple darken-4 chip white-text" id="inter_cice">0.0</span>
 				</div>
 			
 			<div class="col s12 m6 l2">
-				<label>Salinidad &#40;ppm&#41;</label>
+				<label>Salinidad &#40;gr/l&#41;</label>
 				<input type="text" id="salinidad" name="salinidad">
 				<span class="light-green darken-3 chip white-text" id="inter_sal">0.0</span>
 				</div>			
@@ -389,7 +278,7 @@ include('../fetchs.php');
                     </div>
                 <div id="elementos" class="col s12">
                 <div class="container" style="width:95%"><!-- CONTENEDOR DEL ANÁLISIS DE SUELO-->
-                <div class="card-panel white" id="body_elementos">      
+                <div class="card-panel white" id="body_elementos" style="font-family: Courier, Monaco, monospace; font-size:16px">      
         <div class="row">
             <br>
               <div class="chip">
@@ -398,7 +287,7 @@ include('../fetchs.php');
                  <div class="divider"></div> 
             <br>
                             <h5 class="center">Calculo del nitrógeno</h5><br>
-                                         <div class="col l2 s12 m3">
+                                         <div class="col l2 s12 m3" >
 										<label>M.O/C.OR</label>
                                             <select class="browser-default" name="co_o_mo" id="co_o_mo">
                                                 <option value="mo">M.O</option>
@@ -415,7 +304,7 @@ include('../fetchs.php');
 										<label>M.O/C.OR /Dato</label>
 										<input  type="text" id="nitro" name="nitro">
 										  </div>
-                                    <div class="col l8 s12 m3">
+                                    <div class="col l8 s12 m3" >
 										<span class="teal-text chip" id="inter_nitrogeno">Est:</span>
 										<span class="chip red-text" id="nitro_total">N.Total</span>
 										<span class="chip orange-text" id="nitro_dispon">N.Disp</span>
@@ -427,118 +316,144 @@ include('../fetchs.php');
                                      </div>
 							</div>
                                  <div class="row">
-									<div class="col s12 m5 l3">
-									  <div class="card-panel">
-										  <span><b>Fosforo</b> &#40;Bray II - ppm&#41;</span>
-									<input type="text" id="fosforo" name="fosforo">
-                                    <span class="cyan-text"id="inter_fosforo">Est:</span><br>
-                                    <span class="red-text"id="p_suelo">P.Suelo:</span><br>
-                                    <span class="green-text"id="p_asimilable">P.Asimi:</span><br>
-                                    <span class="amber-text"id="p_aprovechable">P.Apro:</span><br>
-                                    <span class="teal-text"id="p_necesidad">NF.P:</span><br>
+									<div class="col s12 m5 l4">
+									  <div class="card-panel" style="font-family: Courier, Monaco, monospace; font-size:16px">
+								   <span><b>Fosforo</b> &#40;Bray II - ppm&#41;</span>
+									<input class="teal-text" type="text" id="fosforo" name="fosforo">
+                                    <span class="teal-text" id="inter_fosforo">Est:</span><br>
+                                    <span class=""id="p_suelo">P.Suelo:</span><br>
+                                    <span class=""id="p_asimilable">P.Asimi:</span><br>
+                                    <span class=""id="p_aprovechable">P.Apro:</span><br>
+                                    <span class=""id="p_necesidad">NF.P:</span><br>
+                                    <span class=""id="cant_aplicar_planta_p">P2O5:</span><br>
 									  </div>
 									</div>						
-								<div class="col s12 m5 l3">
-									  <div class="card-panel">
+								<div class="col s12 m5 l4">
+									  <div class="card-panel" style="font-family: Courier, Monaco, monospace; font-size:16px">
 										  <span><b>Calcio</b> &#40;cmol kg&#41;</span>
-										  	<input type="text" id="calcio" name="calcio">
-										  <span class="cyan-text" id="inter_calcio"></span><br>
-										  <span class="red-text" id="ca_suelo"></span><br>
-										  <span class="green-text" id="ca_aprovechable"></span><br>
-										  <span class="amber-text" id="ca_necesidad"></span>
+										  	<input class="red-text" type="text" id="calcio" name="calcio">
+										  <span class="red-text" id="inter_calcio"></span><br>
+										  <span class="" id="ca_suelo"></span><br>
+										  <span class="" id="ca_aprovechable"></span><br>
+										  <span class="" id="ca_necesidad"></span><br>
+										  <span class="" id="cant_aplicar_planta_ca"></span><br>
+										  <span class="" id=""></span><br>
 									  </div>
 									</div>						
-									<div class="col s12 m5 l3">
-									  <div class="card-panel">
+									<div class="col s12 m5 l4">
+									  <div class="card-panel" style="font-family: Courier, Monaco, monospace; font-size:16px">
 										  <span><b>Magnesio</b> &#40;cmol kg&#41;</span>
-										  	<input type="text" id="magnecio" name="magnecio">
-										  <span class="cyan-text" id="inter_magnecio"></span><br>
-										  <span class="red-text" id="mg_suelo"></span><br>
-										  <span class="green-text" id="mg_aprovechable"></span><br>
-										  <span class="teal-text" id="mg_necesidad"></span>
+										  	<input class="orange-text" type="text" id="magnecio" name="magnecio">
+										  <span class="orange-text" id="inter_magnecio"></span><br>
+										  <span class="" id="mg_suelo"></span><br>
+										  <span class="" id="mg_aprovechable"></span><br>
+										  <span class="" id="mg_necesidad"></span><br>
+										  <span class="" id="cant_aplicar_planta_mg"></span><br>
+										  <span class="" id=""></span><br>
 									  </div>
 									</div>					
-								<div class="col s12 m5 l3">
-									  <div class="card-panel">
-										  <span><b>Potasio</b> &#40;cmol kg&#41;</span>
-										  	<input type="text" id="potasio" name="potasio">
-										  <td><span id="inter_potasio"></span><br>
-										  <td><span class="red-text" id="k_suelo"></span><br>
-										  <td><span class="green-text" id="k_asimilable"></span><br>
-										  <td><span class="teal-text" id="k_aprovechable"></span><br>
-										  <td><span class="purple-text" id="k_necesidad"></span><br>
-									  </div>
-									</div>
 									 
 								  </div>
+                    
 			                          <div class="row">
-									<div class="col s12 m5 l3">
-									  <div class="card-panel">
+                                    <div class="col s12 m5 l4">
+									  <div class="card-panel" style="font-family: Courier, Monaco, monospace; font-size:16px">
+										  <span><b>Potasio</b> &#40;cmol kg&#41;</span>
+										  <input class="blue-text" type="text" id="potasio" name="potasio">
+										  <td><span class="blue-text" id="inter_potasio"></span><br>
+										  <td><span class="" id="k_suelo"></span><br>
+										  <td><span class="" id="k_asimilable"></span><br>
+										  <td><span class="" id="k_aprovechable"></span><br>
+										  <td><span class="" id="k_necesidad"></span><br>
+										  <td><span class="" id="cant_aplicar_planta_k"></span><br>
+									  </div>
+									</div>  
+									<div class="col s12 m5 l4">
+									  <div class="card-panel" style="font-family: Courier, Monaco, monospace; font-size:16px">
 										  <span><b>Sodio</b> &#40;cmol kg&#41;</span>
-										  <input type="text" id="sodio" name="sodio">
-                                          <span id="inter_sodio"></span><br>
-                                          <span class="purple-text" id="na_suelo"></span><br>
+										  <input class="orange-text" type="text" id="sodio" name="sodio">
+                                          <span class="orange-text" id="inter_sodio"></span><br>
+                                          <span class="" id="na_suelo"></span><br>
+                                          <span class="" id=""></span><br>
+                                          <span class="" id=""></span><br>
+                                          <span class="" id=""></span><br>
+                                          <span class="" id=""></span><br>
 									  	</div>
 										</div>
-									<div class="col s12 m5 l3">
-									  <div class="card-panel">
+									<div class="col s12 m5 l4">
+									  <div class="card-panel" style="font-family: Courier, Monaco, monospace; font-size:16px">
 										  <span><b>Azufre</b> &#40;ppm&#41;</span>
-										  <input type="text" id="azufre" name="azufre">
-                                          <td><span class="cyan-text" id="inter_azufre"></span><br>
-										  <span class="green-text"id="s_suelo">S.Suelo:</span><br>
-                                    	  <span class="amber-text"id="s_aprovechable">S.Apro:</span><br>
-                                    	  <span class="teal-text"id="s_necesidad">NF.S:</span><br>
+										  <input class="amber-text" type="text" id="azufre" name="azufre">
+                                          <td><span class="amber-text" id="inter_azufre"></span><br>
+										  <span class=""id="s_suelo">S.Suelo:</span><br>
+                                    	  <span class=""id="s_aprovechable">S.Apro:</span><br>
+                                    	  <span class=""id="s_necesidad">NF.S:</span><br>
+                                    	  <span class=""id="cant_aplicar_planta_s">NF.S:</span><br>
+                                    	  <span class=""id=""></span><br>
 									  	</div>
-										</div>					
-									<div class="col s12 m5 l3">
-									  <div class="card-panel">
+										</div>		
+                    </div>
+                                        <div class="row">
+									<div class="col s12 m5 l4">
+									  <div class="card-panel" style="font-family: Courier, Monaco, monospace; font-size:16px">
 										  <span><b>Manganeso</b> &#40;ppm&#41;</span>
-										  <input type="text" id="manganeso" name="manganeso">
-                                          <td><span class="cyan-text" id="inter_manganeso"></span><br>
-                                          <td><span class="red-text" id="mn_suelo"></span><br>
-                                          <td><span class="orange-text" id="mn_aprovechable"></span><br>
-                                          <td><span class="teal-text" id="mn_necesidad"></span><br>
+										  <input class="yellow-text" type="text" id="manganeso" name="manganeso">
+                                          <td><span class="yellow-text" id="inter_manganeso"></span><br>
+                                          <td><span class="" id="mn_suelo"></span><br>
+                                          <td><span class="" id="mn_aprovechable"></span><br>
+                                          <td><span class="" id="mn_necesidad"></span><br>
+                                          <td><span class="" id="cant_aplicar_planta_mn"></span><br>
+                                          <td><span class="" id=""></span><br>
 									  	</div>
 										</div>				
-									<div class="col s12 m5 l3">
-									  <div class="card-panel">
+									<div class="col s12 m5 l4">
+									  <div class="card-panel" style="font-family: Courier, Monaco, monospace; font-size:16px">
 										  <span><b>Boro</b> &#40;ppm&#41;</span>
-										  <input type="text" id="boro" name="boro">
-                                          <td><span class="cyan-text" id="inter_boro"></span><br>
-                                          <td><span class="orange-text" id="b_suelo"></span><br>
-                                          <td><span class="green-text" id="b_aprovechable"></span><br>
-                                          <td><span class="red-text" id="b_necesidad"></span>
+										  <input class="green-text" type="text" id="boro" name="boro">
+                                          <td><span class="green-text" id="inter_boro"></span><br>
+                                          <td><span class="" id="b_suelo"></span><br>
+                                          <td><span class="" id="b_aprovechable"></span><br>
+                                          <td><span class="" id="b_necesidad"></span><br>
+                                          <td><span class="" id="cant_aplicar_planta_b"></span><br>
+                                          <td><span class="" id=""></span><br>
 									  	</div>
 										</div>						
-								<div class="col s12 m5 l3">
-									  <div class="card-panel">
+								<div class="col s12 m5 l4">
+									  <div class="card-panel" style="font-family: Courier, Monaco, monospace; font-size:16px">
 										  <span><b>Cobre</b> &#40;ppm&#41;</span>
-										  <input type="text" id="cobre" name="cobre">
-                                          <td><span id="inter_cobre"></span><br>
-                                          <span class="red-text" id="cu_suelo"></span><br>
-                                          <span class="orange-text" id="cu_aprovechable"></span><br>
-                                          <span class="green-text" id="cu_necesidad"></span><br>
-                                          <span class="cyan-text" id="nf_cobre"></span>
+										  <input class="teal-text" type="text" id="cobre" name="cobre">
+                                          <td><span class="teal-text" id="inter_cobre"></span><br>
+                                          <span class="" id="cu_suelo"></span><br>
+                                          <span class="" id="cu_aprovechable"></span><br>
+                                          <span class="" id="cu_necesidad"></span><br>
+                                          <span class="" id="nf_cobre"></span><br>
+                                          <span class="" id="cant_aplicar_planta_cu"></span><br>
 									  	</div>
 										</div>
-							<div class="col s12 m5 l3">
-									  <div class="card-panel">
+                    </div>
+                    <div class="row">
+							<div class="col s12 m5 l4">
+									  <div class="card-panel" style="font-family: Courier, Monaco, monospace; font-size:16px">
 										  <span><b>Zn</b> &#40;ppm&#41;</span>
-										  <input type="text" id="zinc" name="zinc">
-                                          <td><span class="orange-text" id="inter_zinc"></span><br>
-                                          <td><span class="blue-text" id="zn_suelo"></span><br>
-                                          <td><span class="red-text" id="zn_aprovechable"></span><br>
-                                          <td><span class="green-text" id="zn_necesidad"></span>
+										  <input class="red-text" type="text" id="zinc" name="zinc">
+                                          <td><span class="red-text" id="inter_zinc"></span><br>
+                                          <td><span class="" id="zn_suelo"></span><br>
+                                          <td><span class="" id="zn_aprovechable"></span><br>
+                                          <td><span class="" id="zn_necesidad"></span><br>
+                                          <td><span class="" id="cant_aplicar_planta_zn"></span><br>
+                                          <td><span class="" id=""></span><br>
 									  	</div>
 										</div>				
-								<div class="col s12 m5 l3">
-									  <div class="card-panel">
+								<div class="col s12 m5 l4">
+									  <div class="card-panel" style="font-family: Courier, Monaco, monospace; font-size:16px">
 										  <span><b>Hierro</b> &#40;ppm&#41;</span>
-										  <input type="text" id="hierro" name="hierro">
-                                          <td><span id="inter_hierro"></span><br>
-                                          <td><span class="green-text" id="fe_suelo"></span><br>
-                                          <td><span class="red-text" id="fe_aprovechable"></span><br>
-                                          <td><span class="teal-text" id="fe_necesidad"></span><br>
+										  <input class="brown-text" type="text" id="hierro" name="hierro">
+                                          <td><span class="brown-text" id="inter_hierro"></span><br>
+                                          <td><span class="" id="fe_suelo"></span><br>
+                                          <td><span class="" id="fe_aprovechable"></span><br>
+                                          <td><span class="" id="fe_necesidad"></span><br>
+                                          <td><span class="" id="cant_aplicar_planta_fe"></span><br>
+                                          <td><span class="" id=""></span><br>
 									  	</div>
 										</div>	
 			
@@ -638,6 +553,223 @@ include('../fetchs.php');
                 </div>
                 <!--FIN ELEMENTOS PARA LA CREACIÓN DE ANÁLISIS DE SUELO-->
                 </div>
+            
+                <style>
+            table, td, th {  
+              border: 1px solid #ddd;
+              text-align: left;
+            }
+
+            table {
+              border-collapse: collapse;
+              width: 100%;
+            }
+
+            th, td {
+              padding: 15px;
+            }
+        </style>
+
+            <div id="pmq"  class="col s12" style="font-family: Courier, Monaco, monospace;">
+            <div  class="container">
+            <div  class="card-panel white">
+            <div  class="row">
+                <div class="col s12">
+                <div class="col s12 m6 l2">
+				<label>Saturación de (Al)</label>
+				<input type="text" id="saturacion_al" name="saturacion_al">
+                </div>  
+            <div class="col s12 m6 l2">
+				<label>CICE</label>
+				<input type="text" id="cice_pmq" name="cice_pmq">
+                </div>                      
+            <div class="col s12 m6 l3">
+                <span class="" id="est_saturacion_al"></span>
+            </div>
+                    
+            <div class="col s12 m6 l12">
+                <input type="hidden" id="elemento1">
+                <input type="hidden" id="elemento2">
+                <input type="hidden" id="elemento3">
+                <input type="hidden" id="contador">
+                <span id="msgs"></span>
+                <table style="font-size: 12px;" class="responsive">
+                <thead>
+                    <tr>
+                        <th>Aplicar</th>
+                        <th>Materiales encalantes</th>
+                        <th>CaCO<sup>3</sup> (%)</th>
+                        <th>MgCO<sup>3</sup> (%)</th>
+                        <th>CaO (%)</th>
+                        <th>Ca(OH)<sup>2</sup> (%)</th>
+                        <th>MgO (%)</th>
+                        <th>P2O5 (%)</th>
+                        <th>S (%)</th>
+                        <th>EQ (CaCO <sup>3</sup>) (%)</th>
+                        <th width="130">%</th>
+                    </tr>    
+                </thead>
+                    <tbody>
+                    <tr>
+                       <td> <div class="switch">
+                        <label>
+                          <input type="checkbox" id="s_cal_viva" class="s_cal_viva">
+                          <span class="lever"></span>
+                        </label>
+                      </div>
+                        </td> 
+                       <td>Cal viva</td> 
+                        <td></td>
+                        <td></td>
+                        <td>75</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>134</td>
+                        <td>
+                        <select class="browser-default" id="val_porc_cal_viva">
+                            <option value="65">65</option>   
+                            <option value="20">20</option>   
+                            <option value="15">15</option>   
+                         </select>
+                        <span class="red-text" id="result_cal_viva"></span>    
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> <div class="switch">
+                        <label>
+                          <input type="checkbox" id="s_cal_hidratada" class="s_cal_hidratada">
+                          <span class="lever"></span>
+                        </label>
+                      </div>
+                        </td>
+                       <td>Cal hidratada</td> 
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>80</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>110</td>
+                    </tr>
+                    <tr>
+                <td> <div class="switch">
+                        <label>
+                          <input type="checkbox" id="s_cal_dolomita" class="s_cal_dolomita">
+                          <span class="lever"></span>
+                        </label>
+                      </div>
+                        </td>
+                       <td>Cal dolomita</td> 
+                        <td>55</td>
+                        <td>33</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>94</td>
+                    </tr>
+                <tr>
+                    <td> <div class="switch">
+                        <label> 
+                          <input type="checkbox" id="s_abono_paz_rio" class="s_abono_paz_rio">
+                          <span class="lever"></span>
+                        </label>
+                      </div>
+                        </td>
+                       <td>Abono paz del rio</td> 
+                        <td></td>
+                        <td></td>
+                        <td>48</td>
+                        <td></td>
+                        <td>1.2</td>
+                        <td>10</td>
+                        <td></td>
+                        <td>89</td>
+                    </tr>
+                    <tr>
+                    <td> <div class="switch">
+                        <label>
+                          <input type="checkbox" id="s_roca_fosforica" class="s_roca_fosforica">
+                          <span class="lever"></span>
+                        </label>
+                      </div>
+                        </td>
+                       <td>Roca fosfórica</td> 
+                        <td></td>
+                        <td></td>
+                        <td>40</td>
+                        <td></td>
+                        <td>0.5</td>
+                        <td>30</td>
+                        <td></td>
+                        <td>73</td>
+                    </tr>
+                    <tr>
+                    <td> <div class="switch">
+                        <label> 
+                          <input type="checkbox" id="s_escorias" class="s_escorias">
+                          <span class="lever"></span>
+                        </label>
+                      </div>
+                        </td>
+                       <td>Escorias básicas</td> 
+                        <td></td>
+                        <td></td>
+                        <td>59</td>
+                        <td></td>
+                        <td>11</td>
+                        <td></td>
+                        <td></td>
+                        <td>132</td>
+                    </tr>
+                    <tr>
+                    <td> <div class="switch">
+                        <label>  
+                          <input type="checkbox" id="s_yeso_agricola" class="s_yeso_agricola">
+                          <span class="lever"></span>
+                        </label>
+                      </div>
+                        </td>
+                       <td>Yeso agrícola</td> 
+                        <td></td>
+                        <td></td>
+                        <td>36</td>
+                        <td></td>
+                        <td></td>
+                        <td>0.5</td>
+                        <td>15</td>
+                        <td>100</td>
+                    </tr>
+                  <tr>
+                    <td> <div class="switch">
+                        <label>
+                          <input type="checkbox" id="s_dolomita_calcindad" class="s_dolomita_calcindad">
+                          <span class="lever"></span>
+                        </label>
+                      </div>
+                        </td>
+                       <td>Dolomita calcinada</td> 
+                        <td></td>
+                        <td></td>
+                        <td>28</td>
+                        <td></td>
+                        <td>55</td>
+                        <td></td>
+                        <td></td>
+                        <td>186</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+                    
+                  </div>     
+                  </div>     
+                  </div>     
+                  </div>     
               </div>
               <br>
               <div class="divider"></div>
@@ -665,7 +797,7 @@ include('../fetchs.php');
               </div>  
               <!-- FIN Modal Para buscar propietarios y asociarlos al análisis-->
             <!-- Floating Action Button -->
-            <div class="fixed-action-btn" style="bottom: 50px; right: 19px;">
+         <!--   <div class="fixed-action-btn" style="bottom: 50px; right: 19px;">
               <a class="btn-floating btn-large">
                 <i class="material-icons">add</i>
               </a>
@@ -691,7 +823,7 @@ include('../fetchs.php');
                   </a>
                 </li>
               </ul>
-            </div>
+            </div> -->
             <!-- Floating Action Button -->
           </div>
           <!--end container-->
@@ -700,189 +832,7 @@ include('../fetchs.php');
         <!-- //////////////////////////////////////////////////////////////////////////// -->
         
         <!-- START RIGHT SIDEBAR NAV-->
-        <aside id="right-sidebar-nav">
-          <ul id="chat-out" class="side-nav rightside-navigation">
-            <li class="li-hover">
-              <div class="row">
-                <div class="col s12 border-bottom-1 mt-5">
-                  <ul class="tabs">
-                    <li class="tab col s4">
-                      <a href="#activity" class="active">
-                        <span class="material-icons">graphic_eq</span>
-                      </a>
-                    </li>
-                    <li class="tab col s4">
-                      <a href="#chatapp">
-                        <span class="material-icons">face</span>
-                      </a>
-                    </li>
-                    <li class="tab col s4">
-                      <a href="#settings">
-                        <span class="material-icons">settings</span>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-                <div id="settings" class="col s12">
-                  <h6 class="mt-5 mb-3 ml-3">GENERAL SETTINGS</h6>
-                  <ul class="collection border-none">
-                    <li class="collection-item border-none">
-                      <div class="m-0">
-                        <span class="font-weight-600">Notifications</span>
-                        <div class="switch right">
-                          <label>
-                            <input checked type="checkbox">
-                            <span class="lever"></span>
-                          </label>
-                        </div>
-                      </div>
-                      <p>Use checkboxes when looking for yes or no answers.</p>
-                    </li>
-                    <li class="collection-item border-none">
-                      <div class="m-0">
-                        <span class="font-weight-600">Show recent activity</span>
-                        <div class="switch right">
-                          <label>
-                            <input checked type="checkbox">
-                            <span class="lever"></span>
-                          </label>
-                        </div>
-                      </div>
-                      <p>The for attribute is necessary to bind our custom checkbox with the input.</p>
-                    </li>
-                    <li class="collection-item border-none">
-                      <div class="m-0">
-                        <span class="font-weight-600">Notifications</span>
-                        <div class="switch right">
-                          <label>
-                            <input type="checkbox">
-                            <span class="lever"></span>
-                          </label>
-                        </div>
-                      </div>
-                      <p>Use checkboxes when looking for yes or no answers.</p>
-                    </li>
-                    <li class="collection-item border-none">
-                      <div class="m-0">
-                        <span class="font-weight-600">Show recent activity</span>
-                        <div class="switch right">
-                          <label>
-                            <input type="checkbox">
-                            <span class="lever"></span>
-                          </label>
-                        </div>
-                      </div>
-                      <p>The for attribute is necessary to bind our custom checkbox with the input.</p>
-                    </li>
-                    <li class="collection-item border-none">
-                      <div class="m-0">
-                        <span class="font-weight-600">Show your emails</span>
-                        <div class="switch right">
-                          <label>
-                            <input type="checkbox">
-                            <span class="lever"></span>
-                          </label>
-                        </div>
-                      </div>
-                      <p>Use checkboxes when looking for yes or no answers.</p>
-                    </li>
-                    <li class="collection-item border-none">
-                      <div class="m-0">
-                        <span class="font-weight-600">Show Task statistics</span>
-                        <div class="switch right">
-                          <label>
-                            <input type="checkbox">
-                            <span class="lever"></span>
-                          </label>
-                        </div>
-                      </div>
-                      <p>The for attribute is necessary to bind our custom checkbox with the input.</p>
-                    </li>
-                  </ul>
-                </div>
-                <div id="chatapp" class="col s12">
-                  <div class="collection border-none">
-                     <?php 
-                if(mysqli_num_rows($result) > 0)
-                {
-                 while($row = mysqli_fetch_array($result))
-                 {
-                  echo '
-                     <a href="#!" class="collection-item avatar border-none">
-                      <img src="../../control/personas/fotos/'.$row["Foto_persona"].'" alt="" class="circle cyan">
-                      <span class="line-height-0">'.$row["Nombre_persona"].'</span>
-                      <span class="medium-small right blue-grey-text text-lighten-3">5.00 AM</span>
-                      <p class="medium-small blue-grey-text text-lighten-3">'.$row["Cargo_persona"].'</p>
-                    </a>
-                  
-                  ';
-                 }
-                }
-                        ?>
-
-                  </div>
-                </div>
-                <div id="activity" class="col s12">
-                  <h6 class="mt-5 mb-3 ml-3">ACTIVIDAD RECIENTE</h6>
-                  <div class="activity">
-                    <div class="col s3 mt-2 center-align recent-activity-list-icon">
-                      <i class="material-icons white-text icon-bg-color deep-purple lighten-2">add_shopping_cart</i>
-                    </div>
-                    <div class="col s9 recent-activity-list-text">
-                      <a href="#" class="deep-purple-text medium-small">justo ahora</a>
-                      <p class="mt-0 mb-2 fixed-line-height font-weight-300 medium-small">Se compró un SPAD 2.</p>
-                    </div>
-                    <div class="recent-activity-list chat-out-list row mb-0">
-                      <div class="col s3 mt-2 center-align recent-activity-list-icon">
-                        <i class="material-icons white-text icon-bg-color cyan lighten-2">airplanemode_active</i>
-                      </div>
-                      <div class="col s9 recent-activity-list-text">
-                        <a href="#" class="cyan-text medium-small">16 de mayo</a>
-                        <p class="mt-0 mb-2 fixed-line-height font-weight-300 medium-small">Se participó en RedColsi.</p>
-                      </div>
-                    </div>
-                    <div class="recent-activity-list chat-out-list row mb-0">
-                      <div class="col s3 mt-2 center-align recent-activity-list-icon medium-small">
-                        <i class="material-icons white-text icon-bg-color green lighten-2">settings_voice</i>
-                      </div>
-                      <div class="col s9 recent-activity-list-text">
-                        <a href="#" class="green-text medium-small">5 de junio</a>
-                        <p class="mt-0 mb-2 fixed-line-height font-weight-300 medium-small">Se hicieron pruebas del clorofilométro.</p>
-                      </div>
-                    </div>
-                    <div class="recent-activity-list chat-out-list row mb-0">
-                      <div class="col s3 mt-2 center-align recent-activity-list-icon">
-                        <i class="material-icons white-text icon-bg-color amber lighten-2">store</i>
-                      </div>
-                      <div class="col s9 recent-activity-list-text">
-                        <a href="#" class="amber-text medium-small">13 de julio</a>
-                        <p class="mt-0 mb-2 fixed-line-height font-weight-300 medium-small">Se georreferenciaron los puntos de control.</p>
-                      </div>
-                    </div>
-                    <div class="recent-activity-list row">
-                      <div class="col s3 mt-2 center-align recent-activity-list-icon">
-                        <i class="material-icons white-text icon-bg-color deep-orange lighten-2">settings_voice</i>
-                      </div>
-                      <div class="col s9 recent-activity-list-text">
-                        <a href="#" class="deep-orange-text medium-small">2 Week Ago</a>
-                        <p class="mt-0 mb-2 fixed-line-height font-weight-300 medium-small">voice mail for conference.</p>
-                      </div>
-                    </div>
-                    <div class="recent-activity-list row">
-                      <div class="col s3 mt-2 center-align recent-activity-list-icon">
-                        <i class="material-icons white-text icon-bg-color grey lighten-2">settings_voice</i>
-                      </div>
-                      <div class="col s9 recent-activity-list-text">
-                        <a href="#" class="grey-text medium-small">13 de marzo</a>
-                        <p class="mt-0 mb-2 fixed-line-height font-weight-300 medium-small">Georreferenciazión del cultivo.</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </aside>
+        
         <!-- END RIGHT SIDEBAR NAV-->
       </div>
       <!-- END WRAPPER -->
