@@ -1,0 +1,94 @@
+.. figure:: ../_static/carpeta.png
+   :align: left
+   
+empleados
+*********
+
+.. figure:: ../_static/carpeta.png
+   :align: left
+   
+Migrations
+==========
+
+.. automodule:: apps.empleados.migrations.0001_initial
+   :members:
+   :undoc-members:
+
+   Es la ruta donde las migraciones se realizan
+
+.. figure:: ../_static/py.png
+   :align: left
+   
+Admin
+=====
+admin.py
+
+.. automodule:: apps.empleados.admin
+   :members:
+   :undoc-members:
+   
+.. figure:: ../_static/py.png
+   :align: left
+   
+Apps
+====
+apps.py
+
+.. automodule:: apps.empleados.apps
+   :members:
+   :undoc-members:
+   
+.. figure:: ../_static/py.png
+   :align: left
+   
+Forms
+=====
+forms.py
+
+.. automodule:: apps.empleados.forms
+   :members:
+   :undoc-members:
+   
+.. figure:: ../_static/py.png
+   :align: left
+   
+Models
+======
+models.py
+
+.. automodule:: apps.empleados.models
+   :members:
+   :undoc-members:
+   
+.. figure:: ../_static/py.png
+   :align: left
+   
+Tests
+=====
+tests.py
+
+.. automodule:: apps.empleados.tests
+   :members:
+   :undoc-members:
+   
+.. figure:: ../_static/py.png
+   :align: left
+   
+Urls
+====
+urls.py
+
+.. automodule:: apps.empleados.urls
+   :members:
+   :undoc-members:
+   
+.. figure:: ../_static/py.png
+   :align: left
+   
+Views
+=====
+views.py
+
+.. automodule:: apps.empleados.views
+   :members:
+   :undoc-members:

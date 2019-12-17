@@ -1,0 +1,21 @@
+Views
+======
+
+.. automodule:: apps.libro.views
+   :members:
+   :undoc-members:
+   
+Models
+======
+
+.. automodule:: apps.libro.models
+   :members:
+   :undoc-members:
+   
+   
+Urls
+======
+
+.. automodule:: apps.libro.urls
+   :members:
+   :undoc-members:
