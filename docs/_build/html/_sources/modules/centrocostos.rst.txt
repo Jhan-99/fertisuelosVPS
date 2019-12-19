@@ -1,0 +1,94 @@
+.. figure:: ../_static/carpeta.png
+   :align: left
+   
+CentroCostos
+************
+
+.. figure:: ../_static/carpeta.png
+   :align: left
+   
+Migrations
+==========
+
+.. automodule:: apps.CentroCostos.migrations.0001_initial
+   :members:
+   :undoc-members:
+
+   Es la ruta donde las migraciones se realizan
+
+.. figure:: ../_static/py.png
+   :align: left
+   
+Admin
+=====
+admin.py
+
+.. automodule:: apps.CentroCostos.admin
+   :members:
+   :undoc-members:
+   
+.. figure:: ../_static/py.png
+   :align: left
+   
+Apps
+====
+apps.py
+
+.. automodule:: apps.CentroCostos.apps
+   :members:
+   :undoc-members:
+   
+.. figure:: ../_static/py.png
+   :align: left
+   
+Forms
+=====
+forms.py
+
+.. automodule:: apps.CentroCostos.forms
+   :members:
+   :undoc-members:
+   
+.. figure:: ../_static/py.png
+   :align: left
+   
+Models
+======
+models.py
+
+.. automodule:: apps.CentroCostos.models
+   :members:
+   :undoc-members:
+   
+.. figure:: ../_static/py.png
+   :align: left
+   
+Tests
+=====
+tests.py
+
+.. automodule:: apps.CentroCostos.tests
+   :members:
+   :undoc-members:
+   
+.. figure:: ../_static/py.png
+   :align: left
+   
+Urls
+====
+urls.py
+
+.. automodule:: apps.CentroCostos.urls
+   :members:
+   :undoc-members:
+   
+.. figure:: ../_static/py.png
+   :align: left
+   
+Views
+=====
+views.py
+
+.. automodule:: apps.CentroCostos.views
+   :members:
+   :undoc-members:

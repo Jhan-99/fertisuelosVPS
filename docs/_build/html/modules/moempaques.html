@@ -1,0 +1,461 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>MOempaques &mdash; Biblioteca 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="procesos" href="procesos.html" />
+    <link rel="prev" title="insumos" href="insumos.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Biblioteca
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="all-about-me.html">Todo sobre el Proyecto</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Apps:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="administrador.html">administrador</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ajax.html">ajax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="baches.html">baches</a></li>
+<li class="toctree-l1"><a class="reference internal" href="centrocostos.html">CentroCostos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compras.html">compras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conversionunid.html">conversion_unidades</a></li>
+<li class="toctree-l1"><a class="reference internal" href="empleados.html">empleados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fabricas.html">fabricas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="insumos.html">insumos</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">MOempaques</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-apps.MOempaques.migrations.0001_initial">Migrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#admin">Admin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#apps">Apps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#forms">Forms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#models">Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tests">Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#urls">Urls</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#views">Views</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="procesos.html">procesos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="productos.html">productos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="propietarios.html">Propietarios</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Biblioteca:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="biblioteca.html">costosbocadillo</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Biblioteca</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>MOempaques</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/modules/moempaques.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="figure align-left">
+<img alt="../_images/carpeta.png" src="../_images/carpeta.png" />
+</div>
+<div class="section" id="moempaques">
+<h1>MOempaques<a class="headerlink" href="#moempaques" title="Permalink to this headline">¶</a></h1>
+<div class="figure align-left">
+<img alt="../_images/carpeta.png" src="../_images/carpeta.png" />
+</div>
+<div class="section" id="module-apps.MOempaques.migrations.0001_initial">
+<span id="migrations"></span><h2>Migrations<a class="headerlink" href="#module-apps.MOempaques.migrations.0001_initial" title="Permalink to this headline">¶</a></h2>
+<p>Es la ruta donde las migraciones se realizan</p>
+<dl class="class">
+<dt id="apps.MOempaques.migrations.0001_initial.Migration">
+<em class="property">class </em><code class="sig-prename descclassname">apps.MOempaques.migrations.0001_initial.</code><code class="sig-name descname">Migration</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">app_label</em><span class="sig-paren">)</span><a class="headerlink" href="#apps.MOempaques.migrations.0001_initial.Migration" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="apps.MOempaques.migrations.0001_initial.Migration.dependencies">
+<code class="sig-name descname">dependencies</code><em class="property"> = []</em><a class="headerlink" href="#apps.MOempaques.migrations.0001_initial.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="apps.MOempaques.migrations.0001_initial.Migration.initial">
+<code class="sig-name descname">initial</code><em class="property"> = True</em><a class="headerlink" href="#apps.MOempaques.migrations.0001_initial.Migration.initial" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="apps.MOempaques.migrations.0001_initial.Migration.operations">
+<code class="sig-name descname">operations</code><em class="property"> = [&lt;CreateModel  name='MOempaques', fields=[('id_moe', &lt;django.db.models.fields.AutoField&gt;), ('detalle_pro_moe', &lt;django.db.models.fields.CharField&gt;), ('valortarea_per_moe', &lt;django.db.models.fields.IntegerField&gt;), ('valor_dia_moe', &lt;django.db.models.fields.IntegerField&gt;), ('valor_uni_moe', &lt;django.db.models.fields.IntegerField&gt;), ('produccion_moe', &lt;django.db.models.fields.IntegerField&gt;), ('total_moe', &lt;django.db.models.fields.IntegerField&gt;)], options={'verbose_name': 'MOempaque', 'verbose_name_plural': 'MOempaques', 'db_table': 'MOempaque', 'ordering': ['id_moe']}&gt;]</em><a class="headerlink" href="#apps.MOempaques.migrations.0001_initial.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<div class="figure align-left">
+<img alt="../_images/py.png" src="../_images/py.png" />
+</div>
+</div>
+<div class="section" id="admin">
+<h2>Admin<a class="headerlink" href="#admin" title="Permalink to this headline">¶</a></h2>
+<p>admin.py</p>
+<span class="target" id="module-apps.MOempaques.admin"></span><div class="figure align-left">
+<img alt="../_images/py.png" src="../_images/py.png" />
+</div>
+</div>
+<div class="section" id="apps">
+<h2>Apps<a class="headerlink" href="#apps" title="Permalink to this headline">¶</a></h2>
+<p>apps.py</p>
+<span class="target" id="module-apps.MOempaques.apps"></span><dl class="class">
+<dt id="apps.MOempaques.apps.MOempaquesConfig">
+<em class="property">class </em><code class="sig-prename descclassname">apps.MOempaques.apps.</code><code class="sig-name descname">MOempaquesConfig</code><span class="sig-paren">(</span><em class="sig-param">app_name</em>, <em class="sig-param">app_module</em><span class="sig-paren">)</span><a class="headerlink" href="#apps.MOempaques.apps.MOempaquesConfig" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="apps.MOempaques.apps.MOempaquesConfig.name">
+<code class="sig-name descname">name</code><em class="property"> = 'moempaques'</em><a class="headerlink" href="#apps.MOempaques.apps.MOempaquesConfig.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<div class="figure align-left">
+<img alt="../_images/py.png" src="../_images/py.png" />
+</div>
+</div>
+<div class="section" id="forms">
+<h2>Forms<a class="headerlink" href="#forms" title="Permalink to this headline">¶</a></h2>
+<p>forms.py</p>
+<span class="target" id="module-apps.MOempaques.forms"></span><dl class="class">
+<dt id="apps.MOempaques.forms.MOempaquesForm">
+<em class="property">class </em><code class="sig-prename descclassname">apps.MOempaques.forms.</code><code class="sig-name descname">MOempaquesForm</code><span class="sig-paren">(</span><em class="sig-param">data=None</em>, <em class="sig-param">files=None</em>, <em class="sig-param">auto_id='id_%s'</em>, <em class="sig-param">prefix=None</em>, <em class="sig-param">initial=None</em>, <em class="sig-param">error_class=&lt;class 'django.forms.utils.ErrorList'&gt;</em>, <em class="sig-param">label_suffix=None</em>, <em class="sig-param">empty_permitted=False</em>, <em class="sig-param">instance=None</em>, <em class="sig-param">use_required_attribute=None</em>, <em class="sig-param">renderer=None</em><span class="sig-paren">)</span><a class="headerlink" href="#apps.MOempaques.forms.MOempaquesForm" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="class">
+<dt id="apps.MOempaques.forms.MOempaquesForm.Meta">
+<em class="property">class </em><code class="sig-name descname">Meta</code><a class="headerlink" href="#apps.MOempaques.forms.MOempaquesForm.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="apps.MOempaques.forms.MOempaquesForm.Meta.fields">
+<code class="sig-name descname">fields</code><em class="property"> = ['detalle_pro_moe', 'valortarea_per_moe', 'valor_dia_moe', 'valor_uni_moe', 'produccion_moe', 'total_moe']</em><a class="headerlink" href="#apps.MOempaques.forms.MOempaquesForm.Meta.fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="apps.MOempaques.forms.MOempaquesForm.Meta.model">
+<code class="sig-name descname">model</code><a class="headerlink" href="#apps.MOempaques.forms.MOempaquesForm.Meta.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#apps.MOempaques.models.MOempaques" title="apps.MOempaques.models.MOempaques"><code class="xref py py-class docutils literal notranslate"><span class="pre">apps.MOempaques.models.MOempaques</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="apps.MOempaques.forms.MOempaquesForm.base_fields">
+<code class="sig-name descname">base_fields</code><em class="property"> = {'detalle_pro_moe': &lt;django.forms.fields.CharField object&gt;, 'produccion_moe': &lt;django.forms.fields.IntegerField object&gt;, 'total_moe': &lt;django.forms.fields.IntegerField object&gt;, 'valor_dia_moe': &lt;django.forms.fields.IntegerField object&gt;, 'valor_uni_moe': &lt;django.forms.fields.IntegerField object&gt;, 'valortarea_per_moe': &lt;django.forms.fields.IntegerField object&gt;}</em><a class="headerlink" href="#apps.MOempaques.forms.MOempaquesForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="apps.MOempaques.forms.MOempaquesForm.declared_fields">
+<code class="sig-name descname">declared_fields</code><em class="property"> = {}</em><a class="headerlink" href="#apps.MOempaques.forms.MOempaquesForm.declared_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="apps.MOempaques.forms.MOempaquesForm.media">
+<em class="property">property </em><code class="sig-name descname">media</code><a class="headerlink" href="#apps.MOempaques.forms.MOempaquesForm.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<div class="figure align-left">
+<img alt="../_images/py.png" src="../_images/py.png" />
+</div>
+</div>
+<div class="section" id="models">
+<h2>Models<a class="headerlink" href="#models" title="Permalink to this headline">¶</a></h2>
+<p>models.py</p>
+<span class="target" id="module-apps.MOempaques.models"></span><dl class="class">
+<dt id="apps.MOempaques.models.MOempaques">
+<em class="property">class </em><code class="sig-prename descclassname">apps.MOempaques.models.</code><code class="sig-name descname">MOempaques</code><span class="sig-paren">(</span><em class="sig-param">id_moe</em>, <em class="sig-param">detalle_pro_moe</em>, <em class="sig-param">valortarea_per_moe</em>, <em class="sig-param">valor_dia_moe</em>, <em class="sig-param">valor_uni_moe</em>, <em class="sig-param">produccion_moe</em>, <em class="sig-param">total_moe</em><span class="sig-paren">)</span><a class="headerlink" href="#apps.MOempaques.models.MOempaques" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="exception">
+<dt id="apps.MOempaques.models.MOempaques.DoesNotExist">
+<em class="property">exception </em><code class="sig-name descname">DoesNotExist</code><a class="headerlink" href="#apps.MOempaques.models.MOempaques.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="apps.MOempaques.models.MOempaques.MultipleObjectsReturned">
+<em class="property">exception </em><code class="sig-name descname">MultipleObjectsReturned</code><a class="headerlink" href="#apps.MOempaques.models.MOempaques.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="apps.MOempaques.models.MOempaques.detalle_pro_moe">
+<code class="sig-name descname">detalle_pro_moe</code><a class="headerlink" href="#apps.MOempaques.models.MOempaques.detalle_pro_moe" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="apps.MOempaques.models.MOempaques.id_moe">
+<code class="sig-name descname">id_moe</code><a class="headerlink" href="#apps.MOempaques.models.MOempaques.id_moe" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="apps.MOempaques.models.MOempaques.objects">
+<code class="sig-name descname">objects</code><em class="property"> = &lt;django.db.models.manager.Manager object&gt;</em><a class="headerlink" href="#apps.MOempaques.models.MOempaques.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="apps.MOempaques.models.MOempaques.produccion_moe">
+<code class="sig-name descname">produccion_moe</code><a class="headerlink" href="#apps.MOempaques.models.MOempaques.produccion_moe" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="apps.MOempaques.models.MOempaques.total_moe">
+<code class="sig-name descname">total_moe</code><a class="headerlink" href="#apps.MOempaques.models.MOempaques.total_moe" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="apps.MOempaques.models.MOempaques.valor_dia_moe">
+<code class="sig-name descname">valor_dia_moe</code><a class="headerlink" href="#apps.MOempaques.models.MOempaques.valor_dia_moe" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="apps.MOempaques.models.MOempaques.valor_uni_moe">
+<code class="sig-name descname">valor_uni_moe</code><a class="headerlink" href="#apps.MOempaques.models.MOempaques.valor_uni_moe" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="apps.MOempaques.models.MOempaques.valortarea_per_moe">
+<code class="sig-name descname">valortarea_per_moe</code><a class="headerlink" href="#apps.MOempaques.models.MOempaques.valortarea_per_moe" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+</dd></dl>
+
+<div class="figure align-left">
+<img alt="../_images/py.png" src="../_images/py.png" />
+</div>
+</div>
+<div class="section" id="tests">
+<h2>Tests<a class="headerlink" href="#tests" title="Permalink to this headline">¶</a></h2>
+<p>tests.py</p>
+<span class="target" id="module-apps.MOempaques.tests"></span><div class="figure align-left">
+<img alt="../_images/py.png" src="../_images/py.png" />
+</div>
+</div>
+<div class="section" id="urls">
+<h2>Urls<a class="headerlink" href="#urls" title="Permalink to this headline">¶</a></h2>
+<p>urls.py</p>
+<span class="target" id="module-apps.MOempaques.urls"></span><dl class="function">
+<dt id="apps.MOempaques.urls.path">
+<code class="sig-prename descclassname">apps.MOempaques.urls.</code><code class="sig-name descname">path</code><span class="sig-paren">(</span><em class="sig-param">route</em>, <em class="sig-param">view</em>, <em class="sig-param">kwargs=None</em>, <em class="sig-param">name=None</em>, <em class="sig-param">*</em>, <em class="sig-param">Pattern=&lt;class 'django.urls.resolvers.RoutePattern'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#apps.MOempaques.urls.path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="apps.MOempaques.urls.re_path">
+<code class="sig-prename descclassname">apps.MOempaques.urls.</code><code class="sig-name descname">re_path</code><span class="sig-paren">(</span><em class="sig-param">route</em>, <em class="sig-param">view</em>, <em class="sig-param">kwargs=None</em>, <em class="sig-param">name=None</em>, <em class="sig-param">*</em>, <em class="sig-param">Pattern=&lt;class 'django.urls.resolvers.RegexPattern'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#apps.MOempaques.urls.re_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="figure align-left">
+<img alt="../_images/py.png" src="../_images/py.png" />
+</div>
+</div>
+<div class="section" id="views">
+<h2>Views<a class="headerlink" href="#views" title="Permalink to this headline">¶</a></h2>
+<p>views.py</p>
+<span class="target" id="module-apps.MOempaques.views"></span><dl class="function">
+<dt id="apps.MOempaques.views.MOempaquesHome">
+<code class="sig-prename descclassname">apps.MOempaques.views.</code><code class="sig-name descname">MOempaquesHome</code><span class="sig-paren">(</span><em class="sig-param">request</em><span class="sig-paren">)</span><a class="headerlink" href="#apps.MOempaques.views.MOempaquesHome" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="apps.MOempaques.views.crearMOempaques">
+<code class="sig-prename descclassname">apps.MOempaques.views.</code><code class="sig-name descname">crearMOempaques</code><span class="sig-paren">(</span><em class="sig-param">request</em><span class="sig-paren">)</span><a class="headerlink" href="#apps.MOempaques.views.crearMOempaques" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="apps.MOempaques.views.editarMOempaques">
+<code class="sig-prename descclassname">apps.MOempaques.views.</code><code class="sig-name descname">editarMOempaques</code><span class="sig-paren">(</span><em class="sig-param">request</em>, <em class="sig-param">id_moe</em><span class="sig-paren">)</span><a class="headerlink" href="#apps.MOempaques.views.editarMOempaques" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="apps.MOempaques.views.eliminarMOempaques">
+<code class="sig-prename descclassname">apps.MOempaques.views.</code><code class="sig-name descname">eliminarMOempaques</code><span class="sig-paren">(</span><em class="sig-param">request</em>, <em class="sig-param">id_moe</em><span class="sig-paren">)</span><a class="headerlink" href="#apps.MOempaques.views.eliminarMOempaques" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="apps.MOempaques.views.listarMOempaques">
+<code class="sig-prename descclassname">apps.MOempaques.views.</code><code class="sig-name descname">listarMOempaques</code><span class="sig-paren">(</span><em class="sig-param">request</em><span class="sig-paren">)</span><a class="headerlink" href="#apps.MOempaques.views.listarMOempaques" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="procesos.html" class="btn btn-neutral float-right" title="procesos" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="insumos.html" class="btn btn-neutral float-left" title="insumos" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Esneyder
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

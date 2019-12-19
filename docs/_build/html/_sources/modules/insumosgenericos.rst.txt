@@ -1,0 +1,94 @@
+.. figure:: ../_static/carpeta.png
+   :align: left
+   
+InusmosGenericos
+****************
+
+.. figure:: ../_static/carpeta.png
+   :align: left
+   
+Migrations
+==========
+
+.. automodule:: apps.InusmosGenericos.migrations.0001_initial
+   :members:
+   :undoc-members:
+
+   Es la ruta donde las migraciones se realizan
+
+.. figure:: ../_static/py.png
+   :align: left
+   
+Admin
+=====
+admin.py
+
+.. automodule:: apps.InusmosGenericos.admin
+   :members:
+   :undoc-members:
+   
+.. figure:: ../_static/py.png
+   :align: left
+   
+Apps
+====
+apps.py
+
+.. automodule:: apps.InusmosGenericos.apps
+   :members:
+   :undoc-members:
+   
+.. figure:: ../_static/py.png
+   :align: left
+   
+Forms
+=====
+forms.py
+
+.. automodule:: apps.InusmosGenericos.forms
+   :members:
+   :undoc-members:
+   
+.. figure:: ../_static/py.png
+   :align: left
+   
+Models
+======
+models.py
+
+.. automodule:: apps.InusmosGenericos.models
+   :members:
+   :undoc-members:
+   
+.. figure:: ../_static/py.png
+   :align: left
+   
+Tests
+=====
+tests.py
+
+.. automodule:: apps.InusmosGenericos.tests
+   :members:
+   :undoc-members:
+   
+.. figure:: ../_static/py.png
+   :align: left
+   
+Urls
+====
+urls.py
+
+.. automodule:: apps.InusmosGenericos.urls
+   :members:
+   :undoc-members:
+   
+.. figure:: ../_static/py.png
+   :align: left
+   
+Views
+=====
+views.py
+
+.. automodule:: apps.InusmosGenericos.views
+   :members:
+   :undoc-members:
