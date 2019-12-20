@@ -1,4 +1,5 @@
  <?php  
+//PERMITE TRAER LOS POLIGONOS RELACIONADOS CON LA FINCA
  if(isset($_POST["val_finca"]))  
  {  
       $output = '';  

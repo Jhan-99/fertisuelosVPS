@@ -1,14 +1,19 @@
  <?php  
- if(isset($_POST["val_cabecera"]))  
+//Este me permite seleccionar las variables más significativas del suelo para el análisis de suelo ya creado
+
+ if(isset($_POST["val_cabecera"]))   //id del analisis de suelo
  {  
       $output = '';  
-      include('../../db/dbconnect.php');                                  
+      include('../../db/dbconnect.php'); //incluir la conexión a la base de datos
+     
+     //:inicio:realizar la consulta:
       $query = "SELECT a.id_analisis, a.Textura, a.Ph, a.C_E, a.C_I_C_E, a.salinidad, a.cabecera_id
 	  FROM analisis_suelos a LEFT JOIN cabecera_suelo c  ON  a.cabecera_id = c.id_cabecera 
 	  WHERE c.id_cabecera= '".$_POST["val_cabecera"]."'"; 
-      
+      //:fin:
+     
       $result = mysqli_query($conexion, $query);  
- 
+     //:inicio: obtener la información detallada
       while($row = mysqli_fetch_array($result))  
       { 
            $output .= '
@@ -102,11 +107,15 @@
               </ul>
         ';
       }  
+     //:fin:
+     
+     //:inicio: renderizar la información en el template
       echo $output;  
      
  }  
  ?>
 
+<!--Se agregan estos arcivos javascript para ejecutar elementos del DOM -->
 <script>
     $(document).ready(function() {
        $('.collapsible').collapsible();   

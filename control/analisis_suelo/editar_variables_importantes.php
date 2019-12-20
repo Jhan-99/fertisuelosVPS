@@ -1,7 +1,7 @@
  <?php  
- //insert.php  
-include('../../db/dbconnect.php');
-//edita las variables del suelo en la creación del análisis de suelo
+
+include('../../db/dbconnect.php'); //-> incluir la conexión a la base de datos
+//:inicio: edita las variables del suelo en la creación del análisis de suelo
 if(isset($_POST["ph"]))  
  {  
       $id_cab_suelo = mysqli_real_escape_string($conexion, $_POST["id_cab_suelo"]);  
@@ -23,9 +23,10 @@ if(isset($_POST["ph"]))
     mysqli_close($conexion);
             
  }  
+//:fin:
 
 
-//edita las variables del suelo en el panel de administración
+//:inicio:edita las variables del suelo en el panel de administración
 if(isset($_POST["val_ph"]))  
  {  
       
@@ -46,7 +47,8 @@ if(isset($_POST["val_ph"]))
     }
     mysqli_close($conexion);
             
- }  
+ }
+//:fin:
 
  ?>
 

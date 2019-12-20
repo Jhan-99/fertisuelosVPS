@@ -1,8 +1,13 @@
       <?php
-    include('../../db/dbconnect_pdo.php');
+    //Permite insertar las novedades
+
+    include('../../db/dbconnect_pdo.php'); //-> incluir la conexión la base de datos
     include('function.php');
+
+    //:Esta funcion inserta o edita una novedad según el valor de $_POST["operacion"] == "Agregar Editar"
     if(isset($_POST["operacion"]))
     {
+    //:inicio:    esta condicional inserta una novedad
      if($_POST["operacion"] == "Agregar")
      {
       $statement = $connection->prepare("
@@ -35,6 +40,9 @@
         echo 'No se ha podido guardar tu novedad, comprueba que todos los campos esten diligenciados';  
       }
      }
+    //:fin:    
+        
+    //:inicio:    esta condicional edita una novedad    
      if($_POST["operacion"] == "Editar")
      {
       $statement = $connection->prepare(
@@ -66,6 +74,7 @@
        echo 'Dato actualizado';
       }
      }
+    //:fin:    
     }
 
     ?>

@@ -1,5 +1,6 @@
 <?php
-//fetch.php
+//Este archivo me permite traer eventos cercanos o proximos a suceder para mostarlos al usuario
+
 include("../../db/dbconnect.php");
 $query = "select * from programaciones A where A.end_event <= '2018-12-31' LIMIT  4;";                                             
 $result = mysqli_query($conexion, $query);

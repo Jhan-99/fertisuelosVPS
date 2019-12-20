@@ -1,5 +1,5 @@
  <?php  
- //insert.php  
+ //PERMITE INSERTAR LAS VARIABLES MAS SIGNIFICATIVAS DEL SUELO DE ACUERDO AL CULTIVO SELECCIONADO 
 include('../../db/dbconnect.php');
 if(isset($_POST["id_cultivo"]))      
  {  

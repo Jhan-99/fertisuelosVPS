@@ -39,6 +39,8 @@
       });   
 		
  
+        
+        //:inicio: esta funcion permite cargar todos los detalles de la siembra, el cultivo y susrequerimientos nutricionales después de seleccionarla
          $('#Siembra_id').change(function(){  
          var id_siembra = $(this).val(); 
          var nombre_siembra = $(this).html(); 
@@ -81,12 +83,11 @@
                  });
                 $("#Siembra_id").removeClass('lime lighten-1');
 			}
-          });           
-			 
-  
-   
+          });           			 
         //[FIN] }        
+        //:fin:
 			
+        //:inicio: esta función permite mostrar la pestaña de configuración de análisis foliares
 			$('#ana_foliar').change(function(){
 			          var selection = $(this).val();    
 					     switch(selection)
@@ -98,9 +99,10 @@
 						 	$("#anfolobj").hide("slow");
 							break;
 		   					}
-			
-				}); 			
+				    }); 
+        //:fin:
 			 
+        //:inicio: esta función permite mostrar la pestaña de configuración de análisis de suelo
 			 	$('#ana_suelo').change(function(){
 			          var selection = $(this).val();    
 					     switch(selection)
@@ -114,9 +116,10 @@
                             $("#ana_suelo").addClass('lime lighten-1');
 							break;
 		   					}
-			
-				}); 			 
-			
+				        }); 		  	 
+        //:fin:
+        
+        //:inicio: esta función permite mostrar la pestaña de configuración de imágenes multiespectrales
 				$('#img_espectral').change(function(){
 			          var selection = $(this).val();    
 					     switch(selection)
@@ -130,8 +133,10 @@
 		   					}
 			
 				}); 
-			     //enviando la ulr de los poligonos de la base de datos por parametro al iframe de arcgis
-                 $(document).on('click', '.ver_mapa_momentos', function(){
+        //:fin:
+        
+			 //enviando la url de los poligonos de la base de datos por parametro al iframe de arcgis
+            $(document).on('click', '.ver_mapa_momentos', function(){
                 $("#mapa_momentos").modal("open");
                  var var_srcmapa1 = "http://arcgisonlinesena.maps.arcgis.com/apps/StoryMapBasic/index.html?appid=0bebc42ccf80414c82d5c6778f41728e";
                  $("#estado_mapa1").attr("src", var_srcmapa1); // el iframe que rrecoge la url del mapa y lo carga 
@@ -154,13 +159,14 @@
             $(document).on('click', '#reloadmap1', function(){
             $("#estado_mapa1").attr("src", "http://arcgisonlinesena.maps.arcgis.com/apps/StoryMapBasic/index.html?appid=0bebc42ccf80414c82d5c6778f41728e");        
             });
-          $(document).on('click', '#reloadmap2', function(){
+            $(document).on('click', '#reloadmap2', function(){
             $("#estado_mapa2").attr("src", "http://arcgisonlinesena.maps.arcgis.com/apps/Compare/index.html?appid=f50d505d1cf5411ba4e597fbf49c825c");        
             });
-        $(document).on('click', '#reloadmap3', function(){
+            $(document).on('click', '#reloadmap3', function(){
             $("#estado_mapa3").attr("src", "http://arcgisonlinesena.maps.arcgis.com/apps/Compare/index.html?appid=7eee1a7abc4345f8b016c969774cee30");        
             });
-				//CÓDIGO PARA CARGAR UNA ANÁLISIS SI EL USUARIO LO DECIDE
+        
+		//:INICIO:CÓDIGO PARA CARGAR UNA ANÁLISIS SI EL USUARIO LO DECIDE EN LA PESTAÑA ANALISIS DE SUELO
 			 $(document).on('click', '#anfolobj', function(){  
 				var id_foliar = $("#Siembra_id").val();
 			 	if (id_foliar == ''){
@@ -182,7 +188,9 @@
 					}
 				 
 			 });				
-			//asignar el análisis foliar al plan de fertilización
+        //:FIN:
+        
+			//:INICIO:asignar el análisis foliar al plan de fertilización
 			$('.asing_anafol').change(function(){  	
  			var id_anafoliar = $(this).val();
  			var cod_pf = $("#cod_pf").val();
@@ -195,8 +203,9 @@
 				 }  
                     });  
 			 }); 
-			
-			//ESTE CÓDIGO CARGA LOS DETALLES DEL ANÁLISIS FOLIAR
+			//:FIN:
+        
+			//:INICIO: ESTE CÓDIGO CARGA LOS DETALLES DEL ANÁLISIS FOLIAR
 			$('.ver_datos_anafols').change(function(){  	 
 			var cabecera_foliar = $(this).val();
 			var cabecera_foliar_datos = $(this).val();
@@ -255,8 +264,9 @@
                     }); 
 				
 			});			
-		
-			//ESTE CÓDIGO CARGA LOS DETALLES DEL ANÁLISIS DE SUELO
+		    //:FIN:
+        
+			//:INICIO: ESTE CÓDIGO CARGA LOS DETALLES DEL ANÁLISIS DE SUELO
 			$('.ver_datos_anasuels').change(function(){  	 
 			var cabecera_suelo = $(this).val();
 			var cabecera_suelo_datos = $(this).val();
@@ -328,9 +338,8 @@
 			});
 
 		
-	 
-		 //asignar el análisis de suelo al plan de fertilización
-		$('.asing_anasuel').change(function(){  	
+		    //:inicio:asignar el análisis de suelo al plan de fertilización
+		    $('.asing_anasuel').change(function(){  	
  			var id_anasuelo = $(this).val();
  			var cod_pf = $("#cod_pf").val();
 				
@@ -344,7 +353,9 @@
                     });  
 				 
 			 });				
-			 //CÓDIGO PARA CARGAR UNA ANÁLISIS DE SUELO SI EL USUARIO LO DECIDE
+            //:fin:
+        
+			 //:INICIO: CÓDIGO PARA CARGAR UNA ANÁLISIS DE SUELO SI EL USUARIO LO DECIDE
 			 $(document).on('click', '#ansuelobj', function(){  
 				var id_suelo = $("#Siembra_id").val();
 			 	if (id_suelo == ''){
@@ -366,8 +377,8 @@
 					}
 				 
 			 });
-			 		//ESTE CÓDIGO PASA LAS VARIABLES RRECOGIDAS AL CONSOL [INICIO]{           
- 
+        
+            //:INICIO:ESTE CÓDIGO PASA LAS VARIABLES RRECOGIDAS AL CONSOL [INICIO]{           
 			$(document).on('click', '#consolidado', function(){
 			var id_cult = $("#id_cul").val();  
 			var id_cult_var = $("#id_cul").val();  
@@ -572,7 +583,7 @@
     //dataTable.ajax.reload();
     }); /*/
 	 
-		//ESTABLECER UN COLOR AL FERTILIZANTE ELEGIDO
+		//:INICIO:ESTABLECER UN COLOR AL FERTILIZANTE ELEGIDO
 		function set_color_row(){
  	    if ( $('#URE4600').is(':checked') ){
 			$(".URE4600").closest('tr').addClass('lime lighten-4');
@@ -599,8 +610,10 @@
 		} 	
 			
     		}
-    setInterval(set_color_row, 800);		
+        setInterval(set_color_row, 800);		
+        //:FIN:
         
+        //:INICIO: BOTÓN QUE PERMITE AL USUARIO VALIDAR LAS ACCCIONES AL TRABAJAR EN PLAN DE FERTILIZACIÓN
         $(document).on('click', '.siguiente_pf', function(){
             event.preventDefault();
             var val_siembra = $("#Siembra_id").val();
@@ -639,11 +652,13 @@
                  return false;     
             }else{
              $('#consolidado').removeClass('disabled');  
+             $('ul.tabs').tabs('select_tab', 'consol');
             }
             
             
             });
- 		
+ 		//:FIN:
+        
  	 /*/ $(document).on('click', '#obte_recomen', function(){
 		  //INICIO CALCULO PARA UREA Y EL APORTE A NITROGENO EN FERTILIZANTES
 		var id_siembra = $("#Siembra_id").val();

@@ -1,11 +1,14 @@
 $(document).ready(function(){
+    //:INICIO: ESTA FUNCION PERMITE PREPARAR EL FORMULARIO PARA INSERTAR UNA NUEVA SIEMBRA
 	$('#add_button').click(function(){
 		$('#form_siembras')[0].reset();
 		$('.modal-title').text("Agregar nueva siembra");
 		$('#action').val("Agregar");
 		$('#operacion').val("Agregar");
 	});
-	
+	//:FIN:
+    
+    //:INICIO: ESTA FUNCION PERMITE TRAER TODAS LAS SIEMBRAS A TRAVÉS DE LA URL url:"../../control/siembras/fetch.php",
 	var dataTable = $('#datos_siembra').DataTable({
 		"processing":true,
 		"serverSide":true,
@@ -22,7 +25,9 @@ $(document).ready(function(){
 		],
 
 	});
-
+    //:FIN:
+    
+    //:INICIO: ESTA FUNCION PERMITE INSERTAR LAS SIEMBRAS A LA BASE DE DATOS
 	$(document).on('submit', '#form_siembras', function(event){
 		event.preventDefault();
 		var Nombre_siembra = $('#Nombre_siembra').val();
@@ -63,7 +68,9 @@ $(document).ready(function(){
 			alert("Todos los campos son necesarios");
 		}
 	});
-	
+	//:FIN:
+    
+    //:INICIO: ESTA FUNCION PERMITE ACTUALIZAR LAS SIEMBRAS
 	$(document).on('click', '.update', function(){
 		var id_siembra = $(this).attr("id");
 		$.ajax({
@@ -96,7 +103,9 @@ $(document).ready(function(){
 			}
 		})
 	});
-
+    //:FIN:
+    
+    //:INICIO: ESTA FUNCION PERMITE ELIMINAR LAS SIEMBRAS
 	$(document).on('click', '.delete', function(){
 		var id_siembra = $(this).attr("id");
 		if(confirm("Estás seguro de eliminar esto?"))
@@ -117,8 +126,10 @@ $(document).ready(function(){
 			return false;	
 		}
 	});
-	       //SELECCIONAR CULTIVOS PARA AGREGARLOS A UNA SIEMBRA
-	        $(document).on('click', '.select_c_asignar', function(){  
+    //:FIN:
+    
+    //:INICIO: ESTA FUNCION ERMITE SELECCIONAR CULTIVOS PARA AGREGARLOS A UNA SIEMBRA
+    $(document).on('click', '.select_c_asignar', function(){  
            var var_request = $(this).attr("id");  
             $('#siembra_val').val(var_request);
            if(var_request != '')  
@@ -154,8 +165,10 @@ $(document).ready(function(){
                  
  
       });  
-        //ASIGNAR CULTIVOS A ESTA SIEMBRA
-          $(document).on('click', '.asignar_cultivos', function(){  
+    //:FIN:
+    
+    //:INICIO: FUNCION QUE PERMITE ASIGNAR CULTIVOS A LA SIEMBRA SELECCIONADA
+     $(document).on('click', '.asignar_cultivos', function(){  
            var val_cultivo = $(this).attr("id");  
             var val_siembra = $('#siembra_val').val(); 
             if(confirm("Seguro de agregar este cultivo?"))
@@ -174,8 +187,9 @@ $(document).ready(function(){
             }
             
       }); 
+    //:FIN:
     
-    //VER CULTIVOS ASIGNADOS A ESTA SIEMBRA
+    //:INICIO: FUNCION QUE PERMITE VER CULTIVOS ASIGNADOS A LA SIEMBRA ACTUAL
     $(document).on('click', '.ver_c_asignados', function(){  
             var val_siembra = $(this).attr("id");  
             var id_siembra_rel = $("#id_siembra_rel").val(val_siembra);
@@ -192,8 +206,9 @@ $(document).ready(function(){
                 });  
            }            
       });     
+    //:FIN:
     
-    //ELIMINAR CULTIVOS RELACIONADOS 
+    //:INICIO:FUNCION QUE PERMITE ELIMINAR CULTIVOS RELACIONADOS A LA SIEMBRA
      $(document).on('click', '.eliminar_cultivos', function(){
      var val_c = $(this).attr("id");  
      var id_siembra_rel = $('#id_siembra_rel').val();
@@ -216,7 +231,8 @@ $(document).ready(function(){
           
       }
      });
-	
+	//:FIN:
+    
 	$(document).on('click', '#ayuda_selec_cul', function(){
 	 alert("Es indispensable seleccionar un cultivo para tener en cuenta los requerimientos nutricionales para toda la siembra")   
 	}); 

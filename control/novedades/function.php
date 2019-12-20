@@ -1,6 +1,6 @@
 <?php
  
-
+//Permite traer todas las novedades
  
 function get_total_all_records()
 {

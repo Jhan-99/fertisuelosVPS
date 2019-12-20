@@ -1,9 +1,11 @@
  <?php  
- //load_data.php  
- include('../../db/dbconnect.php');                 
+ //Nos permite cargar la siembras desde la base de datos 
+
+ include('../../db/dbconnect.php'); //-> Incluir la conexión a la base de datos
  $output = '';  
- if(isset($_POST["id_siembra"]))  
+ if(isset($_POST["id_siembra"]))  //->  es el id de la siembra a consultar
  {  
+     //:inicio:Realiza la consulta a la base de datos para saber si la siembra existe
       if($_POST["id_siembra"] != '')  
       {  
            $sql = "SELECT * FROM siembras WHERE id_siembra = '".$_POST["id_siembra"]."'";  
@@ -12,7 +14,11 @@
       {  
            $sql = "SELECT * FROM siembras";  
       }  
-      $result = mysqli_query($conexion, $sql);  
+     //:fin:
+     
+      $result = mysqli_query($conexion, $sql);  //-> resultado de la consulta
+     
+     //:inicio:operador while que nos permite mostrar la información de la siembra
       while($row = mysqli_fetch_array($result))  
       {  
            $output .= '<input type="hidden" name="id_siembra" id="id_siembra" value="'.$row["id_siembra"].'">';  
@@ -29,18 +35,23 @@
 		  
 		   $output .= '
            <div class="input-field col s12 m12 l2">
-            <input type="text" name="N_plantas" id="N_plantas" value="'.$row["N_plantas_siembra"].'" readonly>
+            <input type="text" name="N_plantas" id="N_plantas" value="'.$row["N_plantas_siembra"].'" >
             <label for="N_plantas" class="active">No. plantas</label>
             </div>';
 
       }  
+     //:fin:
+     
+     //:renderizar los datos a la plantilla:
       echo $output;  
+     //:
  } 
  
 
  
  if(isset($_POST["codgo_cult"]))  // esta variable me la envía el archivo anterior con el id del cultivo
  {  
+     //:inicio: al cargar la siembra esta estructura de código realiza una consulta a la base de datos para cargar los requerimientos nutricionales del cultivo
       $salida = '';  
       include('../../db/dbconnect.php');        
 	 
@@ -53,8 +64,11 @@
 		 $salida .= '
 		 <input type="text" value="'.$row["valor_req"].'" id="REQ_'.$row["nombre_req"].'">';      
       }  
+     //:fin:
      
+     //:renderizar los datos a la plantilla:
       echo $salida;   
+     //:
  } 
 
 

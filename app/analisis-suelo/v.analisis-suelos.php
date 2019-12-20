@@ -87,6 +87,9 @@ include('../fetchs.php');
                     <li class="active">Análisis de suelo</li>
                   </ol>
                 </div>
+                  <div class="col s12 m12 l12">
+                    <p class="white-text orange">En este módulo podrás crear una análisis de suelo para tu cultivo, teniendo en cuenta los requerimientos nutricionales , y las variables más significativas al momento de tomar desiciones.</p>
+                  </div>
               </div>
             </div>
           </div>
@@ -102,10 +105,10 @@ include('../fetchs.php');
                     <!--Código carga el análisis de suelo-->
          <input type="hidden" id="codcab" value="<?php  echo (mt_rand()); ?>">
           <ul class="tabs tabs-fixed-width tab-demo z-depth-1" style="overflow-x: hidden;">
-            <li class="tab col s3 m3 l3 active"><a class="active" href="#info_inicial">Infomación inicial</a></li>
-            <li id="vars_s" class="tab col s3 m3 l3 "><a  href="#vars_sign">Variables significativas</a></li>
-            <li id="el" class="tab col s3 m3 l2 "><a  href="#elementos">Elementos</a></li>
-            <li id="grafic" class="tab col s3 m3 l2 disabled"><a  href="#grafico_analisis">Grafico</a></li>
+            <li class="tab col s3 m3 l3 active"><a class="active" href="#info_inicial">Infomación inicial <b class="red-text">1</b></a></li> 
+            <li id="vars_s" class="tab col s3 m3 l3 "><a  href="#vars_sign">Variables significativas <b class="red-text">2</b></a></li>
+            <li id="el" class="tab col s3 m3 l2 "><a  href="#elementos">Elementos <b class="red-text">3</b></a></li>
+            <li id="grafic" class="tab col s3 m3 l2 disabled"><a  href="#grafico_analisis">Grafico <b class="red-text">4</b></a></li>
             <li id="" class="tab col s3 m3 l2 "><a href="#pmq">PMQ</a></li>
             </ul>
             <div id="info_inicial" class="col s12"><!--Recoleción de infomación de la cabecera{-->
@@ -178,7 +181,7 @@ include('../fetchs.php');
                <div class="col s12 m4 l4">
                   <label>Municipio</label>
 				  <select name="Municipio" id="Municipio" class="browser-default form-control  selec_control">
-                  <option value="" disabled selected>Elige un municipio</option>
+                   
                   </select> 
               </div>            
             <div class="col s12 m4 l4">
@@ -214,37 +217,48 @@ include('../fetchs.php');
 			<div class="chip cyan white-text">
                 Elige la textura del suelo
               </div>
+                <div class="row">
+                <div class="col l6 s12 m6">
+                     <a href="#" class="right modal-trigger msg_textura"><i class="material-icons">help_outline</i></a>
                     <div class="browser-default">
                     <select class="" name="textura" id="textura">
-                    <option t_suelo="1.0" value="Arenoso">Arenoso</option> 
-                    <option t_suelo="2.0" value="Arenoso franco">Arenoso franco</option> 
-                    <option t_suelo="2.0" value="Franco arenoso">Franco arenoso</option> 
-                    <option t_suelo="2.0" value="Franco" selected>Franco</option> 
-                    <option t_suelo="2.0" value="Franco limoso">Franco limoso</option> 
-                    <option t_suelo="2.0" value="Franco arcilloso arenoso">Franco arcilloso arenoso</option> 
-                    <option t_suelo="2.0" value="Franco arcilloso">Franco arcilloso</option> 
-                    <option t_suelo="2.0" value="Franco arcillo limoso">Franco arcillo limoso</option> 
-                    <option t_suelo="2.6" value="Arcillo arenoso">Arcillo arenoso</option> 
-                    <option t_suelo="2.6" value="Arcillo limoso">Arcillo limoso</option> 
-                    <option t_suelo="2.6" value="Arcilloso">Arcilloso</option>     
+                    <option t_suelo="1.0" v-minimized="Arenoso" value="Arenoso">Arenoso</option> 
+                    <option t_suelo="2.0" v-minimized="ArenosoFranco" value="Arenoso franco">Arenoso franco</option> 
+                    <option t_suelo="2.0" v-minimized="FrancoArenoso" value="Franco arenoso">Franco arenoso</option> 
+                    <option t_suelo="2.0" v-minimized="Franco" value="Franco">Franco</option> 
+                    <option t_suelo="2.0" v-minimized="FrancoLimoso" value="Franco limoso">Franco limoso</option> 
+                    <option t_suelo="2.0" v-minimized="FrancoArcillosoArenoso" value="Franco arcilloso arenoso">Franco arcilloso arenoso</option> 
+                    <option t_suelo="2.0" v-minimized="FrancoArcilloso" value="Franco arcilloso">Franco arcilloso</option> 
+                    <option t_suelo="2.0" v-minimized="FrancoArcilloLimoso" value="Franco arcillo limoso">Franco arcillo limoso</option> 
+                    <option t_suelo="2.6" v-minimized="ArcilloArenoso" value="Arcillo arenoso">Arcillo arenoso</option> 
+                    <option t_suelo="2.6" v-minimized="ArcilloLimoso" value="Arcillo limoso">Arcillo limoso</option> 
+                    <option t_suelo="2.6" v-minimized="Arcilloso" value="Arcilloso">Arcilloso</option>     
                     </select>
                     </div><br><br>
+                    </div>
+                    <div class="col s12 l6 m6" id="forma_textura">
+                    
+                    </div>
+                </div>
 			  <div class="chip">
                 Agrega las variables más significativas del suelo
               </div><br><br>
 			<div class="row">
 				<div class="col s12 m6 l4">
+                <a href="#" class="right modal-trigger msg_ph"><i class="material-icons">help_outline</i></a>
 				<label>PH &#40; % &#41;</label>
 				<input type="text" id="ph" name="ph">
 				<span class="teal chip white-text" id="inter_ph"></span>
 				</div>
 				<div class="col s12 m6 l2">
+                <a onclick="event.preventDefault();" href="#" class="right tooltipped" data-position="bottom" data-tooltip="Conductividad Electrica (CE)"><i class="material-icons">help_outline</i></a>
 				<label>C.E &#40;ds.m <sup>-1</sup>&#41;</label>
 				<input type="text" id="ce" name="ce">
 			    <span class="orange chip white-text" id="inter_ce"></span>
 				</div>
 				<!-- -->
 				<div class="col s12 m6 l2">
+                 <a onclick="event.preventDefault();" href="#" class="right tooltipped" data-position="bottom" data-tooltip="Capacidad de intercambio catiónico efectivo (CICE)"><i class="material-icons">help_outline</i></a>
 				<label>C.I.C.E  &#40;cmol kg <sup>-1</sup>&#41;</label>
 				<input type="text" id="cice" name="cice">
 				<span class="purple darken-4 chip white-text" id="inter_cice">0.0</span>
@@ -284,6 +298,7 @@ include('../fetchs.php');
               <div class="chip">
                 Agrega los nutrientes a tu análisis de suelo
               </div>
+            <a href="#" class="right modal-trigger msg_nutrientes"><i class="material-icons">help_outline</i></a>
                  <div class="divider"></div> 
             <br>
                             <h5 class="center">Calculo del nitrógeno</h5><br>
@@ -825,6 +840,38 @@ include('../fetchs.php');
               </ul>
             </div> -->
             <!-- Floating Action Button -->
+                
+              <div id="mensajes-modal" class="modal">
+                <div class="modal-content mensajes-modal">
+                  </div>
+                </div>
+                
+              <div id="welcome" class="modal" style="font-family: Courier, Monaco, monospace;">
+                <div class="modal-content">
+                  <h4 style="font-family: Courier, Monaco, monospace;">Bienvenido</h4>
+                  <hr><br>
+                <h5 class="header" style="font-family: Courier, Monaco, monospace;">¿Sabes porque es importante realizar un análisis de suelo para tu cultivo?</h5>    
+                <div class="row">
+                    <div class="col s12 m12 l12" >
+                        
+                        <p style="font-family: Courier, Monaco, monospace;">
+                        <b>1.</b> Es una herramienta fundamental para evaluar la fertilidad de tu suelo
+                        <br>
+                        <b>2.</b> Con la interpretación del análisis puedes saber la disponibilidad del N. P, K etc. y pH
+                        <br>
+                        <b>3.</b> Puedes crear un plan de fertilización de acuerdo a la necesidad del cultivo que desee implementar.
+                        </p>
+                        
+                        
+                    </div>
+                    
+                    </div>    
+                </div>
+                <div class="modal-footer">
+                  <a href="#!" class="modal-close waves-effect waves-green btn-flat">Gracias!</a>
+                </div>
+              </div>
+                
           </div>
           <!--end container-->
         </section>
@@ -880,9 +927,23 @@ include('../fetchs.php');
     <!--Modelo de los análisis de suelo-->
     <script type="text/javascript" language="javascript" src="../../model/m.analisis_suelo/m.analisis_suelo.js"></script>
     <script type="text/javascript" language="javascript" src="../../model/m.analisis_suelo/m.guarda_analisis_suelo.js"></script>
-    <script type="text/javascript" language="javascript" src="../../model/m.analisis_suelo/estimacion_elementos.js"></script>
+    <script type="text/javascript" language="javascript" src="../../model/m.analisis_suelo/estimacion_elementos.js"></script>    
     <!--data-tables.js - Page Specific JS codes -->
     <script type="text/javascript" src="../../js/scripts/data-tables.js"></script>
+        <script>
+            $(document).ready(function(){  
+            $('.tooltipped').tooltip();         
+             if(localStorage.getItem("times") == null){
+                 $("#welcome").modal('open');
+                 localStorage.setItem("times", 1);
+             }else{
+                 
+             }
+                
+            
+            
+            });
+        </script>
       </div>
   </body>
 </html>

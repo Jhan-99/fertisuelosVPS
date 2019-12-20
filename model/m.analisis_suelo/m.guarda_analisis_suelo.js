@@ -1,5 +1,8 @@
                  //ESTE CÓDIGO AGREGA LA CABECERA DEL ANALISIS DE SUELO => "INICIO"
-                $(document).ready(function(){  
+
+            $(document).ready(function(){  
+            //:inicio: Esta funcion recoge la información del análisis de suelo y la envía al archivo                    insertar_ana_suelo.php 
+                
                $(document).on('click', '.g_cabecera', function(){
                var codcab = $('#codcab').val();  
                var Nombre_programa = $('#Nombre_programa').val();  
@@ -58,9 +61,11 @@
 
               
                     
-          });//ESTE CÓDIGO AGREGA LA CABECERA DEL ANALISIS DE SUELO => "FIN"}
+          });
+                //:inicio:
+                
             //Jhan No olvidar, el parametro "Documento.click referenciando la clase del botón" [NO-OLVIDAR]
-            //ESTA FUNCION ME PERMITE EDITAR LA CABECERA QUE YA GUARDÉ {        
+            //ESTA FUNCION ME PERMITE EDITAR LA CABECERA QUE YA GUARDÉ EN LA VISTA CREAR DEL ANÁLISIS DE SUELO{        
               $(document).on('click', '.edit_cabecera', function(){      
                   //alert ("Ya guardó y funciona el boton editar");
                var codcab = $('#codcab').val();  
@@ -115,10 +120,9 @@
                         
                         
                      }); 
-
-            //ESTA FUNCION ME PERMITE EDITAR LA CABECERA QUE YA GUARDÉ }
+            //:fin: ESTA FUNCION ME PERMITE EDITAR LA CABECERA QUE YA GUARDÉ }
                     
-              //ESTE CÓDIGO GUARDA EL PASO DE LAS VARIABLES IMPORTANTES => ¡INICIO!    
+              //:INICIO:ESTE CÓDIGO GUARDA EL PASO DE LAS VARIABLES IMPORTANTES O MÁS SIGNIFICATIVAS EN EL CULTIVO => 
 				$(document).on('click', '.g_vars_sign', function(){
                var codcab = $('#codcab').val();  
                var ph   = $('#ph').val();  
@@ -155,9 +159,10 @@
                          }  
                     });  
                }  
-          }); //ESTE CÓDIGO GUARDA EL PASO DE LAS VARIABLES IMPORTANTES DEL ANÁLISIS DE SUELO => ¡FIN!   
+          }); 
+                //:FIN:  
              
-        //ESTE CODIGO EDITA LAS VARIABLES IMPORTANTES DEL ANALISIS DE SUELO{
+            //:INICIO:ESTE CODIGO EDITA LAS VARIABLES IMPORTANTES DEL ANALISIS DE SUELO{
             $(document).on('click', '.edita_variables', function(){ 
 			   var id_cab_suelo = $('#codcab').val();  
                var ph   = $('#ph').val();  
@@ -191,10 +196,10 @@
                     });  
                } 
                              
-                });   
-					
-            //ES CODIGO EDITA LAS VARIABLES IMPORTANTES DEL ANALISIS DE SUELO }        
-            //ESTE CÓDIGO GUARDA LOS ELEMENTOS DEL ANÁLISIS DE SUELO  => ¡INICIO!    
+                });   		
+            //:FIN:ES CODIGO EDITA LAS VARIABLES IMPORTANTES DEL ANALISIS DE SUELO }        
+                
+            //:INICIO: ESTE CÓDIGO GUARDA LOS ELEMENTOS DEL ANÁLISIS DE SUELO
                $(document).on('click', '.g_elementos', function(){ 
                var codcab = $('#codcab').val();  
                var nitrogeno   = $('#nitro').val();  
@@ -260,7 +265,8 @@
                          }  
                     });  
                }  
-          }); //ESTE CÓDIGO GUARDA LOS ELEMENTOS DEL ANÁLISIS DE SUELO => ¡FIN!
+          }); 
+            //:FIN:ESTE CÓDIGO GUARDA LOS ELEMENTOS DEL ANÁLISIS DE SUELO => ¡FIN!
                     
                $(document).on('click', '.edit_elementos', function(){ 
                var codcab = $('#codcab').val();  

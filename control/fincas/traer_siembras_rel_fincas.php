@@ -1,4 +1,5 @@
  <?php  
+//PERMITE VISUALIZAR LAS SIEMBRAS RELACIONADAS CON LA FINCA
  if(isset($_POST["val_finca"]))  
  {  
       $output = '';  

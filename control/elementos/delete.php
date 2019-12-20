@@ -1,4 +1,5 @@
 <?php
+// PERMITE ELIMINAR LOS ELEMENTOS DEL SUELO DE ACUERDO A SU IDENTIFICADOR
 include('../../db/dbconnect_pdo.php');
 include("function.php");
 

@@ -1,5 +1,5 @@
  <?php  
- //insert.php  
+ //Permite editar los  datos suminstrados anteriormente para el análisis de suelo
 include('../../db/dbconnect.php');
 if(isset($_POST["Nombre_programa"]))  
  {  

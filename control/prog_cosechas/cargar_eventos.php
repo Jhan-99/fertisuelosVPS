@@ -1,7 +1,7 @@
 
 <?php
 
-//load.php
+//Este archivo me permite cargar un evento de la programación de cosechas en el calendario
 
 include('../../db/dbconnect_pdo.php');
 

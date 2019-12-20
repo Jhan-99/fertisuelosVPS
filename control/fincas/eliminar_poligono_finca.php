@@ -1,5 +1,5 @@
 <?php
-
+//ELIMINA LOS POLIGONOS QUE TIENE RELACIONADOS LA FINCA
 include('../../db/dbconnect_pdo.php');
 if(isset($_POST["id_files"]))
 {

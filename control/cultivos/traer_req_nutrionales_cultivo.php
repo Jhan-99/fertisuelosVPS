@@ -1,10 +1,11 @@
  <?php  
+//PERMITE TRAER LOS REQUERIMIENTOS NUTRICIONALES DEL CULTIVO
  if(isset($_POST["id_cultivo"]))  
  {  
       $output = '';  
       include('../../db/dbconnect.php');                                  
       $query = "SELECT u.id_req, u.nombre_req, u.descripcion_req, u.valor_req, u.id_cultivo FROM req_nutricionales_cultivo u
-                LEFT JOIN cultivos t  ON  u.id_cultivo = t.id_cultivo WHERE t.id_cultivo = '".$_POST["id_cultivo"]."'"; 
+                LEFT JOIN cultivos t  ON  u.id_cultivo = t.id_cultivo WHERE t.id_cultivo = '".$_POST["id_cultivo"]."' "; 
       
       $result = mysqli_query($conexion, $query);  
       $output .= '

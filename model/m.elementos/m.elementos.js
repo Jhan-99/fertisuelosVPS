@@ -1,12 +1,15 @@
 $(document).ready(function(){
+    //:INICIO: PERMITE PREPARAR EL FORMUARIO PARA  INSERTAR UN ELEMENTO DEL SUELO
      $('#add_button').click(function(){
       $('#form_elementos')[0].reset();
       $('.modal-title').text("Agregar elemento");
       $('#accion').val("Agregar");
       $('#operacion').val("Agregar");
-
+    //:FIN:
      });
-
+    //:FIN:
+    
+    //:INICIO: ESTA FUNCIÓN PERMITE CARGAR TODOS LOS ELEMENTOS EN LA TABLA
      var dataTable = $('#datos_elementos').DataTable({
       "processing":true,
       "serverSide":true,
@@ -23,7 +26,9 @@ $(document).ready(function(){
       ],
 
      });
-
+    //:FIN:
+    
+    //:INICIO: ESTA FUNCION PERMITE INSERTAR LOS ELEMENTOS DEL SUELO
      $(document).on('submit', '#form_elementos', function(event){
       event.preventDefault();
       var Nombre_elemento = $('#Nombre_elemento').val();
@@ -52,7 +57,9 @@ $(document).ready(function(){
        alert("Todos los campos son obligatorios");
       }
      });
-
+    //:FIN:
+    
+    //:INICIO: ESTA FUNCION PERMITE ACTUALIZAR LOS ELEMENTOS DEL SUELO
      $(document).on('click', '.update', function(){
       var id_elemento = $(this).attr("id");
       $.ajax({
@@ -73,7 +80,9 @@ $(document).ready(function(){
        }
       })
      });
+    //:FIN:
 
+    //:INICIO: ESTA FUNCION PERMITE ELIMINAR LOS ELEMENTOS DEL SUELO
      $(document).on('click', '.delete', function(){
       var id_elemento = $(this).attr("id");
       if(confirm("Seguro de eliminar este elemento?"))
@@ -94,6 +103,6 @@ $(document).ready(function(){
        return false; 
       }
      });
-
+    //:FIN:
 
     });

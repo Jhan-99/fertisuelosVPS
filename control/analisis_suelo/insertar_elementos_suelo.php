@@ -1,8 +1,9 @@
  <?php  
- //insert.php  
-include('../../db/dbconnect.php');
+ //Permite insertar los elementos del suelo en la base de datos  
+include('../../db/dbconnect.php'); //-> incluir la conexión a la base de datos
 if(isset($_POST["nitrogeno"]))  
  {  
+    //:inicio: los elementos del suelo 
       $codcab = mysqli_real_escape_string($conexion, $_POST["codcab"]);  
       $nitrogeno = mysqli_real_escape_string($conexion, $_POST["nitrogeno"]);  
       $fosforo = mysqli_real_escape_string($conexion, $_POST["fosforo"]);  
@@ -16,7 +17,9 @@ if(isset($_POST["nitrogeno"]))
       $cobre = mysqli_real_escape_string($conexion, $_POST["cobre"]);  
       $zinc = mysqli_real_escape_string($conexion, $_POST["zinc"]);  
       $hierro = mysqli_real_escape_string($conexion, $_POST["hierro"]); 
-      //--------------//La interpretacion del análisis de suelo
+    //:fin:
+    
+      //:inicio: La interpretacion del análisis de suelo
       $inter_nitrogeno = mysqli_real_escape_string($conexion, $_POST["inter_nitrogeno"]);
       $inter_fosforo = mysqli_real_escape_string($conexion, $_POST["inter_fosforo"]);
       $inter_calcio = mysqli_real_escape_string($conexion, $_POST["inter_calcio"]);
@@ -29,7 +32,9 @@ if(isset($_POST["nitrogeno"]))
       $inter_cobre = mysqli_real_escape_string($conexion, $_POST["inter_cobre"]);
       $inter_zinc = mysqli_real_escape_string($conexion, $_POST["inter_zinc"]);
       $inter_hierro = mysqli_real_escape_string($conexion, $_POST["inter_hierro"]);
-            
+      //:fin:     
+    
+    //:insertar los resultados en la base de datos:
           $sql = "INSERT INTO ana_suelo_elementos(cabecera_id,valor_resultado,metodo_extraccion,interpretacion,nombre_elemento) 
             VALUES
             ('".$codcab."' , '".$nitrogeno."','','$inter_nitrogeno','NITROGENO'),

@@ -1,9 +1,10 @@
  <?php  
- 
- include('../../db/dbconnect.php');
+ //Permite cargar los elementos del suelo para el analisis de suelo
+ include('../../db/dbconnect.php'); //incluir la conexión a l base de datos
  $output = '';  
- if(isset($_POST["dato"]))  
+ if(isset($_POST["dato"])) //id del analisis de suelo 
  { 
+  //:inicio: realizar la consulta y traer los elmentos
   $sql = "SELECT * FROM ana_suelo_elementos WHERE cabecera_id='".$_POST["dato"]."' ORDER BY id_ana_elementos DESC";  
  $result = mysqli_query($conexion, $sql);  
  $output .= '  
@@ -17,10 +18,12 @@
                      <th width="40%">Unidad</th>  
                      <th width="10%">Delete</th>  
                 </tr>';  
+     //:fin:
  $rows = mysqli_num_rows($result);
+     
  if($rows > 0)  
  {  
- 
+     //cilo while para mostrar  los datos de una manera más detallada al usuaiario
       while($row = mysqli_fetch_array($result))  
       {  
            $output .= '  
@@ -58,8 +61,10 @@
 			   </tr>';  
  }  
  $output .= '</table>  
-      </div>';  
- echo $output;  
+      </div>'; 
+     //:fin:
+     
+    echo $output;  //:imprimir los datos:
  }
 
  ?>

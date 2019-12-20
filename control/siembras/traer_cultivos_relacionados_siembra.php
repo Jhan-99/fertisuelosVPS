@@ -1,10 +1,11 @@
  <?php  
+//PERMITE OBTENER LOS CULTIVOS QUE ESTÁN RELACIONADOS A UNA SIEMBRA
  if(isset($_POST["val_siembra"]))  
  {  
       $output = '';  
       include('../../db/dbconnect.php');                                  
       $query = "SELECT u.Nombre_cultivo, u.Variedad_cultivo, u.Descripcion_cultivo,image, u.id_cultivo FROM cultivos u
-                LEFT JOIN cultivos_siembra t  ON  u.id_cultivo = t.id_cultivo WHERE t.id_siembra = '".$_POST["val_siembra"]."'"; 
+                LEFT JOIN cultivos_siembra t  ON  u.id_cultivo = t.id_cultivo WHERE t.id_siembra = '".$_POST["val_siembra"]."' "; 
       
       $result = mysqli_query($conexion, $query);  
       while($row = mysqli_fetch_array($result))  

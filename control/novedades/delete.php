@@ -1,4 +1,6 @@
 <?php
+// Permite eliminar una novedad 
+
 include('../../db/dbconnect_pdo.php');
 include("function.php");
 

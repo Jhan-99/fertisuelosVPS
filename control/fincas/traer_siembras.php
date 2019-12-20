@@ -1,4 +1,5 @@
  <?php  
+//PERMITE TRAER LAS SIEMBRAS PARA PODER RELACIONARLAS A LA FINCA
  if(isset($_POST["var_request"]))  
  {  
       $output = '';  

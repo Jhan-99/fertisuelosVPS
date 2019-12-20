@@ -1,5 +1,5 @@
- <?php  
-
+<?php  
+//ELIMINA LAS SIEMBRAS QUE ESTÁN RELACIONADAS CON LA FINCA SELECCIONADA
 include('../../db/dbconnect_pdo.php');
  if(isset($_POST["val_s"],$_POST["id_finca_rel"]))  
 {

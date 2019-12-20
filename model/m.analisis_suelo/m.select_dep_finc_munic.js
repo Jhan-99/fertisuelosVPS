@@ -1,3 +1,4 @@
+//PERMITE SELECCIONAR Departamento  municipio y finca en la plantilla , realizadola a través del archivo select_dep_muni_finc.php
 $(document).ready(function(){
  $('.selec_control').change(function(){
   if($(this).val() != '')

@@ -1,5 +1,5 @@
 <?php
-//edit.php
+//Permite editar los archivos del análisis de suelo
 include('../../db/dbconnect_pdo.php');
 
 $query = "

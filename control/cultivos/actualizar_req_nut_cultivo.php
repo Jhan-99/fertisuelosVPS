@@ -1,6 +1,5 @@
 <?php
-
-//multiple_update.php
+//PERMITE ACTUALIZAR LOS REQUERIMIENTOS NUTRICIONALES DEL CULTIVO
 
 include('../../db/dbconnect_pdo.php');  
 

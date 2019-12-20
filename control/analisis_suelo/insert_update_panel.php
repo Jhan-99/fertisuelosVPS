@@ -1,16 +1,20 @@
       <?php
-    include('../../db/dbconnect_pdo.php');
-    include('function.php');
+    //este archivo me permite insertar o actualizar un analisis de suelo segun el valor de $_POST["operacion"] == "Agregar"
+
+    include('../../db/dbconnect_pdo.php'); //->incluir la conexión a la base de datos
+    include('function.php'); //-> inlcuir la función que obtiene los datos de los análisis de suelos
     if(isset($_POST["operacion"]))
     {
      if($_POST["operacion"] == "Agregar")
      {
 
+      //:inicio:  declaración que inserta los datos del análisis de suelo
       $statement = $connection->prepare("
        INSERT INTO cabecera_suelo (Nombre_programa, Propietario, Asistente_tecnico) 
        VALUES (:Nombre_programa, :Propietario, :Asistente_tecnico, :Fecha_muestreo, :Fecha_recepcion,
        :Siembra_id, :Siembra_id)
       ");
+        //:fin: 
       $result = $statement->execute(
        array(
         ':Nombre_programa' => $_POST["Nombre_programa"],
@@ -32,6 +36,7 @@
      }
      if($_POST["operacion"] == "Editar")
      {
+        //:inicio:  declaración que edita los datos del análisis de suelo
       $statement = $connection->prepare(
        "UPDATE cabecera_suelo 
        SET Nombre_programa = :Nombre_programa, Propietario = :Propietario, Asistente_tecnico = :Asistente_tecnico, Fecha_muestreo = :Fecha_muestreo, Fecha_recepcion = :Fecha_recepcion, Siembra_id = :Siembra_id,
@@ -39,6 +44,7 @@
        WHERE id_cabecera = :id_cabecera
        "
       );
+        //:fin:
       $result = $statement->execute(
        array(
         ':Nombre_programa' => $_POST["Nombre_programa"],

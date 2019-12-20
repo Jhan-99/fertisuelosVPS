@@ -1,4 +1,7 @@
    <?php
+
+//PERMITE TRAER DE MANERA INDIVIDUAL LOS ELEMENTOS DEL SUELO PARA PODER EDITARLOS A TRAVÉS DEL ARCHIVO insert_update_panel.php
+
 include('../../db/dbconnect_pdo.php');
 include('function.php');
 if(isset($_POST["id_elemento"]))

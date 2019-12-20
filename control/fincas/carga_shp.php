@@ -1,4 +1,5 @@
 <?php
+//SUBE LOS ARCHIVOS SHP,KML,KMZ Y ZIP PARA RELACIONARLOS A LA FINCA
 include('../../db/dbconnect.php');
 $target_dir = "fincas_/";
 $target_file = $target_dir . basename($_FILES["file"]["name"]);

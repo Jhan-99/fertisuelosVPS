@@ -1,4 +1,5 @@
 <?php
+// PERMITE ELIMNAR SIEMBRAS
 
 include('../../db/dbconnect_pdo.php');
 include("function.php");

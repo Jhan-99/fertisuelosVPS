@@ -1,5 +1,5 @@
  <?php  
- //insert.php  
+ //PERMITE INSERTAR LOS REQUERIMIENTOS NUTRICIONALES DEL CULTIVO
 include('../../db/dbconnect.php');
 if(isset($_POST["id_cultivo"]))  
  {  

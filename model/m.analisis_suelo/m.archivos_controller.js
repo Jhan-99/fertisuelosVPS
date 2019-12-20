@@ -1,5 +1,9 @@
+//Este archivo permite realizar el control de archivos en el panel de administración de análisis de suelos
 $(document).ready(function(){
- load_image_data();
+
+ load_image_data(); //ejecuta la funcion que trae los archivos
+    
+//:inicio:     esta funcion consulta los archivos que están relacionados con el análisis de suelo a consultar
  function load_image_data()
  {
   var id_ana_carga = document.getElementById("id_cabecera_suelos").value; // variable que recoge el id del análisis para 
@@ -14,6 +18,9 @@ $(document).ready(function(){
    }
   });
  } 
+//:fin:    
+    
+//:inicio:  esta función permite subir varios archivos a la vez para relacionarlos al análisis de suelo
  $('#multiple_files').change(function(){
   var error_images = '';
   var form_data = new FormData();
@@ -50,6 +57,7 @@ $(document).ready(function(){
   }
   if(error_images == '')
   {
+    //:inicio:  estructura ajax
    $.ajax({
     url:"../../control/analisis_suelo/subir_archivos_ana_suelo.php",
     method:"POST",
@@ -66,6 +74,7 @@ $(document).ready(function(){
      load_image_data();
     }
    });
+    //:fin:  estructura ajax
   }
   else
   {
@@ -74,6 +83,10 @@ $(document).ready(function(){
    return false;
   }
  });  
+    
+//:fin:    
+   
+ //:inicio:    esta función permite editar un archivo relacionado al análisis de suelos, a través de su identificado unico
  $(document).on('click', '.edit', function(){
   var id_archivo = $(this).attr("id");
   $.ajax({
@@ -90,6 +103,10 @@ $(document).ready(function(){
    }
   });
  }); 
+    //:fin:
+    
+    
+    //:inicio:esta función permite eliminar un archivo relacionado al análisis de suelo, de acuerdo a su identificador 
  $(document).on('click', '.delete_file', function(){
   var id_archivo = $(this).attr("id");
   var nombre_archivo = $(this).data("nombre_archivo");
@@ -107,6 +124,9 @@ $(document).ready(function(){
    });
   }
  }); 
+//:fin:    
+    
+    //:inicio: esta función permite editar un archivo relacionado con el análisis de suelo de acuerdo a su identificador
  $('#form_edita_archivo').on('submit', function(event){
   event.preventDefault();
   if($('#nombre_archivo').val() == '')
@@ -128,4 +148,5 @@ $(document).ready(function(){
    });
   }
  }); 
+    //:fin:
 });

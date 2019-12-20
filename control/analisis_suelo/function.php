@@ -1,6 +1,6 @@
  <?php
 
- 
+ //esta funcion permite traerme todos los analisis de suelos ejecutandose desde, listar_todos_anasuelos.php
 
 function get_total_all_records()
 {

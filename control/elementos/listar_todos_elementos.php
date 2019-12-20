@@ -1,4 +1,7 @@
   <?php
+
+//PERMITE LISTAR TODOS LOS ELEMENTOS DEL SUELO
+
 include('../../db/dbconnect_pdo.php');
 include('function.php');
 $query = '';

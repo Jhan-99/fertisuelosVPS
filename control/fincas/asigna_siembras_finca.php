@@ -1,5 +1,5 @@
  <?php  
- //insert.php  
+ //RELACIONA LA SIEMBRA CON LA FINCA
 include('../../db/dbconnect.php');
 if(isset($_POST["finca_val"],$_POST["val_siembra"]))      
  {       

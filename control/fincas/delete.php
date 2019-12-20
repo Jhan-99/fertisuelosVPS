@@ -1,4 +1,5 @@
 <?php
+//ELIMINA UNA FINCA
 include('../../db/dbconnect_pdo.php');
 include("function.php");
 

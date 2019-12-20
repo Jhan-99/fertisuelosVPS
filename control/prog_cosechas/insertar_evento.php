@@ -1,7 +1,7 @@
 
 <?php
 
-//insert.php
+//Este archivo me permite insertar un evento para la programación de cosechas
 
 include('../../db/dbconnect_pdo.php');
 

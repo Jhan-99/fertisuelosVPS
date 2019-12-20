@@ -1,5 +1,5 @@
  <?php  
- //load_data.php  
+ //Este archivo permite cargar los detalles de los fertilizantes
  include('../../db/dbconnect.php');                 
  $output = '';  
  if(isset($_POST["id_fer"]))  

@@ -1,6 +1,6 @@
 <?php
  
-
+//ESTA FUNCION PERMITE OBTENER EL NOMBRE DE LOS ARCHIVOS RELACIONADOS CON LA FINCA Y DESPUÉS OBTENER TODAS LAS FINCAS PARA LISTARLAS EN LA VISTA
 function get_file_name($id_archivo)
 {
 	include('../../db/dbconnect_pdo.php');

@@ -1,5 +1,6 @@
 <?php  
-    include('../../db/dbconnect.php');                                                                
+//permite seleccionar todos los datos de la matriz de nitrógeno
+include('../../db/dbconnect.php'); //-> incluir la conexión                                   
 if(isset($_POST["no_zona"]))  
  { 
  $output = '';

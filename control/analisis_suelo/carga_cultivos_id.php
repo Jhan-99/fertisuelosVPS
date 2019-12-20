@@ -1,9 +1,10 @@
  <?php  
- //load_data.php  
+ //Permite cargar los cultivos por el id, para luego ser asginados al análisis de suelo que se esté realizando
  include('../../db/dbconnect.php');                 
  $output = '';  
- if(isset($_POST["id_cultivo"]))  
+ if(isset($_POST["id_cultivo"]))  //-> se refiere al id del cultivo
  {  
+     //:inicio: realiza la consulta a la base de datos para obtener el cultivo
       if($_POST["id_cultivo"] != '')  
       {  
            $sql = "SELECT * FROM cultivos WHERE id_cultivo = '".$_POST["id_cultivo"]."'";  
@@ -12,7 +13,9 @@
       {  
            $sql = "SELECT * FROM cultivos";  
       }  
+     //:fin:
       $result = mysqli_query($conexion, $sql);  
+     //:inicio: operador while que nos muetra de manera explicita la información del cultivo como la variedad, el nombre y la descripción de este
       while($row = mysqli_fetch_array($result))  
       {  
            $output .= '<input type="hidden" name="id_cultivo" id="id_cultivo" value="'.$row["id_cultivo"].'">';  
@@ -27,7 +30,12 @@
             <label for="Descripcion_cultivo" class="active">Descripcion Cultivo</label>
             </div>';
 
-      }  
+      }
+     //:fin:
+     
+     //:renderizar los datos a la plantilla:
       echo $output;  
+     //:
  }  
+
  ?>  

@@ -41,7 +41,8 @@
    $( "#inter_ph" ).text( "Val" ).addClass('green-text');
     }
 })  .keyup(); 
-            
+      
+    // este coódigo determina la estimación de la conductividad electrica        
     $("#val_ce").keyup(function(){
             var val_ce = parseFloat($(this ).val());    
             this.value = (this.value + '').replace(/[^0-9.]/g, '');    
@@ -64,8 +65,9 @@
            $( "#inter_ce" ).text( "Val" ).addClass('orange-text');
             }
     })  .keyup();    
-            
-          $("#val_cice").keyup(function(){
+    
+    //este código determina la apreciación de la capacidad de intercambio cationico efectivo CICE
+    $("#val_cice").keyup(function(){
         var val_ce = parseFloat($(this ).val());    
         this.value = (this.value + '').replace(/[^0-9.]/g, '');    
         if (val_ce<5)
@@ -88,6 +90,7 @@
         }
     })  .keyup();         
             
+    //este código determina la apreciación de la salinidad         
         $("#val_salinidad").keyup(function(){
         var val_sal = parseFloat($(this ).val());    
         this.value = (this.value + '').replace(/[^0-9.]/g, '');    
@@ -112,11 +115,12 @@
     })  .keyup(); 
    
             
-            
-                 var ph = $('#val_ph').val();  
-                  var ce = $('#val_ce').val();  
-                  var cice = $('#val_cice').val();
-                  var salinidad = $('#val_salinidad').val();
+      
+        //envía las variables de suelo al grafico conla librería chartJs    
+        var ph = $('#val_ph').val();  
+        var ce = $('#val_ce').val();  
+        var cice = $('#val_cice').val();
+        var salinidad = $('#val_salinidad').val();
             
             new Chart(document.getElementById("v-suelos"), {
               type: 'line',
@@ -139,7 +143,7 @@
             });   
            
             
-        //cuando le de click gráfico que se actualice    
+    //cuando le de click gráfico que se actualice    
     $(document).on('click', '#actu_gra', function(){   
                   var ph = $('#val_ph').val();  
                   var ce = $('#val_ce').val();  
@@ -471,6 +475,7 @@
       }
     }
 }); 
+            
     $(document).on('click', '#graf_elements', function(){
 		 var nitrogeno = $('#NITROGENO').val();  
          var fosforo = $('#FOSFORO').val();  

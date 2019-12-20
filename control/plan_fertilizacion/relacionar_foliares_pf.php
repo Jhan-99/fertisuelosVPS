@@ -1,5 +1,5 @@
  <?php  
- //insert.php  
+ //PERMITE RELACIONAR ANALISIS FOLIARES AL PLAN DE FERTILIZACION
 include('../../db/dbconnect.php');
 if(isset($_POST["cod_pf"], $_POST["id_anafoliar"]))      
  {  

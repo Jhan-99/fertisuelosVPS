@@ -1,4 +1,5 @@
 <?php  
+//Permite insertar datps a la matriz de nitrogeno
       include('../../db/dbconnect.php');                                                                
 $sql = "INSERT INTO matriz_datos_nitrogeno(
 Fecha, coordenada_x,

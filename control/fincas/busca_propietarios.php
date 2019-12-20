@@ -1,4 +1,5 @@
- <?php  
+ <?php 
+    // BUSCA LOS PROPIETARIOS REGISTRADOS EN LA BASE DE DATOS PARA RELACIONARLOS A LA FINCA
  include('../../db/dbconnect.php');                 
  if(isset($_POST["query"]))  
  {  

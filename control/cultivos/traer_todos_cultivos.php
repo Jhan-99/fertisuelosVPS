@@ -1,4 +1,5 @@
 <?php
+//PERMITE TRAER TODOS LOS CULTIVOS A TRAVÉS DEL ARCHIVO /function.php
 include('../../db/dbconnect_pdo.php');
 include('function.php');
 $query = '';

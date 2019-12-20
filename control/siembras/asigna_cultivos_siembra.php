@@ -1,5 +1,5 @@
  <?php  
- //insert.php  
+ // PERMITE ASIGNAR CULTIVOS A LAS SIEMBRAS 
 include('../../db/dbconnect.php');
 if(isset($_POST["val_cultivo"],$_POST["val_siembra"]))      
  {  

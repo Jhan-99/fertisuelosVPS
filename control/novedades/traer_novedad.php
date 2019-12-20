@@ -1,9 +1,12 @@
    <?php
-include('../../db/dbconnect_pdo.php');
-include('function.php');
+//Este archivo me permite traer o consultar una novedad de manera individual de acuerdo a su identificador
+
+include('../../db/dbconnect_pdo.php'); //->Incluir la conexión
+include('function.php');//->Incluir la función que consulta los datos
 if(isset($_POST["id_novedad"]))
 {
  $output = array();
+//prepara una nueva declaración para consultar las novedades    
  $statement = $connection->prepare(
   "SELECT * FROM novedades 
   WHERE id = '".$_POST["id_novedad"]."' 
@@ -11,6 +14,7 @@ if(isset($_POST["id_novedad"]))
  );
  $statement->execute();
  $result = $statement->fetchAll();
+ //devuelve la información de la novedad en un array de tipo jason
  foreach($result as $row)
  {
   $output["tipnov_nov"] = $row["tipnov_nov"];

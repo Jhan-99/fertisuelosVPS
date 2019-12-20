@@ -1,6 +1,6 @@
  <?php
 
- 
+ // PERMITE TRAER TODOS LOS ELEMENTOS DEL SUELO 
 
 function get_total_all_records()
 {

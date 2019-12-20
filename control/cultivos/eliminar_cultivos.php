@@ -1,5 +1,5 @@
 <?php
-
+//PERMITE ELIMINAR LOS CULTIVOS
  include('../../db/dbconnect_pdo.php');
 include("function.php");
 

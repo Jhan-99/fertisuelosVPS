@@ -1,9 +1,12 @@
   <?php
-include('../../db/dbconnect_pdo.php');
-include('function.php');
+//Permite listar todos los análisis de suelos
+include('../../db/dbconnect_pdo.php'); //inlcuir la conexión a la base de datos
+include('function.php'); //incluir la función que obtiene la información de los análisis de suelos
 $query = '';
 $output = array();
 $query .= "SELECT * FROM cabecera_suelo ";
+
+//:inicio: permite realizar consultas a los anális de suelo conlos siguientes parametros:
 if(isset($_POST["search"]["value"]))
 {
  $query .= 'WHERE Nombre_programa LIKE "%'.$_POST["search"]["value"].'%" ';
@@ -12,6 +15,9 @@ if(isset($_POST["search"]["value"]))
  $query .= 'OR Fecha_muestreo LIKE "%'.$_POST["search"]["value"].'%" ';
  $query .= 'OR Fecha_recepcion LIKE "%'.$_POST["search"]["value"].'%" ';
 }
+//:fin:
+
+//:inicio: permite el ordenamiento de columnas en la tabla
 if(isset($_POST["order"]))
 {
  $query .= 'ORDER BY '.$_POST['order']['0']['column'].' '.$_POST['order']['0']['dir'].' ';
@@ -20,10 +26,13 @@ else
 {
  $query .= 'ORDER BY id_cabecera DESC ';
 }
+//:fin:
+
 if($_POST["length"] != -1)
 {
  $query .= 'LIMIT ' . $_POST['start'] . ', ' . $_POST['length'];
 }
+//:inicio: reliza la consulta y me devuelve los datos en un array
 $statement = $connection->prepare($query);
 $statement->execute();
 $result = $statement->fetchAll();
@@ -58,4 +67,5 @@ $output = array(
  "data"    => $data
 );
 echo json_encode($output);
+//:fin:
 ?>

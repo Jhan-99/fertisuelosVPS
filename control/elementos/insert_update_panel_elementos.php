@@ -1,6 +1,8 @@
       <?php
+    //PERMITE INSERTAR O ACTUALIZAR LOS ELEMENTOS DEL SUELO SEGUN EL VALOR DE $_POST["operacion"] == "Agregar Editar"
+
     include('db.php');
-include('../../db/dbconnect_pdo.php');
+    include('../../db/dbconnect_pdo.php');
     if(isset($_POST["operacion"]))
     {
      if($_POST["operacion"] == "Agregar")

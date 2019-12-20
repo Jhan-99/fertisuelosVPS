@@ -1,5 +1,5 @@
   <?php
- 
+//Este archivo permite listar todos los fertilizantes 
  if(isset($_POST["listar"]))  
  {  
       $output = '';   

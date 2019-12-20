@@ -1,12 +1,14 @@
-        // Grafico de Barras para los elementos
+            // Permite realizar la interpretación en gráficos de los elementos y las variables del suelo
                $(document).ready(function(){
+                   //esta función captura los datos del formulario de las variables más significativas del suelo y las nterpreta en un gráfico con ayuda de la librería de chartJs
                   $(document).on('click', '#grafic', function(){          
+                //:inicio:      variables del suelo
                   var ph = $('#ph').val();  var ph_est = $("#inter_ph").text(); $("#ph_est").text(ph_est);   
                   var ce = $('#ce').val();  var ce_est = $("#inter_ce").text(); $("#ce_est").text(ce_est);
                   var cice = $('#cice').val(); var cice_est = $("#inter_cice").text(); $("#cice_est").text(cice_est); 
                   var salinidad = $('#salinidad').val(); var sal_est = $("#inter_sal").text(); $("#sal_est").text(sal_est); 
                   var nitro = $('#nitro').val(); var n_est = $("#inter_nitrogeno").text(); $("#n_est").text(n_est);   
- 
+                //:fin:
                       
         new Chart(document.getElementById("variables-graf"), {
           type: 'line',
@@ -27,7 +29,8 @@
             }
           }
         });             
-                  
+            
+        //:inicio:elementos del suelo  con su respectiva estimación              
          var fosforo = $('#fosforo').val();  
          var est_p = $("#inter_fosforo").text(); $("#est_p").html("[ P ]"+" " + "  "+ est_p); 
          var calcio = $('#calcio').val();  
@@ -50,7 +53,9 @@
          var est_zn = $("#inter_zinc").text(); $("#est_zn").text("[ Zn ]"+" "+ est_zn); 
          var hierro = $('#hierro').val();                                
          var est_fe = $("#inter_hierro").text(); $("#est_fe").text("[ Fe ]"+" "+ est_fe); 
- 
+        //:fin:
+            
+    //:inicio: interpretación de los elementos del suelo
     new Chart(document.getElementById("elements_chart"), {
     type: 'bar',
     data: {
@@ -71,7 +76,7 @@
       }
     }
 });
-                      
+     //:fin: interpretación de los elementos del suelo                 
  
              });
 

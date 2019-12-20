@@ -1,5 +1,6 @@
  <?php  
- //insert.php  
+ //PERMITE EDITAR LOS ELEMENTOS DEL SUELO
+
 include('../../db/dbconnect.php');
 if(isset($_POST["nitrogeno"]))  
  {  

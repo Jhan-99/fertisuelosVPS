@@ -1,5 +1,5 @@
  <?php  
-// con este código llamamos los datos básicos del análisis foliar
+// con este código llamamos los datos básicos del análisis de suelo relacionados a la siembra
  if(isset($_POST["cabecera_foliar_datos"]))  
  {  
       $output = '';  
@@ -344,10 +344,10 @@ if(isset($_POST["cabecera_suelo"]))
 //con este código cargo los datos de las variables del suelo
 if(isset($_POST["cabecera_suelo_varsuelo"]))  
  {  
+    
       $output = '';  
       include('../../db/dbconnect.php');                                  
-      $query = "SELECT a.Textura,a.val_textura,densidad,tipo_clima,C_O_M_O_valor, a.Ph, a.C_E,C_I_C_E FROM analisis_suelos a
-                LEFT JOIN cabecera_suelo c  ON  a.cabecera_id = c.id_cabecera WHERE c.id_cabecera= '".$_POST["cabecera_suelo_varsuelo"]."'"; 
+      $query = "SELECT a.Textura, a.val_textura, densidad, tipo_clima, C_O_M_O_valor, a.Ph, a.C_E, C_I_C_E FROM analisis_suelos a LEFT JOIN cabecera_suelo c  ON  a.cabecera_id = c.id_cabecera WHERE c.id_cabecera= '".$_POST["cabecera_suelo_varsuelo"]."'"; 
       
     $result = mysqli_query($conexion, $query);  
 	$fila = mysqli_num_rows($result);
@@ -389,8 +389,6 @@ if(isset($_POST["cabecera_suelo_varsuelo"]))
 	  	<input disabled readonly  id="co_o_mo" name="co_o_mo" type="text"  value="'.$row["C_O_M_O_valor"].'">
 		</div>	
 	  </div>
-	  
-	  
 	  ';        
       } 
       echo $output;  

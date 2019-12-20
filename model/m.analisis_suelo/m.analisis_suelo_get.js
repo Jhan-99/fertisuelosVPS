@@ -1,4 +1,6 @@
- $(document).ready(function(){
+//este archivo me trae todos los análisis de suelos y sus interpretaciones en el panel de administración de análisis de suelos  el cual se encuentra en app/analisis-suelo/v.analisis_suelo_get.php
+$(document).ready(function(){
+     
      $('#add_button').click(function(){
       $('.modal-title').text("Agregar elemento");
       $('#accion').val("Agregar");
@@ -6,6 +8,7 @@
 
      });
 
+    //:inicio: esta función permite traer todos los análisis de suelos para poder ser administrados, cambiar información respecto a las variables de suelo, elementos y más
      var dataTable = $('#datos_anasuelos').DataTable({
       "processing":true,
       "serverSide":true,
@@ -22,7 +25,9 @@
       ],
 
      });
-
+    //:fin:
+    
+    //:inicio: no
      $(document).on('submit', '#form_elementos', function(event){
       event.preventDefault();
       var Nombre_programa = $('#Nombre_programa').val();
@@ -58,7 +63,9 @@
        alert("Por favor complete todos los campos");
       }
      });
-
+    //:fin: no
+    
+    //:inicio: esta función permite traer de manera individual los análisis de suelos de acuerdo a su identificador
      $(document).on('click', '.update', function(){
       var id_cabecera = $(this).attr("id");
       $.ajax({
@@ -85,7 +92,9 @@
        }
       })
      });
-
+    //:fin:
+    
+    //:inicio: esta función permite eliminar un análisis de suelo de acuerdo a su identificador
      $(document).on('click', '.delete', function(){
       var id_cabecera = $(this).attr("id");
       if(confirm("Seguro de eliminar este analisis?"))
@@ -106,13 +115,10 @@
        return false; 
       }
      });
+     //:fin:
 
-//carga el municipio al text input
-
-     
-     
-        //
-        $(document).on('click', '.ver_vars_ana', function(){  
+    //:inicio: este código permite ver las variables de suelo relacionadas a una análisis de suelo
+    $(document).on('click', '.ver_vars_ana', function(){  
            var val_cabecera = $(this).attr("id");  
            if(val_cabecera != '')  
            {  
@@ -130,9 +136,10 @@
 
             
       });           
-             
-        //ESTE CÓDIGO ME PERMITE CARGAR LOS ELEMENTOS Y EDITARLOS
-       $(document).on('click', '.carga_elementos', function(){  
+    //:fin:             
+    
+    //:INICIO:ESTE CÓDIGO ME PERMITE CARGAR LOS ELEMENTOS Y EDITARLOS
+     $(document).on('click', '.carga_elementos', function(){  
            var dato = $(this).attr("id");
         function fetch_data_val() { 
             $.ajax({  
@@ -150,6 +157,9 @@
          fetch_data_val();  
    
     });
+    //:FIN:
+    
+    //:inicio: Esta función permite cargar los elementos del suelo relcionados al análisis de suelo haciendo click sobre  el collapsible 
     function fetch_data()  
     {  
         var dato = $(".carga_elementos").attr("id");
@@ -164,9 +174,15 @@
                                 );  
             }  
         });  
-    }  
-    fetch_data();  
+    }
+    //:fin:
+    
+    
+    fetch_data();   //-> ejecuta la función que me consulta los elementos del suelo
+    
+    //:inicio: esta función permite agregar un nuevo elemento al análisis de suelo en el caso de que falte
     $(document).on('click', '#btn_add', function(){  
+
         var valor_resultado = $('#valor_resultado').text();  
         var nombre_elemento = $('#nombre_elemento').text();  
         var interpretacion = $('#interpretacion').text();  
@@ -190,7 +206,9 @@
             }  
         })  
     });  
+    //:fin:
     
+    //:inicio: esta función permite editar los elementos de suelo recogidos en el análisis de suelo 
 	function edit_data(id, text, column_name)  
     {  
         $.ajax({  
@@ -204,6 +222,9 @@
             }  
         });  
     }  
+    //:fin:
+    
+    //:inicio: estas funciones permiten detectar un cambio en el DOM de html para editar los datos de los elementos sin necesidad de que haya un botón para hacerlo
     $(document).on('blur', '.valor_resultado', function(){  
         var id = $(this).data("id1");  
         var valor_resultado = $(this).text();  
@@ -213,8 +234,7 @@
         var id = $(this).data("id2");  
         var nombre_elemento = $(this).text();  
         edit_data(id,nombre_elemento, "nombre_elemento");  
-    });     
- 
+    });    
     $(document).on('blur', '.interpretacion', function(){  
         var id = $(this).data("id4");  
         var interpretacion = $(this).text();  
@@ -225,6 +245,9 @@
         var metodo_extraccion = $(this).text();  
         edit_data(id,metodo_extraccion, "metodo_extraccion");  
     });  
+    //:fin:
+    
+    //:inicio: esta funcion permite eliminar un elemento del suelo relaciondo a un análisis de suelo
     $(document).on('click', '.btn_delete', function(){  
         var id=$(this).data("id3");  
         if(confirm("Estás seguro de eliminar este elemento?"))  
@@ -241,7 +264,7 @@
             });  
         }  
     });  
-        //ESTE CÓDIGO ME PERMITE CARGAR LOS ELEMENTOS Y EDITARLOS FIN
+    //:fin:
         
   
    
@@ -250,7 +273,7 @@
  
 
      
-     //EL CÓDIGO SIGUIENTE ME PERMITE EDITAR LAS VARIBLES DE LOS ELEMENTOS DEL ANÁLISIS DEL SUELO \\
+     //:INICIO:EL CÓDIGO SIGUIENTE ME PERMITE EDITAR LAS VARIBLES DE LOS ELEMENTOS DEL ANÁLISIS DEL SUELO \\
              //EDITA LAS VARIBLES MÁS SIGNIFICATIVAS DEL SUELO
         $(document).on('click', '.e_vars_suelo', function(){  
               var id_vars_ana = $('#id_vars_ana').val(); // Recoger el ID de las varibles
@@ -294,11 +317,11 @@
                     });  
                }           
       }); 
-     
+     //:FIN:
       
      
      
-                  //este código me permite cargar el id del analisis, además desde aquí se ejecutarán todas las funciones
+    //este código me permite cargar el id del analisis, además desde aquí se ejecutarán todas las funciones
              //que subirán multiples archivos para los análisis de los suelos
              $(document).on('click', '.subir_archivo', function(){  
              $('#ana_suelo_archivos').modal('open');  

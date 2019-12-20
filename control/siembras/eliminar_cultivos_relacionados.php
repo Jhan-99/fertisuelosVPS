@@ -1,4 +1,5 @@
  <?php  
+ // PERMITE ELIMINAR CULTIVOS RELACIONADOS A LAS SIEMBRAS
 
 include('../../db/dbconnect_pdo.php');
  if(isset($_POST["val_c"],$_POST["id_siembra_rel"]))  

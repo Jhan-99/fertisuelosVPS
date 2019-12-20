@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    //:inicio:esta función prepara el formulario para insertar una nueva novedad
      $('#add_button').click(function(){
       $('#form_Novedades')[0].reset();
       $('.modal-title').text("Agregar novedades");
@@ -6,7 +7,9 @@ $(document).ready(function(){
       $('#operacion').val("Agregar");
 
      });
+    //:fin:
 
+    //:inicio: esta novedad permite cargar todas las novedades 
      var dataTable = $('#datos_novedades').DataTable({
       "processing":true,
       "serverSide":true,
@@ -15,6 +18,28 @@ $(document).ready(function(){
        url:"../../control/novedades/listar_todas_novedades.php",
        type:"POST"
       },
+                 dom: 'Bfrtip',
+        buttons: [
+            {
+                extend: 'copyHtml5',
+                exportOptions: {
+                    columns: [ 0, ':visible' ]
+                }
+            },
+            {
+                extend: 'excelHtml5',
+                exportOptions: {
+                    columns: ':visible'
+                }
+            },
+            {
+                extend: 'pdfHtml5',
+                exportOptions: {
+                    columns: [ 0, 1, 2, 5 ]
+                }
+            },
+            'colvis'
+        ],
       "columnDefs":[
        {
         "targets":[0, 2, 3],
@@ -23,7 +48,9 @@ $(document).ready(function(){
       ],
 
      });
+    //:fin:
 
+    //:inicio:esta función me permite insertar una nueva novedad en la base de datos
      $(document).on('submit', '#form_Novedades', function(event){
       event.preventDefault();
       var siembra_id = $('#siembra_id').val();
@@ -61,7 +88,9 @@ $(document).ready(function(){
        alert("Todos los campos son obligatorios");
       }
      });
-
+    //:fin:
+    
+    //:inicio: esta función permite actualizar una novedad de acuerdo a su id
      $(document).on('click', '.update', function(){
       var id_novedad = $(this).attr("id");
       $.ajax({
@@ -91,7 +120,9 @@ $(document).ready(function(){
        }
       })
      });
+    //:fin:
 
+    //:inicio: esta función permite eliminar una novedad de acuerdo a su id
      $(document).on('click', '.delete', function(){
       var id_novedad = $(this).attr("id");
       if(confirm("Seguro de eliminar esta novedad?"))
@@ -114,6 +145,7 @@ $(document).ready(function(){
      });
 
  
+    //:inicio: esta función permite ver el detalle de las  novedades de acuerdo a su id
     $(document).on('click', '.ver_novedad', function(){  
             var id_novedad = $(this).attr("id");  
            if(id_novedad != '')  
@@ -129,7 +161,7 @@ $(document).ready(function(){
                 });  
            }            
       });                
-   
+   //:fin:
   
  
  

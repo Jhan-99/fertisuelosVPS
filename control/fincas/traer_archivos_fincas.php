@@ -1,4 +1,5 @@
  <?php  
+    //PERMITE  TRAER LOS ARCHIVOS DE LA FINCA PARA GESTIORNALOS,CAMBIARLOS ETC
  if(isset($_POST["val_fincaf"]))  
  {  
       $output = '';  

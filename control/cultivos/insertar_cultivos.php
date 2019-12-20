@@ -1,4 +1,5 @@
 <?php
+//PERMITE INSERTAR O ACTUALIZAR LOS CULTIVOS
  include('../../db/dbconnect_pdo.php');
 include('function.php');
 if(isset($_POST["operacion"]))

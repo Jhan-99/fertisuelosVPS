@@ -1,14 +1,13 @@
  <?php  
+//Este archivo me permite obtener los detalles de la novedad de acuerdo a su identificador 
  if(isset($_POST["id_novedad"]))  
  {  
       $output = '';  
       include('../../db/dbconnect.php');                                  
- 
-     
-           $query = "SELECT * FROM novedades u
-                LEFT JOIN siembras t  ON  u.siembra_id = t.id_siembra WHERE u.id = '".$_POST["id_novedad"]."'"; 
+      $query = "SELECT * FROM novedades u LEFT JOIN siembras t  ON  u.siembra_id = t.id_siembra WHERE u.id = '".$_POST["id_novedad"]."'"; 
       
       $result = mysqli_query($conexion, $query);  
+     //ciclo que muestra la información de la novedad en la vista del usuario
       while($row = mysqli_fetch_array($result))  
       { 
          $output .= ' 

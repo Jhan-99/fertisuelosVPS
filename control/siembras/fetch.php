@@ -1,4 +1,6 @@
 <?php
+//PERMITE TRAER TODAS LAS SIEMBRAS
+
 include('../../db/dbconnect_pdo.php');
 include('function.php');
 $query = '';

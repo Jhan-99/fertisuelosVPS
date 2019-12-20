@@ -1,4 +1,6 @@
  <?php  
+ //permite traer los análisis relacionados a la siembra 
+
  if(isset($_POST["id_foliar"]))  
  {  
       $output = '';  

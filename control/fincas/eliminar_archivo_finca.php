@@ -1,4 +1,5 @@
 <?php
+//ELIMINA LOS ARCHIVOS QUE SE LE HAN SUBIDO A LA FINCA
 include('../../db/dbconnect_pdo.php');
 include("function.php");
 if(isset($_POST["id_archivo"]))

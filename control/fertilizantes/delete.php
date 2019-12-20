@@ -1,5 +1,5 @@
 <?php
-//eliminar.php
+//PERMITE ELIMINAR LOS FERTILIZANTES
 include('../../db/dbconnect_pdo.php');
 include("function.php");
 

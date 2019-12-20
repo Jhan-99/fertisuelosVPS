@@ -1,5 +1,6 @@
       <?php
-include('../../db/dbconnect_pdo.php');
+    // PERMITE INSERTAR O ACTUALIZAR AS SIEMBRAS SEGÚN EL VALOR DE $_POST["operacion"] == "Agregar Editar"
+    include('../../db/dbconnect_pdo.php');
     include('function.php');
     if(isset($_POST["operacion"]))
     {

@@ -1,4 +1,5 @@
    <?php
+//PERMITE SELECCIONAR UNA FINCA POR ID PARA PODER MODIFICARLA A TRAVÉS DEL ARCHIVO insert_update_panel_fincas
 include('../../db/dbconnect_pdo.php');
 include('function.php');
 if(isset($_POST["id_finca"]))

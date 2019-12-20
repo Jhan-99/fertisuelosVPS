@@ -1,16 +1,18 @@
       <?php
+    //INSERTA LAS FINCAS SI EL VALOR ES "if($_POST["operacion"] == "Agregar")" O EDITA LAS FINCAS SI EL VALOR ES "if($_POST["operacion"] == "Editar")"
     include('../../db/dbconnect_pdo.php');
     include('function.php');
     if(isset($_POST["operacion"]))
     {
      if($_POST["operacion"] == "Agregar")
      {
-
+         
       $statement = $connection->prepare("
        INSERT INTO fincas (Nombre_finca, Descripcion_finca, Departamento_finca,Municipio_finca,Vereda_finca,Latitud_finca,Longitud_finca,Viacc_finca,Int_familia_finca,Jovenes_1518,
        Propietario) 
        VALUES (:Nombre_finca, :Descripcion_finca, :Departamento_finca, :Municipio_finca, :Vereda_finca, :Latitud_finca, :Longitud_finca, :Viacc_finca, :Int_familia_finca, :Jovenes_1518, :Propietario)
       ");
+         
       $result = $statement->execute(
        array(
         ':Nombre_finca' => $_POST["Nombre_finca"],
@@ -23,7 +25,7 @@
         ':Viacc_finca' => $_POST["Viacc_finca"],
         ':Int_familia_finca' => $_POST["Int_familia_finca"],
         ':Jovenes_1518' => $_POST["Jovenes_1518"],
-        ':Propietario' => $_POST["Propietario"],
+        ':Propietario' => $_POST["Propietario"]
        )
       );
       if(!empty($result))

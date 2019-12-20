@@ -1,6 +1,6 @@
  <?php  
- //load_data.php  
- include('../../db/dbconnect.php');                 
+ //Cargar los detalles de las siembras
+ include('../../db/dbconnect.php');   //incluir la conexión              
  $output = '';  
  if(isset($_POST["id_siembra"]))  
  {  

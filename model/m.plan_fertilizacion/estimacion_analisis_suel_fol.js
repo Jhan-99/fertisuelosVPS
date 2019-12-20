@@ -1,4 +1,4 @@
-
+//este archivo permite cargar la estimacion de los elementos del suelo al seleccionar un analisis de suelo
 $(document).ready(function(){
 	var S_NITROGENO = $("#S_NITROGENO").val();
 	$("#nitro").val(S_NITROGENO);

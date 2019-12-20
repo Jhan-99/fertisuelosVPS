@@ -1,4 +1,5 @@
     $(document).ready(function(){
+    //:INICIO: ESTA FUNCION PERMITE PREPARAR EL FORMUARIO PARA INSERTAR UN NUEVO FERTILIZANTE    
      $('#add_button').click(function(){
       $('#form_elementos')[0].reset();
       $('.modal-title').text("Agregar Fertilizante");
@@ -6,7 +7,9 @@
       $('#operacion').val("Agregar");
 
      });
-
+    //:FIN:
+        
+    //:INICIO: PERMITE TRAER TODOS LOS FERTILIZANTES 
      var dataTable = $('#datos_fertilizantes').DataTable({
       "processing":true,
       "serverSide":true,
@@ -23,7 +26,9 @@
       ],
 
      });
-
+    //:FIN:
+        
+    //:INICIO: ESTA FUNCION PERMITE INSERTAR LOS FERTILIZANTES EN LA BASE DE DATOS
      $(document).on('submit', '#form_elementos', function(event){
       event.preventDefault();
       var Nombre_fertilizante = $('#Nombre_fertilizante').val();
@@ -57,12 +62,16 @@
        alert("Todos los campos son obligatorios");
       }
      });
-        //validar el campo para que solo agregue números
-          $( "#Valor_fertilizante" ).keyup(function() {
+    //:FIN:    
+        
+    //:inicio: validar el campo para que solo agregue números para el costos del fertilizante
+      $( "#Valor_fertilizante" ).keyup(function() {
             this.value = (this.value + '').replace(/[^0-9.]/g, '');    
           })
           .keyup();
+    //:fin:    
         
+    //:INICIO:  ESTA FUNCION PERMITE ACTUALIZAR LOS FERTILIZANTES
      $(document).on('click', '.update', function(){
       var id_fertilizante = $(this).attr("id");
       $.ajax({
@@ -88,7 +97,9 @@
        }
       })
      });
-
+    //:FIN:
+        
+     // :INICIO: ESTA FUNCION PERMITE ELIMINAR ELIMINAR LOS FERTILIZANTES
      $(document).on('click', '.delete', function(){
       var id_fertilizante = $(this).attr("id");
       if(confirm("Seguro de eliminar este analisis?"))
@@ -109,7 +120,7 @@
        return false; 
       }
      });
-
+    //:FIN:    
 
     });
                  

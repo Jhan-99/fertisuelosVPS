@@ -1,5 +1,25 @@
-<?php //include('fetch-head.php'); ?>
-<?php include('../fetchs.php'); ?>
+<?php //include('fetch-head.php'); 
+session_start();
+include("../../db/dbconnect.php"); 
+            
+             if(!isset($_SESSION["user_name"]))  
+             {   
+              $_SESSION["user_name"] = 'Invitado';
+              $query_user = "SELECT * FROM user_details WHERE user_name = '".$_SESSION["user_name"]."'";  
+              $result_user = mysqli_query($conexion, $query_user);
+             }else{
+                  $query_user = "SELECT * FROM user_details WHERE user_name = '".$_SESSION["user_name"]."'";  
+                  $result_user = mysqli_query($conexion, $query_user);  
+             }
+            $estado = "";
+            
+               if($_SESSION["user_name"] == 'Invitado') {
+                   $estado = "Iniciar";    
+               }else{
+                    $estado = "Salir";    
+               }
+
+include('../fetchs.php'); ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -37,102 +57,7 @@
     <!-- End Page Loading -->
     <!-- //////////////////////////////////////////////////////////////////////////// -->
     <!-- START HEADER -->
-    <header id="header" class="page-topbar">
-      <!-- start header nav-->
-      <div class="navbar-fixed">
-        <nav class="navbar-color light-green">
-          <div class="nav-wrapper">
-            <ul class="left">
-              <li>
-                <h1 class="logo-wrapper">
-                  <a href="../../index.php" class="brand-logo darken-1">
-                    <img src="../../images/logo/materialize-logo.png" alt="materialize logo">
-                    <span class="logo-text hide-on-med-and-down">Fertisuelos</span>
-                  </a>
-                </h1>
-              </li>
-            </ul>
-            <div class="header-search-wrapper hide-on-med-and-down">
-              <i class="material-icons">search</i>
-              <input type="text" name="Search" class="header-search-input z-depth-2" placeholder="Explora fertisuelos" />
-            </div>
-            <ul class="right hide-on-med-and-down">
-              <li>
-                <a href="javascript:void(0);" class="waves-effect waves-block waves-light translation-button" data-activates="translation-dropdown">
-                  <span class="flag-icon flag-icon-gb"></span>
-                </a>
-              </li>
-              <li>
-                <a href="javascript:void(0);" class="waves-effect waves-block waves-light toggle-fullscreen">
-                  <i class="material-icons">settings_overscan</i>
-                </a>
-              </li>
-              <li>
-                <a href="javascript:void(0);" class="waves-effect waves-block waves-light notification-button" data-activates="notifications-dropdown">
-                  <i class="material-icons">notifications_none
-                    <small class="notification-badge pink accent-2">5</small>
-                  </i>
-                </a>
-              </li>
-              <li>
-                <a href="javascript:void(0);" class="waves-effect waves-block waves-light profile-button" data-activates="profile-dropdown">
-                  <span class="avatar-status avatar-online">
-                    <img src="../../images/avatar/avatar-7.png" alt="avatar">
-                    <i></i>
-                  </span>
-                </a>
-              </li>
-              <li>
-                <a href="#" data-activates="chat-out" class="waves-effect waves-block waves-light chat-collapse">
-                  <i class="material-icons">format_indent_increase</i>
-                </a>
-              </li>
-            </ul>
-    
-            <!-- notifications-dropdown -->
-            <ul id="notifications-dropdown" class="dropdown-content">
-              <li>
-                <h6>NOTIFICACIONES
-                  <span class="new badge">5</span>
-                </h6>
-              </li>
-              <li class="divider"></li>
-              <li>
-                <a href="#!" class="grey-text text-darken-2">
-                  <span class="material-icons icon-bg-circle cyan small">add_shopping_cart</span> A new order has been placed!</a>
-                <time class="media-meta" datetime="2015-06-12T20:50:48+08:00">2 hours ago</time>
-              </li>
-     
-            </ul>
-            <!-- profile-dropdown -->
-            <ul id="profile-dropdown" class="dropdown-content">
-              <li>
-                <a href="#" class="grey-text text-darken-1">
-                  <i class="material-icons">face</i> Profile</a>
-              </li>
-              <li>
-                <a href="#" class="grey-text text-darken-1">
-                  <i class="material-icons">settings</i> Settings</a>
-              </li>
-              <li>
-                <a href="#" class="grey-text text-darken-1">
-                  <i class="material-icons">live_help</i> Help</a>
-              </li>
-              <li class="divider"></li>
-              <li>
-                <a href="#" class="grey-text text-darken-1">
-                  <i class="material-icons">lock_outline</i> Lock</a>
-              </li>
-              <li>
-                <a href="#" class="grey-text text-darken-1">
-                  <i class="material-icons">keyboard_tab</i> Logout</a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </div>
-      <!-- end header nav-->
-    </header>
+    <?php include("../top-bar-sub.php");?>
     <!-- END HEADER -->
     <!-- //////////////////////////////////////////////////////////////////////////// -->
     <!-- START MAIN -->
@@ -176,9 +101,13 @@
                   <div class="col s12">
                     <p>Aquí puedes ver y gestionar tus cultivos.</p>
                   </div>
-                  <div align="right">
-                    
-				</div>
+                <div align="right">
+                    <div class="row">
+                        <div class="col s12 l12 m12">
+                        <a href="#ayuda" class="modal-trigger"><i class="material-icons">help</i><span class="new badge blue" data-badge-caption="Ayuda "></span></a>
+                        </div>
+                    </div>
+				    </div>
                   <div class="col s12">
                     <table id="datos_cultivos" class="responsive-table display highlight bordered striped" cellspacing="0">
                      <thead>
@@ -410,6 +339,52 @@
                          
                      </div>
                  </div>
+          
+                  <!-- MODAL DE AYUDA-->  
+        <div id="ayuda" class="modal">
+    <div class="modal-content">
+      <h5>Ayuda en la gestión de cultivos</h5>
+      <hr><br>
+        <div class="row">
+        <div class="col l12 m12 s12">
+                    <table>
+                <thead>
+                    <tr>
+                    <th>Botón</th>
+                    <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <td><a href="#"><i class="material-icons black-text center">mode_edit</i></a></td>
+                    <td><h6 class="title">Permite editar un cultivo</h6></td>
+                    </tr>
+                    <tr>
+                    <td><a href="#"><i class="material-icons orange-text center">grain</i></a></td>
+                    <td><h6 class="title">Permite agregar los requerimientos nutricionales al cultivo y las variables más significativas del suelo. (Primero se debe agregar un cultivo)</h6></td>
+                    </tr>        
+                    <tr>
+                    <td><a href="#"><i class="material-icons blue-text center">filter_list</i></a></td>
+                    <td><h6 class="title">Permite visualizar los requerimientos nutricionales del cultivo cultivo</h6></td>
+                    </tr>
+                    <tr>
+                    <td><a href="#"><i class="material-icons red-text center">delete</i></a></td>
+                    <td><h6 class="title">Permite eliminar un cultivo</h6></td>
+                    </tr>    
+                    <tr>
+                    <td><a id="add_button" class="btn-floating btn-large green modal-trigger"  href="#">
+                <i class="material-icons">add</i></a></td>
+                    <td><h6 class="title">Permite agregar un nuevo cultivo</h6></td>
+                    </tr>
+                </tbody>
+            </table>        
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Gracias</a>
+    </div>
+  </div>  
 		  
 
          <!-- FIN MODAL PARA VISUALIZAR LOS REQUERIMIENTOS NUTRICIONALES A LOS CULTIVOS -->

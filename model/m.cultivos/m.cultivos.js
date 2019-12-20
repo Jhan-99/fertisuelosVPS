@@ -1,12 +1,15 @@
 $(document).ready(function(){
+    //:INICIO: PERMITE PREPARAR EL FORMULARIO PARA INSERTAR UN NUEVO CULTIVO
 	$('#add_button').click(function(){
 		$('#form_cultivos')[0].reset();
 		$('.modal-title').text("Agregar Cultivos");
 		$('#action').val("Agregar");
 		$('#operacion').val("Agregar");
 		$('#imagen_cultivo_subida').html('');
+    //:INICIO:    
 	});
 	
+    //:INICIO: ESTA FUNCION PERMITE TRAER TODOS LOS CULTIVOS 
 	var dataTable = $('#datos_cultivos').DataTable({
 		"processing":true,
 		"serverSide":true,
@@ -23,7 +26,9 @@ $(document).ready(function(){
 		],
 
 	});
-
+    //:FIN:
+    
+    //:INICIO: ESTA FUNCION PERMITE GUARDAR UN CULTIVO
 	$(document).on('submit', '#form_cultivos', function(event){
 		event.preventDefault();
 		var cod_cultivo = $('#cod_cultivo').val();
@@ -65,7 +70,9 @@ $(document).ready(function(){
 			alert("Todos los campos son obligatorios");
 		}
 	});
-	
+	//:FIN:
+    
+    //:INICIO: ESTA FUNCION PERMITE ACTUALIZAR UN CULTIVO
 	$(document).on('click', '.update', function(){
 		var cultivo_id = $(this).attr("id");
 		$.ajax({
@@ -90,7 +97,9 @@ $(document).ready(function(){
 			}
 		})
 	});
-	
+	//:FIN:
+    
+    //:INICIO: ESTA FUNCION PERMITE ELIMINAR UN CULTIVO
 	$(document).on('click', '.delete', function(){
 		var cultivo_id = $(this).attr("id");
 		if(confirm("De verdad quieres eliminar este cultivo?"))
@@ -111,9 +120,10 @@ $(document).ready(function(){
 			return false;	
 		}
 	});
+    //:FIN:
     
-        //AGREGA LAS VARIBLES MÁS SIGNIFICATIVAS DEL SUELO A UN CULTIVO
-        $(document).on('click', '.g_vars_suelo', function(){  
+    //:INICIO: ESTA FUNCION AGREGA LAS VARIBLES MÁS SIGNIFICATIVAS DEL SUELO A UN CULTIVO PH,CE,CICE ETC
+    $(document).on('click', '.g_vars_suelo', function(){  
               var id_cultivo = $("#id_cultivo").val();  // Recoger el ID del cultivo
               var val_textura = $('#val_textura').val();  
               var val_ph   = $('#val_ph').val();  
@@ -155,15 +165,19 @@ $(document).ready(function(){
                     });  
                }           
       }); 
+    //:FIN:
     
-    //para cargar el id del cultivo y asignarle los requerimientos nutricionales
+    
+    //:INICIO: CARGA EL ID DEL CULTIVO PARA PODER RELACIONARLOS CON LOS RQUERIMIENTOS NUTRICIONALES
     $(document).on('click', '.add_requeriments', function(){
 		var cultivo_id = $(this).attr("id");
         $('#id_cultivo').val(cultivo_id);
         $('#add_requerimientos').modal('open');
  
 	});
-    //para agregarle los requerimentos nutricionales a los cultivos y enviarlos a la BD
+    //:FIN:
+    
+    //:INICIO :para agregarle los requerimentos nutricionales a los cultivos y enviarlos a la BD
     $(document).on('click', '.g_req_cultivo', function(){
 		var id_cultivo = $("#id_cultivo").val(); 
         var r_nitrogeno = $('#r_nitrogeno').val();
@@ -217,9 +231,11 @@ $(document).ready(function(){
         
 
 	   });
-
-         //ESTE CÓDIGO ME PERMITE CARGAR LAS VARIABLES DEL SUELO 
-        $(document).on('click', '.ver_vars_cultivos', function(){  
+    //:FIN:
+    
+    
+    //:INICIO: ESTE CÓDIGO ME PERMITE CARGAR LAS VARIABLES DEL SUELO 
+    $(document).on('click', '.ver_vars_cultivos', function(){  
           var id_cultivo = $(this).attr("id");  
           var nombre_cultivo = $(this).attr('name');    
             $('#text_inf').html("Requerimientos nutricionales para cultivo de: "+'<p class="orange-text">' + nombre_cultivo + ' </p>');
@@ -237,10 +253,10 @@ $(document).ready(function(){
                 });  
            } 
       });          
+    //:FIN:
     
-    
-             //EDITA LAS VARIBLES MÁS SIGNIFICATIVAS DEL SUELO
-        $(document).on('click', '.edita_vars_suelo_cul', function(){  
+    //:INICIO: EDITA LAS VARIBLES MÁS SIGNIFICATIVAS DEL SUELO
+    $(document).on('click', '.edita_vars_suelo_cul', function(){  
               var id_cultivo_req = $('#id_cultivo_req').val(); // Recoger el ID de las varibles
               var val_textura = $('#val_textura_c').val();  
               var val_ph   = $('#val_ph_c').val();  
@@ -283,8 +299,10 @@ $(document).ready(function(){
                     });  
                }           
       });             
+    //:FIN:
     
-	//Función que trae los datos 
+    
+	//:Inicio: Función que trae los datos de los elementos
 	$(document).on('click', '.cargar_elementos', function(){ 
 		var id_cultivo = $(this).attr('id');
         $.ajax({
@@ -314,9 +332,10 @@ $(document).ready(function(){
         });
 	
 	});
+	//:Fin:
 	
-	
-      $(document).on('click', '.check_box', function(){
+    //:INICIO: MODIFICA TODOS LOS REQUERIMIENTOS NUTRICIONALES DEL CULTIVO
+    $(document).on('click', '.check_box', function(){
         var html = '';
         if(this.checked)
         {	
@@ -339,6 +358,6 @@ $(document).ready(function(){
         $(this).closest('tr').html(html);
         $('#etiqueta_'+$(this).attr('id')+'').val($(this).data('etiqueta'));
     });
-
+    //:FIN:
     
 });

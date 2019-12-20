@@ -1,7 +1,7 @@
 
 <?php
 
-//update.php
+//Este archivo me permite actualizar un evento en la programación de cosechas
 
 include('../../db/dbconnect_pdo.php');
 

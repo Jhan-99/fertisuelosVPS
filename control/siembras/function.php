@@ -1,5 +1,5 @@
 <?php
-
+//PERMITE OBTENER TODAS LAS SIEMBRAS 
 
 function get_total_all_records()
 {

@@ -11,51 +11,31 @@ echo '
                   <ul id="profile-dropdown-nav" class="dropdown-content">
                     <li>
                       <a href="#" class="grey-text text-darken-1">
-                        <i class="material-icons">face</i> Profile</a>
+                        <i class="material-icons">face</i> '.$_SESSION["user_name"].'</a>
                     </li>
                     <li>
                       <a href="#" class="grey-text text-darken-1">
-                        <i class="material-icons">settings</i> Settings</a>
+                        <i class="material-icons">settings</i> Ajustes</a>
                     </li>
                     <li>
                       <a href="#" class="grey-text text-darken-1">
-                        <i class="material-icons">live_help</i> Help</a>
+                        <i class="material-icons">live_help</i> Ayuda</a>
                     </li>
                     <li class="divider"></li>
                     <li>
-                      <a href="#" class="grey-text text-darken-1">
-                        <i class="material-icons">lock_outline</i> Lock</a>
-                    </li>
-                    <li>
-                      <a href="#" class="grey-text text-darken-1">
-                        <i class="material-icons">keyboard_tab</i> Logout</a>
+                      <a href="../../app/login/logout.php" class="grey-text text-darken-1">
+                        <i class="material-icons">keyboard_tab</i> '.$estado.'</a>
                     </li>
                   </ul>
-                  <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown-nav">Sena<i class="mdi-navigation-arrow-drop-down right"></i></a>
+                  <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown-nav">'.$_SESSION["user_name"].'<i class="mdi-navigation-arrow-drop-down right"></i></a>
                   <p class="user-roal">Administrator</p>
                 </div>
               </div>
             </li>
             <li class="no-padding">
-              <ul class="collapsible" data-collapsible="accordion">
+              <ul class="collapsible" data-collapsible="accordion">             
                 <li class="bold">
-                  <a class="collapsible-header waves-effect waves-cyan active">
-                    <i class="material-icons">dashboard</i>
-                    <span class="nav-text">Dashboard</span>
-                  </a>
-                  <div class="collapsible-body">
-                    <ul>
-                      <li class="#">
-                        <a href="../noticias/noticias.php#">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span>Noticias</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </li>                
-                <li class="bold">
-                  <a class="collapsible-header waves-effect waves-cyan active">
+                  <a class="collapsible-header waves-effect waves-cyan">
                     <i class="material-icons">spa</i>
                     <span class="nav-text">Fincas</span>
                   </a>
@@ -83,7 +63,7 @@ echo '
                   </div>
                 </li>
                 <li class="bold">
-                  <a class="collapsible-header waves-effect waves-cyan active">
+                  <a class="collapsible-header waves-effect waves-cyan">
                     <i class="material-icons">grain</i>
                     <span class="nav-text">Nutrientes</span>
                   </a>
@@ -105,7 +85,7 @@ echo '
                   </div>
                 </li>               
                  <li class="bold">
-                  <a class="collapsible-header waves-effect waves-cyan active">
+                  <a class="collapsible-header waves-effect waves-cyan">
                     <i class="material-icons">map</i>
                     <span class="nav-text">SIG</span>
                   </a>
@@ -126,7 +106,7 @@ echo '
                     </ul>
                   </div>
                 </li>  <li class="bold">
-                  <a class="collapsible-header waves-effect waves-cyan active">
+                  <a class="collapsible-header waves-effect waves-cyan">
                     <i class="material-icons">track_changes</i>
                     <span class="nav-text">Monitoreos</span>
                   </a>
@@ -172,6 +152,14 @@ echo '
                     <span class="nav-text">Prog de cosechas</span>
                   </a>
                 </li>
+                
+                <li class="bold">
+                  <a href="../novedades/v.novedades.php" class="waves-effect waves-cyan">
+                    <i class="material-icons">low_priority</i>
+                    <span class="nav-text">Novedades</span>
+                  </a>
+                </li>
+                
                 <li class="no-padding">
               <ul class="collapsible" data-collapsible="accordion">
                 <li class="bold">
@@ -211,13 +199,13 @@ echo '
               <p class="ultra-small margin more-text">MÁS</p>
             </li>
             <li>
-              <a href="../documentacion/documentacion.php" target="_blank">
+              <a href="#" target="_blank">
                 <i class="material-icons">import_contacts</i>
                 <span class="nav-text">Documentación</span>
               </a>
             </li>
             <li>
-              <a href="../soporte/soporte.php" target="_blank">
+              <a href="#" target="_blank">
                 <i class="material-icons">help_outline</i>
                 <span class="nav-text">Soporte</span>
               </a>

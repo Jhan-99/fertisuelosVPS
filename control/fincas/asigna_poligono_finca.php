@@ -1,5 +1,5 @@
  <?php  
- //insert.php asgina el mapa a la finca 
+ // ASIGNA UN MAPA A  LA FINCA 
 include('../../db/dbconnect.php');
 if(isset($_POST["var_finca"],$_POST["iframe_finca"]))      
  {  

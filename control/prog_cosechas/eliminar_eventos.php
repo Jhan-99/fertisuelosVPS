@@ -1,7 +1,7 @@
 
 <?php
 
-//delete.php
+//Este archivo me permite eliminar eventos de la programación de cosechas en calendario
 
 if(isset($_POST["id"]))
 {

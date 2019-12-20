@@ -1,5 +1,5 @@
  <?php  
-//cargar los reuerimientos nutricionales para el cultivo en tarjeticas
+//cargar los reuerimientos nutricionales para el cultivo en tarjeticas 
  if(isset($_POST["codgo_cult"]))  
  {  
       $output = '';  

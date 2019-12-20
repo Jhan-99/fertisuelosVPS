@@ -1,11 +1,34 @@
+
 <?php
-include("db/dbconnect.php");
-$querypersonas = "SELECT * FROM personas";
+session_start(); 
+include("db/dbconnect.php"); 
+             $_SESSION["times"] = '';
+            if (empty($times) && !isset($_SESSION["user_name"])){
+                $_SESSION["times"] = 1; 
+               header("location: welcome.php");       
+            }
+        
+             if(!isset($_SESSION["user_name"]))  
+             {   
+              $_SESSION["user_name"] = 'Invitado';
+              $query_user = "SELECT * FROM user_details WHERE user_name = '".$_SESSION["user_name"]."'";  
+              $result_user = mysqli_query($conexion, $query_user);
+             }else{
+                  $query_user = "SELECT * FROM user_details WHERE user_name = '".$_SESSION["user_name"]."'";  
+                  $result_user = mysqli_query($conexion, $query_user);  
+             }
+            $estado = "";
+            
+               if($_SESSION["user_name"] == 'Invitado') {
+                   $estado = "Iniciar";    
+               }else{
+                    $estado = "Salir";    
+               }
+
+$querypersonas = "SELECT * FROM user_details";
 $resultpersonas = mysqli_query($conexion, $querypersonas);
 
-$query = "SELECT * FROM siembras";
-$result = mysqli_query($conexion, $query);
-$query2 = "SELECT * FROM cultivos";
+$query = "SELECT * FROM siembras"; $result = mysqli_query($conexion, $query); $query2 = "SELECT * FROM cultivos"; 
 $result2 = mysqli_query($conexion, $query2);
 ?>
 <!DOCTYPE html>
@@ -44,140 +67,7 @@ $result2 = mysqli_query($conexion, $query2);
     <!-- End Page Loading -->
     <!-- //////////////////////////////////////////////////////////////////////////// -->
     <!-- START HEADER -->
-    <header id="header" class="page-topbar">
-      <!-- start header nav-->
-      <div class="navbar-fixed">
-        <nav class="navbar-color  light-green">
-          <div class="nav-wrapper">
-            <ul class="left">
-              <li>
-                <h1 class="logo-wrapper">
-                  <a href="index.html" class="brand-logo darken-1">
-                    <img src="images/logo/materialize-logo.png" alt="materialize logo">
-                    <span class="logo-text hide-on-med-and-down">Fertisuelos</span>
-                  </a>
-                </h1>
-              </li>
-            </ul>
-            <div class="header-search-wrapper hide-on-med-and-down">
-              <i class="material-icons">search</i>
-				<form action="" method="get">
-              <input type="text" name="Search" class="header-search-input z-depth-2" placeholder="Explora Fertisuelos" /></form>
-            </div>            
-            <ul class="right hide-on-med-and-down">
-              <li>
-                <a href="javascript:void(0);" class="waves-effect waves-block waves-light translation-button" data-activates="translation-dropdown">
-                  <span class="flag-icon flag-icon-gb"></span>
-                </a>
-              </li>
-              <li>
-                <a href="javascript:void(0);" class="waves-effect waves-block waves-light toggle-fullscreen">
-                  <i class="material-icons">settings_overscan</i>
-                </a>
-              </li>
-              <li>
-                <a href="javascript:void(0);" class="waves-effect waves-block waves-light notification-button" data-activates="notifications-dropdown">
-                  <i class="material-icons">notifications_none
-                    <small class="notification-badge pink accent-2">5</small>
-                  </i>
-                </a>
-              </li>
-              <li>
-                <a href="javascript:void(0);" class="waves-effect waves-block waves-light profile-button" data-activates="profile-dropdown">
-                  <span class="avatar-status avatar-online">
-                    <img src="images/avatar/avatar-7.png" alt="avatar">
-                    <i></i>
-                  </span>
-                </a>
-              </li>
-             <!-- <li>
-                <a href="#" data-activates="chat-out" class="waves-effect waves-block waves-light chat-collapse">
-                  <i class="material-icons">format_indent_increase</i>
-                </a>
-              </li> -->
-            </ul>
-            <!-- translation-button -->
-            <ul id="translation-dropdown" class="dropdown-content">
-              <li>
-                <a href="#!" class="grey-text text-darken-1">
-                  <i class="flag-icon flag-icon-gb"></i> English</a>
-              </li>
-              <li>
-                <a href="#!" class="grey-text text-darken-1">
-                  <i class="flag-icon flag-icon-fr"></i> French</a>
-              </li>
-              <li>
-                <a href="#!" class="grey-text text-darken-1">
-                  <i class="flag-icon flag-icon-cn"></i> Chinese</a>
-              </li>
-              <li>
-                <a href="#!" class="grey-text text-darken-1">
-                  <i class="flag-icon flag-icon-de"></i> German</a>
-              </li>
-            </ul>
-            <!-- notifications-dropdown -->
-            <ul id="notifications-dropdown" class="dropdown-content">
-              <li>
-                <h6>NOTIFICACIONES
-                  <span class="new badge">5</span>
-                </h6>
-              </li>
-              <li class="divider"></li>
-              <li>
-                <a href="#!" class="grey-text text-darken-2">
-                  <span class="material-icons icon-bg-circle cyan small">add_shopping_cart</span> Se ha comprado un medidor de clorofila</a>
-                <time class="media-meta" datetime="2015-06-12T20:50:48+08:00">Hace 2 meses</time>
-              </li>
-              <li>
-                <a href="#!" class="grey-text text-darken-2">
-                  <span class="material-icons icon-bg-circle red small">stars</span> Se realizó el primer PF</a>
-                <time class="media-meta" datetime="2015-06-12T20:50:48+08:00">Hace 1 mes</time>
-              </li>
-              <li>
-                <a href="#!" class="grey-text text-darken-2">
-                  <span class="material-icons icon-bg-circle teal small">settings</span> La programación de cosechas se acerca</a>
-                <time class="media-meta" datetime="2015-06-12T20:50:48+08:00">Hace 4 días</time>
-              </li>
-              <li>
-                <a href="#!" class="grey-text text-darken-2">
-                  <span class="material-icons icon-bg-circle deep-orange small">today</span> Recomendaciones nutricionales terminada</a>
-                <time class="media-meta" datetime="2015-06-12T20:50:48+08:00">Hace 1 mes</time>
-              </li>
-              <li>
-                <a href="#!" class="grey-text text-darken-2">
-                  <span class="material-icons icon-bg-circle amber small">trending_up</span> Generate monthly report</a>
-                <time class="media-meta" datetime="2015-06-12T20:50:48+08:00">Hace una semana</time>
-              </li>
-            </ul>
-            <!-- profile-dropdown -->
-            <ul id="profile-dropdown" class="dropdown-content">
-              <li>
-                <a href="#" class="grey-text text-darken-1">
-                  <i class="material-icons">face</i> Perfil</a>
-              </li>
-              <li>
-                <a href="#" class="grey-text text-darken-1">
-                  <i class="material-icons">settings</i> Ajustes</a>
-              </li>
-              <li>
-                <a href="#" class="grey-text text-darken-1">
-                  <i class="material-icons">live_help</i> Ayuda</a>
-              </li>
-              <li class="divider"></li>
-              <li>
-                <a href="#" class="grey-text text-darken-1">
-                  <i class="material-icons">lock_outline</i> Bloquear</a>
-              </li>
-              <li>
-                <a href="#" class="grey-text text-darken-1">
-                  <i class="material-icons">keyboard_tab</i> Cerrar</a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </div>
-      <!-- end header nav-->
-    </header>
+    <?php include("app/top-bar-index.php");?>
     <!-- END HEADER -->
     <!-- //////////////////////////////////////////////////////////////////////////// -->
     <!-- START MAIN -->
@@ -196,27 +86,23 @@ $result2 = mysqli_query($conexion, $query2);
                   <ul id="profile-dropdown-nav" class="dropdown-content">
                     <li>
                       <a href="#" class="grey-text text-darken-1">
-                        <i class="material-icons">face</i> Profile</a>
+                        <i class="material-icons">face</i> <?php  echo $_SESSION["user_name"];?></a>
                     </li>
                     <li>
                       <a href="#" class="grey-text text-darken-1">
-                        <i class="material-icons">settings</i> Settings</a>
+                        <i class="material-icons">settings</i> Ajustes</a>
                     </li>
                     <li>
                       <a href="#" class="grey-text text-darken-1">
-                        <i class="material-icons">live_help</i> Help</a>
+                        <i class="material-icons">live_help</i> Ayuda</a>
                     </li>
                     <li class="divider"></li>
                     <li>
-                      <a href="#" class="grey-text text-darken-1">
-                        <i class="material-icons">lock_outline</i> Lock</a>
-                    </li>
-                    <li>
-                      <a href="#" class="grey-text text-darken-1">
-                        <i class="material-icons">keyboard_tab</i> Logout</a>
+                      <a href="app/login/logout.php" class="grey-text text-darken-1">
+                        <i class="material-icons">keyboard_tab</i> <?php  echo $estado;?></a>
                     </li>
                   </ul>
-                  <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown-nav">Sena<i class="mdi-navigation-arrow-drop-down right"></i></a>
+                  <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown-nav"><?php  echo $_SESSION["user_name"];?><i class="mdi-navigation-arrow-drop-down right"></i></a>
                   <p class="user-roal">Administrator</p>
                 </div>
               </div>
@@ -224,23 +110,7 @@ $result2 = mysqli_query($conexion, $query2);
             <li class="no-padding">
               <ul class="collapsible" data-collapsible="accordion">
                 <li class="bold">
-                  <a class="collapsible-header waves-effect waves-cyan active">
-                    <i class="material-icons">dashboard</i>
-                    <span class="nav-text">Dashboard</span>
-                  </a>
-                  <div class="collapsible-body">
-                    <ul>
-                      <li class="#">
-                        <a href="app/noticias/noticias.php#">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span>Noticias</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </li>                
-                <li class="bold">
-                  <a class="collapsible-header waves-effect waves-cyan active">
+                  <a class="collapsible-header waves-effect waves-cyan noactive">
                     <i class="material-icons">spa</i>
                     <span class="nav-text">Fincas</span>
                   </a>
@@ -268,7 +138,7 @@ $result2 = mysqli_query($conexion, $query2);
                   </div>
                 </li>
                 <li class="bold">
-                  <a class="collapsible-header waves-effect waves-cyan active">
+                  <a class="collapsible-header waves-effect waves-cyan noactive">
                     <i class="material-icons">grain</i>
                     <span class="nav-text">Nutrientes</span>
                   </a>
@@ -290,7 +160,7 @@ $result2 = mysqli_query($conexion, $query2);
                   </div>
                 </li>               
                  <li class="bold">
-                  <a class="collapsible-header waves-effect waves-cyan active">
+                  <a class="collapsible-header waves-effect waves-cyan noactive">
                     <i class="material-icons">map</i>
                     <span class="nav-text">SIG</span>
                   </a>
@@ -311,7 +181,7 @@ $result2 = mysqli_query($conexion, $query2);
                     </ul>
                   </div>
                 </li>  <li class="bold">
-                  <a class="collapsible-header waves-effect waves-cyan active">
+                  <a class="collapsible-header waves-effect waves-cyan noactive">
                     <i class="material-icons">track_changes</i>
                     <span class="nav-text">Monitoreos</span>
                   </a>
@@ -350,19 +220,6 @@ $result2 = mysqli_query($conexion, $query2);
                     </ul>
                   </div>
                 </li> 
-                  
-                <li class="bold">
-                  <a href="app/prog-cosechas/v.prog-cosechas.php" class="waves-effect waves-cyan">
-                    <i class="material-icons">today</i>
-                    <span class="nav-text">Prog de cosechas</span>
-                  </a>
-                </li>
-                <li class="bold">
-                  <a href="app/novedades/v.novedades.php" class="waves-effect waves-cyan">
-                    <i class="material-icons">low_priority</i>
-                    <span class="nav-text">Novedades</span>
-                  </a>
-                </li>
                 <li class="no-padding">
               <ul class="collapsible" data-collapsible="accordion">
                 <li class="bold">
@@ -395,20 +252,33 @@ $result2 = mysqli_query($conexion, $query2);
                   </div>
                 </li>
               </ul>
-            </li>
+            </li>  
+                <li class="bold">
+                  <a href="app/prog-cosechas/v.prog-cosechas.php" class="waves-effect waves-cyan">
+                    <i class="material-icons">today</i>
+                    <span class="nav-text">Prog de cosechas</span>
+                  </a>
+                </li>
+                <li class="bold">
+                  <a href="app/novedades/v.novedades.php" class="waves-effect waves-cyan">
+                    <i class="material-icons">low_priority</i>
+                    <span class="nav-text">Novedades</span>
+                  </a>
+                </li>
+                
               </ul>
             </li>
             <li class="li-hover">
               <p class="ultra-small margin more-text">MÁS</p>
             </li>
             <li>
-              <a href="app/documentacion/documentacion.php" target="_blank">
+              <a href="#" target="_blank">
                 <i class="material-icons">import_contacts</i>
                 <span class="nav-text">Documentación</span>
               </a>
             </li>
             <li>
-              <a href="app/soporte/soporte.php" target="_blank">
+              <a href="#" target="_blank">
                 <i class="material-icons">help_outline</i>
                 <span class="nav-text">Soporte</span>
               </a>
@@ -745,7 +615,7 @@ $result2 = mysqli_query($conexion, $query2);
                 <div class="col s12 border-bottom-1 mt-5">
                   <ul class="tabs">
                     <li class="tab col s4">
-                      <a href="#activity" class="active">
+                      <a href="#activity" class="">
                         <span class="material-icons">graphic_eq</span>
                       </a>
                     </li>
@@ -848,9 +718,9 @@ $result2 = mysqli_query($conexion, $query2);
                   echo '
                      <a href="#!" class="collection-item avatar border-none">
                       <img src="control/personas/fotos/'.$rowpersonas["Foto_persona"].'" alt="" class="circle cyan">
-                      <span class="line-height-0">'.$rowpersonas["Nombre_persona"].'</span>
+                      <span class="line-height-0">'.$rowpersonas["CustomerName"].'</span>
                       <span class="medium-small right blue-grey-text text-lighten-3">5.00 AM</span>
-                      <p class="medium-small blue-grey-text text-lighten-3">'.$rowpersonas["Cargo_persona"].'</p>
+                      <p class="medium-small blue-grey-text text-lighten-3">'.$rowpersonas["user_name"].'</p>
                     </a>
                   
                   ';
@@ -871,7 +741,7 @@ $result2 = mysqli_query($conexion, $query2);
                     </div>
                     <div class="recent-activity-list chat-out-list row mb-0">
                       <div class="col s3 mt-2 center-align recent-activity-list-icon">
-                        <i class="material-icons white-text icon-bg-color cyan lighten-2">airplanemode_active</i>
+                        <i class="material-icons white-text icon-bg-color cyan lighten-2">airplanemode_noactive</i>
                       </div>
                       <div class="col s9 recent-activity-list-text">
                         <a href="#" class="cyan-text medium-small">16 de mayo</a>

@@ -1,6 +1,6 @@
 <?php
 
-//select.php
+//PERMITE SELECCIONAR LOS REQUERIMIENTOS NUTRICIONALES DEL CULTIVO
 
 include('../../db/dbconnect_pdo.php');  
 if(isset($_POST["id_cultivo"]))

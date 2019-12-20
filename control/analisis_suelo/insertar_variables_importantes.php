@@ -1,8 +1,10 @@
  <?php  
- //insert.php  
-include('../../db/dbconnect.php');
+ //Permite insertar las variables más significativas del suelo
+include('../../db/dbconnect.php');// inlcuir la conexíon a la base de datos
+
 if(isset($_POST["ph"]))  
  {  
+    //:inicio: las variables más significativas recogidas 
       $codcab = mysqli_real_escape_string($conexion, $_POST["codcab"]);  
       $ph = mysqli_real_escape_string($conexion, $_POST["ph"]);  
       $ce = mysqli_real_escape_string($conexion, $_POST["ce"]);  
@@ -11,11 +13,13 @@ if(isset($_POST["ph"]))
       $textura = mysqli_real_escape_string($conexion, $_POST["textura"]);  
       $val_textura = mysqli_real_escape_string($conexion, $_POST["val_textura"]);  
       $densidad_aparente = mysqli_real_escape_string($conexion, $_POST["densidad_aparente"]);  
-      //--------------//
+      //:fin:
  
+    //:inicio: guarda las variables más significativas del cuultivo
       $sql = "INSERT INTO analisis_suelos(cabecera_id,Ph,C_E,C_I_C_E,salinidad,Textura,val_textura,densidad) VALUES ('".$codcab."','".$ph."','".$ce."', '".$cice."', '".$salinidad."','".$textura."','".$val_textura."','".$densidad_aparente."')";  
+    //:fin:
     
-        if (mysqli_query($conexion, $sql)) {
+    if (mysqli_query($conexion, $sql)) {
      echo "<span class='green-text'>Operación exitosa</span> <a href='#' id='get_tab_for_element'>Continuar</a>";
     } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($conexion);

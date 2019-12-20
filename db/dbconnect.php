@@ -6,6 +6,7 @@
     $conexion = mysqli_connect($db_host, $db_usuario, $db_contra);
     if (mysqli_connect_errno()){
         echo"Fallo al conectarse a la base de datos";
+         die("ERR: " . mysqli_connect_error());
         mysqli_close($conexion);
         exit();    
     }

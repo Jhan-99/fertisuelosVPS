@@ -1,5 +1,5 @@
 <?php
-
+//FUNCION QUE PERMITE SUBIRLE UNA IMAGEN AL CULTIVO 
 function upload_image()
 {
 	if(isset($_FILES["user_image"]))
@@ -11,7 +11,7 @@ function upload_image()
 		return $new_name;
 	}
 }
-
+//FUNCION QUE PERMITE OBTENER LA IMAGEN DEL CULTIVO
 function get_image_name($cultivo_id)
 {
 	 include('../../db/dbconnect_pdo.php');
@@ -24,6 +24,7 @@ function get_image_name($cultivo_id)
 	}
 }
 
+//FUNCION QUE PERMITE OBTENER TODOS LOS CULTIVOS Y RETORNARLOS A LA VISTA
 function get_total_all_records()
 {
 	 include('../../db/dbconnect_pdo.php');

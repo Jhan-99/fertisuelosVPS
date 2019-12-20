@@ -1,4 +1,6 @@
  <?php  
+//PERMITE CARGAR LAS VARIABLES SIGNIFICATIVAS DEL SUELOS
+
  if(isset($_POST["id_cultivo"]))  
  {  
       $output = '';  

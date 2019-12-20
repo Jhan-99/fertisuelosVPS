@@ -1,12 +1,19 @@
 <?php
-include('../../db/dbconnect_pdo.php');
-$id_ana_carga =   $_POST['id_ana_carga'];
+//Permite traer los archivos de los analisis de suelos
+include('../../db/dbconnect_pdo.php'); //incluir la conexión
+
+$id_ana_carga =   $_POST['id_ana_carga']; //id del analisis dde suelo
+//:inicio: realiza la consulta y la ejecuta para después devolverme la información solicitada
 $query = "SELECT * FROM archivos_ana_suelo WHERE id_cabecera = $id_ana_carga; ORDER BY id_archivo DESC";
 $statement = $connection->prepare($query);
 $statement->execute();
 $result = $statement->fetchAll();
 $number_of_rows = $statement->rowCount();
+//:fin:
+
+
 $output = '';
+//:inicio: si todo está correcto entonces muetra la información de acuerdo a los parametros de la consulta
 $output .= '
  <table id="" class="table bordered striped">
   <tr>
@@ -17,6 +24,7 @@ $output .= '
    <th>Control</th>
   </tr>
 ';
+//:inicio: esta parte comprueba si obtuvo resultados para entregar la información
 if($number_of_rows > 0)
 {
  $count = 0;
@@ -38,6 +46,9 @@ if($number_of_rows > 0)
   ';
  }
 }
+//:fin:
+
+//:inicio: si no encontró información entones me devuelve una mensaje 
 else
 {
  $output .= '
@@ -46,6 +57,9 @@ else
   </tr>
  ';
 }
+//:fin:
+
 $output .= '</table>';
-echo $output;
+    //retorna los resultados de la consulta 
+    echo $output;
 ?>

@@ -1,6 +1,6 @@
 <?php  
-	    include('../../db/dbconnect.php');                                                                
-
+// permite editar los datos de las matriz de nitrogeno
+    include('../../db/dbconnect.php');                                                                
 	$id = $_POST["id"];  
 	$text = $_POST["text"];  
 	$column_name = $_POST["column_name"];  

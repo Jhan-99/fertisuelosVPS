@@ -1,5 +1,5 @@
  <?php  
- //insert.php  
+ //EDITA LAS VARIABLES MAS SIGNIFICATIVAS DEL SUELO
 include('../../db/dbconnect.php');
 if(isset($_POST["val_ph"]))  
  {  

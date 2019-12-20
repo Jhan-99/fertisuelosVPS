@@ -1,5 +1,5 @@
 <?php
-//fetch.php
+//PERMITE SELECCIONAR EL DEPARTAMENTO, MUNICIPIO Y VEREDA PARA ASIGNARLOS COMO UBICACION A UNA FINCA
 if(isset($_POST["action"]))
 {
    include('../../db/dbconnect.php');

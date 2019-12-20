@@ -1,4 +1,5 @@
  <?php  
+//PERMITE TRAER LOS CULTIVOS 
  if(isset($_POST["var_request"]))  
  {  
       $output = '';  

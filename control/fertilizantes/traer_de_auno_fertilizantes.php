@@ -1,4 +1,5 @@
    <?php
+//PERMITE TRAER DE MANERA INDIVIDUAL LOS FERTLIZANTES DE ACUERDO A SU IDENTIFICADOR
 include('../../db/dbconnect_pdo.php');
 include('function.php');
 if(isset($_POST["id_fertilizante"]))
