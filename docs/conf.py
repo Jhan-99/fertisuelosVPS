@@ -13,13 +13,13 @@
 # import os
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
-import sphinx_theme_pd
+import sphinx_ustack_theme
 # import os
 # import sys
 
 # -- Project information -----------------------------------------------------
 
-project = 'Fertisuelos'
+project = 'CostosBocadillo'
 copyright = '2019, Esneyder'
 author = 'Esneyder'
 
@@ -35,6 +35,7 @@ release = '1.0'
 extensions = [
     'sphinx.ext.autodoc', 
     'sphinx_rtd_theme',
+    'sphinx.ext.autosummary',
     'sphinxcontrib.phpdomain',
 ]
 
@@ -60,8 +61,7 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'sphinx_theme_pd'
-html_theme_path = [sphinx_theme_pd.get_html_theme_path()]
+html_theme = 'sphinx_ustack_theme'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,

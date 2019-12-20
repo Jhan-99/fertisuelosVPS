@@ -10,9 +10,9 @@ BachesProduccion
    
 Crear Autor
 ***********
-crear_autor.html
+crear.html
 
-.. automodule:: templates.BachesProduccion.crear_autor
+.. automodule:: templates.BachesProduccion.crear
    :members:
    :undoc-members:
    
@@ -21,9 +21,9 @@ crear_autor.html
    
 Eliminar Autor
 **************
-eliminar_autor.html
+eliminar.html
 
-.. automodule:: templates.BachesProduccion.eliminar_autor
+.. automodule:: templates.BachesProduccion.eliminar
    :members:
    :undoc-members:
    
@@ -32,9 +32,21 @@ eliminar_autor.html
    
 Listar Autor
 ************
-listar_autor.html
+listar.html
 
-.. automodule:: templates.BachesProduccion.listar_autor
+.. automodule:: templates.BachesProduccion.listar
+   :members:
+   :undoc-members:
+   
+   
+.. figure:: ../_static/html-5.png
+   :align: left
+   
+Editar Autor
+************
+listar.html
+
+.. automodule:: templates.BachesProduccion.listar
    :members:
    :undoc-members:
    
@@ -42,7 +54,7 @@ listar_autor.html
    :align: left
    
 Index
-************
+*****
 index.html
 
 .. automodule:: templates.index

@@ -4,91 +4,276 @@
 CentroCostos
 ************
 
+:Descripción: Los centros de costos son la agrupación de varias actividades que se realizan en la empresa, por ejemplo la recepción de la fruta, el empaque. Dichas actividades, se clasifican en tres grandes grupos, centros de costos operativos, (desde la recepción hasta la entrega final para despacho del producto), logísticos (Hacen relación a servicios indirecto en la elaboración del producto, por ejemplo servicios generales, mantenimientos, procesos de caldera), administrativos y de ventas (distribución y comercialización del producto terminado).
+
+.. code:: 
+   
+   CostosBaocadillo
+   └── apps
+          └── CentroCostos
+              ├── __init__.py
+              ├── admin.py
+              ├── apps.py
+              ├── migrations
+              │   └── __init__.py
+              ├── models.py
+              ├── tests.py
+              ├── views.py
+              ├── forms.py
+              └── urls.py
+   
 .. figure:: ../_static/carpeta.png
    :align: left
    
 Migrations
 ==========
+*Carpeta* : :mod:`migrations`
 
-.. automodule:: apps.CentroCostos.migrations.0001_initial
-   :members:
-   :undoc-members:
 
-   Es la ruta donde las migraciones se realizan
+   Este es el directorio donde se almacenan todas las migraciones con las respectivas dependencias de sus modelos. Dentro de este archivo se encuentran los campos de la base de datos que establecimos en el archivo ``models.py`` con la respectiva característica del campo. Este archivo es generado con el comando ``makemigrations`` de Django y genera nuevas versiones con cada migración creada. 
+   
+       
+       
+.. figure:: ../_static/py.png
+   :align: left
 
+Models
+======
+*Archivo* : ``models.py``
+
+.. note::
+
+   Un modelo en Django es una clase importada de la biblioteca django.db que actúa como puente entre su base de datos y el servidor. Esta clase es una representación de la estructura de datos utilizada por su sitio web. Relacionará directamente esta estructura de datos con la base de datos. Para que no tenga que aprender SQL para la base de datos.
+   
+   
+1. En primer lugar, se creo una nueva aplicación con el comando::
+
+       django-admin startapp CentroCostos
+       
+donde ``CentroCostos`` es el nombre de la aplicación.
+
+2. Después de crear la aplicación, debe instalarse en el proyecto. Para ello, se agregó la aplicación ``CentroCostos`` a la lista ``INSTALLED_APPS`` en el archivo *settings.py*.
+
+.. code-block:: python
+   :emphasize-lines: 8
+   
+       INSTALLED_APPS = [
+       'django.contrib.admin',
+       'django.contrib.auth',
+       'django.contrib.contenttypes',
+       'django.contrib.sessions',
+       'django.contrib.messages',
+       'django.contrib.staticfiles',
+       'apps.CentroCostos',
+       ]
+       
+       
+3. En el archivo *models.py* encontraremos el siguiente código, correspondiente al modelo de ``CentroCostos``.
+
+.. code-block:: python
+       
+   from django.db import models
+   
+   class CentroCostos(models.Model):
+       id_cdc =               models.AutoField(primary_key = True)
+       nombre_cdc =           models.CharField('Nombre del Centro de Costo', max_length = 100, blank = False, null = False)
+       categoria_cdc =        models.CharField('Categoría del Centro de Costo', max_length = 100, blank = False, null = False)
+       valor_cdc =            models.IntegerField('Valor', blank = False, null = False)
+       clasificacion_cdc =    models.CharField('Clasificación', max_length = 100, blank = False, null = False)
+       tipo_cdc =             models.CharField('Tipo', max_length = 50, blank = False, null = False)
+
+    
+       class Meta:
+           db_table = 'centro_costos'
+           verbose_name = 'centrocosto'
+           verbose_name_plural = 'centrocostos'
+           ordering = ['id_cdc']
+    
+       def __str__(self):
+        return '{}'.format(self.nombre_cdc)
+    
+    
+4. Aquí podemos ver que los campos de los modelos tienen muchos métodos para la entrada web, como :func:`CharField`, :func:`IntegerField`, :func:`AutoField`. Podemos ver mas `referencias <https://docs.djangoproject.com/en/3.0/ref/models/fields/>`_ en la documentación de Django. 
+
+5. Ahora ejecutaremos los comandos::
+
+       > py manage.py makemigrations
+       > py manage.py migrate
+
+.. tip::
+
+   Asegúrese de tener la base de datos conectada y de haber iniciado el servidor Apache y el servidor MySQL en la base de datos.
+   
+   
 .. figure:: ../_static/py.png
    :align: left
    
 Admin
 =====
-admin.py
+*Archivo* : ``admin.py``
 
-.. automodule:: apps.CentroCostos.admin
-   :members:
-   :undoc-members:
+Al registrar el módelo ``CentroCostos`` con ``admin.site.register()``, Django puede construir una representación del formulario predeterminado.
+Para poder registrar un modelo en el archivo :mod:`models.py` debemos importar el modelo con la función ``from`` y registrar el modelo con la sentencia ``admin.site.register()``:
+
+.. code-block:: python
+    
+   from .models import CentroCostos       # Importar el modelo desde models.py
+
+   admin.site.register(CentroCostos)       # (nombre del modelo creado en models.py) 
+    
+   
+.. figure:: ../_static/py.png
+   :align: left
+   
+   
+Forms
+=====
+*Archivo* : ``forms.py``
+
+En este archivo podremos crear los imputs para los campos de los formularios creados en html.
+
+Lo bueno de los formularios de Django es que podemos definirlos desde cero o crear un ``ModelForm``, el cual guardará el resultado del formulario en el modelo. Para esto crearemos un formulario para nuestro modelo *CentroCostos*.
+
+Los formularios tienen su propio archivo: ``forms.py``.  Dentro de este archivo encontraremos el siguiente código:
+
+.. code-block:: python
+
+   from django import forms
+   from .models import CentroCostos
+   class CentroCostosForm(forms.ModelForm):
+       class Meta:
+           model = CentroCostos
+           fields = ['nombre_cdc', 'categoria_cdc', 'valor_cdc', 'clasificacion_cdc', 'tipo_cdc'] 
+
+Lo primero, necesitamos importar Django forms ``from django import forms`` y nuestro modelo *CentroCostos* ``from .models import ..``.
+
+``CentroCostosForm``, es el nombre de nuestro formulario. Necesitamos decirle a Django que este formulario es un ``CentroCostosForm`` así Django hará algo el resto por nosotros - ``forms.CentroCostosForm`` es responsable de ello.
+
+Luego, tenemos ``class Meta``, donde le decimos a Django qué modelo debe ser utilizado para crear este formulario ``model = CentroCostos``.
+
+
+.. figure:: ../_static/py.png
+   :align: left
+
+Views
+=====
+*Archivo* : ``views.py``
+
+:CentroCostos:
+
+.. admonition:: Importaciones
+
+   .. code-block:: python
+   
+      from django.shortcuts import render, redirect
+      from django.core.exceptions import ObjectDoesNotExist
+      from django.http import HttpResponse
+      from .forms import CentroCostosForm
+      from .models import CentroCostos
+
+
+.. admonition:: Listar CentroCostos
+
+   .. code-block:: python
+
+      def listarCentroCostos(request):
+          centrocostos = CentroCostos.objects.all()
+          return render(request, 'centrocostos/listar.html', {'centrocostos': centrocostos})
+          
+          
+.. admonition:: Crear CentroCostos
+
+   .. code-block:: python
+
+      def crearCentroCostos(request):
+          if request.method == 'POST':
+              print(request.POST)
+              centrocostos_form = CentroCostosForm(request.POST)
+              if centrocostos_form.is_valid():
+                  centrocostos_form.save()
+                  return redirect('centrocostos:listar')
+          else:
+              centrocostos_form = CentroCostosForm()       
+          return render(request, 'centrocostos/crear.html', {'centrocostos_form':centrocostos_form})
+          
+          
+.. admonition:: Editar CentroCostos
+
+   .. code-block:: python
+
+      def editarCentroCostos(request, id_cdc):
+          if request.method == 'POST':
+              id_cdc  =        request.POST.get('id_cdc')
+              nombre_cdc  =       request.POST.get('nombre_cdc')
+              categoria_cdc  =        request.POST.get('categoria_cdc')
+              valor_cdc  =           request.POST.get('valor_cdc')
+              clasificacion_cdc  =           request.POST.get('clasificacion_cdc')
+              tipo_cdc  =           request.POST.get('tipo_cdc')
+              CentroCostos.objects.filter(pk=id_cdc).update(nombre_cdc = nombre_cdc, categoria_cdc = categoria_cdc, valor_cdc = valor_cdc, clasificacion_cdc       = clasificacion_cdc, tipo_cdc = tipo_cdc)
+              return redirect('centrocostos:listar') #qw
+          else:
+               centrocostos = CentroCostos.objects.filter(id_cdc = id_cdc)    
+          return render(request, 'centrocostos/editar.html', {'centrocostos': centrocostos}) 
+
+
+.. admonition:: Eliminar CentroCostos
+
+   .. code-block:: python
+   
+      def eliminarCentroCostos(request, id_cdc):
+          centrocostos = CentroCostos.objects.get(id_cdc = id_cdc)
+          if request.method == 'POST':
+              centrocostos.delete()
+              #fabricas.save()
+              return redirect('centrocostos:listar')
+          return render(request, 'centrocostos/eliminar.html', {'centrocostos': centrocostos})
+
+
+
+.. figure:: ../_static/py.png
+   :align: left
+   
+Urls
+====
+*Archivo* : ``urls.py``
+
+.. code-block:: python
+   
+   from django.urls import path, re_path
+   from .views import listarCentroCostos, crearCentroCostos, editarCentroCostos, eliminarCentroCostos
+   urlpatterns = [
+       path('listar/',listarCentroCostos, name = 'listar'),
+       path('crear/',crearCentroCostos, name = 'crear'),
+       path('editar/<int:id_cdc>',editarCentroCostos, name = 'editar'),
+       path('eliminar/<int:id_cdc>',eliminarCentroCostos, name = 'eliminar'),
+    
+   ]
+ 
+ 
+
+Y añadiremos esta ruta al aquivo ``urls.py`` del directorio :mod:`costosbocadillo`:
+ 
+ .. code-block:: python 
+    
+    urlpatterns = [
+    
+    path('centrocostos/', include(('apps.CentroCostos.urls', 'centrocostos'))),
+    
+    ]
+
    
 .. figure:: ../_static/py.png
    :align: left
    
 Apps
 ====
-apps.py
+*Archivo* : ``apps.py``
 
-.. automodule:: apps.CentroCostos.apps
-   :members:
-   :undoc-members:
-   
-.. figure:: ../_static/py.png
-   :align: left
-   
-Forms
-=====
-forms.py
+Este archivo se crea para ayudar al usuario a incluir cualquier `configuración de aplicación <https://docs.djangoproject.com/en/dev/ref/applications/#application-configuration>`_ para la aplicación. Con esto, puede configurar algunos de los atributos de la aplicación:
 
-.. automodule:: apps.CentroCostos.forms
-   :members:
-   :undoc-members:
-   
-.. figure:: ../_static/py.png
-   :align: left
-   
-Models
-======
-models.py
+.. code-block:: python
 
-.. automodule:: apps.CentroCostos.models
-   :members:
-   :undoc-members:
-   
-.. figure:: ../_static/py.png
-   :align: left
-   
-Tests
-=====
-tests.py
+    from django.apps import AppConfig
 
-.. automodule:: apps.CentroCostos.tests
-   :members:
-   :undoc-members:
-   
-.. figure:: ../_static/py.png
-   :align: left
-   
-Urls
-====
-urls.py
-
-.. automodule:: apps.CentroCostos.urls
-   :members:
-   :undoc-members:
-   
-.. figure:: ../_static/py.png
-   :align: left
-   
-Views
-=====
-views.py
-
-.. automodule:: apps.CentroCostos.views
-   :members:
-   :undoc-members:
+    class CentroCostosConfig(AppConfig):
+        name = 'centrocostos'

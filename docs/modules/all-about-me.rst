@@ -2,7 +2,42 @@
 Todo sobre el Proyecto
 ######################
 
+
+.. code::
+   
+   CostosBocadillo
+   ├───manage.py
+   ├───costosbocadillo
+   │        settings.py
+   │        urls.py
+   │        wsgi.py
+   │        __init__.py
+   └───requirements.txt
+
+
 I’m Goran Aviani, a Django developer. Yo soy esneyder
+
+Aqui esta todo la documentación de costos.
+==========================================
+See <http://docutils.sf.net/docs/ref/rst/directives.html> for full info.
+
+================  ============================================================
+Archivo           Descripción
+================  ============================================================
+Migrations        Es el directorio donde se almacenan todas las migraciones 
+                  con sus respectivas dependencias de sus modelos. 
+init              El archivo __init__.py está vacío y existe en el proyecto 
+                  con el único propósito de decirle al intérprete de Python 
+                  que este directorio es un paquete. Esa es una de las reglas 
+                  estándar de los paquetes de Python .
+admin             ``.. image:: picture.png``; many options possible
+apps              Like "image", but with optional caption and legend
+forms             ``.. topic:: Title``; like a mini section
+models            ``.. sidebar:: Title``; like a mini parallel document
+test              A literal block with parsed inline markup
+urls              ``.. rubric:: Informal Heading``
+views             Block quote with class="epigraph"
+================  ============================================================
 
 .. note::
 
@@ -32,13 +67,13 @@ Here is a link :func:`time.time`.
    :type limit: integer or None
    :rtype: list of strings
 
-##########################################################################
-docutils: http://docutils.sourceforge.net/docs/user/rst/cheatsheet.txt
-##########################################################################
 
-=====================================================
- The reStructuredText_ Cheat Sheet: Syntax Reminders
-=====================================================
+docutils: http://docutils.sourceforge.net/docs/user/rst/cheatsheet.txt
+**********************************************************************
+
+===================================================
+The reStructuredText_ Cheat Sheet: Syntax Reminders
+===================================================
 :Info: See <http://docutils.sf.net/rst.html> for introductory docs.
 :Author: David Goodger <goodger@python.org>
 :Date: $Date: 2013-02-20 02:10:53 +0100 (Mi, 20. Feb 2013) $
@@ -94,7 +129,7 @@ Hyperlink Target  .. _reStructuredText: http://docutils.sf.net/rst.html
                   .. _indirect target: reStructuredText_
                   .. _internal target:
 Anonymous Target  __ http://docutils.sf.net/docs/ref/rst/restructuredtext.html
-Directive ("::")  .. image:: images/biohazard.png
+Directive ("::")  .. image:: ../_static/carpeta.png
 Substitution Def  .. |substitution| replace:: like an inline directive
 Comment           .. is anything else
 Empty Comment     (".." on a line by itself, with blank lines before & after,
@@ -170,9 +205,9 @@ title             Title reference (book, etc.); standard default role
 ================  ============================================================
 
 
-######################################################################################
+
 Nuevo Codigo: http://docutils.sourceforge.net/docs/user/rst/quickref.html#getting-help
-######################################################################################
+**************************************************************************************
 
 *escape* ``with`` "\hola"
 
@@ -257,13 +292,11 @@ Option Lists
 ============
 
 
-Plain text	Typical result
+Plain text	  Typical result
 -a            command-line option "a"
 -b file       options can have arguments
-              and long descriptions
 --long        options can be long also
 --input=file  long options can also have
-              arguments
 /V            DOS/VMS-style options too
 
 
@@ -425,20 +458,4 @@ External hyperlinks, like `Python
 <http://www.python.org/>`_.
 
 
-:download:`An Example Pypi Project<docs/examplepypi.pdf>`
-
-======
-Tables
-======
-
-======
-Tables
-======
-
-======
-Tables
-======
-
-======
-Tables
-======
+:download:`An Example Pypi Project<../examplepypi.pdf>`

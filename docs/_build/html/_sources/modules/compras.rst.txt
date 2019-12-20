@@ -4,91 +4,469 @@
 compras
 *******
 
+:Descripción: 
+
+.. code:: 
+   
+   CostosBaocadillo
+   └── apps
+          └── compras
+              ├── __init__.py
+              ├── admin.py
+              ├── apps.py
+              ├── migrations
+              │   └── __init__.py
+              ├── models.py
+              ├── tests.py
+              ├── views.py
+              ├── forms.py
+              └── urls.py
+   
 .. figure:: ../_static/carpeta.png
    :align: left
    
 Migrations
 ==========
+*Carpeta* : :mod:`migrations`
 
-.. automodule:: apps.compras.migrations.0001_initial
-   :members:
-   :undoc-members:
 
-   Es la ruta donde las migraciones se realizan
+   Este es el directorio donde se almacenan todas las migraciones con las respectivas dependencias de sus modelos. Dentro de este archivo se encuentran los campos de la base de datos que establecimos en el archivo ``models.py`` con la respectiva característica del campo. Este archivo es generado con el comando ``makemigrations`` de Django y genera nuevas versiones con cada migración creada. 
+   
+       
+       
+.. figure:: ../_static/py.png
+   :align: left
 
+Models
+======
+*Archivo* : ``models.py``
+
+.. note::
+
+   Un modelo en Django es una clase importada de la biblioteca django.db que actúa como puente entre su base de datos y el servidor. Esta clase es una representación de la estructura de datos utilizada por su sitio web. Relacionará directamente esta estructura de datos con la base de datos. Para que no tenga que aprender SQL para la base de datos.
+   
+   
+1. En primer lugar, se creo una nueva aplicación con el comando::
+
+       django-admin startapp compras
+       
+donde ``compras`` es el nombre de la aplicación.
+
+2. Después de crear la aplicación, debe instalarse en el proyecto. Para ello, se agregó la aplicación ``compras`` a la lista ``INSTALLED_APPS`` en el archivo *settings.py*.
+
+.. code-block:: python
+   :emphasize-lines: 8
+   
+       INSTALLED_APPS = [
+       'django.contrib.admin',
+       'django.contrib.auth',
+       'django.contrib.contenttypes',
+       'django.contrib.sessions',
+       'django.contrib.messages',
+       'django.contrib.staticfiles',
+       'apps.compras',
+       ]
+       
+       
+3. En el archivo *models.py* encontraremos el siguiente código, correspondiente al modelo de ``Compras``.
+
+.. code-block:: python
+       
+   from django.db import models
+   from apps.insumos.models import Insumos
+   from apps.insumos.models import InsumosGenericos
+   from apps.Propietarios.models import Propietarios
+   from apps.fabricas.models import Fabricas
+   from apps.baches.models import Baches
+   # Create your models here.
+   class Compras(models.Model):
+       id_compra =    models.IntegerField(primary_key = True)
+       #propietario refiere a id_pro _ al migrar cambia a propietario_id
+       propietario =  models.ForeignKey(Propietarios, on_delete=models.CASCADE) 
+       fabrica =      models.ForeignKey(Fabricas, on_delete=models.CASCADE)
+       fecha_compra =    models.DateField('Fecha compra', blank=False, null=False)
+       class Meta:
+           db_table = 'compras'
+    
+   class Insumos_Compras(models.Model):
+       id_ico =      models.AutoField(primary_key = True)
+       #insumo refiere a id_insumo _ al migrar cambia a insumo_id
+       insumo =     models.ForeignKey(Insumos, on_delete=models.CASCADE) 
+       compra =     models.ForeignKey(Compras, on_delete=models.CASCADE)
+       cantidad =   models.IntegerField()
+       precio =     models.FloatField()
+       precio_und_min_ico = models.FloatField()
+       und_min_ico = models.CharField('Und Min', max_length = 10, null=True)
+    
+       class Meta:
+           db_table = 'insumos_compras'
+    
+    
+   class BacheInsumo(models.Model):
+       id_bai =                 models.AutoField(primary_key = True)
+       id_ico_bai =             models.ForeignKey(Insumos_Compras, on_delete=models.CASCADE)
+       #el id del insumo generrico compra
+       id_ige_bai =             models.ForeignKey(InsumosGenericos, on_delete=models.CASCADE)
+       #es el id del bache
+       id_bpr_bai =             models.ForeignKey(Baches, on_delete=models.CASCADE)
+       valor_prom_unidad_bai =  models.FloatField()
+       #se refiere a gr o ml según la unidad  mínima
+       unidad_medida_bai =      models.CharField('Unidad medida bache insumo', max_length = 20)
+       valor_total_bai =        models.FloatField()
+    
+       class Meta:
+           db_table = 'bache_insumo'
+           verbose_name = 'BI'
+           verbose_name_plural = 'BacheInsumos'
+           ordering = ['id_bai']
+    
+    
+4. Aquí podemos ver que los campos de los modelos tienen muchos métodos para la entrada web, como :func:`CharField`, :func:`IntegerField`, :func:`AutoField`. Podemos ver mas `referencias <https://docs.djangoproject.com/en/3.0/ref/models/fields/>`_ en la documentación de Django. 
+
+5. Ahora ejecutaremos los comandos::
+
+       > py manage.py makemigrations
+       > py manage.py migrate
+
+.. tip::
+
+   Asegúrese de tener la base de datos conectada y de haber iniciado el servidor Apache y el servidor MySQL en la base de datos.
+   
+   
 .. figure:: ../_static/py.png
    :align: left
    
 Admin
 =====
-admin.py
+*Archivo* : ``admin.py``
 
-.. automodule:: apps.compras.admin
-   :members:
-   :undoc-members:
+Al registrar el  módelo ``Empleados`` con ``admin.site.register()``, Django puede construir una representación del formulario predeterminado.
+Para poder registrar un modelo en el archivo :mod:`models.py` debemos importar el modelo con la función ``from`` y registrar el modelo con la sentencia ``admin.site.register()``:
+
+.. code-block:: python
+    
+   from .models import Compras       # Importar el modelo desde models.py
+
+   admin.site.register(Compras)       # (nombre del modelo creado en models.py) 
+    
+   
+.. figure:: ../_static/py.png
+   :align: left
+   
+   
+Forms
+=====
+*Archivo* : ``forms.py``
+
+En este archivo podremos crear los imputs para los campos de los formularios creados en html.
+
+Lo bueno de los formularios de Django es que podemos definirlos desde cero o crear un ``ModelForm``, el cual guardará el resultado del formulario en el modelo. Para esto crearemos un formulario para nuestros modelos *Compras* y *Insumos_Compras*.
+
+Los formularios tienen su propio archivo: ``forms.py``.  Dentro de este archivo encontraremos el siguiente código:
+
+.. code-block:: python
+
+   from django import forms
+   from .models import Compras
+   from .models import Insumos_Compras
+   class ComprasForm(forms.ModelForm):
+       class Meta:
+           model = Compras
+           fields = ['propietario', 'fabrica', 'fecha_compra'] 
+
+        
+   class Insumos_ComprasForm(forms.ModelForm):
+       class Meta:
+           model = Insumos_Compras
+           fields = ['insumo', 'compra', 'cantidad', 'precio'] 
+           
+           
+Lo primero, necesitamos importar Django forms ``from django import forms`` y nuestros modelos *Compras* y *Insumos_Compras* ``from .models import ..``.
+
+``ComprasForm`` y ``Insumos_ComprasForm``, son los nombres de nuestros formularios. Necesitamos decirle a Django que este formulario es un ``ModelForm`` así Django hará algo el resto por nosotros - ``forms.ComprasForm`` es responsable de ello.
+
+Luego, tenemos ``class Meta``, donde le decimos a Django qué modelo debe ser utilizado para crear este formulario ``model = Compras | Insumos_ComprasForm``.
+
+
+.. figure:: ../_static/py.png
+   :align: left
+
+Views
+=====
+*Archivo* : ``views.py``
+
+:Empleados:
+
+.. admonition:: Importaciones
+
+   .. code-block:: python
+   
+      from django.shortcuts import render, redirect
+      from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
+      from django.core import serializers
+      import datetime, time
+      from apps.insumos.models import Insumos
+      from apps.Propietarios.models import Propietarios
+      from apps.fabricas.models import Fabricas
+      from .models import Compras, Insumos_Compras
+      from django.contrib.auth.models import User
+
+
+.. admonition:: GetCompras
+
+   .. code-block:: python
+
+      def GetCompras(request):
+          if request.method == "POST":
+              search_type  = request.POST.get('search_type') 
+              from_date  = request.POST.get('from_date')
+              to_date  = request.POST.get('to_date')
+              filtro_cp_mes  = request.POST.get('filtro_cp_mes')        
+              def aplicar():            
+                  repetido, unico_id = [], []
+                  for x in compras:
+                      if x.id_ins not in unico_id:
+                          unico_id.append(x.id_ins)
+                      else:
+                          if x.id_ins not in repetido:
+                              repetido.append(x.id_ins)
+                  print ("unico_id " + str(unico_id))
+                  insumos = Insumos.objects.filter(id_ins__in  = unico_id)
+                  return render(request, 'compras/filtros.html', {'compras': compras, 'insumos': insumos})
+              user_id = request.session.get('user_id')
+              if search_type == 'by_month':
+                  #return HttpResponse("xmes")
+                  compras = Compras.objects.raw('SELECT * FROM  compras c  INNER JOIN insumos_compras ic  ON  ic.compra_id = c.id_compra INNER JOIN fabricas       f ON c.fabrica_id = f.id_fab INNER JOIN propietarios p ON p.id_pro = c.propietario_id INNER JOIN insumos ins ON ins.id_ins = ic.insumo_id       WHERE EXTRACT(month FROM fecha_compra) = %s AND p.user_id = %s', [filtro_cp_mes, user_id])
+                  return aplicar()    
+              elif search_type == 'by_range':
+                  #return HttpResponse("xrango")
+                  compras = Compras.objects.raw('SELECT * FROM  compras c  INNER JOIN insumos_compras ic  ON  ic.compra_id = c.id_compra INNER JOIN fabricas       f ON c.fabrica_id = f.id_fab INNER JOIN propietarios p ON p.id_pro = c.propietario_id INNER JOIN insumos ins ON ins.id_ins = ic.insumo_id       WHERE c.fecha_compra  BETWEEN  %s AND %s AND p.user_id = %s',[from_date, to_date, user_id])
+                  return aplicar()    
+              else:
+                  return HttpResponse("No hay criterios de busqueda")    
+        
+              for obj in compras:
+                  return HttpResponse(obj.id_compra) 
+          
+          
+.. admonition:: Crear Empleados
+
+   .. code-block:: python
+
+      def GetInsID(request):
+          if request.method == "GET" and request.is_ajax():        
+              id_insumo = request.GET.get("id_insumo")
+              insumos = Insumos.objects.filter(id_ins = id_insumo)
+              for ins in insumos:
+                  return HttpResponse(ins.id_ins)
+      
+          
+.. admonition:: Crear Compra
+
+   .. code-block:: python
+
+      def CrearCompra(request):
+          if request.method == 'POST':
+              action  = request.POST.get('add_in_editar')
+              id_compra  = request.POST.get('referencia')
+              fabrica_id  = request.POST.get('fabrica_id')
+              propietario_id  = request.POST.get('propietario_id')
+              fecha_compra  = request.POST.get('fecha_compra')
+              compra = Compras(id_compra = id_compra, fabrica_id = fabrica_id, propietario_id = propietario_id, fecha_compra = fecha_compra)
+              if action == 'edi':
+                  print("=> edit")
+              else:
+                  compra.save()
+            
+              insumo_id = request.POST.getlist('insumo_id[]') 
+              cantidad = request.POST.getlist('cantidad[]')
+              precio = request.POST.getlist('precio[]')
+        
+              gramos_kl, gramos_lb, militros = 0,0,0
+              j_kilos , j_libras, j_litros = [],[],[]
+              va, und_min = [] , []
+              dt = []
+              for i, c, p in zip(insumo_id, cantidad, precio):
+                  print("ID del insumo es: "+str(i)+ " Los precios son: "+str(p))
+                  price = float(p)
+                  valor = Insumos.objects.filter(id_ins = i)
+                  for ins in valor:
+                      print(ins.nombre_ins)
+                      print(ins.unidad_medida_comercial_ins)
+                      if ins.unidad_medida_comercial_ins == 'kilos':
+                          print("Cantidad es: "+str(ins.cantidad_comercial_ins))
+                          gramos_kl =  price / (float(ins.cantidad_comercial_ins) * 1000)
+                          j_kilos += [gramos_kl]
+                          va += [gramos_kl]
+                          und_min += ['kl => gr']
+                      elif ins.unidad_medida_comercial_ins == 'libras':
+                          print("Cantidad es: "+str(ins.cantidad_comercial_ins))
+                          gramos_lb = price / (float(ins.cantidad_comercial_ins) * 500)
+                          j_libras +=  [gramos_lb]
+                          va +=  [gramos_lb]
+                          und_min += ['lb => gr']
+                          #print("Valor de libras por gramo " + str(gramos_lb))
+                      elif ins.unidad_medida_comercial_ins == 'litros':
+                          print("Cantidad litro: "+str(ins.cantidad_comercial_ins))
+                          militros =  price (float(ins.cantidad_comercial_ins * 1000) )
+                          j_litros  += [militros]
+                          va += [militros]
+                          und_min += ['lt => ml']
+                          print("Militros " + str(militros))
+              if gramos_kl != ''  and gramos_lb == '' and militros == '':
+                  dt = j_kilos
+              elif gramos_lb != '' and gramos_kl == '' and militros == '':
+                  dt = j_libras
+              elif militros != '' and gramos_kl == '' and gramos_lb == '':    
+                  dt = j_litros
+              elif gramos_kl != '' and gramos_lb != '' and militros != '':
+                  dt = va
+              for insu, canti, prec, pumi, und_min_x in zip(insumo_id, cantidad, precio, dt, und_min):
+                  entry = Insumos_Compras(cantidad = canti, precio = prec, compra_id = id_compra, precio_und_min_ico = pumi, und_min_ico = und_min_x,       insumo_id =  insu)
+                  entry.save()
+              if action == 'edi':
+                  return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+              else:
+                  return redirect('compras:listar')
+          else:    
+              insumos = Insumos.objects.all()
+              user_id = request.session.get('user_id')
+              propietario = Propietarios.objects.raw('SELECT * FROM propietarios WHERE user_id = %s', [user_id])
+              fabricas = Fabricas.objects.raw('SELECT * FROM fabricas fab INNER JOIN propietarios prop ON fab.propietario_id = prop.id_pro INNER JOIN       auth_user u ON prop.user_id = u.id WHERE u.id = %s', [user_id])
+              date_time = datetime.datetime.now()
+              date = date_time.date()
+              time = date_time.time()
+              print (date)
+              #print (time.hour,time.minute,time.second)
+              tiempo = time.strftime("%S%f")
+              my_time = [date, tiempo]
+              print (my_time)
+              return render(request, 'compras/crear.html', {'insumos': insumos, 'fabricas':fabricas, 'propietario':propietario, 'tiempo':tiempo})
+          
+          
+.. admonition:: Editar Empleados
+
+   .. code-block:: python
+
+      def EditarCompra(request, id_compra):
+          if request.method == 'POST':
+              id_compra  = request.POST.get('id_compra')
+              insumo_id = request.POST.getlist('insumo_id[]') 
+              cantidad = request.POST.getlist('cantidad[]')
+              precio = request.POST.getlist('precio[]')
+              id_ico = request.POST.getlist('id_ico[]') #id de la compra del insumo
+              val_und_min_ins = request.POST.getlist('val_und_min_ins[]') 
+        
+              total_und = 0
+              unds_arr = []
+              for val_und, pric in zip(val_und_min_ins, precio):
+                  val_un = float(val_und)
+                  pri = float(pric)
+                  print("los valores " + str(val_un) + " los precios " + str(pri))    
+                  total_und =  pri / val_un 
+                  print(total_und)
+                  unds_arr.append(total_und)
+              print(unds_arr)    
+              for cant, precio, t_un, insumo, id_ic in zip(cantidad, precio,unds_arr,  insumo_id, id_ico):
+                  Insumos_Compras.objects.filter(id_ico=id_ic).update(cantidad= cant, precio = precio,  precio_und_min_ico = t_un, insumo_id = insumo)
+              return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+          else:
+              compra = Compras.objects.raw('SELECT * FROM compras c INNER JOIN propietarios p ON p.id_pro = c.propietario_id INNER JOIN fabricas f ON       c.fabrica_id = f.id_fab   WHERE c.id_compra = %s', [id_compra])
+              detalles_compra = Compras.objects.raw('SELECT * FROM compras c INNER JOIN propietarios p ON p.id_pro = c.propietario_id INNER JOIN fabricas f       ON c.fabrica_id = f.id_fab INNER JOIN insumos_compras ci ON c.id_compra = ci.compra_id INNER JOIN insumos ins ON ci.insumo_id = ins.id_ins       WHERE c.id_compra = %s', [id_compra])
+              insumos_all = Insumos.objects.all()
+              return render(request, 'compras/detalles.html', {'compra':compra, 'detalles_compra':detalles_compra, 'insumos_all':insumos_all})            
+
+.. admonition:: Detalles Compra
+
+   .. code-block:: python
+   
+      def DetallesCompra(request):
+        
+          first_name = "SENA VELEZ"
+          last_name = "SEN"
+          username = "prueba"
+          password = "prueba"
+          user = User.objects.create_user(username=username, password=password)
+          #return render(request, 'register.html') 
+          if request.method == "GET" and request.is_ajax():        
+              compra_id = request.GET.get("compra_id")
+              #lista = serializers.serialize('json', rooms)
+              rooms =   list(Insumos_Compras.objects.all().values())
+              data =  dict()
+              data['rooms'] = rooms
+              return JsonResponse(data)
+        
+    
+          else:
+              print("something no GET cause its post")
+      
+.. admonition:: Eliminar Compra
+
+   .. code-block:: python
+   
+      def EliminarCompra(request, id_compra):
+          if request.method == 'POST':
+              print("Eliminar compra")
+
+.. admonition:: Eliminar Detalle de la Compra
+
+   .. code-block:: python
+   
+      def EliminarDetallesCompra(request, id_ico, compra):
+          insumos_compras = Insumos_Compras.objects.get(id_ico = id_ico)
+          if request.method == 'POST':
+              insumos_compras.delete()
+              return redirect('compras:editar', compra)
+          return render(request, 'compras/eliminar.html', {'insumos_compras': insumos_compras})
+
+.. figure:: ../_static/py.png
+   :align: left
+   
+Urls
+====
+*Archivo* : ``urls.py``
+
+.. code-block:: python
+   
+   from django.urls import path, re_path
+   from django.contrib.auth.decorators import login_required
+   from .views import GetCompras, CrearCompra, ComprasHome, EditarCompra, EliminarCompra, DetallesCompra,GetInsID, EliminarDetallesCompra
+   urlpatterns = [
+       path('get/',GetCompras, name = 'get'),    
+       path('traer/',DetallesCompra, name = 'traer'),
+       path('listar/', login_required (ComprasHome), name = 'listar'),    
+       path('crear/',CrearCompra, name = 'crear'),
+       path('get_ins_id/',GetInsID, name = 'get_ins_id'),
+       path('editar/<int:id_compra>',EditarCompra, name = 'editar'),
+       path('eliminar/<int:id_compra>',EliminarCompra, name = 'eliminar'),
+       path('del/<int:id_ico>/<int:compra>/',EliminarDetallesCompra, name = 'eliminar_detalles'),
+       ]
+ 
+ 
+
+Y añadiremos esta ruta al aquivo ``urls.py`` del directorio :mod:`costosbocadillo`:
+ 
+ .. code-block:: python 
+    
+    urlpatterns = [
+    
+    path('compras/', include(('apps.compras.urls', 'compras'))),
+    
+    ]
+
    
 .. figure:: ../_static/py.png
    :align: left
    
 Apps
 ====
-apps.py
+*Archivo* : ``apps.py``
 
-.. automodule:: apps.compras.apps
-   :members:
-   :undoc-members:
-   
-.. figure:: ../_static/py.png
-   :align: left
-   
-Forms
-=====
-forms.py
+Este archivo se crea para ayudar al usuario a incluir cualquier `configuración de aplicación <https://docs.djangoproject.com/en/dev/ref/applications/#application-configuration>`_ para la aplicación. Con esto, puede configurar algunos de los atributos de la aplicación:
 
-.. automodule:: apps.compras.forms
-   :members:
-   :undoc-members:
-   
-.. figure:: ../_static/py.png
-   :align: left
-   
-Models
-======
-models.py
+.. code-block:: python
 
-.. automodule:: apps.compras.models
-   :members:
-   :undoc-members:
-   
-.. figure:: ../_static/py.png
-   :align: left
-   
-Tests
-=====
-tests.py
+   from django.apps import AppConfig
 
-.. automodule:: apps.compras.tests
-   :members:
-   :undoc-members:
-   
-.. figure:: ../_static/py.png
-   :align: left
-   
-Urls
-====
-urls.py
-
-.. automodule:: apps.compras.urls
-   :members:
-   :undoc-members:
-   
-.. figure:: ../_static/py.png
-   :align: left
-   
-Views
-=====
-views.py
-
-.. automodule:: apps.compras.views
-   :members:
-   :undoc-members:
+   class ComprasConfig(AppConfig):
+       name = 'compras'

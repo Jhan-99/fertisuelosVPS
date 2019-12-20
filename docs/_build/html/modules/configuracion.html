@@ -1,0 +1,496 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Configuración &mdash; CostosBocadillo 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="baches" href="baches.html" />
+    <link rel="prev" title="Instalación" href="install.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html"> CostosBocadillo
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Instalación</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Configuración</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#cambiar-la-configuracion">Cambiar la configuración</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#conexion-de-la-base-de-datos-mysql">Conexión de la base de datos MySQL</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#instalar-xampp">Instalar Xampp</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#configurar-una-base-de-datos">Configurar una base de datos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#urls">URLs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#views">Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#crear-una-aplicacion">Crear una aplicación</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#crear-el-modelo">Crear el modelo</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#crear-tablas-para-los-modelos-en-tu-base-de-datos">Crear tablas para los modelos en tu base de datos</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Apps:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="baches.html">baches</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CostosBocadillo</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">CostosBocadillo</a> &raquo;</li>
+        
+      <li>Configuración</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/modules/configuracion.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="configuracion">
+<h1>Configuración<a class="headerlink" href="#configuracion" title="Permalink to this headline">¶</a></h1>
+<p>Los nombres de algunos archivos y directorios son muy importantes para Django. No debemos renombrar los archivos. Moverlos a un lugar diferente tampoco es buena idea. Django necesita mantener una cierta estructura para poder encontrar cosas importantes.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Recordemos ejecutar todo en el <code class="docutils literal notranslate"><span class="pre">virtualenv</span></code>. Si no vemos un prefijo <a href="#id1"><span class="problematic" id="id2">:mod:`(costosbocadilloenv)`</span></a> en nuestra consola tenemos que activar nuetro <code class="docutils literal notranslate"><span class="pre">virtualenv</span></code>. Explicamos cómo hacerlo en el capítulo de <strong>Instalación de Django</strong> en la sección <strong>Trabajar con virtualenv</strong>. Basta con escribir <code class="docutils literal notranslate"><span class="pre">costosbocadilloenv\Scripts\activate</span></code></p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Esta documentación se basa en código ya creado y depurado, así que no es necesario instalar Django a menos que se quiera crear un proyecto nuevo.</p>
+</div>
+<p>Para crear un nuevo proyecto debemos ejecutar el siguiente comando:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="p">(</span><span class="n">costosbocadilloenv</span><span class="p">)</span> <span class="n">django</span><span class="o">-</span><span class="n">admin</span><span class="o">.</span><span class="n">exe</span> <span class="n">startproject</span> <span class="n">mysite</span>
+</pre></div>
+</div>
+<p>Donde <a href="#id3"><span class="problematic" id="id4">:mod:`mysite`</span></a> será el nombre de nuestro proyecto.</p>
+<p><code class="docutils literal notranslate"><span class="pre">django-admin.py</span></code> es un script que creará los archivos y directorios para nosotros. Como mencionamos anteriormente, esta documentación se basa en código ya desarrollado así que obviamente habrán mas archivos y directorios que al crear un proyecto nuevo. Ahora deberíamos tener una estructura de directorios parecida a esta:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>CostosBocadillo
+├─── apps
+├─── templates
+├─── static
+├─── manage.py
+├─── costosbocadillo
+                  ├─── settings.py
+                  ├─── urls.py
+                  ├─── wsgi.py
+                  ├─── __init__.py
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">manage.py</span></code> es un script que ayuda con la administración del sitio. Con él podremos iniciar un servidor web en nuestro ordenador sin necesidad de instalar nada más, entre otras cosas.</p></li>
+<li><p>El archivo <code class="docutils literal notranslate"><span class="pre">settings.py</span></code> contiene la configuración de nuestro sitio web.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">urls.py</span></code> contiene una lista de los patrones utilizados por <code class="docutils literal notranslate"><span class="pre">urlresolver</span></code>.</p></li>
+</ul>
+<p>Por ahora vamos a ignorar el resto de archivos porque no los vamos a cambiar</p>
+<div class="section" id="cambiar-la-configuracion">
+<h2>Cambiar la configuración<a class="headerlink" href="#cambiar-la-configuracion" title="Permalink to this headline">¶</a></h2>
+<p>Vamos a hacer algunos cambios en <a href="#id5"><span class="problematic" id="id6">:mod:`costosbocadillo/settings.py`</span></a>. Abre el archivo usando el editor de código que has instalado anteriormente.</p>
+<p>Sería bueno tener el horario correcto en nuestro sitio web. En <code class="docutils literal notranslate"><span class="pre">settings.py</span></code>, encuentraremos la línea que contiene <code class="docutils literal notranslate"><span class="pre">TIME_ZONE</span></code> y modifícala para elegir tu zona horaria.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TIME_ZONE</span> <span class="o">=</span> <span class="s1">&#39;UTC&#39;</span>
+</pre></div>
+</div>
+<p>Un código de idioma tiene dos partes: el idioma, p.ej. <code class="docutils literal notranslate"><span class="pre">en</span></code> para inglés o <code class="docutils literal notranslate"><span class="pre">de</span></code> para alemán, y el código de país, p.ej. <code class="docutils literal notranslate"><span class="pre">de</span></code> para Alemania o <code class="docutils literal notranslate"><span class="pre">ch</span></code> para Suiza. Si nuestro idioma nativo no es el inglés, podemos añadir lo siguiente para cambiar el idioma de los botones y notificaciones de Django. Así tendremos el botón <strong>Cancel</strong> traducido al idioma que pongamos aquí. <a class="reference external" href="https://docs.djangoproject.com/en/2.2/ref/settings/#language-code">Django viene con muchas traducciones preparadas</a>. Si queremos un idioma diferente, cambiaremos el código de idioma, cambiando la siguiente línea:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LANGUAGE_CODE</span> <span class="o">=</span> <span class="s1">&#39;es-co&#39;</span>
+</pre></div>
+</div>
+<p>También tenemos que añadir una ruta para archivos estáticos. Esta ruta ya está agregada en nuestro proyecto. En caso de que no esté, iremos al final del archivo, y justo debajo de la entrada <code class="docutils literal notranslate"><span class="pre">STATIC_URL</span></code>, añadiremos una entrada nueva llamada <code class="docutils literal notranslate"><span class="pre">STATIC_ROOT</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">STATIC_URL</span> <span class="o">=</span> <span class="s1">&#39;/static/&#39;</span>
+<span class="n">STATICFILES_DIRS</span> <span class="o">=</span> <span class="p">(</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">BASE_DIR</span><span class="p">,</span> <span class="s1">&#39;static&#39;</span><span class="p">)</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>Cuando <a href="#id7"><span class="problematic" id="id8">:mod:`DEBUG`</span></a> es <code class="docutils literal notranslate"><span class="pre">True</span></code> y <a href="#id9"><span class="problematic" id="id10">:mod:`ALLOWED_HOST`</span></a> esta vacío, el host es validado contra <code class="docutils literal notranslate"><span class="pre">['localhost',</span> <span class="pre">'127,0.0.1',</span> <span class="pre">'[::1]']</span></code>. Una vez despleguemos nuestra aplicación cambiar esto. En este caso ya esta configurado para el dominio costosbocadillo.com.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALLOWED_HOSTS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;165.22.186.6&#39;</span><span class="p">,</span> <span class="s1">&#39;costosbocadillo.com&#39;</span><span class="p">,</span> <span class="s1">&#39;127.0.0.1&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Además, observemos que la configuración de <code class="docutils literal notranslate"><span class="pre">INSTALLED_APPS</span></code> se encuentra en la parte superior del archivo. Esta contiene los nombres de todas las aplicaciones Django que están activadas en esta instancia de Django. Las aplicaciones se pueden usar en diversos proyectos y las podemos empaquetar y distribuirlas para que otras personas las puedan utilizar en sus proyectos.
+Por defecto, <code class="docutils literal notranslate"><span class="pre">INSTALLED_APPS</span></code> contiene las siguientes aplicaciones y Django viene equipado con todas ellas:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;django.contrib.admin&#39;</span>          <span class="c1"># El sitio administrativo. Usted lo utilizará dentro de poco.</span>
+<span class="s1">&#39;django.contrib.auth&#39;</span>           <span class="c1"># Un sistema de autenticación.</span>
+<span class="s1">&#39;django.contrib.contenttypes&#39;</span>   <span class="c1"># Un framework para los tipos de contenido.</span>
+<span class="s1">&#39;django.contrib.sessions&#39;</span>       <span class="c1"># Un framework de sesión.</span>
+<span class="s1">&#39;django.contrib.messages&#39;</span>       <span class="c1"># Un framework de mensajería.</span>
+<span class="s1">&#39;django.contrib.staticfiles&#39;</span>    <span class="c1"># Un framework para la gestión de archivos estáticos.</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Algunas de estas aplicaciones utilizan al menos una tabla de base de datos, por lo que necesitamos crear las tablas en la base de datos antes de poder utilizarlas. Para ello, ejecutaremos los siguientes comandos:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="mf">1.</span> <span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">makemigrations</span>
+<span class="o">&gt;</span> <span class="mf">2.</span> <span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">migrate</span>
+</pre></div>
+</div>
+<p>Pero esto lo aremos más adelante cuando hayamos creado y conectado la base de datos.</p>
+</div>
+</div>
+<div class="section" id="conexion-de-la-base-de-datos-mysql">
+<h2>Conexión de la base de datos MySQL<a class="headerlink" href="#conexion-de-la-base-de-datos-mysql" title="Permalink to this headline">¶</a></h2>
+<p>MySQL es una base de datos muy poderosa que le brinda toneladas de características y flexibilidad.</p>
+<p>Estos son los pasos para integrar el proyecto Django con MySQL:</p>
+<div class="section" id="instalar-xampp">
+<h3>Instalar Xampp<a class="headerlink" href="#instalar-xampp" title="Permalink to this headline">¶</a></h3>
+<p>Xampp es una herramienta gratuita de código abierto que le proporciona el servidor Apache y phpMyAdmin, que es la mejor fuente para que los programadores principiantes trabajen con MySQL.</p>
+<dl class="field-list simple">
+<dt class="field-odd">1</dt>
+<dd class="field-odd"><p>Ejecute el panel de control de Xampp. Ahora, después de la instalación, deberá ejecutar el Panel de control de Xampp e iniciar 2 servicios allí, <a href="#id11"><span class="problematic" id="id12">:mod:`Apache`</span></a> y <a href="#id13"><span class="problematic" id="id14">:mod:`MySQL`</span></a>.</p>
+</dd>
+</dl>
+<img alt="../_images/xampp.png" src="../_images/xampp.png" />
+<p>Simplemente haga clic en la acción de inicio, y después de comenzar debería verse como esta imagen.</p>
+<img alt="../_images/xamm2.png" src="../_images/xamm2.png" />
+<p>Ahora, haga clic en el Administrador del Servicio MySQL, que debería abrir una página web (sin conexión) con este aspecto.</p>
+<img alt="../_images/xampp3.png" src="../_images/xampp3.png" />
+<dl class="field-list simple">
+<dt class="field-odd">2</dt>
+<dd class="field-odd"><p>Crear una base de datos SQL. En la página web phpMyAdmin, tendremos que crear una base de datos para nuestro proyecto.</p>
+</dd>
+</dl>
+<img alt="../_images/crear1.png" src="../_images/crear1.png" />
+<p>Simplemente haga clic en el botón Nuevo como se muestra aquí. Luego, simplemente complete el nombre deseado de su base de datos y haga clic en el botón Crear</p>
+<img alt="../_images/crear2.png" src="../_images/crear2.png" />
+<p>Eso agregará su base de datos en la lista.</p>
+<img alt="../_images/crear3.png" src="../_images/crear3.png" />
+<p>Eso es todo, ahora no necesitamos hacer nada aquí. Solo interactuaremos con python y el <strong>componente de modelos de Django</strong> preparará todo para nosotros.</p>
+<img alt="../_images/crear4.png" src="../_images/crear4.png" />
+<p>La base de datos que creamos está vacía en este momento. Después del tercer paso, habrá muchas tablas con información diferente.</p>
+<dl class="field-list simple">
+<dt class="field-odd">3</dt>
+<dd class="field-odd"><p>En este último paso, cambiaremos el diccionario <em>BASE DE DATOS</em> en la configuración de nuestros proyectos <a href="#id15"><span class="problematic" id="id16">:mod:`principales.py`</span></a>.</p>
+</dd>
+</dl>
+<p>Primero, instalaremos este archivo a través de la línea de comando:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="mf">1.</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">cymysql</span>
+<span class="o">&gt;</span> <span class="mf">2.</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">django</span><span class="o">-</span><span class="n">cymysql</span>
+</pre></div>
+</div>
+<p>Esto instalará el código Django para conectar la base de datos MySQL.</p>
+</div>
+</div>
+<div class="section" id="configurar-una-base-de-datos">
+<h2>Configurar una base de datos<a class="headerlink" href="#configurar-una-base-de-datos" title="Permalink to this headline">¶</a></h2>
+<p>Hay una gran variedad de opciones de bases de datos para almacenar los datos de nuestro sitio. Para este proyecto utilizamos <em>MySQL</em>. La conexión ya esta configurada de la siguiente forma:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">DEBUG</span><span class="p">:</span>
+ <span class="n">DATABASES</span> <span class="o">=</span> <span class="p">{</span>
+     <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="p">{</span>
+         <span class="s1">&#39;ENGINE&#39;</span><span class="p">:</span> <span class="s1">&#39;mysql_cymysql&#39;</span><span class="p">,</span> <span class="c1">#Conexión a mysql</span>
+         <span class="s1">&#39;NAME&#39;</span><span class="p">:</span> <span class="s1">&#39;cb_django&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;HOST&#39;</span><span class="p">:</span> <span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;USER&#39;</span><span class="p">:</span> <span class="s1">&#39;root&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;PASSWORD&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;PORT&#39;</span><span class="p">:</span> <span class="mi">3306</span>
+     <span class="p">}</span>
+ <span class="p">}</span>
+</pre></div>
+</div>
+<p>El motor <code class="docutils literal notranslate"><span class="pre">ENGINE</span></code> aquí es <code class="docutils literal notranslate"><span class="pre">mysql_cymysql</span></code> que, como su nombre indica, es una biblioteca de Python para MySQL.</p>
+<p><code class="docutils literal notranslate"><span class="pre">NAME</span></code> es el nombre de la base de datos de MySQL.</p>
+<p><code class="docutils literal notranslate"><span class="pre">USER</span></code> es el usuario de nuestra base de datos, si no tiene, por defecto es <code class="docutils literal notranslate"><span class="pre">root</span></code>.</p>
+<p>Aquí, el <code class="docutils literal notranslate"><span class="pre">HOST</span></code> es el servidor host, pero si se deja en blanco significa que, por defecto, es localhost.</p>
+</div>
+<div class="section" id="urls">
+<h2>URLs<a class="headerlink" href="#urls" title="Permalink to this headline">¶</a></h2>
+<p>Una URL es una dirección de la web. Podemos ver una URL cada vez que visitamos una página. Se ve en la barra de direcciones del navegador. Por ejemplo <a href="#id17"><span class="problematic" id="id18">:mod:`127.0.0.1:8000`</span></a> es una URL y <a href="#id19"><span class="problematic" id="id20">:mod:`https://costosbocadillo.com`</span></a> también es una URL.</p>
+<p>Cada página en Internet necesita su propia URL. De esta manera nuestra aplicación sabe lo que debe mostrar a un usuario que abre una URL. En Django utilizamos algo que se llama <code class="docutils literal notranslate"><span class="pre">URLconf</span></code> . <em>URLconf</em> es un conjunto de patrones que Django intentará comparar con la URL recibida para encontrar la vista correcta.</p>
+<dl class="field-list simple">
+<dt class="field-odd">¿Cómo funcionan las URLs en Django?</dt>
+<dd class="field-odd"><p>Vamos a abrir el archivo <a href="#id21"><span class="problematic" id="id22">:mod:`costosbocadillo/urls.py`</span></a> veamos lo que tiene:</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span> <span class="sd">&quot;&quot;&quot;costosbocadillo URL Configuration</span>
+
+<span class="sd"> [...]</span>
+<span class="sd"> &quot;&quot;&quot;</span>
+ <span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">admin</span>
+ <span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
+
+ <span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+<span class="hll">  <span class="n">path</span><span class="p">(</span><span class="s1">&#39;admin/&#39;</span><span class="p">,</span> <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">urls</span><span class="p">),</span>
+</span> <span class="p">]</span>
+</pre></div>
+</div>
+<p>Esta línea dice que para cada URL que empieza con <a href="#id23"><span class="problematic" id="id24">:mod:`admin/`</span></a> Django encontrará su correspondiente <code class="docutils literal notranslate"><span class="pre">view</span></code>. En este caso estamos incluyendo muchas URLs admin así que no todo está empaquetado en este pequeño archivo. Es más limpio y legible.</p>
+</div>
+<div class="section" id="views">
+<h2>Views<a class="headerlink" href="#views" title="Permalink to this headline">¶</a></h2>
+<p>Una View es un lugar donde ponemos la <em>lógica</em> de nuestra aplicación. Pedirá información del modelo que hemos creado antes y se la pasará a la <em>plantilla</em>. Crearemos una plantilla más adelante.</p>
+<p>En este caso crearemos una clase para que nuestro proyecto renderice una vista principal cada vez que ejecutemos el servidor. Para esto debemos importar la librería <code class="docutils literal notranslate"><span class="pre">TemplateView</span></code> de Django y el <code class="docutils literal notranslate"><span class="pre">HttpResponse</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span> <span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span>
+<span class="hll"> <span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span>
+</span><span class="hll"> <span class="kn">from</span> <span class="nn">django.views.generic</span> <span class="kn">import</span> <span class="n">TemplateView</span>
+</span>
+<span class="hll"> <span class="k">class</span> <span class="nc">index</span><span class="p">(</span><span class="n">TemplateView</span><span class="p">):</span>
+</span><span class="hll">  <span class="n">template_name</span> <span class="o">=</span> <span class="s2">&quot;index.html&quot;</span>
+</span></pre></div>
+</div>
+</div>
+<div class="section" id="crear-una-aplicacion">
+<h2>Crear una aplicación<a class="headerlink" href="#crear-una-aplicacion" title="Permalink to this headline">¶</a></h2>
+<p>Para mantener todo en orden, crearemos una aplicación separada dentro de nuestro proyecto. Es muy bueno tener todo organizado desde el principio. Para crear una aplicación, necesitamos ejecutar el siguiente comando en la consola dentro de la carpeta de CostosBocadillo, donde está el archivo <a href="#id25"><span class="problematic" id="id26">:mod:`manage.py`</span></a>. Debemos crear un directorio llamado <a href="#id27"><span class="problematic" id="id28">:mod:`apps`</span></a> o con el nombre que queramos y dentro de esta crearemos todas la aplicaciones que necesitemos:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="mf">1.</span> <span class="n">mkdir</span> <span class="n">apps</span>
+<span class="o">&gt;</span> <span class="mf">2.</span> <span class="n">cd</span> <span class="n">apps</span>
+<span class="o">&gt;</span> <span class="mf">3.</span> <span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">startapp</span> <span class="n">post</span>
+</pre></div>
+</div>
+<p>Donde <code class="docutils literal notranslate"><span class="pre">post</span></code> es el nombre que le pondremos a nuestra aplicación.</p>
+<p>Después de crear una aplicación, también necesitamos decirle a Django que debe utilizarla. Eso se hace en el fichero <a href="#id29"><span class="problematic" id="id30">:mod:`costosbocadillo/settings.py`</span></a>. Tenemos que encontrar <code class="docutils literal notranslate"><span class="pre">INSTALLED_APPS</span></code> y agregar una línea que contiene <code class="docutils literal notranslate"><span class="pre">'apps.post'</span></code>, justo por encima de <code class="docutils literal notranslate"><span class="pre">]</span></code>. El producto final debe tener este aspecto:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span> <span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+     <span class="s1">&#39;django.contrib.admin&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;django.contrib.auth&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;django.contrib.contenttypes&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;django.contrib.sessions&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;django.contrib.messages&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;django.contrib.staticfiles&#39;</span><span class="p">,</span>
+<span class="hll">     <span class="s1">&#39;apps.post&#39;</span><span class="p">,</span>
+</span> <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="crear-el-modelo">
+<h2>Crear el modelo<a class="headerlink" href="#crear-el-modelo" title="Permalink to this headline">¶</a></h2>
+<p>En el archivo <a href="#id31"><span class="problematic" id="id32">:mod:`name/models.py`</span></a> definimos todos los objetos llamados <code class="docutils literal notranslate"><span class="pre">Models</span></code>. Este es un lugar en el cual definiremos nuestra entrada del <a href="#id33"><span class="problematic" id="id34">:mod:`post`</span></a>.</p>
+<p>Abrimos <a href="#id35"><span class="problematic" id="id36">:mod:`post/models.py`</span></a> en el editor, borramos todo, y escribiremos código como este:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+<span class="kn">from</span> <span class="nn">django.utils</span> <span class="kn">import</span> <span class="n">timezone</span>
+
+
+<span class="k">class</span> <span class="nc">Post</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">author</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;auth.User&#39;</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">)</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
+    <span class="n">created_date</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span>
+            <span class="n">default</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">)</span>
+    <span class="n">published_date</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span>
+         <span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">title</span>
+</pre></div>
+</div>
+<p>Todas las líneas que comienzan con <code class="docutils literal notranslate"><span class="pre">from</span></code> o <code class="docutils literal notranslate"><span class="pre">import</span></code> son líneas para agregar algo de otros archivos. Así que en vez de copiar y pegar las mismas cosas en cada archivo, podemos incluir algunas partes con <code class="docutils literal notranslate"><span class="pre">from...</span> <span class="pre">import</span> <span class="pre">...</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">Post(models.Model):</span></code>, esta línea define nuestro modelo (es un objeto).</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">class</span></code> es una palabra clave que indica que estamos definiendo un objeto.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Post</span></code> es el nombre de nuestro modelo. Podemos darle un nombre diferente (pero debemos evitar espacios en blanco y caracteres especiales). <strong>*Siempre inicia*</strong> el nombre de una clase con una letra mayúscula.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">models.Model</span></code> significa que Post es un modelo de Django, así Django sabe que debe guardarlo en la base de datos.</p></li>
+</ul>
+</div></blockquote>
+<p>Ahora definimos las propiedades: <code class="docutils literal notranslate"><span class="pre">title</span></code>, <code class="docutils literal notranslate"><span class="pre">text</span></code>, <code class="docutils literal notranslate"><span class="pre">created_date</span></code>, <code class="docutils literal notranslate"><span class="pre">published_date</span></code> y <code class="docutils literal notranslate"><span class="pre">author</span></code>. Para ello tenemos que definir el tipo de cada campo.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">models.CharField</span></code>, así es como definimos un texto con un número limitado de caracteres.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">models.TextField</span></code>, este es para texto largo sin límite.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">models.DateTimeField</span></code>, este es fecha y hora.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">modelos.ForeignKey</span></code>, este es una relación (link) con otro modelo.</p></li>
+</ul>
+</div></blockquote>
+<p>No vamos a explicar cada pedacito de código porque nos tomaría demasiado tiempo. Debemos echar un vistazo a la documentación de Django si deseas obtener más información sobre los campos Modelo y cómo definir otras cosas distintas a las descritas anteriormente <a class="reference external" href="https://docs.djangoproject.com/en/2.2/ref/models/fields/#field-types">https://docs.djangoproject.com/en/2.2/ref/models/fields/#field-types</a>.</p>
+<div class="section" id="crear-tablas-para-los-modelos-en-tu-base-de-datos">
+<h3>Crear tablas para los modelos en tu base de datos<a class="headerlink" href="#crear-tablas-para-los-modelos-en-tu-base-de-datos" title="Permalink to this headline">¶</a></h3>
+<p>El último paso aquí es agregar nuestro nuevo modelo a la base de datos. Primero tenemos que hacer saber a Django que hemos hecho cambios en nuestro modelo.Ve a tu terminal y escribe <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">manage.py</span> <span class="pre">makemigrations</span></code>. Se verá así:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">makemigrations</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Recuerda guardar los archivos que edites. De otro modo, nuestro computador ejecutará las versiones anteriores lo que puede ocasionar errores inesperados.</p>
+</div>
+<p>Django preparó un archivo de migración que ahora tenemos que aplicar a nuestra base de datos. Escribe <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">manage.py</span> <span class="pre">migrate</span></code> y el resultado debería ser:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="p">(</span><span class="n">costosbocadilloenv</span><span class="p">)</span> <span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">migrate</span>
+    <span class="n">Operations</span> <span class="n">to</span> <span class="n">perform</span><span class="p">:</span>
+     <span class="n">Apply</span> <span class="nb">all</span> <span class="n">migrations</span><span class="p">:</span> <span class="n">post</span>
+    <span class="n">Running</span> <span class="n">migrations</span><span class="p">:</span>
+     <span class="n">Applying</span> <span class="n">blog</span><span class="o">.</span><span class="mi">0001</span><span class="n">_initial</span><span class="o">...</span> <span class="n">OK</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="baches.html" class="btn btn-neutral float-right" title="baches" accesskey="n" rel="next">下一篇</a>
+      
+      
+        <a href="install.html" class="btn btn-neutral" title="Instalación" accesskey="p" rel="prev">上一篇</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Esneyder.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/unitedstack/sphinx_rtd_theme">theme</a> provided by <a href="https://github.com/unitedstack">UnitedStack</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/language_data.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

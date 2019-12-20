@@ -4,91 +4,444 @@
 insumos
 *******
 
+:Descripción: Este módulo se encarga de tener el control de los insumos para la elaboración de un producto. Para poder agregar un insumo debe haber creado previamente un insumo genérico. Tenga en cuenta que el producto es único dependiendo de del nombre.
+
+.. code:: 
+   
+   CostosBaocadillo
+   └── apps
+          └── insumos
+              ├── __init__.py
+              ├── admin.py
+              ├── apps.py
+              ├── migrations
+              │   └── __init__.py
+              ├── models.py
+              ├── tests.py
+              ├── views.py
+              ├── forms.py
+              └── urls.py
+   
 .. figure:: ../_static/carpeta.png
    :align: left
    
 Migrations
 ==========
+*Carpeta* : :mod:`migrations`
 
-.. automodule:: apps.insumos.migrations.0001_initial
-   :members:
-   :undoc-members:
 
-   Es la ruta donde las migraciones se realizan
+   Este es el directorio donde se almacenan todas las migraciones con las respectivas dependencias de sus modelos. Dentro de este archivo se encuentran los campos de la base de datos que establecimos en el archivo ``models.py`` con la respectiva característica del campo. Este archivo es generado con el comando ``makemigrations`` de Django y genera nuevas versiones con cada migración creada. 
+   
+   
+.. code-block:: python
+   
+   from django.db import migrations, models
+   import django.db.models.deletion
 
+
+   class Migration(migrations.Migration):
+
+       initial = True
+
+       dependencies = [
+       ]
+
+       operations = [
+           migrations.CreateModel(
+               name='InsumosGenericos',
+               fields=[
+                   ('id_ige', models.AutoField(primary_key=True, serialize=False)),
+                   ('nombre_ige', models.CharField(max_length=180, verbose_name='nombre_ige')),
+                   ('tipo_peso_ige', models.CharField(max_length=20, verbose_name='tipo_peso_ige')),
+               ],
+               options={
+                   'verbose_name': 'InsumosGenerico',
+                   'verbose_name_plural': 'InsumosGenericos',
+                   'db_table': 'InsumosGenericos',
+                   'ordering': ['id_ige'],
+               },
+           ),
+           migrations.CreateModel(
+               name='Insumos',
+               fields=[
+                   ('id_ins', models.AutoField(primary_key=True, serialize=False)),
+                   ('nombre_ins', models.CharField(max_length=150, verbose_name='Nombre Insumo')),
+                   ('categoria_ins', models.CharField(blank=True, max_length=100, null=True, verbose_name='Seleccione la categoria del Insumo')),
+                   ('tipo_costo_ins', models.CharField(max_length=150, verbose_name='Seleccione el tipo de Costo')),
+                   ('tipo_unidad_ins', models.CharField(max_length=100, verbose_name='Seleccione el tipo de Unidad Comercial')),
+                   ('unidad_comercial_ins', models.CharField(max_length=100, verbose_name='unidad_comercial_ins')),
+                   ('cantidad_comercial_ins', models.CharField(max_length=100, verbose_name='Ubicación')),
+                   ('unidad_medida_comercial_ins', models.CharField(blank=True, max_length=100, null=True, verbose_name='Inicio de operaciones')),
+                   ('ige', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='insumos.InsumosGenericos')),
+               ],
+               options={
+                   'verbose_name': 'Insumo',
+                   'verbose_name_plural': 'Insumos',
+                   'db_table': 'Insumos',
+                   'ordering': ['id_ins'],
+               },
+           ),
+       ]
+       
+       
+.. figure:: ../_static/py.png
+   :align: left
+
+Models
+======
+*Archivo* : ``models.py``
+
+.. note::
+
+   Un modelo en Django es una clase importada de la biblioteca django.db que actúa como puente entre su base de datos y el servidor. Esta clase es una representación de la estructura de datos utilizada por su sitio web. Relacionará directamente esta estructura de datos con la base de datos. Para que no tenga que aprender SQL para la base de datos.
+   
+   
+1. En primer lugar, se creo una nueva aplicación con el comando::
+
+       django-admin startapp insumos
+       
+donde ``insumos`` es el nombre de la aplicación.
+
+2. Después de crear la aplicación, debe instalarse en el proyecto. Para ello, se agregó la aplicación ``insumos`` a la lista ``INSTALLED_APPS`` en el archivo *settings.py*.
+
+.. code-block:: python
+   :emphasize-lines: 8
+   
+       INSTALLED_APPS = [
+       'django.contrib.admin',
+       'django.contrib.auth',
+       'django.contrib.contenttypes',
+       'django.contrib.sessions',
+       'django.contrib.messages',
+       'django.contrib.staticfiles',
+       'apps.insumos',
+       ]
+       
+       
+3. En el archivo *models.py* encontraremos el siguiente código, correspondiente a los modelos de ``Insumos``  y ``InsumosGenericos``.
+
+.. code-block:: python
+       
+       from django.db import models.
+       class InsumosGenericos(models.Model):
+           id_ige =        models.AutoField(primary_key = True)
+           nombre_ige =    models.CharField('nombre_ige', max_length = 180, blank=False, null=False)    
+           tipo_peso_ige =        models.CharField('tipo_peso_ige', max_length = 20)
+    
+           class Meta:
+               db_table = 'insumos_genericos'
+               verbose_name = 'InsumosGenerico'
+               verbose_name_plural = 'InsumosGenericos'
+               ordering = ['id_ige']
+    
+           def __str__(self):
+               return '{}'.format(self.nombre_ige)
+       class Insumos(models.Model):
+           id_ins =                     models.AutoField(primary_key = True)
+           nombre_ins =                 models.CharField('Nombre Insumo', max_length = 150, blank=False, null=False)    
+           categoria_ins =              models.CharField('Seleccione la categoria del Insumo', max_length = 100, blank=True, null=True)
+           tipo_costo_ins =             models.CharField('Seleccione el tipo de Costo', max_length = 150, blank=False, null=False)      
+           tipo_unidad_ins =            models.CharField('Seleccione el tipo de Unidad Comercial', max_length = 100, blank=False, null=False)
+           unidad_comercial_ins =       models.CharField('unidad_comercial_ins', max_length = 100, blank=False, null=False)
+    
+           cantidad_comercial_ins =     models.FloatField('Cantidad comercial',  blank=False, null=False)
+           unidad_medida_comercial_ins =  models.CharField('Inicio de operaciones', max_length = 100, blank=True, null=True)  
+           ige =           models.ForeignKey(InsumosGenericos, on_delete=models.CASCADE)
+    
+    
+           class Meta:
+               db_table = 'insumos'
+               verbose_name = 'Insumo'
+               verbose_name_plural = 'Insumos'
+               ordering = ['id_ins']
+    
+           def __str__(self):
+               return '{}'.format(self.nombre_ins)
+    
+4. Aquí podemos ver que los campos de los modelos tienen muchos métodos para la entrada web, como :func:`CharField`, :func:`IntegerField`, :func:`AutoField`. Podemos ver mas `referencias <https://docs.djangoproject.com/en/3.0/ref/models/fields/>`_ en la documentación de Django. 
+
+5. Ahora ejecutaremos los comandos::
+
+       > py manage.py makemigrations
+       > py manage.py migrate
+
+.. tip::
+
+   Asegúrese de tener la base de datos conectada y de haber iniciado el servidor Apache y el servidor MySQL en la base de datos.
+   
+   
 .. figure:: ../_static/py.png
    :align: left
    
 Admin
 =====
-admin.py
+*Archivo* : ``admin.py``
 
-.. automodule:: apps.insumos.admin
-   :members:
-   :undoc-members:
+Al registrar el módelo ``Insumos`` y ``InsumosGenericos`` con ``admin.site.register()``, Django puede construir una representación del formulario predeterminado.
+Para poder registrar un modelo en el archivo :mod:`models.py` debemos importar el modelo con la función ``from`` y registrar el modelo con la sentencia ``admin.site.register()``:
+
+.. code-block:: python
+    
+   from .models import Insumos       # Importar el modelo desde models.py
+   from .models import InsumosGenericos
+
+   admin.site.register(Insumos)       # (nombre del modelo creado en models.py)
+   admin.site.register(InsumosGenericos)  
+    
+   
+.. figure:: ../_static/py.png
+   :align: left
+   
+   
+Forms
+=====
+*Archivo* : ``forms.py``
+
+En este archivo podremos crear los imputs para los campos de los formularios creados en html.
+
+Lo bueno de los formularios de Django es que podemos definirlos desde cero o crear un ``ModelForm``, el cual guardará el resultado del formulario en el modelo. Para esto crearemos un formulario para nuestros modelos *Insumos* y *InsumosGenericos*.
+
+Los formularios tienen su propio archivo: ``forms.py``.  Dentro de este archivo encontraremos el siguiente código:
+
+.. code-block:: python
+
+   from django import forms
+   from .models import Insumos,InsumosGenericos
+   class InsumosForm(forms.ModelForm):
+       class Meta:
+           model = Insumos
+           fields =    ['nombre_ins','categoria_ins','tipo_costo_ins','tipo_unidad_ins','unidad_comercial_ins','cantidad_comercial_ins','unidad_medida_comercial_ins','ige'] 
+           
+   
+   class InsumosGenericosForm(forms.ModelForm):
+       class Meta:
+           model = InsumosGenericos
+           fields = ['nombre_ige', 'tipo_peso_ige'] 
+
+Lo primero, necesitamos importar Django forms ``from django import forms`` y nuestros modelos *Insumos,InsumosGenericos* ``from .models import ..``.
+
+``InsumosForm`` y ``InsumosGenericosForm``, son los nombres de nuestros formularios. Necesitamos decirle a Django que este formulario es un ``ModelForm`` así Django hará algo el resto por nosotros - ``forms.ModelForm`` es responsable de ello.
+
+Luego, tenemos ``class Meta``, donde le decimos a Django qué modelo debe ser utilizado para crear este formulario ``model = Insumos | model = InsumosGenericos``.
+
+
+.. figure:: ../_static/py.png
+   :align: left
+
+Views
+=====
+*Archivo* : ``views.py``
+
+:InsumosGenericos:
+
+.. admonition:: Importaciones
+
+   .. code-block:: python
+   
+      from django.shortcuts import render, redirect
+      from django.core.exceptions import ObjectDoesNotExist
+      from django.http import HttpResponse
+      from .forms import InsumosForm, InsumosGenericosForm
+      from .models import Insumos, InsumosGenericos
+
+
+.. admonition:: Listar InsumosGenericos
+
+   .. code-block:: python
+
+      def listarInsumosGenericos(request):
+          insumosgenericos = InsumosGenericos.objects.all()
+          #mandar la consulta al template y renderizar los datos traídos
+          return render(request, 'insumosgenericos/listar.html', {'insumosgenericos': insumosgenericos})
+          
+          
+.. admonition:: Crear InsumosGenericos
+
+   .. code-block:: python
+
+      def crearInsumosGenericos(request):
+          if request.method == 'POST':
+              print(request.POST)
+              insumosgenericos_form = InsumosGenericosForm(request.POST)
+              if insumosgenericos_form.is_valid():
+                  insumosgenericos_form.save()
+                  return redirect('insumosgenericos:listar')
+          else:
+              insumosgenericos_form = InsumosGenericosForm()       
+          return render(request, 'insumosgenericos/crear.html', {'insumosgenericos_form':insumosgenericos_form})
+          
+          
+.. admonition:: Editar InsumosGenericos
+
+   .. code-block:: python
+
+      def editarInsumosGenericos(request, id_ige):
+          if request.method == 'POST':
+              id_ige  = request.POST.get('id_ige')
+              nombre_ige  = request.POST.get('nombre_ige')
+              tipo_peso_ige  = request.POST.get('tipo_peso_ige')
+     
+              InsumosGenericos.objects.filter(pk=id_ige).update(nombre_ige= nombre_ige, tipo_peso_ige = tipo_peso_ige)
+              return redirect('insumosgenericos:listar') #qw
+          else:
+               insumosgenericos = InsumosGenericos.objects.filter(id_ige = id_ige)    
+          return render(request, 'insumosgenericos/editar.html', {'insumosgenericos': insumosgenericos}) 
+
+
+.. admonition:: Eliminar InsumosGenericos
+
+   .. code-block:: python
+   
+      def eliminarInsumosGenericos(request, id_ige):
+          insumosgenericos = InsumosGenericos.objects.get(id_ige = id_ige)
+          if request.method == 'POST':
+              insumosgenericos.delete()
+              return redirect('insumosgenericos:listar')
+          return render(request, 'insumosgenericos/eliminar.html', {'insumosgenericos': insumosgenericos})
+
+
+:Insumos:
+
+.. admonition:: Litar Insumos
+
+   .. code-block:: python
+   
+      def listarInsumos(request):
+          insumos = Insumos.objects.raw('SELECT * FROM insumos ins INNER JOIN insumos_genericos insgen ON ins.ige_id = insgen.id_ige')
+          return render(request, 'insumos/listar.html', {'insumos': insumos})
+          
+          
+.. admonition:: Crear Insumos
+
+   .. code-block:: python
+
+      def crearInsumos(request):
+          if request.method == 'POST':
+              all_insumosgenericos = 0
+              nombre_ins  = request.POST.get('nombre_ins')
+              categoria_ins  = request.POST.get('categoria_ins')
+              tipo_costo_ins  = request.POST.get('tipo_costo_ins')
+              tipo_unidad_ins  = request.POST.get('tipo_unidad_ins')
+              unidad_comercial_ins  = request.POST.get('unidad_comercial_ins')
+              cantidad_comercial_ins  = request.POST.get('cantidad_comercial_ins')
+              unidad_medida_comercial_ins  = request.POST.get('unidad_medida_comercial_ins')
+              ige_id  = request.POST.get('id_ige')
+        
+              fab = Insumos(
+              nombre_ins = nombre_ins, 
+              categoria_ins = categoria_ins, 
+              tipo_costo_ins = tipo_costo_ins, 
+              tipo_unidad_ins = tipo_unidad_ins,
+              unidad_comercial_ins = unidad_comercial_ins,
+              cantidad_comercial_ins = cantidad_comercial_ins,
+              unidad_medida_comercial_ins = unidad_medida_comercial_ins,
+              ige_id = ige_id)
+              fab.save()
+              return redirect('insumos:listar_in')   
+          else:
+              all_insumosgenericos = InsumosGenericos.objects.all()
+              return render(request, 'insumos/crear.html', {'all_insumosgenericos': all_insumosgenericos}) 
+              
+              
+.. admonition:: Editar Insumos
+
+   .. code-block:: python
+
+      def editarInsumos(request, id_ins):
+          if request.method == 'POST':
+              id_ins  = request.POST.get('id_ins')
+              nombre_ins  = request.POST.get('nombre_ins')
+              categoria_ins  = request.POST.get('categoria_ins')
+              tipo_costo_ins  = request.POST.get('tipo_costo_ins')
+              tipo_unidad_ins  = request.POST.get('tipo_unidad_ins')
+              unidad_comercial_ins  = request.POST.get('unidad_comercial_ins')
+              cantidad_comercial_ins  = request.POST.get('cantidad_comercial_ins')
+              unidad_medida_comercial_ins  = request.POST.get('unidad_medida_comercial_ins')
+              ige_id  = request.POST.get('id_ige')
+        
+              Insumos.objects.filter(pk=id_ins).update(
+              nombre_ins= nombre_ins,
+              categoria_ins= categoria_ins,
+              tipo_costo_ins= tipo_costo_ins, 
+              tipo_unidad_ins= tipo_unidad_ins, 
+              unidad_comercial_ins= unidad_comercial_ins, 
+              cantidad_comercial_ins= cantidad_comercial_ins, 
+              unidad_medida_comercial_ins= unidad_medida_comercial_ins, 
+              ige_id= ige_id)
+              return redirect('insumos:listar_in') #qw
+          else:
+               insumos = Insumos.objects.raw('SELECT * FROM insumos INNER JOIN insumos_genericos    ON insumos.ige_id = insumos_genericos.id_ige WHERE       insumos.id_ins  = %s ', [id_ins])    
+               all_insumosgenericos = InsumosGenericos.objects.all()
+          return render(request, 'insumos/editar.html', {'insumos': insumos, 'all_insumosgenericos': all_insumosgenericos}) 
+          
+          
+.. admonition:: Eliminar Insumos
+
+   .. code-block:: python
+
+      def eliminarInsumos(request, id_ins):
+          insumos = Insumos.objects.get(id_ins = id_ins)
+          if request.method == 'POST':
+              insumos.delete()
+              return redirect('insumos:listar_in')
+          return render(request, 'insumos/eliminar.html', {'insumos': insumos})
+
+.. figure:: ../_static/py.png
+   :align: left
+   
+Urls
+====
+*Archivo* : ``urls.py``
+
+.. code-block:: python
+   
+   from django.urls import path, re_path, include
+   from .views import listarInsumos, crearInsumos, editarInsumos, eliminarInsumos
+   from .views import listarInsumosGenericos, crearInsumosGenericos, editarInsumosGenericos, eliminarInsumosGenericos
+
+   ige_patterns = [
+       path('listar/',listarInsumosGenericos, name = 'listar'),
+       path('crear/',crearInsumosGenericos, name = 'crear'),
+       path('editar/<int:id_ige>',editarInsumosGenericos, name = 'editar'),
+       path('eliminar/<int:id_ige>',eliminarInsumosGenericos, name = 'eliminar'),
+   ]
+
+   urlpatterns = [
+       path('listar/',listarInsumos, name = 'listar_in'),
+       path('crear/',crearInsumos, name = 'crear_in'),
+       path('editar/<int:id_ins>',editarInsumos, name = 'editar_in'),
+       path('eliminar/<int:id_ins>',eliminarInsumos, name = 'eliminar_in'),
+       path('insumosgenericos/',include(ige_patterns)),
+
+     ]
+
+ 
+ 
+
+Y añadiremos esta ruta al aquivo ``urls.py`` del directorio :mod:`costosbocadillo`:
+ 
+ .. code-block:: python 
+    
+    urlpatterns = [
+    
+    path('insumos/', include(('apps.insumos.urls', 'insumos'))),
+    path('', include(('apps.insumos.urls', 'insumosgenericos'))),
+    
+    ]
+
    
 .. figure:: ../_static/py.png
    :align: left
    
 Apps
 ====
-apps.py
+*Archivo* : ``apps.py``
 
-.. automodule:: apps.insumos.apps
-   :members:
-   :undoc-members:
-   
-.. figure:: ../_static/py.png
-   :align: left
-   
-Forms
-=====
-forms.py
+Este archivo se crea para ayudar al usuario a incluir cualquier `configuración de aplicación <https://docs.djangoproject.com/en/dev/ref/applications/#application-configuration>`_ para la aplicación. Con esto, puede configurar algunos de los atributos de la aplicación:
 
-.. automodule:: apps.insumos.forms
-   :members:
-   :undoc-members:
-   
-.. figure:: ../_static/py.png
-   :align: left
-   
-Models
-======
-models.py
+.. code-block:: python
 
-.. automodule:: apps.insumos.models
-   :members:
-   :undoc-members:
+   from django.apps import AppConfig
    
-.. figure:: ../_static/py.png
-   :align: left
-   
-Tests
-=====
-tests.py
-
-.. automodule:: apps.insumos.tests
-   :members:
-   :undoc-members:
-   
-.. figure:: ../_static/py.png
-   :align: left
-   
-Urls
-====
-urls.py
-
-.. automodule:: apps.insumos.urls
-   :members:
-   :undoc-members:
-   
-.. figure:: ../_static/py.png
-   :align: left
-   
-Views
-=====
-views.py
-
-.. automodule:: apps.insumos.views
-   :members:
-   :undoc-members:
+   class InsumosConfig(AppConfig):
+       name = 'insumos

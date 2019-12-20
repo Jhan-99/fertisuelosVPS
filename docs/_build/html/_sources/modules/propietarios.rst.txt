@@ -4,91 +4,277 @@
 Propietarios
 ************
 
+:Descripción: 
+
+.. code:: 
+   
+   CostosBaocadillo
+   └── apps
+          └── Propietarios
+              ├── __init__.py
+              ├── admin.py
+              ├── apps.py
+              ├── migrations
+              │   └── __init__.py
+              ├── models.py
+              ├── tests.py
+              ├── views.py
+              ├── forms.py
+              └── urls.py
+   
 .. figure:: ../_static/carpeta.png
    :align: left
    
 Migrations
 ==========
+*Carpeta* : :mod:`migrations`
 
-.. automodule:: apps.Propietarios.migrations.0001_initial
-   :members:
-   :undoc-members:
 
-   Es la ruta donde las migraciones se realizan
+   Este es el directorio donde se almacenan todas las migraciones con las respectivas dependencias de sus modelos. Dentro de este archivo se encuentran los campos de la base de datos que establecimos en el archivo ``models.py`` con la respectiva característica del campo. Este archivo es generado con el comando ``makemigrations`` de Django y genera nuevas versiones con cada migración creada. 
+   
+       
+       
+.. figure:: ../_static/py.png
+   :align: left
 
+Models
+======
+*Archivo* : ``models.py``
+
+.. note::
+
+   Un modelo en Django es una clase importada de la biblioteca django.db que actúa como puente entre su base de datos y el servidor. Esta clase es una representación de la estructura de datos utilizada por su sitio web. Relacionará directamente esta estructura de datos con la base de datos. Para que no tenga que aprender SQL para la base de datos.
+   
+   
+1. En primer lugar, se creo una nueva aplicación con el comando::
+
+       django-admin startapp Propietarios
+       
+donde ``Propietarios`` es el nombre de la aplicación.
+
+2. Después de crear la aplicación, debe instalarse en el proyecto. Para ello, se agregó la aplicación ``Propietarios`` a la lista ``INSTALLED_APPS`` en el archivo *settings.py*.
+
+.. code-block:: python
+   :emphasize-lines: 8
+   
+       INSTALLED_APPS = [
+       'django.contrib.admin',
+       'django.contrib.auth',
+       'django.contrib.contenttypes',
+       'django.contrib.sessions',
+       'django.contrib.messages',
+       'django.contrib.staticfiles',
+       'apps.Propietarios',
+       ]
+       
+       
+3. En el archivo *models.py* encontraremos el siguiente código, correspondiente al modelo de ``Propietarios``.
+
+.. code-block:: python
+       
+   from django.db import models
+   from django.contrib.auth.models import User
+   class Propietarios(models.Model):
+       id_pro =        models.AutoField(primary_key = True)
+       nombre_pro =    models.CharField('nombre_pro', max_length = 180, blank=False, null=False)    
+       cc_pro =        models.CharField('cc_pro', max_length = 20, blank=False, null=False)
+       tel_pro =       models.IntegerField('Teléfono', blank=False, null=False)
+       user = models.OneToOneField(User, on_delete=models.CASCADE)
+    
+       class Meta:
+           db_table = 'propietarios'
+           verbose_name = 'Propietario'
+           verbose_name_plural = 'Propietarios'
+           ordering = ['id_pro']
+    
+       def __str__(self):
+           return '{}'.format(self.nombre_pro)   
+    
+    
+4. Aquí podemos ver que los campos de los modelos tienen muchos métodos para la entrada web, como :func:`CharField`, :func:`IntegerField`, :func:`AutoField`. Podemos ver mas `referencias <https://docs.djangoproject.com/en/3.0/ref/models/fields/>`_ en la documentación de Django. 
+
+5. Ahora ejecutaremos los comandos::
+
+       > py manage.py makemigrations
+       > py manage.py migrate
+
+.. tip::
+
+   Asegúrese de tener la base de datos conectada y de haber iniciado el servidor Apache y el servidor MySQL en la base de datos.
+   
+   
 .. figure:: ../_static/py.png
    :align: left
    
 Admin
 =====
-admin.py
+*Archivo* : ``admin.py``
 
-.. automodule:: apps.Propietarios.admin
-   :members:
-   :undoc-members:
+Al registrar el  módelo ``Propietarios`` con ``admin.site.register()``, Django puede construir una representación del formulario predeterminado.
+Para poder registrar un modelo en el archivo :mod:`models.py` debemos importar el modelo con la función ``from`` y registrar el modelo con la sentencia ``admin.site.register()``:
+
+.. code-block:: python
+    
+   from .models import Propietarios       # Importar el modelo desde models.py
+
+   admin.site.register(Propietarios)       # (nombre del modelo creado en models.py) 
+    
+   
+.. figure:: ../_static/py.png
+   :align: left
+   
+   
+Forms
+=====
+*Archivo* : ``forms.py``
+
+En este archivo podremos crear los imputs para los campos de los formularios creados en html.
+
+Lo bueno de los formularios de Django es que podemos definirlos desde cero o crear un ``ModelForm``, el cual guardará el resultado del formulario en el modelo. Para esto crearemos un formulario para nuestro modelo *Propietarios*.
+
+Los formularios tienen su propio archivo: ``forms.py``.  Dentro de este archivo encontraremos el siguiente código:
+
+.. code-block:: python
+
+   from django import forms
+   from .models import Propietarios
+   class PropietariosForm(forms.ModelForm):
+       class Meta:
+           model = Propietarios
+           fields = ['nombre_pro', 'cc_pro', 'tel_pro']   
+
+Lo primero, necesitamos importar Django forms ``from django import forms`` y nuestro modelo *Propietarios* ``from .models import ..``.
+
+``PropietariosForm``, es el nombre de nuestro formulario. Necesitamos decirle a Django que este formulario es un ``PropietariosForm`` así Django hará algo el resto por nosotros - ``forms.PropietariosForm`` es responsable de ello.
+
+Luego, tenemos ``class Meta``, donde le decimos a Django qué modelo debe ser utilizado para crear este formulario ``model = Propietarios``.
+
+
+.. figure:: ../_static/py.png
+   :align: left
+
+Views
+=====
+*Archivo* : ``views.py``
+
+:Propietarios:
+
+.. admonition:: Importaciones
+
+   .. code-block:: python
+   
+      from django.shortcuts import render, redirect
+      from django.core.exceptions import ObjectDoesNotExist
+      from django.http import HttpResponse
+      from .forms import PropietariosForm
+      from .models import Propietarios
+
+
+.. admonition:: Listar Propietarios
+
+   .. code-block:: python
+
+      def listarPropietarios(request):
+          propietarios = Propietarios.objects.all()
+          #mandar la consulta al template y renderizar los datos traídos
+          return render(request, 'Propietarios/listar.html', {'propietarios': propietarios})
+
+                
+.. admonition:: Crear Propietarios
+
+   .. code-block:: python
+
+      def crearPropietarios(request):
+          if request.method == 'POST':
+              user_id = request.session.get('user_id')
+              nombre_pro = request.POST.get('nombre_pro')
+              cc_pro = request.POST.get('cc_pro')
+              tel_pro = request.POST.get('tel_pro')
+        
+              prop = Propietarios(
+              nombre_pro = nombre_pro, cc_pro = cc_pro, tel_pro = tel_pro, user_id = user_id )
+              prop.save()
+            
+              return redirect('propietarios:listar')
+          else:
+              propietarios_form = PropietariosForm()       
+          return render(request, 'Propietarios/crear.html', {'propietarios_form':propietarios_form})
+          
+          
+.. admonition:: Editar Propietarios
+
+   .. code-block:: python
+
+      def editarPropietarios(request, id_pro):
+          if request.method == 'POST':
+              id_pro  = request.POST.get('id_pro')
+              nombre_pro  = request.POST.get('nombre_pro')
+              cc_pro  = request.POST.get('cc_pro')
+              tel_pro  = request.POST.get('tel_pro')
+              Propietarios.objects.filter(pk=id_pro).update(nombre_pro= nombre_pro, cc_pro = cc_pro, tel_pro = tel_pro)
+              return redirect('propietarios:listar') #qw
+          else:
+               propietarios = Propietarios.objects.filter(id_pro = id_pro)    
+          return render(request, 'Propietarios/editar.html', {'propietarios': propietarios})                     
+
+
+.. admonition:: Eliminar Propietarios
+
+   .. code-block:: python
+   
+      def eliminarPropietarios(request, id_pro):
+          propietarios = Propietarios.objects.get(id_pro = id_pro)
+          if request.method == 'POST':
+              propietarios.delete()
+              return redirect('propietarios:listar')
+          return render(request, 'Propietarios/eliminar.html', {'propietarios': propietarios})
+          
+
+.. figure:: ../_static/py.png
+   :align: left
+   
+Urls
+====
+*Archivo* : ``urls.py``
+
+.. code-block:: python
+   
+   from django.urls import path, re_path
+   from .views import listarPropietarios, crearPropietarios, editarPropietarios, eliminarPropietarios
+   urlpatterns = [
+       path('listar/',listarPropietarios, name = 'listar'),
+       path('crear/',crearPropietarios, name = 'crear'),
+       path('editar/<int:id_pro>',editarPropietarios, name = 'editar'),
+       path('eliminar/<int:id_pro>',eliminarPropietarios, name = 'eliminar'),
+    
+   ]
+ 
+ 
+
+Y añadiremos esta ruta al aquivo ``urls.py`` del directorio :mod:`costosbocadillo`:
+ 
+ .. code-block:: python 
+    
+    urlpatterns = [
+    
+    path('propietarios/', include(('apps.Propietarios.urls', 'propietarios'))),
+    
+    ]
+
    
 .. figure:: ../_static/py.png
    :align: left
    
 Apps
 ====
-apps.py
+*Archivo* : ``apps.py``
 
-.. automodule:: apps.Propietarios.apps
-   :members:
-   :undoc-members:
-   
-.. figure:: ../_static/py.png
-   :align: left
-   
-Forms
-=====
-forms.py
+Este archivo se crea para ayudar al usuario a incluir cualquier `configuración de aplicación <https://docs.djangoproject.com/en/dev/ref/applications/#application-configuration>`_ para la aplicación. Con esto, puede configurar algunos de los atributos de la aplicación:
 
-.. automodule:: apps.Propietarios.forms
-   :members:
-   :undoc-members:
-   
-.. figure:: ../_static/py.png
-   :align: left
-   
-Models
-======
-models.py
+.. code-block:: python 
 
-.. automodule:: apps.Propietarios.models
-   :members:
-   :undoc-members:
-   
-.. figure:: ../_static/py.png
-   :align: left
-   
-Tests
-=====
-tests.py
+   from django.apps import AppConfig
 
-.. automodule:: apps.Propietarios.tests
-   :members:
-   :undoc-members:
-   
-.. figure:: ../_static/py.png
-   :align: left
-   
-Urls
-====
-urls.py
 
-.. automodule:: apps.Propietarios.urls
-   :members:
-   :undoc-members:
-   
-.. figure:: ../_static/py.png
-   :align: left
-   
-Views
-=====
-views.py
-
-.. automodule:: apps.Propietarios.views
-   :members:
-   :undoc-members:
+   class PropietariosConfig(AppConfig):
+       name = 'Propietarios'

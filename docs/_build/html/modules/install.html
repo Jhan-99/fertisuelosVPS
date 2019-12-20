@@ -1,0 +1,335 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Instalación &mdash; CostosBocadillo 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Configuración" href="configuracion.html" />
+    <link rel="prev" title="Documentación de Costos Bocadillo" href="../index.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html"> CostosBocadillo
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Instalación</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#linea-de-comandos">Línea de comandos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#instalar-python">Instalar Python</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#instalar-python-windows">Instalar Python: Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#instala-un-editor-de-codigo">Instala un Editor de Código</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configura-el-entorno-virtual-virtualenv-e-instala-django">Configura el entorno virtual (virtualenv) e instala Django</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#entorno-virtual">Entorno virtual</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#trabajar-con-virtualenv">Trabajar con virtualenv</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#instalar-django">Instalar Django</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="configuracion.html">Configuración</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Apps:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="baches.html">baches</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CostosBocadillo</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">CostosBocadillo</a> &raquo;</li>
+        
+      <li>Instalación</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/modules/install.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="instalacion">
+<h1>Instalación<a class="headerlink" href="#instalacion" title="Permalink to this headline">¶</a></h1>
+<p>En esta documentación vamos a mostrar el proceso de desarrollo de la aplicación de Costos Bocadillo, pero antes debemos saber los requerimientos previos y los procesos que se llevaron a cavo para este fin. A continuación, se dará a conocer la instalación de los complementos y aplicaciones que nos ayudaran con el avance por cada uno de los módulos de esta documentación.</p>
+<div class="section" id="linea-de-comandos">
+<h2>Línea de comandos<a class="headerlink" href="#linea-de-comandos" title="Permalink to this headline">¶</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Muchos de los pasos citados abajo hacen referencia a la “consola”, “terminal”, “ventana de comandos”, o “línea de comandos” – todos éstos términos significan la misma cosa: una ventana en tu computadora donde puedes introducir comandos.</p>
+</div>
+<p>Dependiendo de tu versión de Windows y tu teclado, una de las opciones siguientes debería abrir una ventana de comandos:</p>
+<ul class="simple">
+<li><p>Ve al menú o pantalla de Inicio, y escribe “Símbolo del Sistema” en el cuadro de búsqueda.</p></li>
+<li><p>Ve a Menú de inicio → Windows System → Command Prompt.</p></li>
+<li><p>Ve al menú de Inicio → Todos los Programas → Accessorios → Símbolo del Sistema.</p></li>
+<li><p>Ve a la pantalla de Inicio, pasa el ratón sobre la esquina inferior izquierda de la pantalla, y haz click en la flecha hacia abajo (en una pantalla   táctil, desliza hacia arriba desde la parte baja de la pantalla). La página de la Aplicación debería abrirse. Haz click en Símbolo del Sistema en la   sección Sistema de Windows.</p></li>
+<li><p>Mantén la tecla especial de Windows de tu teclado y pulsa “X”. Elige “Símbolo del Sistema” del menú emergente.</p></li>
+<li><p>Mantén pulsada la tecla de Windows y pulsa “R” para abrir una ventana “Ejecutar”. Escribe “cmd” en la caja, y haz click en OK.</p></li>
+</ul>
+<div class="figure align-center">
+<img alt="../_images/cmd.jpg" src="../_images/cmd.jpg" />
+</div>
+<p>Más adelante en este tutorial, necesitaremos tener dos consolas de comandos abiertas a la misma vez. Sin embargo, en algunas versiones de Windows, si ya tenemos abierta una ventana de comandos e intentamos abrir otra usando el mismo método, simplemente maximizará la que ya tenemos abierta. ¡Inténtemelo ahora en nuestro ordenador y vemos qué ocurre! Si solo se abre una ventana de comandos, intententaremos alguno de los otros métodos explicados anteriormente. Al menos uno de ellos debería abrir una nueva ventana de comandos. Una ventana de comandos que recomendamos es <a class="reference external" href="https://cmder.net/">Cmander</a>, ya que es es un paquete de software que proporciona una excelente experiencia de consola incluso en Windows.</p>
+</div>
+<div class="section" id="instalar-python">
+<h2>Instalar Python<a class="headerlink" href="#instalar-python" title="Permalink to this headline">¶</a></h2>
+<p>Django está escrito en Python. Necesitamos Python para hacer cualquier cosa en Django. ¡Empecemos con instalarlo! Debemos instalar la última versión de Python 3, así que, si tenemos una versión anterior, necesitaremos actualizarla. Si ya tenemos la versión 3.4 o una superior, debería ir bien.
+Instalemos Python normalmente de la siguiente forma:</p>
+<div class="section" id="instalar-python-windows">
+<h3>Instalar Python: Windows<a class="headerlink" href="#instalar-python-windows" title="Permalink to this headline">¶</a></h3>
+<p>Podemos descargar Python para Windows desde la siguiente web <a class="reference external" href="https://www.python.org/downloads/windows/">https://www.python.org/downloads/windows/</a>. Clica en el enlace “Latest Python 3 Release -Python x.x.x”. Si nuestro ordenador ejecuta la versión de 64 bits de Windows, descarga Windows x86-64 executable installer. De lo contrario, descarga Windows x86 executable installer. Después de descargar el instalador, deberíamos poder ejecutarlo (dándole doble click) y seguir las instrucciones.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Una cosa para tener en cuenta: Durante la instalación, veremos una ventana de “Setup”. Asegurémonos de marcar las casillas “Add Python 3.6 to PATH” o “Add Python to your environment variables” y hacer click en “Install Now”, como se muestra aquí:</p>
+<img alt="../_images/python-installation-options.png" src="../_images/python-installation-options.png" />
+</div>
+<p>Cuando la instalación se complete, verás un cuadro de diálogo con un enlace que puedes seguir para saber más sobre Python o sobre la versión que has instalado.</p>
+<p>Verifiquemos si la instalación fue exitosa abriendo una terminal o consola, y corriendo el comando <code class="docutils literal notranslate"><span class="pre">python3</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; $ python3 --version
+&gt; Python 3.6.1Python 3.6.1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="instala-un-editor-de-codigo">
+<h2>Instala un Editor de Código<a class="headerlink" href="#instala-un-editor-de-codigo" title="Permalink to this headline">¶</a></h2>
+<p>Hay muchos editores diferentes y la elección es principalmente una cuestión de preferencia personal. La mayoría de programadores de Python usan IDEs (Entornos de Desarrollo Integrados) complejos pero muy potentes, como PyCharm.</p>
+</div>
+<div class="section" id="configura-el-entorno-virtual-virtualenv-e-instala-django">
+<h2>Configura el entorno virtual (virtualenv) e instala Django<a class="headerlink" href="#configura-el-entorno-virtual-virtualenv-e-instala-django" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="entorno-virtual">
+<h3>Entorno virtual<a class="headerlink" href="#entorno-virtual" title="Permalink to this headline">¶</a></h3>
+<p>Antes de instalar Django, debemos instalar una herramienta extremadamente útil que nos ayudará a mantener nuestro entorno de desarrollo ordenado en nuestra computadora.</p>
+<p>Así que, vamos a crear un <strong>entorno virtual</strong> (también llamado un <em>virtualenv</em>). Virtualenv aísla nuestra configuración de Python/Django para cada proyecto. Esto quiere decir que cualquier cambio que hagamos en un sitio web no afectará a ningún otro que estemos desarrollando.</p>
+<p>Todo lo que necesitamos hacer es encontrar un directorio en el que queramos crear el <code class="docutils literal notranslate"><span class="pre">virtualenv</span></code>.</p>
+<p>Para esto usaremos un nuevo directorio al que llamaremos <a href="#id1"><span class="problematic" id="id2">:mod:`CostosBocadillo`</span></a>, y dentro de este crearemos el entorno virtual y nuestro proyecto de Django.</p>
+<p>Ya sea de manera manual o por consola, crearemos el directorio que ya mencionamos. Pero es necesario acceder a este con la consola.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; $ mkdir CostosBocadillo
+Crear el directorio con consola.
+&gt;&gt;&gt; $ cd CostosBocadillo
+Crear el directorio con consola.
+</pre></div>
+</div>
+<p>Haremos un virtualenv llamado <a href="#id3"><span class="problematic" id="id4">:mod:`costosbocadilloenv`</span></a> o con el nombre que gusten . El comando general estará en el formato:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; $ python -m venv costosbocadilloenv
+</pre></div>
+</div>
+<p>En general se verá algo así:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">Name</span>\<span class="n">CostosBocadillo</span><span class="o">&gt;</span> <span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">venv</span> <span class="n">costosbocadilloenv</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="trabajar-con-virtualenv">
+<h3>Trabajar con virtualenv<a class="headerlink" href="#trabajar-con-virtualenv" title="Permalink to this headline">¶</a></h3>
+<p>El comando anterior creará un directorio llamado <a href="#id5"><span class="problematic" id="id6">:mod:`costosbocadilloenv`</span></a> (o cualquier nombre que hayas elegido) que contiene nuestro entorno virtual.</p>
+<p>Iniciamos el entorno virtual ejecutando:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">Name</span>\<span class="n">CostosBocadillo</span><span class="o">&gt;</span> <span class="n">costosbocadilloenv</span>\<span class="n">Scripts</span>\<span class="n">activate</span>
+</pre></div>
+</div>
+<p>Sabremos que tenemos <code class="docutils literal notranslate"><span class="pre">virtualenv</span></code> iniciado cuando veamos que la línea de comando en nuestra consola tiene el prefijo (costosbocadilloenv).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">Name</span>\<span class="n">CostosBocadillo</span>
+<span class="go">(costosbocadilloenv)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="instalar-django">
+<h2>Instalar Django<a class="headerlink" href="#instalar-django" title="Permalink to this headline">¶</a></h2>
+<p>Ahora que tenemos nuestro <code class="docutils literal notranslate"><span class="pre">virtualenv</span></code> iniciado, podemos instalar Django.</p>
+<p>Antes de hacer eso, debemos asegurarnos que tenemos la última versión de <code class="docutils literal notranslate"><span class="pre">pip</span></code>, el software que utilizamos para instalar Django:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; (costosbocadilloenv) $ python -m pip install --upgrade pip
+</pre></div>
+</div>
+<p>Para instalar Django usaremos el siguiente comando:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; (costosbocadilloenv) $ python -m pip install Django
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="configuracion.html" class="btn btn-neutral float-right" title="Configuración" accesskey="n" rel="next">下一篇</a>
+      
+      
+        <a href="../index.html" class="btn btn-neutral" title="Documentación de Costos Bocadillo" accesskey="p" rel="prev">上一篇</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Esneyder.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/unitedstack/sphinx_rtd_theme">theme</a> provided by <a href="https://github.com/unitedstack">UnitedStack</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/language_data.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

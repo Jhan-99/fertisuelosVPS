@@ -4,91 +4,271 @@
 conversion_unidades
 *******************
 
+:Descripción: 
+
+.. code:: 
+   
+   CostosBaocadillo
+   └── apps
+          └── conversion_unidades
+              ├── __init__.py
+              ├── admin.py
+              ├── apps.py
+              ├── migrations
+              │   └── __init__.py
+              ├── models.py
+              ├── tests.py
+              ├── views.py
+              ├── forms.py
+              └── urls.py
+   
 .. figure:: ../_static/carpeta.png
    :align: left
    
 Migrations
 ==========
+*Carpeta* : :mod:`migrations`
 
-.. automodule:: apps.conversion_unidades.migrations.0001_initial
-   :members:
-   :undoc-members:
 
-   Es la ruta donde las migraciones se realizan
+   Este es el directorio donde se almacenan todas las migraciones con las respectivas dependencias de sus modelos. Dentro de este archivo se encuentran los campos de la base de datos que establecimos en el archivo ``models.py`` con la respectiva característica del campo. Este archivo es generado con el comando ``makemigrations`` de Django y genera nuevas versiones con cada migración creada. 
+   
+       
+       
+.. figure:: ../_static/py.png
+   :align: left
 
+Models
+======
+*Archivo* : ``models.py``
+
+.. note::
+
+   Un modelo en Django es una clase importada de la biblioteca django.db que actúa como puente entre su base de datos y el servidor. Esta clase es una representación de la estructura de datos utilizada por su sitio web. Relacionará directamente esta estructura de datos con la base de datos. Para que no tenga que aprender SQL para la base de datos.
+   
+   
+1. En primer lugar, se creo una nueva aplicación con el comando::
+
+       django-admin startapp conversion_unidades
+       
+donde ``conversion_unidades`` es el nombre de la aplicación.
+
+2. Después de crear la aplicación, debe instalarse en el proyecto. Para ello, se agregó la aplicación ``conversion_unidades`` a la lista ``INSTALLED_APPS`` en el archivo *settings.py*.
+
+.. code-block:: python
+   :emphasize-lines: 8
+   
+       INSTALLED_APPS = [
+       'django.contrib.admin',
+       'django.contrib.auth',
+       'django.contrib.contenttypes',
+       'django.contrib.sessions',
+       'django.contrib.messages',
+       'django.contrib.staticfiles',
+       'apps.conversion_unidades',
+       ]
+       
+       
+3. En el archivo *models.py* encontraremos el siguiente código, correspondiente al modelo de ``Conversionunidades``.
+
+.. code-block:: python
+       
+    class Conversionunidades(models.Model):
+        id_con =          models.AutoField(primary_key = True)
+        nombre_con =         models.CharField('nombre de la unidad', max_length = 100, blank = False, null = False)
+        categoria =          models.CharField('categoría', max_length = 50, blank = False, null = False)
+        unidadminima =       models.CharField('Unidad mínima', max_length = 50, blank = False, null = False)
+        factor =             models.IntegerField('factor', blank = False, null = False)
+
+    
+        class Meta:
+            db_table = 'conversionunidades'
+            verbose_name = 'Conversionunidad'
+            verbose_name_plural = 'Conversionunidades'
+            ordering = ['id_con']
+    
+        def __str__(self):
+            return '{}'.format(self.nombre_con)
+    
+    
+4. Aquí podemos ver que los campos de los modelos tienen muchos métodos para la entrada web, como :func:`CharField`, :func:`IntegerField`, :func:`AutoField`. Podemos ver mas `referencias <https://docs.djangoproject.com/en/3.0/ref/models/fields/>`_ en la documentación de Django. 
+
+5. Ahora ejecutaremos los comandos::
+
+       > py manage.py makemigrations
+       > py manage.py migrate
+
+.. tip::
+
+   Asegúrese de tener la base de datos conectada y de haber iniciado el servidor Apache y el servidor MySQL en la base de datos.
+   
+   
 .. figure:: ../_static/py.png
    :align: left
    
 Admin
 =====
-admin.py
+*Archivo* : ``admin.py``
 
-.. automodule:: apps.conversion_unidades.admin
-   :members:
-   :undoc-members:
+Al registrar el  módelo ``Conversionunidades`` con ``admin.site.register()``, Django puede construir una representación del formulario predeterminado.
+Para poder registrar un modelo en el archivo :mod:`models.py` debemos importar el modelo con la función ``from`` y registrar el modelo con la sentencia ``admin.site.register()``:
+
+.. code-block:: python
+    
+   from .models import Conversionunidades       # Importar el modelo desde models.py
+
+   admin.site.register(Conversionunidades)       # (nombre del modelo creado en models.py) 
+    
+   
+.. figure:: ../_static/py.png
+   :align: left
+   
+   
+Forms
+=====
+*Archivo* : ``forms.py``
+
+En este archivo podremos crear los imputs para los campos de los formularios creados en html.
+
+Lo bueno de los formularios de Django es que podemos definirlos desde cero o crear un ``ModelForm``, el cual guardará el resultado del formulario en el modelo. Para esto crearemos un formulario para nuestro modelo *Conversionunidades*.
+
+Los formularios tienen su propio archivo: ``forms.py``.  Dentro de este archivo encontraremos el siguiente código:
+
+.. code-block:: python
+
+   from django import forms
+   from .models import Conversionunidades
+   class ConversionunidadesForm(forms.ModelForm):
+       class Meta:
+           model = Conversionunidades
+           fields = ['nombre_con', 'categoria', 'unidadminima', 'factor']
+
+Lo primero, necesitamos importar Django forms ``from django import forms`` y nuestro modelo *Conversionunidades* ``from .models import ..``.
+
+``ConversionunidadesForm``, es el nombre de nuestro formulario. Necesitamos decirle a Django que este formulario es un ``ConversionunidadesForm`` así Django hará algo el resto por nosotros - ``forms.ConversionunidadesForm`` es responsable de ello.
+
+Luego, tenemos ``class Meta``, donde le decimos a Django qué modelo debe ser utilizado para crear este formulario ``model = Conversionunidades``.
+
+
+.. figure:: ../_static/py.png
+   :align: left
+
+Views
+=====
+*Archivo* : ``views.py``
+
+:conversion_unidades:
+
+.. admonition:: Importaciones
+
+   .. code-block:: python
+   
+      from django.shortcuts import render, redirect
+      from django.core.exceptions import ObjectDoesNotExist
+      from django.http import HttpResponse
+      from .forms import ConversionunidadesForm
+      from .models import Conversionunidades
+
+
+.. admonition:: Listar Conversionunidades
+
+   .. code-block:: python
+
+      def listarConversionunidades(request):
+          conversionunidades = Conversionunidades.objects.all()
+          return render(request, 'conversionunidades/listar.html', {'conversionunidades': conversionunidades})
+          
+          
+.. admonition:: Crear Conversionunidades
+
+   .. code-block:: python
+
+      def crearConversionunidades(request):
+          if request.method == 'POST':
+              print(request.POST)
+              conversionunidades_form = ConversionunidadesForm(request.POST)
+              if conversionunidades_form.is_valid():
+                  conversionunidades_form.save()
+                  return redirect('conversionunidades:listar')
+          else:
+              conversionunidades_form = ConversionunidadesForm()       
+          return render(request, 'conversionunidades/crear.html', {'conversionunidades_form':conversionunidades_form})
+          
+          
+.. admonition:: Editar Conversionunidades
+
+   .. code-block:: python
+
+      def editarConversionunidades(request, id_con):
+          if request.method == 'POST':
+              id_con  =        request.POST.get('id_con')
+              nombre_con  =       request.POST.get('nombre_con')
+              categoria  =        request.POST.get('categoria')
+              unidadminima  =     request.POST.get('unidadminima')
+              factor  =           request.POST.get('factor')
+              Conversionunidades.objects.filter(pk=id_con).update(nombre_con = nombre_con, categoria = categoria, unidadminima = unidadminima, factor = factor)
+              return redirect('conversionunidades:listar') #qw
+          else:
+               conversionunidades = Conversionunidades.objects.filter(id_con = id_con)    
+          return render(request, 'conversionunidades/editar.html', {'conversionunidades': conversionunidades})       
+
+
+.. admonition:: Eliminar Conversionunidades
+
+   .. code-block:: python
+   
+      def eliminarConversionunidades(request, id_con):
+          conversionunidades = Conversionunidades.objects.get(id_con = id_con)
+          if request.method == 'POST':
+              conversionunidades.delete()
+              return redirect('conversionunidades:listar')
+          return render(request, 'conversionunidades/eliminar.html', {'conversionunidades': conversionunidades})
+
+
+
+.. figure:: ../_static/py.png
+   :align: left
+   
+Urls
+====
+*Archivo* : ``urls.py``
+
+.. code-block:: python
+   
+   from django.urls import path, re_path
+   from .views import listarConversionunidades, crearConversionunidades, editarConversionunidades, eliminarConversionunidades
+   urlpatterns = [
+       path('listar/',listarConversionunidades, name = 'listar'),
+       path('crear/',crearConversionunidades, name = 'crear'),
+       path('editar/<int:id_con>',editarConversionunidades, name = 'editar'),
+       path('eliminar/<int:id_con>',eliminarConversionunidades, name = 'eliminar'),
+    
+   ]
+ 
+ 
+
+Y añadiremos esta ruta al aquivo ``urls.py`` del directorio :mod:`costosbocadillo`:
+ 
+ .. code-block:: python 
+    
+    urlpatterns = [
+    
+    path('conversionunidades/', include(('apps.conversion_unidades.urls', 'conversionunidades'))),
+    
+    ]
+
    
 .. figure:: ../_static/py.png
    :align: left
    
 Apps
 ====
-apps.py
+*Archivo* : ``apps.py``
 
-.. automodule:: apps.conversion_unidades.apps
-   :members:
-   :undoc-members:
-   
-.. figure:: ../_static/py.png
-   :align: left
-   
-Forms
-=====
-forms.py
+Este archivo se crea para ayudar al usuario a incluir cualquier `configuración de aplicación <https://docs.djangoproject.com/en/dev/ref/applications/#application-configuration>`_ para la aplicación. Con esto, puede configurar algunos de los atributos de la aplicación:
 
-.. automodule:: apps.conversion_unidades.forms
-   :members:
-   :undoc-members:
-   
-.. figure:: ../_static/py.png
-   :align: left
-   
-Models
-======
-models.py
+.. code-block:: python
 
-.. automodule:: apps.conversion_unidades.models
-   :members:
-   :undoc-members:
-   
-.. figure:: ../_static/py.png
-   :align: left
-   
-Tests
-=====
-tests.py
+    from django.apps import AppConfig
 
-.. automodule:: apps.conversion_unidades.tests
-   :members:
-   :undoc-members:
-   
-.. figure:: ../_static/py.png
-   :align: left
-   
-Urls
-====
-urls.py
-
-.. automodule:: apps.conversion_unidades.urls
-   :members:
-   :undoc-members:
-   
-.. figure:: ../_static/py.png
-   :align: left
-   
-Views
-=====
-views.py
-
-.. automodule:: apps.conversion_unidades.views
-   :members:
-   :undoc-members:
+    class Conversion_unidadesConfig(AppConfig):
+        name = 'conversion_unidades'

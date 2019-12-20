@@ -8,49 +8,52 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>CentroCostos &mdash; Biblioteca 1.0 documentation</title>
+  <title>CentroCostos &mdash; CostosBocadillo 1.0 documentation</title>
   
 
   
   
-  
+
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
     
 
   
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="compras" href="compras.html" />
-    <link rel="prev" title="baches" href="baches.html" /> 
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="CostosBocadillo 1.0 documentation" href="../index.html"/>
+        <link rel="next" title="compras" href="compras.html"/>
+        <link rel="prev" title="baches" href="baches.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
 </head>
 
-<body class="wy-body-for-nav">
+<body class="wy-body-for-nav" role="document">
 
-   
   <div class="wy-grid-for-nav">
+
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search">
           
 
           
-            <a href="../index.html" class="icon icon-home"> Biblioteca
+            <a href="../index.html" class="icon icon-home"> CostosBocadillo
           
 
           
@@ -77,26 +80,22 @@
           
             
             
-              
-            
-            
-              <ul>
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Instalación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuracion.html">Configuración</a></li>
 <li class="toctree-l1"><a class="reference internal" href="all-about-me.html">Todo sobre el Proyecto</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Apps:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="administrador.html">administrador</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ajax.html">ajax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="baches.html">baches</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">CentroCostos</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#module-apps.CentroCostos.migrations.0001_initial">Migrations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#admin">Admin</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#apps">Apps</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#forms">Forms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#migrations">Migrations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#models">Models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#tests">Tests</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#urls">Urls</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#admin">Admin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#forms">Forms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#views">Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#urls">Urls</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#apps">Apps</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="compras.html">compras</a></li>
@@ -105,13 +104,8 @@
 <li class="toctree-l1"><a class="reference internal" href="fabricas.html">fabricas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="insumos.html">insumos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="moempaques.html">MOempaques</a></li>
-<li class="toctree-l1"><a class="reference internal" href="procesos.html">procesos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="productos.html">productos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="propietarios.html">Propietarios</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Biblioteca:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="biblioteca.html">costosbocadillo</a></li>
 </ul>
 
             
@@ -123,54 +117,34 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">Biblioteca</a>
-        
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">CostosBocadillo</a>
       </nav>
 
 
+      
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
           
 
-
-
-
-
-
-
-
-
-
-
-
+ 
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
-
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../index.html">Docs</a> &raquo;</li>
-        
-      <li>CentroCostos</li>
-    
-    
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+    <li>CentroCostos</li>
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/modules/centrocostos.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -181,239 +155,270 @@
 </div>
 <div class="section" id="centrocostos">
 <h1>CentroCostos<a class="headerlink" href="#centrocostos" title="Permalink to this headline">¶</a></h1>
+<dl class="field-list simple">
+<dt class="field-odd">Descripción</dt>
+<dd class="field-odd"><p>Los centros de costos son la agrupación de varias actividades que se realizan en la empresa, por ejemplo la recepción de la fruta, el empaque. Dichas actividades, se clasifican en tres grandes grupos, centros de costos operativos, (desde la recepción hasta la entrega final para despacho del producto), logísticos (Hacen relación a servicios indirecto en la elaboración del producto, por ejemplo servicios generales, mantenimientos, procesos de caldera), administrativos y de ventas (distribución y comercialización del producto terminado).</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>CostosBaocadillo
+└── apps
+       └── CentroCostos
+           ├── __init__.py
+           ├── admin.py
+           ├── apps.py
+           ├── migrations
+           │   └── __init__.py
+           ├── models.py
+           ├── tests.py
+           ├── views.py
+           ├── forms.py
+           └── urls.py
+</pre></div>
+</div>
 <div class="figure align-left">
 <img alt="../_images/carpeta.png" src="../_images/carpeta.png" />
 </div>
-<div class="section" id="module-apps.CentroCostos.migrations.0001_initial">
-<span id="migrations"></span><h2>Migrations<a class="headerlink" href="#module-apps.CentroCostos.migrations.0001_initial" title="Permalink to this headline">¶</a></h2>
-<p>Es la ruta donde las migraciones se realizan</p>
-<dl class="class">
-<dt id="apps.CentroCostos.migrations.0001_initial.Migration">
-<em class="property">class </em><code class="sig-prename descclassname">apps.CentroCostos.migrations.0001_initial.</code><code class="sig-name descname">Migration</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">app_label</em><span class="sig-paren">)</span><a class="headerlink" href="#apps.CentroCostos.migrations.0001_initial.Migration" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="attribute">
-<dt id="apps.CentroCostos.migrations.0001_initial.Migration.dependencies">
-<code class="sig-name descname">dependencies</code><em class="property"> = []</em><a class="headerlink" href="#apps.CentroCostos.migrations.0001_initial.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="apps.CentroCostos.migrations.0001_initial.Migration.initial">
-<code class="sig-name descname">initial</code><em class="property"> = True</em><a class="headerlink" href="#apps.CentroCostos.migrations.0001_initial.Migration.initial" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="apps.CentroCostos.migrations.0001_initial.Migration.operations">
-<code class="sig-name descname">operations</code><em class="property"> = [&lt;CreateModel  name='CentroCostos', fields=[('id_cdc', &lt;django.db.models.fields.AutoField&gt;), ('nombre_cdc', &lt;django.db.models.fields.CharField&gt;), ('categoria_cdc', &lt;django.db.models.fields.CharField&gt;), ('duracion_cdc', &lt;django.db.models.fields.IntegerField&gt;)], options={'verbose_name': 'CentroCosto', 'verbose_name_plural': 'CentroCostos', 'db_table': 'Centro_Costos', 'ordering': ['id_cdc']}&gt;]</em><a class="headerlink" href="#apps.CentroCostos.migrations.0001_initial.Migration.operations" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<div class="figure align-left">
-<img alt="../_images/py.png" src="../_images/py.png" />
-</div>
-</div>
-<div class="section" id="admin">
-<h2>Admin<a class="headerlink" href="#admin" title="Permalink to this headline">¶</a></h2>
-<p>admin.py</p>
-<span class="target" id="module-apps.CentroCostos.admin"></span><div class="figure align-left">
-<img alt="../_images/py.png" src="../_images/py.png" />
-</div>
-</div>
-<div class="section" id="apps">
-<h2>Apps<a class="headerlink" href="#apps" title="Permalink to this headline">¶</a></h2>
-<p>apps.py</p>
-<span class="target" id="module-apps.CentroCostos.apps"></span><dl class="class">
-<dt id="apps.CentroCostos.apps.Conversion_unidadesConfig">
-<em class="property">class </em><code class="sig-prename descclassname">apps.CentroCostos.apps.</code><code class="sig-name descname">Conversion_unidadesConfig</code><span class="sig-paren">(</span><em class="sig-param">app_name</em>, <em class="sig-param">app_module</em><span class="sig-paren">)</span><a class="headerlink" href="#apps.CentroCostos.apps.Conversion_unidadesConfig" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="attribute">
-<dt id="apps.CentroCostos.apps.Conversion_unidadesConfig.name">
-<code class="sig-name descname">name</code><em class="property"> = 'conversion_unidades'</em><a class="headerlink" href="#apps.CentroCostos.apps.Conversion_unidadesConfig.name" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<div class="figure align-left">
-<img alt="../_images/py.png" src="../_images/py.png" />
-</div>
-</div>
-<div class="section" id="forms">
-<h2>Forms<a class="headerlink" href="#forms" title="Permalink to this headline">¶</a></h2>
-<p>forms.py</p>
-<span class="target" id="module-apps.CentroCostos.forms"></span><dl class="class">
-<dt id="apps.CentroCostos.forms.CentroCostosForm">
-<em class="property">class </em><code class="sig-prename descclassname">apps.CentroCostos.forms.</code><code class="sig-name descname">CentroCostosForm</code><span class="sig-paren">(</span><em class="sig-param">data=None</em>, <em class="sig-param">files=None</em>, <em class="sig-param">auto_id='id_%s'</em>, <em class="sig-param">prefix=None</em>, <em class="sig-param">initial=None</em>, <em class="sig-param">error_class=&lt;class 'django.forms.utils.ErrorList'&gt;</em>, <em class="sig-param">label_suffix=None</em>, <em class="sig-param">empty_permitted=False</em>, <em class="sig-param">instance=None</em>, <em class="sig-param">use_required_attribute=None</em>, <em class="sig-param">renderer=None</em><span class="sig-paren">)</span><a class="headerlink" href="#apps.CentroCostos.forms.CentroCostosForm" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="class">
-<dt id="apps.CentroCostos.forms.CentroCostosForm.Meta">
-<em class="property">class </em><code class="sig-name descname">Meta</code><a class="headerlink" href="#apps.CentroCostos.forms.CentroCostosForm.Meta" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="attribute">
-<dt id="apps.CentroCostos.forms.CentroCostosForm.Meta.fields">
-<code class="sig-name descname">fields</code><em class="property"> = ['nombre_cdc', 'categoria_cdc', 'valor_cdc', 'clasificacion_cdc', 'tipo_cdc']</em><a class="headerlink" href="#apps.CentroCostos.forms.CentroCostosForm.Meta.fields" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="apps.CentroCostos.forms.CentroCostosForm.Meta.model">
-<code class="sig-name descname">model</code><a class="headerlink" href="#apps.CentroCostos.forms.CentroCostosForm.Meta.model" title="Permalink to this definition">¶</a></dt>
-<dd><p>alias of <a class="reference internal" href="#apps.CentroCostos.models.CentroCostos" title="apps.CentroCostos.models.CentroCostos"><code class="xref py py-class docutils literal notranslate"><span class="pre">apps.CentroCostos.models.CentroCostos</span></code></a></p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="attribute">
-<dt id="apps.CentroCostos.forms.CentroCostosForm.base_fields">
-<code class="sig-name descname">base_fields</code><em class="property"> = {'categoria_cdc': &lt;django.forms.fields.CharField object&gt;, 'clasificacion_cdc': &lt;django.forms.fields.CharField object&gt;, 'nombre_cdc': &lt;django.forms.fields.CharField object&gt;, 'tipo_cdc': &lt;django.forms.fields.CharField object&gt;, 'valor_cdc': &lt;django.forms.fields.IntegerField object&gt;}</em><a class="headerlink" href="#apps.CentroCostos.forms.CentroCostosForm.base_fields" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="apps.CentroCostos.forms.CentroCostosForm.declared_fields">
-<code class="sig-name descname">declared_fields</code><em class="property"> = {}</em><a class="headerlink" href="#apps.CentroCostos.forms.CentroCostosForm.declared_fields" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="apps.CentroCostos.forms.CentroCostosForm.media">
-<em class="property">property </em><code class="sig-name descname">media</code><a class="headerlink" href="#apps.CentroCostos.forms.CentroCostosForm.media" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
+<div class="section" id="migrations">
+<h2>Migrations<a class="headerlink" href="#migrations" title="Permalink to this headline">¶</a></h2>
+<p><em>Carpeta</em> : <code class="xref py py-mod docutils literal notranslate"><span class="pre">migrations</span></code></p>
+<blockquote>
+<div><p>Este es el directorio donde se almacenan todas las migraciones con las respectivas dependencias de sus modelos. Dentro de este archivo se encuentran los campos de la base de datos que establecimos en el archivo <code class="docutils literal notranslate"><span class="pre">models.py</span></code> con la respectiva característica del campo. Este archivo es generado con el comando <code class="docutils literal notranslate"><span class="pre">makemigrations</span></code> de Django y genera nuevas versiones con cada migración creada.</p>
+</div></blockquote>
 <div class="figure align-left">
 <img alt="../_images/py.png" src="../_images/py.png" />
 </div>
 </div>
 <div class="section" id="models">
 <h2>Models<a class="headerlink" href="#models" title="Permalink to this headline">¶</a></h2>
-<p>models.py</p>
-<span class="target" id="module-apps.CentroCostos.models"></span><dl class="class">
-<dt id="apps.CentroCostos.models.CentroCostos">
-<em class="property">class </em><code class="sig-prename descclassname">apps.CentroCostos.models.</code><code class="sig-name descname">CentroCostos</code><span class="sig-paren">(</span><em class="sig-param">id_cdc</em>, <em class="sig-param">nombre_cdc</em>, <em class="sig-param">categoria_cdc</em>, <em class="sig-param">valor_cdc</em>, <em class="sig-param">clasificacion_cdc</em>, <em class="sig-param">tipo_cdc</em><span class="sig-paren">)</span><a class="headerlink" href="#apps.CentroCostos.models.CentroCostos" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="exception">
-<dt id="apps.CentroCostos.models.CentroCostos.DoesNotExist">
-<em class="property">exception </em><code class="sig-name descname">DoesNotExist</code><a class="headerlink" href="#apps.CentroCostos.models.CentroCostos.DoesNotExist" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<p><em>Archivo</em> : <code class="docutils literal notranslate"><span class="pre">models.py</span></code></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Un modelo en Django es una clase importada de la biblioteca django.db que actúa como puente entre su base de datos y el servidor. Esta clase es una representación de la estructura de datos utilizada por su sitio web. Relacionará directamente esta estructura de datos con la base de datos. Para que no tenga que aprender SQL para la base de datos.</p>
+</div>
+<ol class="arabic">
+<li><p>En primer lugar, se creo una nueva aplicación con el comando:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">django</span><span class="o">-</span><span class="n">admin</span> <span class="n">startapp</span> <span class="n">CentroCostos</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>donde <code class="docutils literal notranslate"><span class="pre">CentroCostos</span></code> es el nombre de la aplicación.</p>
+<ol class="arabic simple" start="2">
+<li><p>Después de crear la aplicación, debe instalarse en el proyecto. Para ello, se agregó la aplicación <code class="docutils literal notranslate"><span class="pre">CentroCostos</span></code> a la lista <code class="docutils literal notranslate"><span class="pre">INSTALLED_APPS</span></code> en el archivo <em>settings.py</em>.</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;django.contrib.admin&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.auth&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.contenttypes&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.sessions&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.messages&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.staticfiles&#39;</span><span class="p">,</span>
+<span class="hll">    <span class="s1">&#39;apps.CentroCostos&#39;</span><span class="p">,</span>
+</span>    <span class="p">]</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>En el archivo <em>models.py</em> encontraremos el siguiente código, correspondiente al modelo de <code class="docutils literal notranslate"><span class="pre">CentroCostos</span></code>.</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
 
-<dl class="exception">
-<dt id="apps.CentroCostos.models.CentroCostos.MultipleObjectsReturned">
-<em class="property">exception </em><code class="sig-name descname">MultipleObjectsReturned</code><a class="headerlink" href="#apps.CentroCostos.models.CentroCostos.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<span class="k">class</span> <span class="nc">CentroCostos</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">id_cdc</span> <span class="o">=</span>               <span class="n">models</span><span class="o">.</span><span class="n">AutoField</span><span class="p">(</span><span class="n">primary_key</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="n">nombre_cdc</span> <span class="o">=</span>           <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="s1">&#39;Nombre del Centro de Costo&#39;</span><span class="p">,</span> <span class="n">max_length</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">blank</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">null</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="n">categoria_cdc</span> <span class="o">=</span>        <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="s1">&#39;Categoría del Centro de Costo&#39;</span><span class="p">,</span> <span class="n">max_length</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">blank</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">null</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="n">valor_cdc</span> <span class="o">=</span>            <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="s1">&#39;Valor&#39;</span><span class="p">,</span> <span class="n">blank</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">null</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="n">clasificacion_cdc</span> <span class="o">=</span>    <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="s1">&#39;Clasificación&#39;</span><span class="p">,</span> <span class="n">max_length</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">blank</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">null</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="n">tipo_cdc</span> <span class="o">=</span>             <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="s1">&#39;Tipo&#39;</span><span class="p">,</span> <span class="n">max_length</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span> <span class="n">blank</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">null</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
 
-<dl class="attribute">
-<dt id="apps.CentroCostos.models.CentroCostos.categoria_cdc">
-<code class="sig-name descname">categoria_cdc</code><a class="headerlink" href="#apps.CentroCostos.models.CentroCostos.categoria_cdc" title="Permalink to this definition">¶</a></dt>
-<dd><p>A wrapper for a deferred-loading field. When the value is read from this
-object the first time, the query is executed.</p>
-</dd></dl>
 
-<dl class="attribute">
-<dt id="apps.CentroCostos.models.CentroCostos.clasificacion_cdc">
-<code class="sig-name descname">clasificacion_cdc</code><a class="headerlink" href="#apps.CentroCostos.models.CentroCostos.clasificacion_cdc" title="Permalink to this definition">¶</a></dt>
-<dd><p>A wrapper for a deferred-loading field. When the value is read from this
-object the first time, the query is executed.</p>
-</dd></dl>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">db_table</span> <span class="o">=</span> <span class="s1">&#39;centro_costos&#39;</span>
+        <span class="n">verbose_name</span> <span class="o">=</span> <span class="s1">&#39;centrocosto&#39;</span>
+        <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="s1">&#39;centrocostos&#39;</span>
+        <span class="n">ordering</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;id_cdc&#39;</span><span class="p">]</span>
 
-<dl class="attribute">
-<dt id="apps.CentroCostos.models.CentroCostos.id_cdc">
-<code class="sig-name descname">id_cdc</code><a class="headerlink" href="#apps.CentroCostos.models.CentroCostos.id_cdc" title="Permalink to this definition">¶</a></dt>
-<dd><p>A wrapper for a deferred-loading field. When the value is read from this
-object the first time, the query is executed.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="apps.CentroCostos.models.CentroCostos.nombre_cdc">
-<code class="sig-name descname">nombre_cdc</code><a class="headerlink" href="#apps.CentroCostos.models.CentroCostos.nombre_cdc" title="Permalink to this definition">¶</a></dt>
-<dd><p>A wrapper for a deferred-loading field. When the value is read from this
-object the first time, the query is executed.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="apps.CentroCostos.models.CentroCostos.objects">
-<code class="sig-name descname">objects</code><em class="property"> = &lt;django.db.models.manager.Manager object&gt;</em><a class="headerlink" href="#apps.CentroCostos.models.CentroCostos.objects" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="apps.CentroCostos.models.CentroCostos.tipo_cdc">
-<code class="sig-name descname">tipo_cdc</code><a class="headerlink" href="#apps.CentroCostos.models.CentroCostos.tipo_cdc" title="Permalink to this definition">¶</a></dt>
-<dd><p>A wrapper for a deferred-loading field. When the value is read from this
-object the first time, the query is executed.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="apps.CentroCostos.models.CentroCostos.valor_cdc">
-<code class="sig-name descname">valor_cdc</code><a class="headerlink" href="#apps.CentroCostos.models.CentroCostos.valor_cdc" title="Permalink to this definition">¶</a></dt>
-<dd><p>A wrapper for a deferred-loading field. When the value is read from this
-object the first time, the query is executed.</p>
-</dd></dl>
-
-</dd></dl>
-
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+     <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nombre_cdc</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic" start="4">
+<li><p>Aquí podemos ver que los campos de los modelos tienen muchos métodos para la entrada web, como <code class="xref py py-func docutils literal notranslate"><span class="pre">CharField()</span></code>, <code class="xref py py-func docutils literal notranslate"><span class="pre">IntegerField()</span></code>, <code class="xref py py-func docutils literal notranslate"><span class="pre">AutoField()</span></code>. Podemos ver mas <a class="reference external" href="https://docs.djangoproject.com/en/3.0/ref/models/fields/">referencias</a> en la documentación de Django.</p></li>
+<li><p>Ahora ejecutaremos los comandos:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">py</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">makemigrations</span>
+<span class="o">&gt;</span> <span class="n">py</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">migrate</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Asegúrese de tener la base de datos conectada y de haber iniciado el servidor Apache y el servidor MySQL en la base de datos.</p>
+</div>
 <div class="figure align-left">
 <img alt="../_images/py.png" src="../_images/py.png" />
 </div>
 </div>
-<div class="section" id="tests">
-<h2>Tests<a class="headerlink" href="#tests" title="Permalink to this headline">¶</a></h2>
-<p>tests.py</p>
-<span class="target" id="module-apps.CentroCostos.tests"></span><div class="figure align-left">
+<div class="section" id="admin">
+<h2>Admin<a class="headerlink" href="#admin" title="Permalink to this headline">¶</a></h2>
+<p><em>Archivo</em> : <code class="docutils literal notranslate"><span class="pre">admin.py</span></code></p>
+<p>Al registrar el módelo <code class="docutils literal notranslate"><span class="pre">CentroCostos</span></code> con <code class="docutils literal notranslate"><span class="pre">admin.site.register()</span></code>, Django puede construir una representación del formulario predeterminado.
+Para poder registrar un modelo en el archivo <code class="xref py py-mod docutils literal notranslate"><span class="pre">models.py</span></code> debemos importar el modelo con la función <code class="docutils literal notranslate"><span class="pre">from</span></code> y registrar el modelo con la sentencia <code class="docutils literal notranslate"><span class="pre">admin.site.register()</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">CentroCostos</span>       <span class="c1"># Importar el modelo desde models.py</span>
+
+<span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">CentroCostos</span><span class="p">)</span>       <span class="c1"># (nombre del modelo creado en models.py)</span>
+</pre></div>
+</div>
+<div class="figure align-left">
 <img alt="../_images/py.png" src="../_images/py.png" />
 </div>
 </div>
-<div class="section" id="urls">
-<h2>Urls<a class="headerlink" href="#urls" title="Permalink to this headline">¶</a></h2>
-<p>urls.py</p>
-<span class="target" id="module-apps.CentroCostos.urls"></span><dl class="function">
-<dt id="apps.CentroCostos.urls.path">
-<code class="sig-prename descclassname">apps.CentroCostos.urls.</code><code class="sig-name descname">path</code><span class="sig-paren">(</span><em class="sig-param">route</em>, <em class="sig-param">view</em>, <em class="sig-param">kwargs=None</em>, <em class="sig-param">name=None</em>, <em class="sig-param">*</em>, <em class="sig-param">Pattern=&lt;class 'django.urls.resolvers.RoutePattern'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#apps.CentroCostos.urls.path" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="apps.CentroCostos.urls.re_path">
-<code class="sig-prename descclassname">apps.CentroCostos.urls.</code><code class="sig-name descname">re_path</code><span class="sig-paren">(</span><em class="sig-param">route</em>, <em class="sig-param">view</em>, <em class="sig-param">kwargs=None</em>, <em class="sig-param">name=None</em>, <em class="sig-param">*</em>, <em class="sig-param">Pattern=&lt;class 'django.urls.resolvers.RegexPattern'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#apps.CentroCostos.urls.re_path" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
+<div class="section" id="forms">
+<h2>Forms<a class="headerlink" href="#forms" title="Permalink to this headline">¶</a></h2>
+<p><em>Archivo</em> : <code class="docutils literal notranslate"><span class="pre">forms.py</span></code></p>
+<p>En este archivo podremos crear los imputs para los campos de los formularios creados en html.</p>
+<p>Lo bueno de los formularios de Django es que podemos definirlos desde cero o crear un <code class="docutils literal notranslate"><span class="pre">ModelForm</span></code>, el cual guardará el resultado del formulario en el modelo. Para esto crearemos un formulario para nuestro modelo <em>CentroCostos</em>.</p>
+<p>Los formularios tienen su propio archivo: <code class="docutils literal notranslate"><span class="pre">forms.py</span></code>.  Dentro de este archivo encontraremos el siguiente código:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">forms</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">CentroCostos</span>
+<span class="k">class</span> <span class="nc">CentroCostosForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">CentroCostos</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;nombre_cdc&#39;</span><span class="p">,</span> <span class="s1">&#39;categoria_cdc&#39;</span><span class="p">,</span> <span class="s1">&#39;valor_cdc&#39;</span><span class="p">,</span> <span class="s1">&#39;clasificacion_cdc&#39;</span><span class="p">,</span> <span class="s1">&#39;tipo_cdc&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Lo primero, necesitamos importar Django forms <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">django</span> <span class="pre">import</span> <span class="pre">forms</span></code> y nuestro modelo <em>CentroCostos</em> <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">.models</span> <span class="pre">import</span> <span class="pre">..</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">CentroCostosForm</span></code>, es el nombre de nuestro formulario. Necesitamos decirle a Django que este formulario es un <code class="docutils literal notranslate"><span class="pre">CentroCostosForm</span></code> así Django hará algo el resto por nosotros - <code class="docutils literal notranslate"><span class="pre">forms.CentroCostosForm</span></code> es responsable de ello.</p>
+<p>Luego, tenemos <code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">Meta</span></code>, donde le decimos a Django qué modelo debe ser utilizado para crear este formulario <code class="docutils literal notranslate"><span class="pre">model</span> <span class="pre">=</span> <span class="pre">CentroCostos</span></code>.</p>
 <div class="figure align-left">
 <img alt="../_images/py.png" src="../_images/py.png" />
 </div>
 </div>
 <div class="section" id="views">
 <h2>Views<a class="headerlink" href="#views" title="Permalink to this headline">¶</a></h2>
-<p>views.py</p>
-<span class="target" id="module-apps.CentroCostos.views"></span><dl class="function">
-<dt id="apps.CentroCostos.views.CentroCostosHome">
-<code class="sig-prename descclassname">apps.CentroCostos.views.</code><code class="sig-name descname">CentroCostosHome</code><span class="sig-paren">(</span><em class="sig-param">request</em><span class="sig-paren">)</span><a class="headerlink" href="#apps.CentroCostos.views.CentroCostosHome" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<p><em>Archivo</em> : <code class="docutils literal notranslate"><span class="pre">views.py</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">CentroCostos</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<div class="admonition-importaciones admonition">
+<p class="admonition-title">Importaciones</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span><span class="p">,</span> <span class="n">redirect</span>
+<span class="kn">from</span> <span class="nn">django.core.exceptions</span> <span class="kn">import</span> <span class="n">ObjectDoesNotExist</span>
+<span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span>
+<span class="kn">from</span> <span class="nn">.forms</span> <span class="kn">import</span> <span class="n">CentroCostosForm</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">CentroCostos</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition-listar-centrocostos admonition">
+<p class="admonition-title">Listar CentroCostos</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">listarCentroCostos</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">centrocostos</span> <span class="o">=</span> <span class="n">CentroCostos</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;centrocostos/listar.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;centrocostos&#39;</span><span class="p">:</span> <span class="n">centrocostos</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition-crear-centrocostos admonition">
+<p class="admonition-title">Crear CentroCostos</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">crearCentroCostos</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">)</span>
+        <span class="n">centrocostos_form</span> <span class="o">=</span> <span class="n">CentroCostosForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">centrocostos_form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="n">centrocostos_form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;centrocostos:listar&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">centrocostos_form</span> <span class="o">=</span> <span class="n">CentroCostosForm</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;centrocostos/crear.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;centrocostos_form&#39;</span><span class="p">:</span><span class="n">centrocostos_form</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition-editar-centrocostos admonition">
+<p class="admonition-title">Editar CentroCostos</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">editarCentroCostos</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">id_cdc</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
+        <span class="n">id_cdc</span>  <span class="o">=</span>        <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;id_cdc&#39;</span><span class="p">)</span>
+        <span class="n">nombre_cdc</span>  <span class="o">=</span>       <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;nombre_cdc&#39;</span><span class="p">)</span>
+        <span class="n">categoria_cdc</span>  <span class="o">=</span>        <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;categoria_cdc&#39;</span><span class="p">)</span>
+        <span class="n">valor_cdc</span>  <span class="o">=</span>           <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;valor_cdc&#39;</span><span class="p">)</span>
+        <span class="n">clasificacion_cdc</span>  <span class="o">=</span>           <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;clasificacion_cdc&#39;</span><span class="p">)</span>
+        <span class="n">tipo_cdc</span>  <span class="o">=</span>           <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;tipo_cdc&#39;</span><span class="p">)</span>
+        <span class="n">CentroCostos</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="n">id_cdc</span><span class="p">)</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">nombre_cdc</span> <span class="o">=</span> <span class="n">nombre_cdc</span><span class="p">,</span> <span class="n">categoria_cdc</span> <span class="o">=</span> <span class="n">categoria_cdc</span><span class="p">,</span> <span class="n">valor_cdc</span> <span class="o">=</span> <span class="n">valor_cdc</span><span class="p">,</span> <span class="n">clasificacion_cdc</span>       <span class="o">=</span> <span class="n">clasificacion_cdc</span><span class="p">,</span> <span class="n">tipo_cdc</span> <span class="o">=</span> <span class="n">tipo_cdc</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;centrocostos:listar&#39;</span><span class="p">)</span> <span class="c1">#qw</span>
+    <span class="k">else</span><span class="p">:</span>
+         <span class="n">centrocostos</span> <span class="o">=</span> <span class="n">CentroCostos</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">id_cdc</span> <span class="o">=</span> <span class="n">id_cdc</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;centrocostos/editar.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;centrocostos&#39;</span><span class="p">:</span> <span class="n">centrocostos</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition-eliminar-centrocostos admonition">
+<p class="admonition-title">Eliminar CentroCostos</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">eliminarCentroCostos</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">id_cdc</span><span class="p">):</span>
+    <span class="n">centrocostos</span> <span class="o">=</span> <span class="n">CentroCostos</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">id_cdc</span> <span class="o">=</span> <span class="n">id_cdc</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
+        <span class="n">centrocostos</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+        <span class="c1">#fabricas.save()</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;centrocostos:listar&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;centrocostos/eliminar.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;centrocostos&#39;</span><span class="p">:</span> <span class="n">centrocostos</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="figure align-left">
+<img alt="../_images/py.png" src="../_images/py.png" />
+</div>
+</div>
+<div class="section" id="urls">
+<h2>Urls<a class="headerlink" href="#urls" title="Permalink to this headline">¶</a></h2>
+<p><em>Archivo</em> : <code class="docutils literal notranslate"><span class="pre">urls.py</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span><span class="p">,</span> <span class="n">re_path</span>
+<span class="kn">from</span> <span class="nn">.views</span> <span class="kn">import</span> <span class="n">listarCentroCostos</span><span class="p">,</span> <span class="n">crearCentroCostos</span><span class="p">,</span> <span class="n">editarCentroCostos</span><span class="p">,</span> <span class="n">eliminarCentroCostos</span>
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;listar/&#39;</span><span class="p">,</span><span class="n">listarCentroCostos</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;listar&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;crear/&#39;</span><span class="p">,</span><span class="n">crearCentroCostos</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;crear&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;editar/&lt;int:id_cdc&gt;&#39;</span><span class="p">,</span><span class="n">editarCentroCostos</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;editar&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;eliminar/&lt;int:id_cdc&gt;&#39;</span><span class="p">,</span><span class="n">eliminarCentroCostos</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;eliminar&#39;</span><span class="p">),</span>
 
-<dl class="function">
-<dt id="apps.CentroCostos.views.crearCentroCostos">
-<code class="sig-prename descclassname">apps.CentroCostos.views.</code><code class="sig-name descname">crearCentroCostos</code><span class="sig-paren">(</span><em class="sig-param">request</em><span class="sig-paren">)</span><a class="headerlink" href="#apps.CentroCostos.views.crearCentroCostos" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>Y añadiremos esta ruta al aquivo <code class="docutils literal notranslate"><span class="pre">urls.py</span></code> del directorio <code class="xref py py-mod docutils literal notranslate"><span class="pre">costosbocadillo</span></code>:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
 
-<dl class="function">
-<dt id="apps.CentroCostos.views.editarCentroCostos">
-<code class="sig-prename descclassname">apps.CentroCostos.views.</code><code class="sig-name descname">editarCentroCostos</code><span class="sig-paren">(</span><em class="sig-param">request</em>, <em class="sig-param">id_cdc</em><span class="sig-paren">)</span><a class="headerlink" href="#apps.CentroCostos.views.editarCentroCostos" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<span class="n">path</span><span class="p">(</span><span class="s1">&#39;centrocostos/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">((</span><span class="s1">&#39;apps.CentroCostos.urls&#39;</span><span class="p">,</span> <span class="s1">&#39;centrocostos&#39;</span><span class="p">))),</span>
 
-<dl class="function">
-<dt id="apps.CentroCostos.views.eliminarCentroCostos">
-<code class="sig-prename descclassname">apps.CentroCostos.views.</code><code class="sig-name descname">eliminarCentroCostos</code><span class="sig-paren">(</span><em class="sig-param">request</em>, <em class="sig-param">id_cdc</em><span class="sig-paren">)</span><a class="headerlink" href="#apps.CentroCostos.views.eliminarCentroCostos" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="figure align-left">
+<img alt="../_images/py.png" src="../_images/py.png" />
+</div>
+</div>
+<div class="section" id="apps">
+<h2>Apps<a class="headerlink" href="#apps" title="Permalink to this headline">¶</a></h2>
+<p><em>Archivo</em> : <code class="docutils literal notranslate"><span class="pre">apps.py</span></code></p>
+<p>Este archivo se crea para ayudar al usuario a incluir cualquier <a class="reference external" href="https://docs.djangoproject.com/en/dev/ref/applications/#application-configuration">configuración de aplicación</a> para la aplicación. Con esto, puede configurar algunos de los atributos de la aplicación:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.apps</span> <span class="kn">import</span> <span class="n">AppConfig</span>
 
-<dl class="function">
-<dt id="apps.CentroCostos.views.listarCentroCostos">
-<code class="sig-prename descclassname">apps.CentroCostos.views.</code><code class="sig-name descname">listarCentroCostos</code><span class="sig-paren">(</span><em class="sig-param">request</em><span class="sig-paren">)</span><a class="headerlink" href="#apps.CentroCostos.views.listarCentroCostos" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
+<span class="k">class</span> <span class="nc">CentroCostosConfig</span><span class="p">(</span><span class="n">AppConfig</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;centrocostos&#39;</span>
+</pre></div>
+</div>
 </div>
 </div>
 
 
            </div>
-           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="compras.html" class="btn btn-neutral float-right" title="compras" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="compras.html" class="btn btn-neutral float-right" title="compras" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="baches.html" class="btn btn-neutral float-left" title="baches" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="baches.html" class="btn btn-neutral" title="baches" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -422,11 +427,11 @@ object the first time, the query is executed.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Esneyder
+        &copy; Copyright 2019, Esneyder.
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -439,15 +444,36 @@ object the first time, the query is executed.</p>
   
 
 
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script>
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/language_data.js"></script>
+
+  
 
   
   
-    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
    
 
 </body>
