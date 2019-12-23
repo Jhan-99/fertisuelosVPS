@@ -816,6 +816,7 @@ $result2 = mysqli_query($conexion, $query2);
                 document.write(new Date().getFullYear());
               </script> <a class="grey-text text-lighten-2" href="#" target="_blank">SENNOVA</a> Centro de Gestión Agroempresarial del Oriente.</span>
             <span class="right hide-on-small-only"> Diseño <a class="grey-text text-lighten-2" href="#">SENNOVA</a></span>
+              
           </div>
         </div>
       </div>

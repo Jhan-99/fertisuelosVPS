@@ -1,6 +1,7 @@
  <?php  
  //Cargar los detalles de las siembras
  include('../../db/dbconnect.php');   //incluir la conexión              
+ include('estados-fenologicos.php');   //incluir la conexión              
  $output = '';  
  if(isset($_POST["id_siembra"]))  
  {  
@@ -13,8 +14,19 @@
            $sql = "SELECT * FROM siembras";  
       }  
       $result = mysqli_query($conexion, $sql);    
+        
+       
       while($row = mysqli_fetch_array($result))  
-      {  
+      { 
+          if($row['Cultivo_siembra'] == '88') {
+            $estado_fenologico    = $estado_guayaba;       
+          }elseif($row['Cultivo_siembra'] == '92'){
+              $estado_fenologico = $estado_mora;      
+          }elseif($row['Cultivo_siembra'] == '89'){
+              $estado_fenologico = $estado_durazno;
+          }
+          
+              
            $output .= '<input type="hidden" name="id_siembra" id="id_siembra" value="'.$row["id_siembra"].'">';  
            $output .= '
            <div class="input-field col s12 m12 l4">
@@ -48,19 +60,7 @@
 			 
             <div class="row col s12 m12 l4">
               <label>Estado fenológico</label>
-                <select class="icons" name="guayaba_fenologico" id="estado_fenologico">
-                <option value="" disabled selected></option>
-                <option value="1" data-icon="../../images/fenologico-guayaba/yema_floral.png" class="circle">Yema Floral</option>
-                <option value="1" data-icon="../../images/fenologico-guayaba/flor_abierta.png" class="circle">Flor Abierta</option>
-                <option value="1" data-icon="../../images/fenologico-guayaba/flor_seca.png" class="circle">Flor Seca</option>
-                <option value="2" data-icon="../../images/fenologico-guayaba/fruto_cuajado.png" class="circle">Fruto Cuajado</option>
-                <option value="2" data-icon="../../images/fenologico-guayaba/fruto_inmaduro.png" class="circle">Fruto Inmaduro</option>
-                  <option value="3" data-icon="../../images/fenologico-guayaba/fruto_madurez_fisiologica.png" class="circle">Madurez Fisiológica</option>
-                  <option value="3" data-icon="../../images/fenologico-guayaba/fruto_pinton.jpg" class="circle">Fruto Pintón</option>
-                  <option value="3" data-icon="../../images/fenologico-guayaba/cosecha.png" class="circle">Cosecha</option>
-                </select>          
-                
- 
+               '.$estado_fenologico.'
                 
               </div>
               
