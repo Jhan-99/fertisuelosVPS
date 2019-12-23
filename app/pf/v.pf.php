@@ -181,6 +181,7 @@ include("../../db/dbconnect.php");
           </div>  
 			 
 			 <!--COLLAPSIBLE REQUERIMIENTOS NUTRICIONALES-->
+             <a onclick="event.preventDefault();" href="#" class="right tooltipped" data-position="bottom" data-tooltip="Requerimientos nutricionales: Son elementos que complementan a los nutrientes del suelo para aumentar el rendimiento del cultivo."><i class="material-icons">help_outline</i></a>
 			 	<h5 id="titureqs" class="center grey-text">Requerimientos nutricionales</h5><br>
 			 	<div id="req_nutricional_culti"></div><br>
                 <h5 id="titureqs" class="center grey-text">Requerimientos nutricionales: Estado fenológico</h5><br>

@@ -1,0 +1,63 @@
+.. figure:: ../_static/carpeta.png
+   :align: left
+   
+BachesProduccion
+================
+
+
+.. figure:: ../_static/html-5.png
+   :align: left
+   
+Crear Autor
+***********
+crear.html
+
+.. automodule:: templates.BachesProduccion.crear
+   :members:
+   :undoc-members:
+   
+.. figure:: ../_static/html-5.png
+   :align: left
+   
+Eliminar Autor
+**************
+eliminar.html
+
+.. automodule:: templates.BachesProduccion.eliminar
+   :members:
+   :undoc-members:
+   
+.. figure:: ../_static/html-5.png
+   :align: left
+   
+Listar Autor
+************
+listar.html
+
+.. automodule:: templates.BachesProduccion.listar
+   :members:
+   :undoc-members:
+   
+   
+.. figure:: ../_static/html-5.png
+   :align: left
+   
+Editar Autor
+************
+listar.html
+
+.. automodule:: templates.BachesProduccion.listar
+   :members:
+   :undoc-members:
+   
+.. figure:: ../_static/html-5.png.png
+   :align: left
+   
+Index
+*****
+index.html
+
+.. automodule:: templates.index
+   :members:
+   :undoc-members:
+   

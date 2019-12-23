@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-12-2019 a las 15:15:08
+-- Tiempo de generación: 23-12-2019 a las 22:29:53
 -- Versión del servidor: 10.1.37-MariaDB
 -- Versión de PHP: 7.3.0
 
@@ -71,30 +71,6 @@ CREATE TABLE `analisis_suelos` (
   `tipo_clima` varchar(20) NOT NULL,
   `cabecera_id` int(18) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `analisis_suelos`
---
-
-INSERT INTO `analisis_suelos` (`id_analisis`, `Textura`, `val_textura`, `Arena_porcentaje`, `Limo_porcentaje`, `Arcilla_porcentaje`, `Ph`, `C_E`, `densidad`, `C_I_C_E`, `C_O_M_O_valor`, `salinidad`, `tipo_clima`, `cabecera_id`) VALUES
-(5, 'Franco arcilloso', '2.0', 0, 0, 0, 5, 0, 1.26, 14, 0, '0', '', 400024405),
-(6, 'Franco arcilloso', '2.0', 0, 0, 0, 6, 0, 1.14, 18, 0, '0', '', 1963147424),
-(9, 'Franco limoso', '2.0', 0, 0, 0, 6, 1, 1, 2, 0, '3', '', 923622522),
-(10, 'Arenoso', '1.0', 0, 0, 0, 1, 1, 1, 1, 0, '1', '', 1913454314),
-(11, 'Franco arcilloso arenoso', '2.0', 0, 0, 0, 5, 3, 1, 3, 0, '5', '', 1741351272),
-(13, 'Franco arenoso', '2.0', 0, 0, 0, 7, 2, 1, 5, 0, '5', '', 1811771444),
-(14, 'Franco', '2.0', 0, 0, 0, 5, 0, 0, 13, 0, '0', '', 139458574),
-(15, 'Franco', '2.0', 0, 0, 0, 5, 0, 1, 13, 0, '0', '', 279286405),
-(19, 'Franco', '2.0', 0, 0, 0, 5, 0, 1, 13, 0, '0', '', 67338910),
-(20, 'Franco', '2.0', 0, 0, 0, 5, 0, 1, 13, 0, '0', '', 88180416),
-(26, 'Franco', '2.0', 0, 0, 0, 5, 0, 1.5, 13, 0, '0', '', 458093702),
-(28, 'Franco arenoso', '2.0', 0, 0, 0, 5, 0, 1, 13, 0, '0', '', 112065966),
-(33, 'Franco', '2.0', 0, 0, 0, 5, 0, 1, 13, 0, '0', '', 903682998),
-(37, 'Franco', '2.0', 0, 0, 0, 5, 0, 1, 0, 0, '0', '', 2103324086),
-(38, 'Franco', '2.0', 0, 0, 0, 5, 0, 1, 0, 0, '0', '', 430995891),
-(39, 'Franco', '2.0', 0, 0, 0, 5, 0, 1, 0, 0, '0', '', 15551020),
-(40, 'Franco', '2.0', 0, 0, 0, 5, 0, 1, 0, 0, '0', '', 1125290158),
-(42, 'Franco', '2.0', 0, 0, 0, 5, 0, 1, 0, 0, '0', '', 1000047560);
 
 -- --------------------------------------------------------
 
@@ -550,7 +526,24 @@ INSERT INTO `anas_suel_pfertil` (`id_elemento`, `id_cabecera_suel`, `id_p_fertil
 (387, 1963147424, 295903981),
 (388, 1963147424, 70310929),
 (389, 2071484400, 70310929),
-(390, 1846029176, 864818683);
+(390, 1846029176, 864818683),
+(391, 88180416, 1298223657),
+(392, 1963147424, 1298223657),
+(393, 67338910, 1298223657),
+(394, 139458574, 1298223657),
+(395, 430995891, 1298223657),
+(396, 2103324086, 1298223657),
+(397, 1125290158, 1298223657),
+(398, 1000047560, 1298223657),
+(399, 458093702, 1298223657),
+(400, 279286405, 1298223657),
+(401, 112065966, 1298223657),
+(402, 400024405, 1298223657),
+(403, 15551020, 1298223657),
+(404, 1576455910, 2023135673),
+(405, 279286405, 1827040127),
+(406, 1576455910, 1827040127),
+(407, 1576455910, 941979966);
 
 -- --------------------------------------------------------
 
@@ -611,73 +604,6 @@ CREATE TABLE `ana_suelo_elementos` (
   `elemento_id` int(11) DEFAULT NULL,
   `nombre_elemento` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `ana_suelo_elementos`
---
-
-INSERT INTO `ana_suelo_elementos` (`id_ana_elementos`, `cabecera_id`, `valor_resultado`, `metodo_extraccion`, `interpretacion`, `elemento_id`, `nombre_elemento`) VALUES
-(46, 400024405, 2.2, '', 'Medio', NULL, 'NITROGENO'),
-(47, 400024405, 15, '(Bray II - ppm', 'Est: Bajo', NULL, 'FOSFORO'),
-(48, 400024405, 5.13, 'cmol kg', 'Est: Medio', NULL, 'CALCIO'),
-(49, 400024405, 0.52, 'cmol kg', 'Est: Bajo', NULL, 'MAGNESIO'),
-(50, 400024405, 0.26, 'cmol kg', 'Est: Bajo', NULL, 'POTASIO'),
-(51, 400024405, 0.17, 'cmol kg', 'Medio', NULL, 'SODIO'),
-(52, 400024405, 7.7, 'ppm', 'Est: Bajo', NULL, 'AZUFRE'),
-(53, 400024405, 0.12, 'ppm', 'Est: Bajo', NULL, 'BORO'),
-(54, 400024405, 6.9, 'ppm', 'Est: Medio', NULL, 'MANGANESO'),
-(55, 400024405, 9.9, 'ppm', 'Alto', NULL, 'COBRE'),
-(56, 400024405, 44, 'ppm', 'Est: Alto', NULL, 'ZINC'),
-(57, 400024405, 524, 'ppm', 'Alto', NULL, 'HIERRO'),
-(58, 1963147424, 3.01, '', 'Ideal', NULL, 'NITROGENO'),
-(59, 1963147424, 10, '(Bray II - ppm', 'Est: Bajo', NULL, 'FOSFORO'),
-(60, 1963147424, 14.8, 'cmol kg', 'Est: Alto', NULL, 'CALCIO'),
-(61, 1963147424, 0.71, 'cmol kg', 'Est: Bajo', NULL, 'MAGNESIO'),
-(62, 1963147424, 0.27, 'cmol kg', 'Est: Bajo', NULL, 'POTASIO'),
-(63, 1963147424, 0.23, 'cmol kg', 'Medio', NULL, 'SODIO'),
-(64, 1963147424, 11, 'ppm', 'Est: Medio', NULL, 'AZUFRE'),
-(65, 1963147424, 0.22, 'ppm', 'Est: Medio', NULL, 'BORO'),
-(66, 1963147424, 11, 'ppm', 'Est: Alto', NULL, 'MANGANESO'),
-(67, 1963147424, 5.7, 'ppm', 'Alto', NULL, 'COBRE'),
-(68, 1963147424, 6.5, 'ppm', 'Est: Alto', NULL, 'ZINC'),
-(69, 1963147424, 241, 'ppm', 'Alto', NULL, 'HIERRO'),
-(94, 1913454314, 0.58, '', 'Bajo', NULL, 'NITROGENO'),
-(95, 1913454314, 1, '(Bray II - ppm', 'Est:  Muy Bajo', NULL, 'FOSFORO'),
-(96, 1913454314, 2, 'cmol kg', 'Est: Bajo', NULL, 'CALCIO'),
-(97, 1913454314, 3, 'cmol kg', 'Est: Alto', NULL, 'MAGNESIO'),
-(98, 1913454314, 2, 'cmol kg', 'Est: Excesivo', NULL, 'POTASIO'),
-(99, 1913454314, 1, 'cmol kg', 'Alto', NULL, 'SODIO'),
-(100, 1913454314, 11, 'ppm', 'Est: Medio', NULL, 'AZUFRE'),
-(101, 1913454314, 1, 'ppm', 'Est: Medio', NULL, 'BORO'),
-(102, 1913454314, 1, 'ppm', 'Est: Bajo', NULL, 'MANGANESO'),
-(103, 1913454314, 1, 'ppm', 'Bajo', NULL, 'COBRE'),
-(104, 1913454314, 1, 'ppm', 'Est: Bajo', NULL, 'ZINC'),
-(105, 1913454314, 1, 'ppm', 'Bajo', NULL, 'HIERRO'),
-(106, 1741351272, 1.16, '', 'Bajo', NULL, 'NITROGENO'),
-(107, 1741351272, 11, '(Bray II - ppm', 'Est: Bajo', NULL, 'FOSFORO'),
-(108, 1741351272, 10, 'cmol kg', 'Est: Alto', NULL, 'CALCIO'),
-(109, 1741351272, 2, 'cmol kg', 'Est: Alto', NULL, 'MAGNESIO'),
-(110, 1741351272, 7, 'cmol kg', 'Est: Excesivo', NULL, 'POTASIO'),
-(111, 1741351272, 12, 'cmol kg', 'Alto', NULL, 'SODIO'),
-(112, 1741351272, 2, 'ppm', 'Est: Bajo', NULL, 'AZUFRE'),
-(113, 1741351272, 11, 'ppm', 'Est: Bajo', NULL, 'BORO'),
-(114, 1741351272, 14, 'ppm', 'Est: Alto', NULL, 'MANGANESO'),
-(115, 1741351272, 5, 'ppm', 'Alto', NULL, 'COBRE'),
-(116, 1741351272, 8, 'ppm', 'Est: Alto', NULL, 'ZINC'),
-(117, 1741351272, 9, 'ppm', 'Bajo', NULL, 'HIERRO'),
-(130, 1811771444, 1.16, '', 'Bajo', NULL, 'NITROGENO'),
-(131, 1811771444, 2, '(Bray II - ppm', 'Est:  Muy Bajo', NULL, 'FOSFORO'),
-(132, 1811771444, 3, 'cmol kg', 'Est: Bajo', NULL, 'CALCIO'),
-(133, 1811771444, 4, 'cmol kg', 'Est: Alto', NULL, 'MAGNESIO'),
-(134, 1811771444, 5, 'cmol kg', 'Est: Excesivo', NULL, 'POTASIO'),
-(135, 1811771444, 2, 'cmol kg', 'Alto', NULL, 'SODIO'),
-(136, 1811771444, 2, 'ppm', 'Est: Bajo', NULL, 'AZUFRE'),
-(137, 1811771444, 4, 'ppm', 'Est: Bajo', NULL, 'BORO'),
-(138, 1811771444, 1, 'ppm', 'Est: Bajo', NULL, 'MANGANESO'),
-(139, 1811771444, 3, 'ppm', 'Medio', NULL, 'COBRE'),
-(140, 1811771444, 4, 'ppm', 'Est: Medio', NULL, 'ZINC'),
-(141, 1811771444, 2, 'ppm', 'Bajo', NULL, 'HIERRO'),
-(142, 2103324086, 34, '1', '1', NULL, 'n');
 
 -- --------------------------------------------------------
 
@@ -762,30 +688,6 @@ CREATE TABLE `cabecera_suelo` (
   `Siembra_id` int(11) NOT NULL,
   `No_zona` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `cabecera_suelo`
---
-
-INSERT INTO `cabecera_suelo` (`id_cabecera`, `Nombre_programa`, `Propietario`, `Asistente_tecnico`, `Fecha_muestreo`, `Fecha_recepcion`, `Departamento`, `Municipio`, `Finca`, `Siembra_id`, `No_zona`) VALUES
-(15551020, 'JEIBER MELO', 'Guillermo Parada', 'JEIBER MELO', '24 Septiembre, 2019', '19 Septiembre, 2019', '', '', '', 4, ''),
-(67338910, 'pruebamora', 'John Marcos Jose', 'jeiber', '9 Septiembre, 2019', '26 Septiembre, 2019', '', '', '', 4, ''),
-(88180416, 'pruebamora', 'John Marcos Jose', 'jeiber', '9 Septiembre, 2019', '26 Septiembre, 2019', '', '', '', 4, ''),
-(112065966, 'morita', 'John Marcos Jose', 'jeiber', '9 Septiembre, 2019', '26 Septiembre, 2019', '', '', '', 3, ''),
-(139458574, 'prueba9/09', 'Esneyder Alfonso', 'prueba', '9 Septiembre, 2019', '25 Septiembre, 2019', 'Santander', 'BOLIVAR', 'Finca los papayos', 4, '2'),
-(279286405, 'pruebamora', 'John Marcos Jose', 'jeiber', '9 Septiembre, 2019', '26 Septiembre, 2019', 'Santander', 'BOLIVAR', 'Finca los papayos', 4, '1'),
-(400024405, 'Guillermo parada Lote 4', 'Guillermo Parada', 'Luisa Güiza', '25 April, 2018', '9 May, 2018', 'Santander', 'VELEZ', 'San diego', 3, ''),
-(430995891, 'JEIBER MELO', 'Guillermo Parada', 'JEIBER MELO', '24 Septiembre, 2019', '19 Septiembre, 2019', '', '', '', 4, ''),
-(458093702, 'morita', 'John Marcos Jose', 'jeiber', '9 Septiembre, 2019', '26 Septiembre, 2019', '', '', '', 4, ''),
-(903682998, 'morita', 'John Marcos Jose', 'jeiber', '9 Septiembre, 2019', '26 Septiembre, 2019', '', '', '', 3, ''),
-(923622522, 'anasuelo 23 de mayo', 'Jhan Carlos H', 'Jhan', '24 May, 2019', '28 May, 2019', 'Santander', 'VELEZ', 'San diego', 3, '2'),
-(1000047560, 'JEIBER MELO', 'Guillermo Parada', 'JEIBER MELO', '24 Septiembre, 2019', '19 Septiembre, 2019', '', '', '', 4, ''),
-(1125290158, 'JEIBER MELO', 'Guillermo Parada', 'JEIBER MELO', '24 Septiembre, 2019', '19 Septiembre, 2019', '', '', '', 4, ''),
-(1741351272, 'Analisis de suelos 1', 'Guillermo Parada', 'Andres R', '15 Julio, 2019', '24 Julio, 2019', 'Santander', 'VELEZ', 'San diego', 3, '2'),
-(1811771444, 'NATALIA2019', 'Jhan Carlos H', 'Natalia', '14 Agosto, 2019', '16 Agosto, 2019', 'Santander', 'BOLIVAR', 'Finca los pinos', 3, '2'),
-(1913454314, 'Análisis de suelo inicial ', 'Guillermo Parada', 'a', '15 Julio, 2019', '24 Julio, 2019', 'Santander', 'BOLIVAR', 'Finca los pinos', 3, '1'),
-(1963147424, 'Guillermo parada Lote 3', 'Guillermo Parada', 'Luisa Güiza', '25 April, 2018', '9 May, 2018', 'Santander', 'VELEZ', 'San diego', 3, ''),
-(2103324086, 'JEIBER MELO', 'Guillermo Parada', 'JEIBER MELO', '24 Septiembre, 2019', '19 Septiembre, 2019', '', '', '', 4, '1');
 
 -- --------------------------------------------------------
 
@@ -980,7 +882,7 @@ CREATE TABLE `fincas` (
 --
 
 INSERT INTO `fincas` (`id_finca`, `Nombre_finca`, `Descripcion_finca`, `Departamento_finca`, `Municipio_finca`, `Vereda_finca`, `Latitud_finca`, `Longitud_finca`, `Viacc_finca`, `Int_familia_finca`, `Jovenes_1518`, `Propietario`, `poligono`) VALUES
-(4, 'San diego', 'Guayaba Regional', 'Santander', '', NULL, 3432, 234, 0, 4, 2, 3, ''),
+(4, 'San diego', 'Guayaba Regional', 'Santander', 'VELEZ', NULL, 3432, 234, 0, 4, 2, 3, ''),
 (5, 'Finca los pinos', 'Mora', 'Santander', 'BOLIVAR', 'Vereda finca pinos', 2, 1, 2, 2, 1, 7, ''),
 (6, 'Finca canuitas', 'Mora', 'Santander', 'BOLIVAR', 'Finca canuitas', 0, 0, 0, 0, 0, 5, ''),
 (7, 'Finca los papayos', 'Mora', 'Santander', 'BOLIVAR', NULL, 0, 0, 0, 0, 0, 7, '');
@@ -1365,17 +1267,21 @@ CREATE TABLE `req_nutri_est_fenolo_cult` (
   `Mg` float NOT NULL,
   `Ca` float NOT NULL,
   `Zn` float NOT NULL,
-  `Br` float NOT NULL
+  `Br` float NOT NULL,
+  `S` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `req_nutri_est_fenolo_cult`
 --
 
-INSERT INTO `req_nutri_est_fenolo_cult` (`id_elemento`, `estado_feno`, `id_cultivo`, `N`, `P`, `K`, `Mg`, `Ca`, `Zn`, `Br`) VALUES
-(1, '1', 88, 45, 15, 100, 6.3, 3.3, 1, 0.7),
-(2, '2', 88, 45, 30, 50, 6.3, 3.3, 1, 0.7),
-(3, '3', 88, 90, 15, 50, 6.3, 3.3, 1, 0.7);
+INSERT INTO `req_nutri_est_fenolo_cult` (`id_elemento`, `estado_feno`, `id_cultivo`, `N`, `P`, `K`, `Mg`, `Ca`, `Zn`, `Br`, `S`) VALUES
+(1, '1', 88, 45, 15, 100, 6.3, 3.3, 1, 0.7, 0),
+(2, '2', 88, 45, 30, 50, 6.3, 3.3, 1, 0.7, 0),
+(3, '3', 88, 90, 15, 50, 6.3, 3.3, 1, 0.7, 0),
+(4, '1', 92, 26.6, 13.3, 30, 4, 10, 0, 0, 6.6),
+(5, '2', 92, 26.6, 13.3, 30, 4, 10, 0, 0, 6.6),
+(6, '3', 92, 26.6, 13.3, 30, 4, 10, 0, 0, 6.6);
 
 -- --------------------------------------------------------
 
@@ -1694,7 +1600,7 @@ ALTER TABLE `analisis_foliares`
 -- AUTO_INCREMENT de la tabla `analisis_suelos`
 --
 ALTER TABLE `analisis_suelos`
-  MODIFY `id_analisis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id_analisis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT de la tabla `anas_fol_pfertil`
@@ -1706,7 +1612,7 @@ ALTER TABLE `anas_fol_pfertil`
 -- AUTO_INCREMENT de la tabla `anas_suel_pfertil`
 --
 ALTER TABLE `anas_suel_pfertil`
-  MODIFY `id_elemento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=391;
+  MODIFY `id_elemento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=408;
 
 --
 -- AUTO_INCREMENT de la tabla `ana_foliar_elementos`
@@ -1718,7 +1624,7 @@ ALTER TABLE `ana_foliar_elementos`
 -- AUTO_INCREMENT de la tabla `ana_suelo_elementos`
 --
 ALTER TABLE `ana_suelo_elementos`
-  MODIFY `id_ana_elementos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=143;
+  MODIFY `id_ana_elementos` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `archivos_ana_suelo`
@@ -1808,7 +1714,7 @@ ALTER TABLE `req_nutricionales_cultivo`
 -- AUTO_INCREMENT de la tabla `req_nutri_est_fenolo_cult`
 --
 ALTER TABLE `req_nutri_est_fenolo_cult`
-  MODIFY `id_elemento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_elemento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `siembras`

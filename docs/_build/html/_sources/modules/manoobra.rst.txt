@@ -1,0 +1,281 @@
+.. figure:: ../_static/carpeta.png
+   :align: left
+   
+ManoObra
+********
+
+:Descripción: 
+
+.. code:: 
+   
+   CostosBaocadillo
+   └── apps
+          └── ManoObra
+              ├── __init__.py
+              ├── admin.py
+              ├── apps.py
+              ├── migrations
+              │   └── __init__.py
+              ├── models.py
+              ├── tests.py
+              ├── views.py
+              ├── forms.py
+              └── urls.py
+   
+.. figure:: ../_static/carpeta.png
+   :align: left
+   
+Migrations
+==========
+*Carpeta* : :mod:`migrations`
+
+
+   Este es el directorio donde se almacenan todas las migraciones con las respectivas dependencias de sus modelos. Dentro de este archivo se encuentran los campos de la base de datos que establecimos en el archivo ``models.py`` con la respectiva característica del campo. Este archivo es generado con el comando ``makemigrations`` de Django y genera nuevas versiones con cada migración creada. 
+   
+       
+       
+.. figure:: ../_static/py.png
+   :align: left
+
+Models
+======
+*Archivo* : ``models.py``
+
+.. note::
+
+   Un modelo en Django es una clase importada de la biblioteca django.db que actúa como puente entre su base de datos y el servidor. Esta clase es una representación de la estructura de datos utilizada por su sitio web. Relacionará directamente esta estructura de datos con la base de datos. Para que no tenga que aprender SQL para la base de datos.
+   
+   
+1. En primer lugar, se creo una nueva aplicación con el comando::
+
+       django-admin startapp ManoObra
+       
+donde ``ManoObra`` es el nombre de la aplicación.
+
+2. Después de crear la aplicación, debe instalarse en el proyecto. Para ello, se agregó la aplicación ``ManoObra`` a la lista ``INSTALLED_APPS`` en el archivo *settings.py*.
+
+.. code-block:: python
+   :emphasize-lines: 8
+   
+       INSTALLED_APPS = [
+       'django.contrib.admin',
+       'django.contrib.auth',
+       'django.contrib.contenttypes',
+       'django.contrib.sessions',
+       'django.contrib.messages',
+       'django.contrib.staticfiles',
+       'apps.ManoObra',
+       ]
+       
+       
+3. En el archivo *models.py* encontraremos el siguiente código, correspondiente al modelo de ``ManoObra``.
+
+.. code-block:: python
+       
+   from django.db import models
+   class ManoObra(models.Model):
+       id_mano =             models.AutoField(primary_key = True)
+       detalle_producto =    models.CharField('Detalle del Producto', max_length = 150)    
+       tareadia =            models.CharField('Tarea Diaria Persona', max_length = 200)    
+       valordia =            models.IntegerField('Valor Dia Empacador', blank = False, null = False)    
+       valoruni =            models.IntegerField('Valor Unitario M.O Empaque', blank = False, null = False)    
+       produccion =          models.IntegerField('Produccion', blank = False, null = False)    
+       totalmano =           models.IntegerField('Total Mano de Obra', blank = False, null = False)    
+    
+       class Meta:
+           db_table = 'mano_obra'
+           verbose_name = 'ManoObra'
+           verbose_name_plural = 'ManoObras'
+           ordering = ['id_mano']
+    
+       def __str__(self):
+           return '{}'.format(self.detalle_producto)
+    
+    
+4. Aquí podemos ver que los campos de los modelos tienen muchos métodos para la entrada web, como :func:`CharField`, :func:`IntegerField`, :func:`AutoField`. Podemos ver mas `referencias <https://docs.djangoproject.com/en/3.0/ref/models/fields/>`_ en la documentación de Django. 
+
+5. Ahora ejecutaremos los comandos::
+
+       > py manage.py makemigrations
+       > py manage.py migrate
+
+.. tip::
+
+   Asegúrese de tener la base de datos conectada y de haber iniciado el servidor Apache y el servidor MySQL en la base de datos.
+   
+   
+.. figure:: ../_static/py.png
+   :align: left
+   
+Admin
+=====
+*Archivo* : ``admin.py``
+
+Al registrar el  módelo ``ManoObra`` con ``admin.site.register()``, Django puede construir una representación del formulario predeterminado.
+Para poder registrar un modelo en el archivo :mod:`models.py` debemos importar el modelo con la función ``from`` y registrar el modelo con la sentencia ``admin.site.register()``:
+
+.. code-block:: python
+    
+   from .models import ManoObra       # Importar el modelo desde models.py
+
+   admin.site.register(ManoObra)       # (nombre del modelo creado en models.py) 
+    
+   
+.. figure:: ../_static/py.png
+   :align: left
+   
+   
+Forms
+=====
+*Archivo* : ``forms.py``
+
+En este archivo podremos crear los imputs para los campos de los formularios creados en html.
+
+Lo bueno de los formularios de Django es que podemos definirlos desde cero o crear un ``ModelForm``, el cual guardará el resultado del formulario en el modelo. Para esto crearemos un formulario para nuestro modelo *ManoObra*.
+
+Los formularios tienen su propio archivo: ``forms.py``.  Dentro de este archivo encontraremos el siguiente código:
+
+.. code-block:: python
+
+   from django import forms
+   from .models import ManoObra
+   class ManoObraForm(forms.ModelForm):
+       class Meta:
+           model = ManoObra
+           fields = ['detalle_producto','tareadia','valordia','valoruni','produccion','totalmano'] 
+
+Lo primero, necesitamos importar Django forms ``from django import forms`` y nuestro modelo *ManoObra* ``from .models import ..``.
+
+``ManoObraForm``, es el nombre de nuestro formulario. Necesitamos decirle a Django que este formulario es un ``ManoObraForm`` así Django hará algo el resto por nosotros - ``forms.ManoObraForm`` es responsable de ello.
+
+Luego, tenemos ``class Meta``, donde le decimos a Django qué modelo debe ser utilizado para crear este formulario ``model = ManoObra``.
+
+
+.. figure:: ../_static/py.png
+   :align: left
+
+Views
+=====
+*Archivo* : ``views.py``
+
+:ManoObra:
+
+.. admonition:: Importaciones
+
+   .. code-block:: python
+   
+      from django.shortcuts import render, redirect
+      from django.core.exceptions import ObjectDoesNotExist
+      from django.http import HttpResponse
+      from .forms import ManoObraForm
+      from .models import ManoObra
+
+
+.. admonition:: Listar ManoObra
+
+   .. code-block:: python
+
+      def listarManoObra(request):
+          manoobra = ManoObra.objects.all()
+          #mandar la consulta al template y renderizar los datos traídos
+          return render(request, 'ManoObra/listar.html', {'manoobra': manoobra})
+          
+          
+.. admonition:: Crear ManoObra
+
+   .. code-block:: python
+
+      def crearManoObra(request):
+          if request.method == 'POST':
+              print(request.POST)
+              manoobra_form = ManoObraForm(request.POST)
+              if manoobra_form.is_valid():
+                  manoobra_form.save()
+                  return redirect('manoobra:listar')
+          else:
+              manoobra_form = ManoObraForm()       
+          return render(request, 'ManoObra/crear.html', {'manoobra_form':manoobra_form})
+          
+          
+.. admonition:: Editar ManoObra
+
+   .. code-block:: python
+
+      def editarManoObra(request, id_mano):
+          if request.method == 'POST':
+              id_mano  = request.POST.get('id_mano')
+              detalle_producto  = request.POST.get('detalle_producto')
+              tareadia  = request.POST.get('tareadia')
+              valordia  = request.POST.get('valordia')
+              valoruni  = request.POST.get('valoruni')
+              produccion  = request.POST.get('produccion')
+              totalmano  = request.POST.get('totalmano')
+              ManoObra.objects.filter(pk=id_mano).update(detalle_producto = detalle_producto, tareadia = tareadia, valordia = valordia, valoruni = valoruni,       produccion = produccion, totalmano = totalmano)
+              return redirect('manoobra:listar') #qw
+          else:
+               manoobra = ManoObra.objects.filter(id_mano = id_mano)    
+          return render(request, 'ManoObra/editar.html', {'manoobra': manoobra})                     
+
+
+.. admonition:: Eliminar ManoObra
+
+   .. code-block:: python
+   
+      def eliminarManoObra(request, id_mano):
+          manoobra = ManoObra.objects.get(id_mano = id_mano)
+          if request.method == 'POST':
+              manoobra.delete()
+              #fabricas.save()
+              return redirect('manoobra:listar')
+          return render(request, 'ManoObra/eliminar.html', {'manoobra': manoobra})
+
+
+
+.. figure:: ../_static/py.png
+   :align: left
+   
+Urls
+====
+*Archivo* : ``urls.py``
+
+.. code-block:: python
+   
+   from django.urls import path, re_path
+   from .views import listarManoObra, crearManoObra, editarManoObra, eliminarManoObra
+   urlpatterns = [
+       path('listar/',listarManoObra, name = 'listar'),
+       path('crear/',crearManoObra, name = 'crear'),
+       path('editar/<int:id_mano>',editarManoObra, name = 'editar'),
+       path('eliminar/<int:id_mano>',eliminarManoObra, name = 'eliminar'),
+    
+   ]
+ 
+ 
+
+Y añadiremos esta ruta al aquivo ``urls.py`` del directorio :mod:`costosbocadillo`:
+ 
+ .. code-block:: python 
+    
+    urlpatterns = [
+    
+    path('ManoObra/', include(('apps.ManoObra.urls', 'manoobra'))),
+    
+    ]
+
+   
+.. figure:: ../_static/py.png
+   :align: left
+   
+Apps
+====
+*Archivo* : ``apps.py``
+
+Este archivo se crea para ayudar al usuario a incluir cualquier `configuración de aplicación <https://docs.djangoproject.com/en/dev/ref/applications/#application-configuration>`_ para la aplicación. Con esto, puede configurar algunos de los atributos de la aplicación:
+
+.. code-block:: python 
+
+   from django.apps import AppConfig
+
+
+   class ManoobraConfig(AppConfig):
+       name = 'ManoObra'

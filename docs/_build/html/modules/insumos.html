@@ -1,0 +1,647 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>insumos &mdash; CostosBocadillo 1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="CostosBocadillo 1.0 documentation" href="../index.html"/>
+        <link rel="next" title="MOempaques" href="moempaques.html"/>
+        <link rel="prev" title="fabricas" href="fabricas.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> CostosBocadillo
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Instalación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuracion.html">Configuración</a></li>
+<li class="toctree-l1"><a class="reference internal" href="all-about-me.html">Todo sobre el Proyecto</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Apps:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="baches.html">baches</a></li>
+<li class="toctree-l1"><a class="reference internal" href="centrocostos.html">CentroCostos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compras.html">compras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conversionunid.html">conversion_unidades</a></li>
+<li class="toctree-l1"><a class="reference internal" href="empleados.html">empleados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fabricas.html">fabricas</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">insumos</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#migrations">Migrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#models">Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#admin">Admin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#forms">Forms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#views">Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#urls">Urls</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#apps">Apps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="moempaques.html">MOempaques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="productos.html">productos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="propietarios.html">Propietarios</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">CostosBocadillo</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+    <li>insumos</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/modules/insumos.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="figure align-left">
+<img alt="../_images/carpeta.png" src="../_images/carpeta.png" />
+</div>
+<div class="section" id="insumos">
+<h1>insumos<a class="headerlink" href="#insumos" title="Permalink to this headline">¶</a></h1>
+<dl class="field-list simple">
+<dt class="field-odd">Descripción</dt>
+<dd class="field-odd"><p>Este módulo se encarga de tener el control de los insumos para la elaboración de un producto. Para poder agregar un insumo debe haber creado previamente un insumo genérico. Tenga en cuenta que el producto es único dependiendo de del nombre.</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>CostosBaocadillo
+└── apps
+       └── insumos
+           ├── __init__.py
+           ├── admin.py
+           ├── apps.py
+           ├── migrations
+           │   └── __init__.py
+           ├── models.py
+           ├── tests.py
+           ├── views.py
+           ├── forms.py
+           └── urls.py
+</pre></div>
+</div>
+<div class="figure align-left">
+<img alt="../_images/carpeta.png" src="../_images/carpeta.png" />
+</div>
+<div class="section" id="migrations">
+<h2>Migrations<a class="headerlink" href="#migrations" title="Permalink to this headline">¶</a></h2>
+<p><em>Carpeta</em> : <code class="xref py py-mod docutils literal notranslate"><span class="pre">migrations</span></code></p>
+<blockquote>
+<div><p>Este es el directorio donde se almacenan todas las migraciones con las respectivas dependencias de sus modelos. Dentro de este archivo se encuentran los campos de la base de datos que establecimos en el archivo <code class="docutils literal notranslate"><span class="pre">models.py</span></code> con la respectiva característica del campo. Este archivo es generado con el comando <code class="docutils literal notranslate"><span class="pre">makemigrations</span></code> de Django y genera nuevas versiones con cada migración creada.</p>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">migrations</span><span class="p">,</span> <span class="n">models</span>
+<span class="kn">import</span> <span class="nn">django.db.models.deletion</span>
+
+
+<span class="k">class</span> <span class="nc">Migration</span><span class="p">(</span><span class="n">migrations</span><span class="o">.</span><span class="n">Migration</span><span class="p">):</span>
+
+    <span class="n">initial</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="n">dependencies</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">]</span>
+
+    <span class="n">operations</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">migrations</span><span class="o">.</span><span class="n">CreateModel</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="s1">&#39;InsumosGenericos&#39;</span><span class="p">,</span>
+            <span class="n">fields</span><span class="o">=</span><span class="p">[</span>
+                <span class="p">(</span><span class="s1">&#39;id_ige&#39;</span><span class="p">,</span> <span class="n">models</span><span class="o">.</span><span class="n">AutoField</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">serialize</span><span class="o">=</span><span class="kc">False</span><span class="p">)),</span>
+                <span class="p">(</span><span class="s1">&#39;nombre_ige&#39;</span><span class="p">,</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">180</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="s1">&#39;nombre_ige&#39;</span><span class="p">)),</span>
+                <span class="p">(</span><span class="s1">&#39;tipo_peso_ige&#39;</span><span class="p">,</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="s1">&#39;tipo_peso_ige&#39;</span><span class="p">)),</span>
+            <span class="p">],</span>
+            <span class="n">options</span><span class="o">=</span><span class="p">{</span>
+                <span class="s1">&#39;verbose_name&#39;</span><span class="p">:</span> <span class="s1">&#39;InsumosGenerico&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;verbose_name_plural&#39;</span><span class="p">:</span> <span class="s1">&#39;InsumosGenericos&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;db_table&#39;</span><span class="p">:</span> <span class="s1">&#39;InsumosGenericos&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;ordering&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;id_ige&#39;</span><span class="p">],</span>
+            <span class="p">},</span>
+        <span class="p">),</span>
+        <span class="n">migrations</span><span class="o">.</span><span class="n">CreateModel</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Insumos&#39;</span><span class="p">,</span>
+            <span class="n">fields</span><span class="o">=</span><span class="p">[</span>
+                <span class="p">(</span><span class="s1">&#39;id_ins&#39;</span><span class="p">,</span> <span class="n">models</span><span class="o">.</span><span class="n">AutoField</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">serialize</span><span class="o">=</span><span class="kc">False</span><span class="p">)),</span>
+                <span class="p">(</span><span class="s1">&#39;nombre_ins&#39;</span><span class="p">,</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="s1">&#39;Nombre Insumo&#39;</span><span class="p">)),</span>
+                <span class="p">(</span><span class="s1">&#39;categoria_ins&#39;</span><span class="p">,</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="s1">&#39;Seleccione la categoria del Insumo&#39;</span><span class="p">)),</span>
+                <span class="p">(</span><span class="s1">&#39;tipo_costo_ins&#39;</span><span class="p">,</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="s1">&#39;Seleccione el tipo de Costo&#39;</span><span class="p">)),</span>
+                <span class="p">(</span><span class="s1">&#39;tipo_unidad_ins&#39;</span><span class="p">,</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="s1">&#39;Seleccione el tipo de Unidad Comercial&#39;</span><span class="p">)),</span>
+                <span class="p">(</span><span class="s1">&#39;unidad_comercial_ins&#39;</span><span class="p">,</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="s1">&#39;unidad_comercial_ins&#39;</span><span class="p">)),</span>
+                <span class="p">(</span><span class="s1">&#39;cantidad_comercial_ins&#39;</span><span class="p">,</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="s1">&#39;Ubicación&#39;</span><span class="p">)),</span>
+                <span class="p">(</span><span class="s1">&#39;unidad_medida_comercial_ins&#39;</span><span class="p">,</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="s1">&#39;Inicio de operaciones&#39;</span><span class="p">)),</span>
+                <span class="p">(</span><span class="s1">&#39;ige&#39;</span><span class="p">,</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">on_delete</span><span class="o">=</span><span class="n">django</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">deletion</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">,</span> <span class="n">to</span><span class="o">=</span><span class="s1">&#39;insumos.InsumosGenericos&#39;</span><span class="p">)),</span>
+            <span class="p">],</span>
+            <span class="n">options</span><span class="o">=</span><span class="p">{</span>
+                <span class="s1">&#39;verbose_name&#39;</span><span class="p">:</span> <span class="s1">&#39;Insumo&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;verbose_name_plural&#39;</span><span class="p">:</span> <span class="s1">&#39;Insumos&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;db_table&#39;</span><span class="p">:</span> <span class="s1">&#39;Insumos&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;ordering&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;id_ins&#39;</span><span class="p">],</span>
+            <span class="p">},</span>
+        <span class="p">),</span>
+    <span class="p">]</span>
+</pre></div>
+</div>
+<div class="figure align-left">
+<img alt="../_images/py.png" src="../_images/py.png" />
+</div>
+</div>
+<div class="section" id="models">
+<h2>Models<a class="headerlink" href="#models" title="Permalink to this headline">¶</a></h2>
+<p><em>Archivo</em> : <code class="docutils literal notranslate"><span class="pre">models.py</span></code></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Un modelo en Django es una clase importada de la biblioteca django.db que actúa como puente entre su base de datos y el servidor. Esta clase es una representación de la estructura de datos utilizada por su sitio web. Relacionará directamente esta estructura de datos con la base de datos. Para que no tenga que aprender SQL para la base de datos.</p>
+</div>
+<ol class="arabic">
+<li><p>En primer lugar, se creo una nueva aplicación con el comando:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">django</span><span class="o">-</span><span class="n">admin</span> <span class="n">startapp</span> <span class="n">insumos</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>donde <code class="docutils literal notranslate"><span class="pre">insumos</span></code> es el nombre de la aplicación.</p>
+<ol class="arabic simple" start="2">
+<li><p>Después de crear la aplicación, debe instalarse en el proyecto. Para ello, se agregó la aplicación <code class="docutils literal notranslate"><span class="pre">insumos</span></code> a la lista <code class="docutils literal notranslate"><span class="pre">INSTALLED_APPS</span></code> en el archivo <em>settings.py</em>.</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;django.contrib.admin&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.auth&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.contenttypes&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.sessions&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.messages&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.staticfiles&#39;</span><span class="p">,</span>
+<span class="hll">    <span class="s1">&#39;apps.insumos&#39;</span><span class="p">,</span>
+</span>    <span class="p">]</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>En el archivo <em>models.py</em> encontraremos el siguiente código, correspondiente a los modelos de <code class="docutils literal notranslate"><span class="pre">Insumos</span></code>  y <code class="docutils literal notranslate"><span class="pre">InsumosGenericos</span></code>.</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span><span class="o">.</span>
+<span class="k">class</span> <span class="nc">InsumosGenericos</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">id_ige</span> <span class="o">=</span>        <span class="n">models</span><span class="o">.</span><span class="n">AutoField</span><span class="p">(</span><span class="n">primary_key</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="n">nombre_ige</span> <span class="o">=</span>    <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="s1">&#39;nombre_ige&#39;</span><span class="p">,</span> <span class="n">max_length</span> <span class="o">=</span> <span class="mi">180</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">tipo_peso_ige</span> <span class="o">=</span>        <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="s1">&#39;tipo_peso_ige&#39;</span><span class="p">,</span> <span class="n">max_length</span> <span class="o">=</span> <span class="mi">20</span><span class="p">)</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">db_table</span> <span class="o">=</span> <span class="s1">&#39;insumos_genericos&#39;</span>
+        <span class="n">verbose_name</span> <span class="o">=</span> <span class="s1">&#39;InsumosGenerico&#39;</span>
+        <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="s1">&#39;InsumosGenericos&#39;</span>
+        <span class="n">ordering</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;id_ige&#39;</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nombre_ige</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">Insumos</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">id_ins</span> <span class="o">=</span>                     <span class="n">models</span><span class="o">.</span><span class="n">AutoField</span><span class="p">(</span><span class="n">primary_key</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="n">nombre_ins</span> <span class="o">=</span>                 <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="s1">&#39;Nombre Insumo&#39;</span><span class="p">,</span> <span class="n">max_length</span> <span class="o">=</span> <span class="mi">150</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">categoria_ins</span> <span class="o">=</span>              <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="s1">&#39;Seleccione la categoria del Insumo&#39;</span><span class="p">,</span> <span class="n">max_length</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">tipo_costo_ins</span> <span class="o">=</span>             <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="s1">&#39;Seleccione el tipo de Costo&#39;</span><span class="p">,</span> <span class="n">max_length</span> <span class="o">=</span> <span class="mi">150</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">tipo_unidad_ins</span> <span class="o">=</span>            <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="s1">&#39;Seleccione el tipo de Unidad Comercial&#39;</span><span class="p">,</span> <span class="n">max_length</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">unidad_comercial_ins</span> <span class="o">=</span>       <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="s1">&#39;unidad_comercial_ins&#39;</span><span class="p">,</span> <span class="n">max_length</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="n">cantidad_comercial_ins</span> <span class="o">=</span>     <span class="n">models</span><span class="o">.</span><span class="n">FloatField</span><span class="p">(</span><span class="s1">&#39;Cantidad comercial&#39;</span><span class="p">,</span>  <span class="n">blank</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">unidad_medida_comercial_ins</span> <span class="o">=</span>  <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="s1">&#39;Inicio de operaciones&#39;</span><span class="p">,</span> <span class="n">max_length</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">ige</span> <span class="o">=</span>           <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">InsumosGenericos</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">)</span>
+
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">db_table</span> <span class="o">=</span> <span class="s1">&#39;insumos&#39;</span>
+        <span class="n">verbose_name</span> <span class="o">=</span> <span class="s1">&#39;Insumo&#39;</span>
+        <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="s1">&#39;Insumos&#39;</span>
+        <span class="n">ordering</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;id_ins&#39;</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nombre_ins</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic" start="4">
+<li><p>Aquí podemos ver que los campos de los modelos tienen muchos métodos para la entrada web, como <code class="xref py py-func docutils literal notranslate"><span class="pre">CharField()</span></code>, <code class="xref py py-func docutils literal notranslate"><span class="pre">IntegerField()</span></code>, <code class="xref py py-func docutils literal notranslate"><span class="pre">AutoField()</span></code>. Podemos ver mas <a class="reference external" href="https://docs.djangoproject.com/en/3.0/ref/models/fields/">referencias</a> en la documentación de Django.</p></li>
+<li><p>Ahora ejecutaremos los comandos:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">py</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">makemigrations</span>
+<span class="o">&gt;</span> <span class="n">py</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">migrate</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Asegúrese de tener la base de datos conectada y de haber iniciado el servidor Apache y el servidor MySQL en la base de datos.</p>
+</div>
+<div class="figure align-left">
+<img alt="../_images/py.png" src="../_images/py.png" />
+</div>
+</div>
+<div class="section" id="admin">
+<h2>Admin<a class="headerlink" href="#admin" title="Permalink to this headline">¶</a></h2>
+<p><em>Archivo</em> : <code class="docutils literal notranslate"><span class="pre">admin.py</span></code></p>
+<p>Al registrar el módelo <code class="docutils literal notranslate"><span class="pre">Insumos</span></code> y <code class="docutils literal notranslate"><span class="pre">InsumosGenericos</span></code> con <code class="docutils literal notranslate"><span class="pre">admin.site.register()</span></code>, Django puede construir una representación del formulario predeterminado.
+Para poder registrar un modelo en el archivo <code class="xref py py-mod docutils literal notranslate"><span class="pre">models.py</span></code> debemos importar el modelo con la función <code class="docutils literal notranslate"><span class="pre">from</span></code> y registrar el modelo con la sentencia <code class="docutils literal notranslate"><span class="pre">admin.site.register()</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Insumos</span>       <span class="c1"># Importar el modelo desde models.py</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">InsumosGenericos</span>
+
+<span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Insumos</span><span class="p">)</span>       <span class="c1"># (nombre del modelo creado en models.py)</span>
+<span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">InsumosGenericos</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="figure align-left">
+<img alt="../_images/py.png" src="../_images/py.png" />
+</div>
+</div>
+<div class="section" id="forms">
+<h2>Forms<a class="headerlink" href="#forms" title="Permalink to this headline">¶</a></h2>
+<p><em>Archivo</em> : <code class="docutils literal notranslate"><span class="pre">forms.py</span></code></p>
+<p>En este archivo podremos crear los imputs para los campos de los formularios creados en html.</p>
+<p>Lo bueno de los formularios de Django es que podemos definirlos desde cero o crear un <code class="docutils literal notranslate"><span class="pre">ModelForm</span></code>, el cual guardará el resultado del formulario en el modelo. Para esto crearemos un formulario para nuestros modelos <em>Insumos</em> y <em>InsumosGenericos</em>.</p>
+<p>Los formularios tienen su propio archivo: <code class="docutils literal notranslate"><span class="pre">forms.py</span></code>.  Dentro de este archivo encontraremos el siguiente código:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">forms</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Insumos</span><span class="p">,</span><span class="n">InsumosGenericos</span>
+<span class="k">class</span> <span class="nc">InsumosForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Insumos</span>
+        <span class="n">fields</span> <span class="o">=</span>    <span class="p">[</span><span class="s1">&#39;nombre_ins&#39;</span><span class="p">,</span><span class="s1">&#39;categoria_ins&#39;</span><span class="p">,</span><span class="s1">&#39;tipo_costo_ins&#39;</span><span class="p">,</span><span class="s1">&#39;tipo_unidad_ins&#39;</span><span class="p">,</span><span class="s1">&#39;unidad_comercial_ins&#39;</span><span class="p">,</span><span class="s1">&#39;cantidad_comercial_ins&#39;</span><span class="p">,</span><span class="s1">&#39;unidad_medida_comercial_ins&#39;</span><span class="p">,</span><span class="s1">&#39;ige&#39;</span><span class="p">]</span>
+
+
+<span class="k">class</span> <span class="nc">InsumosGenericosForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">InsumosGenericos</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;nombre_ige&#39;</span><span class="p">,</span> <span class="s1">&#39;tipo_peso_ige&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Lo primero, necesitamos importar Django forms <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">django</span> <span class="pre">import</span> <span class="pre">forms</span></code> y nuestros modelos <em>Insumos,InsumosGenericos</em> <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">.models</span> <span class="pre">import</span> <span class="pre">..</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">InsumosForm</span></code> y <code class="docutils literal notranslate"><span class="pre">InsumosGenericosForm</span></code>, son los nombres de nuestros formularios. Necesitamos decirle a Django que este formulario es un <code class="docutils literal notranslate"><span class="pre">ModelForm</span></code> así Django hará algo el resto por nosotros - <code class="docutils literal notranslate"><span class="pre">forms.ModelForm</span></code> es responsable de ello.</p>
+<p>Luego, tenemos <code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">Meta</span></code>, donde le decimos a Django qué modelo debe ser utilizado para crear este formulario <code class="docutils literal notranslate"><span class="pre">model</span> <span class="pre">=</span> <span class="pre">Insumos</span> <span class="pre">|</span> <span class="pre">model</span> <span class="pre">=</span> <span class="pre">InsumosGenericos</span></code>.</p>
+<div class="figure align-left">
+<img alt="../_images/py.png" src="../_images/py.png" />
+</div>
+</div>
+<div class="section" id="views">
+<h2>Views<a class="headerlink" href="#views" title="Permalink to this headline">¶</a></h2>
+<p><em>Archivo</em> : <code class="docutils literal notranslate"><span class="pre">views.py</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">InsumosGenericos</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<div class="admonition-importaciones admonition">
+<p class="admonition-title">Importaciones</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span><span class="p">,</span> <span class="n">redirect</span>
+<span class="kn">from</span> <span class="nn">django.core.exceptions</span> <span class="kn">import</span> <span class="n">ObjectDoesNotExist</span>
+<span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span>
+<span class="kn">from</span> <span class="nn">.forms</span> <span class="kn">import</span> <span class="n">InsumosForm</span><span class="p">,</span> <span class="n">InsumosGenericosForm</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Insumos</span><span class="p">,</span> <span class="n">InsumosGenericos</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition-listar-insumosgenericos admonition">
+<p class="admonition-title">Listar InsumosGenericos</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">listarInsumosGenericos</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">insumosgenericos</span> <span class="o">=</span> <span class="n">InsumosGenericos</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="c1">#mandar la consulta al template y renderizar los datos traídos</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;insumosgenericos/listar.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;insumosgenericos&#39;</span><span class="p">:</span> <span class="n">insumosgenericos</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition-crear-insumosgenericos admonition">
+<p class="admonition-title">Crear InsumosGenericos</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">crearInsumosGenericos</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">)</span>
+        <span class="n">insumosgenericos_form</span> <span class="o">=</span> <span class="n">InsumosGenericosForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">insumosgenericos_form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="n">insumosgenericos_form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;insumosgenericos:listar&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">insumosgenericos_form</span> <span class="o">=</span> <span class="n">InsumosGenericosForm</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;insumosgenericos/crear.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;insumosgenericos_form&#39;</span><span class="p">:</span><span class="n">insumosgenericos_form</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition-editar-insumosgenericos admonition">
+<p class="admonition-title">Editar InsumosGenericos</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">editarInsumosGenericos</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">id_ige</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
+        <span class="n">id_ige</span>  <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;id_ige&#39;</span><span class="p">)</span>
+        <span class="n">nombre_ige</span>  <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;nombre_ige&#39;</span><span class="p">)</span>
+        <span class="n">tipo_peso_ige</span>  <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;tipo_peso_ige&#39;</span><span class="p">)</span>
+
+        <span class="n">InsumosGenericos</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="n">id_ige</span><span class="p">)</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">nombre_ige</span><span class="o">=</span> <span class="n">nombre_ige</span><span class="p">,</span> <span class="n">tipo_peso_ige</span> <span class="o">=</span> <span class="n">tipo_peso_ige</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;insumosgenericos:listar&#39;</span><span class="p">)</span> <span class="c1">#qw</span>
+    <span class="k">else</span><span class="p">:</span>
+         <span class="n">insumosgenericos</span> <span class="o">=</span> <span class="n">InsumosGenericos</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">id_ige</span> <span class="o">=</span> <span class="n">id_ige</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;insumosgenericos/editar.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;insumosgenericos&#39;</span><span class="p">:</span> <span class="n">insumosgenericos</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition-eliminar-insumosgenericos admonition">
+<p class="admonition-title">Eliminar InsumosGenericos</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">eliminarInsumosGenericos</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">id_ige</span><span class="p">):</span>
+    <span class="n">insumosgenericos</span> <span class="o">=</span> <span class="n">InsumosGenericos</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">id_ige</span> <span class="o">=</span> <span class="n">id_ige</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
+        <span class="n">insumosgenericos</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;insumosgenericos:listar&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;insumosgenericos/eliminar.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;insumosgenericos&#39;</span><span class="p">:</span> <span class="n">insumosgenericos</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Insumos</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<div class="admonition-litar-insumos admonition">
+<p class="admonition-title">Litar Insumos</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">listarInsumos</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">insumos</span> <span class="o">=</span> <span class="n">Insumos</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">raw</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM insumos ins INNER JOIN insumos_genericos insgen ON ins.ige_id = insgen.id_ige&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;insumos/listar.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;insumos&#39;</span><span class="p">:</span> <span class="n">insumos</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition-crear-insumos admonition">
+<p class="admonition-title">Crear Insumos</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">crearInsumos</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
+        <span class="n">all_insumosgenericos</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">nombre_ins</span>  <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;nombre_ins&#39;</span><span class="p">)</span>
+        <span class="n">categoria_ins</span>  <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;categoria_ins&#39;</span><span class="p">)</span>
+        <span class="n">tipo_costo_ins</span>  <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;tipo_costo_ins&#39;</span><span class="p">)</span>
+        <span class="n">tipo_unidad_ins</span>  <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;tipo_unidad_ins&#39;</span><span class="p">)</span>
+        <span class="n">unidad_comercial_ins</span>  <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;unidad_comercial_ins&#39;</span><span class="p">)</span>
+        <span class="n">cantidad_comercial_ins</span>  <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;cantidad_comercial_ins&#39;</span><span class="p">)</span>
+        <span class="n">unidad_medida_comercial_ins</span>  <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;unidad_medida_comercial_ins&#39;</span><span class="p">)</span>
+        <span class="n">ige_id</span>  <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;id_ige&#39;</span><span class="p">)</span>
+
+        <span class="n">fab</span> <span class="o">=</span> <span class="n">Insumos</span><span class="p">(</span>
+        <span class="n">nombre_ins</span> <span class="o">=</span> <span class="n">nombre_ins</span><span class="p">,</span>
+        <span class="n">categoria_ins</span> <span class="o">=</span> <span class="n">categoria_ins</span><span class="p">,</span>
+        <span class="n">tipo_costo_ins</span> <span class="o">=</span> <span class="n">tipo_costo_ins</span><span class="p">,</span>
+        <span class="n">tipo_unidad_ins</span> <span class="o">=</span> <span class="n">tipo_unidad_ins</span><span class="p">,</span>
+        <span class="n">unidad_comercial_ins</span> <span class="o">=</span> <span class="n">unidad_comercial_ins</span><span class="p">,</span>
+        <span class="n">cantidad_comercial_ins</span> <span class="o">=</span> <span class="n">cantidad_comercial_ins</span><span class="p">,</span>
+        <span class="n">unidad_medida_comercial_ins</span> <span class="o">=</span> <span class="n">unidad_medida_comercial_ins</span><span class="p">,</span>
+        <span class="n">ige_id</span> <span class="o">=</span> <span class="n">ige_id</span><span class="p">)</span>
+        <span class="n">fab</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;insumos:listar_in&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">all_insumosgenericos</span> <span class="o">=</span> <span class="n">InsumosGenericos</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;insumos/crear.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;all_insumosgenericos&#39;</span><span class="p">:</span> <span class="n">all_insumosgenericos</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition-editar-insumos admonition">
+<p class="admonition-title">Editar Insumos</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">editarInsumos</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">id_ins</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
+        <span class="n">id_ins</span>  <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;id_ins&#39;</span><span class="p">)</span>
+        <span class="n">nombre_ins</span>  <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;nombre_ins&#39;</span><span class="p">)</span>
+        <span class="n">categoria_ins</span>  <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;categoria_ins&#39;</span><span class="p">)</span>
+        <span class="n">tipo_costo_ins</span>  <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;tipo_costo_ins&#39;</span><span class="p">)</span>
+        <span class="n">tipo_unidad_ins</span>  <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;tipo_unidad_ins&#39;</span><span class="p">)</span>
+        <span class="n">unidad_comercial_ins</span>  <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;unidad_comercial_ins&#39;</span><span class="p">)</span>
+        <span class="n">cantidad_comercial_ins</span>  <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;cantidad_comercial_ins&#39;</span><span class="p">)</span>
+        <span class="n">unidad_medida_comercial_ins</span>  <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;unidad_medida_comercial_ins&#39;</span><span class="p">)</span>
+        <span class="n">ige_id</span>  <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;id_ige&#39;</span><span class="p">)</span>
+
+        <span class="n">Insumos</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="n">id_ins</span><span class="p">)</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+        <span class="n">nombre_ins</span><span class="o">=</span> <span class="n">nombre_ins</span><span class="p">,</span>
+        <span class="n">categoria_ins</span><span class="o">=</span> <span class="n">categoria_ins</span><span class="p">,</span>
+        <span class="n">tipo_costo_ins</span><span class="o">=</span> <span class="n">tipo_costo_ins</span><span class="p">,</span>
+        <span class="n">tipo_unidad_ins</span><span class="o">=</span> <span class="n">tipo_unidad_ins</span><span class="p">,</span>
+        <span class="n">unidad_comercial_ins</span><span class="o">=</span> <span class="n">unidad_comercial_ins</span><span class="p">,</span>
+        <span class="n">cantidad_comercial_ins</span><span class="o">=</span> <span class="n">cantidad_comercial_ins</span><span class="p">,</span>
+        <span class="n">unidad_medida_comercial_ins</span><span class="o">=</span> <span class="n">unidad_medida_comercial_ins</span><span class="p">,</span>
+        <span class="n">ige_id</span><span class="o">=</span> <span class="n">ige_id</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;insumos:listar_in&#39;</span><span class="p">)</span> <span class="c1">#qw</span>
+    <span class="k">else</span><span class="p">:</span>
+         <span class="n">insumos</span> <span class="o">=</span> <span class="n">Insumos</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">raw</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM insumos INNER JOIN insumos_genericos    ON insumos.ige_id = insumos_genericos.id_ige WHERE       insumos.id_ins  = </span><span class="si">%s</span><span class="s1"> &#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">id_ins</span><span class="p">])</span>
+         <span class="n">all_insumosgenericos</span> <span class="o">=</span> <span class="n">InsumosGenericos</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;insumos/editar.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;insumos&#39;</span><span class="p">:</span> <span class="n">insumos</span><span class="p">,</span> <span class="s1">&#39;all_insumosgenericos&#39;</span><span class="p">:</span> <span class="n">all_insumosgenericos</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition-eliminar-insumos admonition">
+<p class="admonition-title">Eliminar Insumos</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">eliminarInsumos</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">id_ins</span><span class="p">):</span>
+    <span class="n">insumos</span> <span class="o">=</span> <span class="n">Insumos</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">id_ins</span> <span class="o">=</span> <span class="n">id_ins</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
+        <span class="n">insumos</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;insumos:listar_in&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;insumos/eliminar.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;insumos&#39;</span><span class="p">:</span> <span class="n">insumos</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="figure align-left">
+<img alt="../_images/py.png" src="../_images/py.png" />
+</div>
+</div>
+<div class="section" id="urls">
+<h2>Urls<a class="headerlink" href="#urls" title="Permalink to this headline">¶</a></h2>
+<p><em>Archivo</em> : <code class="docutils literal notranslate"><span class="pre">urls.py</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span><span class="p">,</span> <span class="n">re_path</span><span class="p">,</span> <span class="n">include</span>
+<span class="kn">from</span> <span class="nn">.views</span> <span class="kn">import</span> <span class="n">listarInsumos</span><span class="p">,</span> <span class="n">crearInsumos</span><span class="p">,</span> <span class="n">editarInsumos</span><span class="p">,</span> <span class="n">eliminarInsumos</span>
+<span class="kn">from</span> <span class="nn">.views</span> <span class="kn">import</span> <span class="n">listarInsumosGenericos</span><span class="p">,</span> <span class="n">crearInsumosGenericos</span><span class="p">,</span> <span class="n">editarInsumosGenericos</span><span class="p">,</span> <span class="n">eliminarInsumosGenericos</span>
+
+<span class="n">ige_patterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;listar/&#39;</span><span class="p">,</span><span class="n">listarInsumosGenericos</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;listar&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;crear/&#39;</span><span class="p">,</span><span class="n">crearInsumosGenericos</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;crear&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;editar/&lt;int:id_ige&gt;&#39;</span><span class="p">,</span><span class="n">editarInsumosGenericos</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;editar&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;eliminar/&lt;int:id_ige&gt;&#39;</span><span class="p">,</span><span class="n">eliminarInsumosGenericos</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;eliminar&#39;</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;listar/&#39;</span><span class="p">,</span><span class="n">listarInsumos</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;listar_in&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;crear/&#39;</span><span class="p">,</span><span class="n">crearInsumos</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;crear_in&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;editar/&lt;int:id_ins&gt;&#39;</span><span class="p">,</span><span class="n">editarInsumos</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;editar_in&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;eliminar/&lt;int:id_ins&gt;&#39;</span><span class="p">,</span><span class="n">eliminarInsumos</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;eliminar_in&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;insumosgenericos/&#39;</span><span class="p">,</span><span class="n">include</span><span class="p">(</span><span class="n">ige_patterns</span><span class="p">)),</span>
+
+  <span class="p">]</span>
+</pre></div>
+</div>
+<p>Y añadiremos esta ruta al aquivo <code class="docutils literal notranslate"><span class="pre">urls.py</span></code> del directorio <code class="xref py py-mod docutils literal notranslate"><span class="pre">costosbocadillo</span></code>:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+
+<span class="n">path</span><span class="p">(</span><span class="s1">&#39;insumos/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">((</span><span class="s1">&#39;apps.insumos.urls&#39;</span><span class="p">,</span> <span class="s1">&#39;insumos&#39;</span><span class="p">))),</span>
+<span class="n">path</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">((</span><span class="s1">&#39;apps.insumos.urls&#39;</span><span class="p">,</span> <span class="s1">&#39;insumosgenericos&#39;</span><span class="p">))),</span>
+
+<span class="p">]</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="figure align-left">
+<img alt="../_images/py.png" src="../_images/py.png" />
+</div>
+</div>
+<div class="section" id="apps">
+<h2>Apps<a class="headerlink" href="#apps" title="Permalink to this headline">¶</a></h2>
+<p><em>Archivo</em> : <code class="docutils literal notranslate"><span class="pre">apps.py</span></code></p>
+<p>Este archivo se crea para ayudar al usuario a incluir cualquier <a class="reference external" href="https://docs.djangoproject.com/en/dev/ref/applications/#application-configuration">configuración de aplicación</a> para la aplicación. Con esto, puede configurar algunos de los atributos de la aplicación:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.apps</span> <span class="kn">import</span> <span class="n">AppConfig</span>
+
+<span class="k">class</span> <span class="nc">InsumosConfig</span><span class="p">(</span><span class="n">AppConfig</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;insumos</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="moempaques.html" class="btn btn-neutral float-right" title="MOempaques" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="fabricas.html" class="btn btn-neutral" title="fabricas" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Esneyder.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/language_data.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,344 @@
+.. figure:: ../_static/carpeta.png
+   :align: left
+   
+productos
+*********
+
+:Descripción: 
+
+.. code:: 
+   
+   CostosBaocadillo
+   └── apps
+          └── productos
+              ├── __init__.py
+              ├── admin.py
+              ├── apps.py
+              ├── migrations
+              │   └── __init__.py
+              ├── models.py
+              ├── tests.py
+              ├── views.py
+              ├── forms.py
+              └── urls.py
+   
+.. figure:: ../_static/carpeta.png
+   :align: left
+   
+Migrations
+==========
+*Carpeta* : :mod:`migrations`
+
+
+   Este es el directorio donde se almacenan todas las migraciones con las respectivas dependencias de sus modelos. Dentro de este archivo se encuentran los campos de la base de datos que establecimos en el archivo ``models.py`` con la respectiva característica del campo. Este archivo es generado con el comando ``makemigrations`` de Django y genera nuevas versiones con cada migración creada. 
+   
+       
+       
+.. figure:: ../_static/py.png
+   :align: left
+
+Models
+======
+*Archivo* : ``models.py``
+
+.. note::
+
+   Un modelo en Django es una clase importada de la biblioteca django.db que actúa como puente entre su base de datos y el servidor. Esta clase es una representación de la estructura de datos utilizada por su sitio web. Relacionará directamente esta estructura de datos con la base de datos. Para que no tenga que aprender SQL para la base de datos.
+   
+   
+1. En primer lugar, se creo una nueva aplicación con el comando::
+
+       django-admin startapp productos
+       
+donde ``productos`` es el nombre de la aplicación.
+
+2. Después de crear la aplicación, debe instalarse en el proyecto. Para ello, se agregó la aplicación ``productos`` a la lista ``INSTALLED_APPS`` en el archivo *settings.py*.
+
+.. code-block:: python
+   :emphasize-lines: 8
+   
+       INSTALLED_APPS = [
+       'django.contrib.admin',
+       'django.contrib.auth',
+       'django.contrib.contenttypes',
+       'django.contrib.sessions',
+       'django.contrib.messages',
+       'django.contrib.staticfiles',
+       'apps.productos',
+       ]
+       
+       
+3. En el archivo *models.py* encontraremos el siguiente código, correspondiente al modelo de ``Productos``.
+
+.. code-block:: python
+       
+   from django.db import models
+   from apps.fabricas.models import Fabricas
+   # Create your models here.
+   class Productos(models.Model):
+       id_pro_pro =                models.AutoField(primary_key = True)
+       nombre_pro =                models.CharField('Nombre del producto', max_length = 150, blank=False, null=False)    
+       presentacion_pro =          models.CharField('Presentación producto', max_length = 50, blank=False, null=False)    
+       cant_porpresentacion_pro =  models.IntegerField('Cantidad por presentacion', blank=False, null=False)    
+       unidadmedida_pro =          models.CharField('Unidad de medida', max_length = 50, blank=False, null=False)    
+       peso_und_pro =              models.IntegerField('Peso', blank=False, null=False)    
+       descripcion_producto =      models.CharField('Descripcion', max_length = 250, blank=True, null=True)    
+       codigo_referencia =         models.CharField('Codigo de referencia', max_length = 100, blank=True, null=True)    
+       codigo_invima =             models.CharField('Código invima', max_length = 100, blank=True, null=True)   
+       fabrica =                   models.ForeignKey(Fabricas, on_delete=models.CASCADE)
+    
+       class Meta:
+           db_table = 'productos'
+           verbose_name = 'Producto'
+           verbose_name_plural = 'Productos'
+           ordering = ['id_pro_pro']
+    
+       def __str__(self):
+           return '{}'.format(self.nombre_pro)   
+    
+    
+4. Aquí podemos ver que los campos de los modelos tienen muchos métodos para la entrada web, como :func:`CharField`, :func:`IntegerField`, :func:`AutoField`. Podemos ver mas `referencias <https://docs.djangoproject.com/en/3.0/ref/models/fields/>`_ en la documentación de Django. 
+
+5. Ahora ejecutaremos los comandos::
+
+       > py manage.py makemigrations
+       > py manage.py migrate
+
+.. tip::
+
+   Asegúrese de tener la base de datos conectada y de haber iniciado el servidor Apache y el servidor MySQL en la base de datos.
+   
+   
+.. figure:: ../_static/py.png
+   :align: left
+   
+Admin
+=====
+*Archivo* : ``admin.py``
+
+Al registrar el  módelo ``Productos`` con ``admin.site.register()``, Django puede construir una representación del formulario predeterminado.
+Para poder registrar un modelo en el archivo :mod:`models.py` debemos importar el modelo con la función ``from`` y registrar el modelo con la sentencia ``admin.site.register()``:
+
+.. code-block:: python
+    
+   from .models import Productos       # Importar el modelo desde models.py
+
+   admin.site.register(Productos)       # (nombre del modelo creado en models.py) 
+    
+   
+.. figure:: ../_static/py.png
+   :align: left
+   
+   
+Forms
+=====
+*Archivo* : ``forms.py``
+
+En este archivo podremos crear los imputs para los campos de los formularios creados en html.
+
+Lo bueno de los formularios de Django es que podemos definirlos desde cero o crear un ``ModelForm``, el cual guardará el resultado del formulario en el modelo. Para esto crearemos un formulario para nuestro modelo *Productos*.
+
+Los formularios tienen su propio archivo: ``forms.py``.  Dentro de este archivo encontraremos el siguiente código:
+
+.. code-block:: python
+
+   from django import forms
+   from .models import Productos
+   class ProductosForm(forms.ModelForm):
+       class Meta:
+           model = Productos
+           fields = ['nombre_pro','presentacion_pro','cant_porpresentacion_pro','unidadmedida_pro','peso_und_pro','descripcion_producto','codigo_referencia','codi   go_invima','fabrica']   
+
+Lo primero, necesitamos importar Django forms ``from django import forms`` y nuestro modelo *Productos* ``from .models import ..``.
+
+``ProductosForm``, es el nombre de nuestro formulario. Necesitamos decirle a Django que este formulario es un ``ProductosForm`` así Django hará algo el resto por nosotros - ``forms.ProductosForm`` es responsable de ello.
+
+Luego, tenemos ``class Meta``, donde le decimos a Django qué modelo debe ser utilizado para crear este formulario ``model = Productos``.
+
+
+.. figure:: ../_static/py.png
+   :align: left
+
+Views
+=====
+*Archivo* : ``views.py``
+
+:MOempaques:
+
+.. admonition:: Importaciones
+
+   .. code-block:: python
+   
+      from django.shortcuts import render, redirect
+      from django.core.exceptions import ObjectDoesNotExist
+      from django.core import serializers
+      from django.http import HttpResponse, JsonResponse
+      from django.views.decorators.csrf import csrf_exempt
+      from django.utils.decorators import method_decorator
+      from django.forms.models import model_to_dict
+      
+      from .forms import ProductosForm
+      from .models import Productos
+      from apps.fabricas.models import Fabricas
+
+
+.. admonition:: Listar productos
+
+   .. code-block:: python
+
+      def listarProductos(request):
+          user_id = request.session.get('user_id')
+          productos = Productos.objects.raw('SELECT * FROM productos p  INNER JOIN fabricas fab ON fab.id_fab = p.fabrica_id INNER JOIN propietarios pro ON       fab.propietario_id = pro.id_pro WHERE pro.id_pro = %s', [user_id])
+          return render(request, 'productos/listar.html', {'productos': productos})
+
+          
+          
+.. admonition:: Crear productos
+
+   .. code-block:: python
+
+      def crearProductos(request):
+          if request.method == 'POST':
+              all_propietarios = 0
+              nombre_pro  = request.POST.get('nombre_pro')
+              presentacion_pro  = request.POST.get('presentacion_pro')
+              cant_porpresentacion_pro  = request.POST.get('cant_porpresentacion_pro')
+              unidadmedida_pro  = request.POST.get('unidadmedida_pro')
+              peso_und_pro  = request.POST.get('peso_und_pro')
+              descripcion_producto  = request.POST.get('descripcion_producto')
+              codigo_referencia  = request.POST.get('codigo_referencia')
+              codigo_invima  = request.POST.get('codigo_invima')
+              fabrica_id  = request.POST.get('fabrica_id')
+        
+              prods = Productos(
+              nombre_pro = nombre_pro, 
+              presentacion_pro = presentacion_pro, 
+              cant_porpresentacion_pro = cant_porpresentacion_pro, 
+              unidadmedida_pro = unidadmedida_pro, 
+              peso_und_pro = peso_und_pro, 
+              descripcion_producto = descripcion_producto,
+              codigo_referencia = codigo_referencia, 
+              codigo_invima = codigo_invima,
+              fabrica_id = fabrica_id )
+              prods.save()
+              return redirect('productos:listar')   
+          else:
+              productos_form = ProductosForm()       
+              all_fabricas = Fabricas.objects.all()
+          return render(request, 'productos/crear.html', {'productos_form':productos_form, 'all_fabricas': all_fabricas})
+          
+          
+.. admonition:: Editar productos
+
+   .. code-block:: python
+
+      def editarProductos(request, id_pro_pro):
+          if request.method == 'POST':
+              id_pro_pro  = request.POST.get('id_pro_pro')
+              nombre_pro  = request.POST.get('nombre_pro')
+              presentacion_pro  = request.POST.get('presentacion_pro')
+              cant_porpresentacion_pro  = request.POST.get('cant_porpresentacion_pro')
+              unidadmedida_pro  = request.POST.get('unidadmedida_pro')
+              peso_und_pro  = request.POST.get('peso_und_pro')
+              descripcion_producto  = request.POST.get('descripcion_producto')
+              codigo_referencia  = request.POST.get('codigo_referencia')
+              codigo_invima  = request.POST.get('codigo_invima')
+              fabrica_id  = request.POST.get('fabrica_id')
+        
+              Productos.objects.filter(pk=id_pro_pro).update(
+              nombre_pro = nombre_pro,
+              presentacion_pro = presentacion_pro,
+              cant_porpresentacion_pro = cant_porpresentacion_pro,
+              unidadmedida_pro = unidadmedida_pro,
+              peso_und_pro = peso_und_pro,
+              descripcion_producto = descripcion_producto,
+              codigo_referencia = codigo_referencia,
+              codigo_invima = codigo_invima,
+              fabrica_id = fabrica_id
+              )
+              return redirect('productos:listar')
+          else:
+               productos = Productos.objects.raw('SELECT * FROM productos INNER JOIN fabricas    ON productos.fabrica_id = fabricas.id_fab WHERE       productos.id_pro_pro  = %s ', [id_pro_pro])
+               all_fabricas = Fabricas.objects.all()    
+          return render(request, 'productos/editar.html', {'productos': productos, 'all_fabricas': all_fabricas})                     
+
+
+.. admonition:: Eliminar productos
+
+   .. code-block:: python
+   
+      def eliminarProductos(request, id_pro_pro):
+          productos = Productos.objects.get(id_pro_pro = id_pro_pro)
+          if request.method == 'POST':
+              productos.delete()
+              return redirect('productos:listar')
+          return render(request, 'productos/eliminar.html', {'productos': productos})
+          
+
+.. admonition:: get productos
+
+   .. code-block:: python
+      
+      def getProductos(request):
+          if request.method == 'GET':
+              some_queryset = Productos.objects.all()
+              for productos in some_queryset:
+                  print(productos.nombre_pro)
+        
+              serialized_queryset = serializers.serialize('python', some_queryset)
+              return JsonResponse(serialized_queryset, safe=False)
+              dataset = Productos.objects \
+              .values('nombre_pro') \
+              .order_by('nombre_pro').all()[:3]
+          return HttpResponse(json.dumps(dataset), content_type="application/json", safe=False)
+
+
+.. figure:: ../_static/py.png
+   :align: left
+   
+Urls
+====
+*Archivo* : ``urls.py``
+
+.. code-block:: python
+   
+   from django.urls import path, re_path
+   from .views import listarProductos, crearProductos, editarProductos, eliminarProductos, getProductos
+   urlpatterns = [
+       path('listar/',listarProductos, name = 'listar'),
+       path('crear/',crearProductos, name = 'crear'),
+       path('editar/<int:id_pro_pro>',editarProductos, name = 'editar'),
+       path('eliminar/<int:id_pro_pro>',eliminarProductos, name = 'eliminar'),
+       path('get/',getProductos, name = 'get'),
+    
+   ]
+ 
+ 
+
+Y añadiremos esta ruta al aquivo ``urls.py`` del directorio :mod:`costosbocadillo`:
+ 
+ .. code-block:: python 
+    
+    urlpatterns = [
+    
+    path('productos/', include(('apps.productos.urls', 'productos'))),
+    
+    ]
+
+   
+.. figure:: ../_static/py.png
+   :align: left
+   
+Apps
+====
+*Archivo* : ``apps.py``
+
+Este archivo se crea para ayudar al usuario a incluir cualquier `configuración de aplicación <https://docs.djangoproject.com/en/dev/ref/applications/#application-configuration>`_ para la aplicación. Con esto, puede configurar algunos de los atributos de la aplicación:
+
+.. code-block:: python 
+
+   from django.apps import AppConfig
+
+
+   class ProductosConfig(AppConfig):
+       name = 'productos'

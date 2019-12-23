@@ -1,0 +1,461 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ManoObra &mdash; CostosBocadillo 1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="CostosBocadillo 1.0 documentation" href="../index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> CostosBocadillo
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Instalación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuracion.html">Configuración</a></li>
+<li class="toctree-l1"><a class="reference internal" href="all-about-me.html">Todo sobre el Proyecto</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Apps:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="baches.html">baches</a></li>
+<li class="toctree-l1"><a class="reference internal" href="centrocostos.html">CentroCostos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compras.html">compras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conversionunid.html">conversion_unidades</a></li>
+<li class="toctree-l1"><a class="reference internal" href="empleados.html">empleados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fabricas.html">fabricas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="insumos.html">insumos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="moempaques.html">MOempaques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="productos.html">productos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="propietarios.html">Propietarios</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">CostosBocadillo</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+    <li>ManoObra</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/modules/manoobra.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="figure align-left">
+<img alt="../_images/carpeta.png" src="../_images/carpeta.png" />
+</div>
+<div class="section" id="manoobra">
+<h1>ManoObra<a class="headerlink" href="#manoobra" title="Permalink to this headline">¶</a></h1>
+<dl class="field-list simple">
+<dt class="field-odd">Descripción</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>CostosBaocadillo
+└── apps
+       └── ManoObra
+           ├── __init__.py
+           ├── admin.py
+           ├── apps.py
+           ├── migrations
+           │   └── __init__.py
+           ├── models.py
+           ├── tests.py
+           ├── views.py
+           ├── forms.py
+           └── urls.py
+</pre></div>
+</div>
+<div class="figure align-left">
+<img alt="../_images/carpeta.png" src="../_images/carpeta.png" />
+</div>
+<div class="section" id="migrations">
+<h2>Migrations<a class="headerlink" href="#migrations" title="Permalink to this headline">¶</a></h2>
+<p><em>Carpeta</em> : <code class="xref py py-mod docutils literal notranslate"><span class="pre">migrations</span></code></p>
+<blockquote>
+<div><p>Este es el directorio donde se almacenan todas las migraciones con las respectivas dependencias de sus modelos. Dentro de este archivo se encuentran los campos de la base de datos que establecimos en el archivo <code class="docutils literal notranslate"><span class="pre">models.py</span></code> con la respectiva característica del campo. Este archivo es generado con el comando <code class="docutils literal notranslate"><span class="pre">makemigrations</span></code> de Django y genera nuevas versiones con cada migración creada.</p>
+</div></blockquote>
+<div class="figure align-left">
+<img alt="../_images/py.png" src="../_images/py.png" />
+</div>
+</div>
+<div class="section" id="models">
+<h2>Models<a class="headerlink" href="#models" title="Permalink to this headline">¶</a></h2>
+<p><em>Archivo</em> : <code class="docutils literal notranslate"><span class="pre">models.py</span></code></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Un modelo en Django es una clase importada de la biblioteca django.db que actúa como puente entre su base de datos y el servidor. Esta clase es una representación de la estructura de datos utilizada por su sitio web. Relacionará directamente esta estructura de datos con la base de datos. Para que no tenga que aprender SQL para la base de datos.</p>
+</div>
+<ol class="arabic">
+<li><p>En primer lugar, se creo una nueva aplicación con el comando:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">django</span><span class="o">-</span><span class="n">admin</span> <span class="n">startapp</span> <span class="n">ManoObra</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>donde <code class="docutils literal notranslate"><span class="pre">ManoObra</span></code> es el nombre de la aplicación.</p>
+<ol class="arabic simple" start="2">
+<li><p>Después de crear la aplicación, debe instalarse en el proyecto. Para ello, se agregó la aplicación <code class="docutils literal notranslate"><span class="pre">ManoObra</span></code> a la lista <code class="docutils literal notranslate"><span class="pre">INSTALLED_APPS</span></code> en el archivo <em>settings.py</em>.</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;django.contrib.admin&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.auth&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.contenttypes&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.sessions&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.messages&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.staticfiles&#39;</span><span class="p">,</span>
+<span class="hll">    <span class="s1">&#39;apps.ManoObra&#39;</span><span class="p">,</span>
+</span>    <span class="p">]</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>En el archivo <em>models.py</em> encontraremos el siguiente código, correspondiente al modelo de <code class="docutils literal notranslate"><span class="pre">ManoObra</span></code>.</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+<span class="k">class</span> <span class="nc">ManoObra</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">id_mano</span> <span class="o">=</span>             <span class="n">models</span><span class="o">.</span><span class="n">AutoField</span><span class="p">(</span><span class="n">primary_key</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="n">detalle_producto</span> <span class="o">=</span>    <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="s1">&#39;Detalle del Producto&#39;</span><span class="p">,</span> <span class="n">max_length</span> <span class="o">=</span> <span class="mi">150</span><span class="p">)</span>
+    <span class="n">tareadia</span> <span class="o">=</span>            <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="s1">&#39;Tarea Diaria Persona&#39;</span><span class="p">,</span> <span class="n">max_length</span> <span class="o">=</span> <span class="mi">200</span><span class="p">)</span>
+    <span class="n">valordia</span> <span class="o">=</span>            <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="s1">&#39;Valor Dia Empacador&#39;</span><span class="p">,</span> <span class="n">blank</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">null</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="n">valoruni</span> <span class="o">=</span>            <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="s1">&#39;Valor Unitario M.O Empaque&#39;</span><span class="p">,</span> <span class="n">blank</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">null</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="n">produccion</span> <span class="o">=</span>          <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="s1">&#39;Produccion&#39;</span><span class="p">,</span> <span class="n">blank</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">null</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="n">totalmano</span> <span class="o">=</span>           <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="s1">&#39;Total Mano de Obra&#39;</span><span class="p">,</span> <span class="n">blank</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">null</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">db_table</span> <span class="o">=</span> <span class="s1">&#39;mano_obra&#39;</span>
+        <span class="n">verbose_name</span> <span class="o">=</span> <span class="s1">&#39;ManoObra&#39;</span>
+        <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="s1">&#39;ManoObras&#39;</span>
+        <span class="n">ordering</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;id_mano&#39;</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">detalle_producto</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic" start="4">
+<li><p>Aquí podemos ver que los campos de los modelos tienen muchos métodos para la entrada web, como <code class="xref py py-func docutils literal notranslate"><span class="pre">CharField()</span></code>, <code class="xref py py-func docutils literal notranslate"><span class="pre">IntegerField()</span></code>, <code class="xref py py-func docutils literal notranslate"><span class="pre">AutoField()</span></code>. Podemos ver mas <a class="reference external" href="https://docs.djangoproject.com/en/3.0/ref/models/fields/">referencias</a> en la documentación de Django.</p></li>
+<li><p>Ahora ejecutaremos los comandos:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">py</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">makemigrations</span>
+<span class="o">&gt;</span> <span class="n">py</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">migrate</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Asegúrese de tener la base de datos conectada y de haber iniciado el servidor Apache y el servidor MySQL en la base de datos.</p>
+</div>
+<div class="figure align-left">
+<img alt="../_images/py.png" src="../_images/py.png" />
+</div>
+</div>
+<div class="section" id="admin">
+<h2>Admin<a class="headerlink" href="#admin" title="Permalink to this headline">¶</a></h2>
+<p><em>Archivo</em> : <code class="docutils literal notranslate"><span class="pre">admin.py</span></code></p>
+<p>Al registrar el  módelo <code class="docutils literal notranslate"><span class="pre">ManoObra</span></code> con <code class="docutils literal notranslate"><span class="pre">admin.site.register()</span></code>, Django puede construir una representación del formulario predeterminado.
+Para poder registrar un modelo en el archivo <code class="xref py py-mod docutils literal notranslate"><span class="pre">models.py</span></code> debemos importar el modelo con la función <code class="docutils literal notranslate"><span class="pre">from</span></code> y registrar el modelo con la sentencia <code class="docutils literal notranslate"><span class="pre">admin.site.register()</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">ManoObra</span>       <span class="c1"># Importar el modelo desde models.py</span>
+
+<span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">ManoObra</span><span class="p">)</span>       <span class="c1"># (nombre del modelo creado en models.py)</span>
+</pre></div>
+</div>
+<div class="figure align-left">
+<img alt="../_images/py.png" src="../_images/py.png" />
+</div>
+</div>
+<div class="section" id="forms">
+<h2>Forms<a class="headerlink" href="#forms" title="Permalink to this headline">¶</a></h2>
+<p><em>Archivo</em> : <code class="docutils literal notranslate"><span class="pre">forms.py</span></code></p>
+<p>En este archivo podremos crear los imputs para los campos de los formularios creados en html.</p>
+<p>Lo bueno de los formularios de Django es que podemos definirlos desde cero o crear un <code class="docutils literal notranslate"><span class="pre">ModelForm</span></code>, el cual guardará el resultado del formulario en el modelo. Para esto crearemos un formulario para nuestro modelo <em>ManoObra</em>.</p>
+<p>Los formularios tienen su propio archivo: <code class="docutils literal notranslate"><span class="pre">forms.py</span></code>.  Dentro de este archivo encontraremos el siguiente código:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">forms</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">ManoObra</span>
+<span class="k">class</span> <span class="nc">ManoObraForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">ManoObra</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;detalle_producto&#39;</span><span class="p">,</span><span class="s1">&#39;tareadia&#39;</span><span class="p">,</span><span class="s1">&#39;valordia&#39;</span><span class="p">,</span><span class="s1">&#39;valoruni&#39;</span><span class="p">,</span><span class="s1">&#39;produccion&#39;</span><span class="p">,</span><span class="s1">&#39;totalmano&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Lo primero, necesitamos importar Django forms <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">django</span> <span class="pre">import</span> <span class="pre">forms</span></code> y nuestro modelo <em>ManoObra</em> <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">.models</span> <span class="pre">import</span> <span class="pre">..</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">ManoObraForm</span></code>, es el nombre de nuestro formulario. Necesitamos decirle a Django que este formulario es un <code class="docutils literal notranslate"><span class="pre">ManoObraForm</span></code> así Django hará algo el resto por nosotros - <code class="docutils literal notranslate"><span class="pre">forms.ManoObraForm</span></code> es responsable de ello.</p>
+<p>Luego, tenemos <code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">Meta</span></code>, donde le decimos a Django qué modelo debe ser utilizado para crear este formulario <code class="docutils literal notranslate"><span class="pre">model</span> <span class="pre">=</span> <span class="pre">ManoObra</span></code>.</p>
+<div class="figure align-left">
+<img alt="../_images/py.png" src="../_images/py.png" />
+</div>
+</div>
+<div class="section" id="views">
+<h2>Views<a class="headerlink" href="#views" title="Permalink to this headline">¶</a></h2>
+<p><em>Archivo</em> : <code class="docutils literal notranslate"><span class="pre">views.py</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">ManoObra</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<div class="admonition-importaciones admonition">
+<p class="admonition-title">Importaciones</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span><span class="p">,</span> <span class="n">redirect</span>
+<span class="kn">from</span> <span class="nn">django.core.exceptions</span> <span class="kn">import</span> <span class="n">ObjectDoesNotExist</span>
+<span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span>
+<span class="kn">from</span> <span class="nn">.forms</span> <span class="kn">import</span> <span class="n">ManoObraForm</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">ManoObra</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition-listar-manoobra admonition">
+<p class="admonition-title">Listar ManoObra</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">listarManoObra</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">manoobra</span> <span class="o">=</span> <span class="n">ManoObra</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="c1">#mandar la consulta al template y renderizar los datos traídos</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;ManoObra/listar.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;manoobra&#39;</span><span class="p">:</span> <span class="n">manoobra</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition-crear-manoobra admonition">
+<p class="admonition-title">Crear ManoObra</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">crearManoObra</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">)</span>
+        <span class="n">manoobra_form</span> <span class="o">=</span> <span class="n">ManoObraForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">manoobra_form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="n">manoobra_form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;manoobra:listar&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">manoobra_form</span> <span class="o">=</span> <span class="n">ManoObraForm</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;ManoObra/crear.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;manoobra_form&#39;</span><span class="p">:</span><span class="n">manoobra_form</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition-editar-manoobra admonition">
+<p class="admonition-title">Editar ManoObra</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">editarManoObra</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">id_mano</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
+        <span class="n">id_mano</span>  <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;id_mano&#39;</span><span class="p">)</span>
+        <span class="n">detalle_producto</span>  <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;detalle_producto&#39;</span><span class="p">)</span>
+        <span class="n">tareadia</span>  <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;tareadia&#39;</span><span class="p">)</span>
+        <span class="n">valordia</span>  <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;valordia&#39;</span><span class="p">)</span>
+        <span class="n">valoruni</span>  <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;valoruni&#39;</span><span class="p">)</span>
+        <span class="n">produccion</span>  <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;produccion&#39;</span><span class="p">)</span>
+        <span class="n">totalmano</span>  <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;totalmano&#39;</span><span class="p">)</span>
+        <span class="n">ManoObra</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="n">id_mano</span><span class="p">)</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">detalle_producto</span> <span class="o">=</span> <span class="n">detalle_producto</span><span class="p">,</span> <span class="n">tareadia</span> <span class="o">=</span> <span class="n">tareadia</span><span class="p">,</span> <span class="n">valordia</span> <span class="o">=</span> <span class="n">valordia</span><span class="p">,</span> <span class="n">valoruni</span> <span class="o">=</span> <span class="n">valoruni</span><span class="p">,</span>       <span class="n">produccion</span> <span class="o">=</span> <span class="n">produccion</span><span class="p">,</span> <span class="n">totalmano</span> <span class="o">=</span> <span class="n">totalmano</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;manoobra:listar&#39;</span><span class="p">)</span> <span class="c1">#qw</span>
+    <span class="k">else</span><span class="p">:</span>
+         <span class="n">manoobra</span> <span class="o">=</span> <span class="n">ManoObra</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">id_mano</span> <span class="o">=</span> <span class="n">id_mano</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;ManoObra/editar.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;manoobra&#39;</span><span class="p">:</span> <span class="n">manoobra</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition-eliminar-manoobra admonition">
+<p class="admonition-title">Eliminar ManoObra</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">eliminarManoObra</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">id_mano</span><span class="p">):</span>
+    <span class="n">manoobra</span> <span class="o">=</span> <span class="n">ManoObra</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">id_mano</span> <span class="o">=</span> <span class="n">id_mano</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
+        <span class="n">manoobra</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+        <span class="c1">#fabricas.save()</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;manoobra:listar&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;ManoObra/eliminar.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;manoobra&#39;</span><span class="p">:</span> <span class="n">manoobra</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="figure align-left">
+<img alt="../_images/py.png" src="../_images/py.png" />
+</div>
+</div>
+<div class="section" id="urls">
+<h2>Urls<a class="headerlink" href="#urls" title="Permalink to this headline">¶</a></h2>
+<p><em>Archivo</em> : <code class="docutils literal notranslate"><span class="pre">urls.py</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span><span class="p">,</span> <span class="n">re_path</span>
+<span class="kn">from</span> <span class="nn">.views</span> <span class="kn">import</span> <span class="n">listarManoObra</span><span class="p">,</span> <span class="n">crearManoObra</span><span class="p">,</span> <span class="n">editarManoObra</span><span class="p">,</span> <span class="n">eliminarManoObra</span>
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;listar/&#39;</span><span class="p">,</span><span class="n">listarManoObra</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;listar&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;crear/&#39;</span><span class="p">,</span><span class="n">crearManoObra</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;crear&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;editar/&lt;int:id_mano&gt;&#39;</span><span class="p">,</span><span class="n">editarManoObra</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;editar&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;eliminar/&lt;int:id_mano&gt;&#39;</span><span class="p">,</span><span class="n">eliminarManoObra</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;eliminar&#39;</span><span class="p">),</span>
+
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>Y añadiremos esta ruta al aquivo <code class="docutils literal notranslate"><span class="pre">urls.py</span></code> del directorio <code class="xref py py-mod docutils literal notranslate"><span class="pre">costosbocadillo</span></code>:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+
+<span class="n">path</span><span class="p">(</span><span class="s1">&#39;ManoObra/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">((</span><span class="s1">&#39;apps.ManoObra.urls&#39;</span><span class="p">,</span> <span class="s1">&#39;manoobra&#39;</span><span class="p">))),</span>
+
+<span class="p">]</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="figure align-left">
+<img alt="../_images/py.png" src="../_images/py.png" />
+</div>
+</div>
+<div class="section" id="apps">
+<h2>Apps<a class="headerlink" href="#apps" title="Permalink to this headline">¶</a></h2>
+<p><em>Archivo</em> : <code class="docutils literal notranslate"><span class="pre">apps.py</span></code></p>
+<p>Este archivo se crea para ayudar al usuario a incluir cualquier <a class="reference external" href="https://docs.djangoproject.com/en/dev/ref/applications/#application-configuration">configuración de aplicación</a> para la aplicación. Con esto, puede configurar algunos de los atributos de la aplicación:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.apps</span> <span class="kn">import</span> <span class="n">AppConfig</span>
+
+
+<span class="k">class</span> <span class="nc">ManoobraConfig</span><span class="p">(</span><span class="n">AppConfig</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;ManoObra&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Esneyder.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/language_data.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
